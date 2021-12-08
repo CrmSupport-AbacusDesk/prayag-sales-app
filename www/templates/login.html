@@ -1,0 +1,33 @@
+<ion-view view-title="Login" name="login-view" hide-nav-bar="true">
+    <ion-content class="padding login-sales">
+
+        <div class="logo text-center animated pulse">
+            <img src="img/white-logo.svg" alt="">
+        </div>
+
+        <div class="list">
+          <form name="Loginfrom" ng-submit="login(username,password)">
+              <label class="item item-input item-floating-label">
+                  <i class="material-icons">perm_identity</i>
+                  <span class="input-label">Username</span>
+                  <input type="text" placeholder="Username" ng-model="username" required>
+              </label>
+
+              <label class="item item-input item-floating-label">
+                  <i class="material-icons rotate">vpn_key</i>
+                  <span class="input-label">Password</span>
+                  <input type="password" placeholder="Password" class="no-margin-bottom" ng-model="password" required>
+              </label>
+
+             <!--  <p class="text-right"><a href="#.">Forgot Password ?</a></p> -->
+
+              <div class="btnn">
+                  <!-- <button>LOGIN</button> -->
+                  <!-- <input type="submit" value="LOGIN"> -->
+                  <button type="submit" ng-style="{'opacity':Loginfrom.$invalid? 0.5 : 1}" ng-disabled="Loginfrom.$invalid">LOGIN</button>
+              </div>
+
+           </form>
+        </div>
+    </ion-content>
+</ion-view>

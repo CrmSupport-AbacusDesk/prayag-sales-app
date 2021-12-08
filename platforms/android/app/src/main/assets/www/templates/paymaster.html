@@ -1,0 +1,113 @@
+<ion-view title="{{(paymaster_lst[0].company_name) ? 'Company Name' : 'Distributors'}}">
+
+    <!-- BACKBTN ICON START -->
+    <ion-nav-buttons side="left">
+        <a ng-click="doTheBack()" class="cs-backbtn button button-icon icon ion-android-arrow-back fff"></a>
+    </ion-nav-buttons>
+    <!-- BACKBTN ICON END-->
+
+    <!-- HOME ICON START -->
+    <ion-nav-buttons side="right">
+        <a href="#/home" class="button button-icon icon ion-home fff font-18"></a>
+    </ion-nav-buttons>
+    <!-- HOME ICON END-->
+
+    <ion-content>
+
+        <div class="data-not-found" ng-hide="paymaster_lst.length">
+            <div class="outer">
+                <div class="innear">
+                    <img src="img/data-not-found.svg" alt="">
+                    <h2>Temporarily , No Pay Master Available</h2>
+                </div>
+            </div>
+        </div>
+
+        <!-- Distributer Paymaster -->
+        <div class="user-list small-icon" ng-if="paymaster_lst.length">
+          <div class="user-list small-icon" ng-if="paymaster_lst[0].ret !='1'">
+            <div class="list">
+                <!-- looP start -->
+                <a class="item item-avatar pl-16" ng-click="paymaster_data(lst.distributor_id,lst.company_name,'2')" ng-repeat="lst in paymaster_lst">
+                    <h2 class="mt-5">
+                      <span ng-if="lst.company_name=='Polymer'">Prayag Polymer PVT. LTD.</span>
+                      <span ng-if="lst.company_name=='Exim'">Prayag Exim PVT. LTD.</span>
+                      </h2>
+                    <p class="tl-sales">Outstanding : <i class="inr-icon ml-10 mt-5"></i><span class="pl-25">{{lst.balance}}</span></p>
+
+                    <button class="button button-icon icon ion-chevron-right font-18 blue-color"></button>
+                </a>
+                <!-- looP end -->
+            </div>
+        </div>
+
+
+
+        <!-- Retailer Paymster -->
+        <div class="list" ng-if="paymaster_lst[0].ret =='1'">
+            <!-- looP start -->
+            <a class="item item-avatar" ng-click="paymaster_data(lst.id,lst.retailer_id,'1')" ng-repeat="lst in paymaster_lst">
+              <img ng-if="lst.dr_image" src="{{upload_url}}{{lst.dr_image}}"/>
+                <div ng-hide="lst.dr_image" class="info-icon">
+                    <div class="outer">
+                        <div class="innear">
+                            <h1 class="font-24">{{lst.dr_name[0]}}</h1>
+                        </div>
+                    </div>
+                </div>
+                <h2 class="mt-5">{{lst.dr_name}}</h2>
+                <p class="tl-sales">Outstanding : <i class="inr-icon ml-10 mt-5"></i><span class="pl-25">{{lst.balance}}</span></p>
+
+                <button class="button button-icon icon ion-chevron-right font-18 blue-color"></button>
+            </a>
+            <!-- looP end -->
+        </div>
+    </div>
+
+
+</ion-content>
+<ion-footer-bar position="bottom" keyboard-attach class="home-tabs">
+    <div class="custome-tabs four-tabs">
+        <a href="#/tab/expense">
+            <div class="outer">
+                <div class="innear">
+                    <i class="material-icons">account_balance_wallet</i>
+                    <p>EXPENSE</p>
+                </div>
+            </div>
+        </a>
+        <a href="#/tab/followup">
+            <div class="outer">
+                <div class="innear">
+                    <i class="material-icons">contact_phone</i>
+                    <p>FOLLOWUP</p>
+                </div>
+            </div>
+        </a>
+        <a ng-click="opensp()" class="active">
+            <div class="outer">
+                <div class="innear relative">
+                    <i class="inr-icon-light ab-center font-0 mt-3">inr</i>
+                    <p class="mt-24">PAY MASTER</p>
+                </div>
+            </div>
+        </a>
+        <a ng-click="get_today_birthday_info_data(1)">
+            <div class="outer">
+                <div class="innear">
+                    <i class="material-icons">card_giftcard</i>
+                    <p>BIRTHDAY</p>
+                </div>
+            </div>
+        </a>
+        <a href="#/dashboard">
+            <div class="outer">
+                <div class="innear">
+                    <i class="material-icons">desktop_mac</i>
+                    <p>DASHBOARD</p>
+                </div>
+            </div>
+        </a>
+    </div>
+</ion-footer-bar>
+</ion-view>

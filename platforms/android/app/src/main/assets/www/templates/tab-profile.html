@@ -1,0 +1,192 @@
+<ion-view view-title="">
+
+    <!-- BACKBTN ICON START -->
+    <ion-nav-buttons side="left">
+        <a ng-click="doTheBack()" class="cs-backbtn button button-icon icon ion-android-arrow-back fff"></a>
+    </ion-nav-buttons>
+    <!-- BACKBTN ICON END-->
+
+    <!-- HOME ICON START -->
+    <ion-nav-buttons side="right">
+        <a ng-click="camera_click(2);" class="button button-icon icon ion-android-camera fff font-18"></a>
+    </ion-nav-buttons>
+    <!-- HOME ICON END-->
+
+    <ion-content class="profile">
+        <div class="profile-head">
+            <div class="pr-icon">
+                <div class="outer">
+                    <div class="innear">
+                        <img style="width: 54px; height: 54px;" src="{{upload_url + myProfileDetail.image}}" ng-if="myProfileDetail.image" >
+                        <i class="material-icons" ng-if="!myProfileDetail.image">person</i>
+                    </div>
+                </div>
+            </div>
+
+            <h2>{{myProfileDetail.name}}</h2>
+        </div>
+
+        <div class="form-new-profile" ng-class="{true:'', false:'active'}[disp_edit1]">
+            <form name="Compform" novalidate>
+            <h2 class="heading">Personal Info
+                <a class="edit" ng-click="disp_edit1=false">
+                    <span ng-if="disp_edit1"><i class="material-icons">border_color</i></span>
+                </a>
+                <a class="save" ng-click="save_pers_info(); disp_edit1=true" ng-disabled="Compform.$invalid">
+                    <span ng-if="!disp_edit1"><i class="material-icons">save</i></span>
+                </a>
+            </h2>
+            <ul>
+                <li ng-if="!disp_edit1">
+                    <p>Name</p>
+                    <input type="text" ng-model="myProfileDetail.name" ng-readonly="disp_edit1">
+                </li>
+                <li>
+                    <p>Email</p>
+                    <input type="email" ng-model="myProfileDetail.email" required ng-readonly="disp_edit1">
+                </li>
+                <li>
+                    <p>Department</p>
+                    <input type="text" ng-model="myProfileDetail.department"  ng-readonly="disp_edit1">
+                </li>
+                <li>
+                    <p>Designation</p>
+                    <input type="text" ng-model="myProfileDetail.designation"  ng-readonly="disp_edit1">
+                </li>
+                <li>
+                    <p>Date of Birth</p>
+                    <input date-input type="date" ng-model="myProfileDetail.date_birth"  ng-readonly="disp_edit1">
+                </li>
+                <li>
+                    <p>Date of Joining</p>
+                    <input date-input type="date" ng-model="myProfileDetail.date_joining"  ng-readonly="disp_edit1">
+                </li> 
+                <li>
+                    <p>Contact No. 1</p>
+                    <input numbers-only type="tel" name="mob1" ng-model="myProfileDetail.contact_01" minlength="10" maxlength="10" ng-readonly="disp_edit1">
+                    <span class="error-right top-7 right-10" ng-if="Compform.mob1.$invalid">* Number Not Valid</span>
+                    <!-- <input string-to-number type="number" ng-model="myProfileDetail.contact_01"  ng-readonly="disp_edit1"> -->
+                </li> 
+                <li>
+                    <p>Contact No. 2</p>
+                    <input numbers-only type="tel" name="mob1" ng-model="myProfileDetail.contact_02" minlength="10" maxlength="10" ng-readonly="disp_edit1">
+                    <span class="error-right top-7 right-10" ng-if="Compform.mob1.$invalid">* Number Not Valid</span>
+                    <!-- <input string-to-number type="number" ng-model="myProfileDetail.contact_02"  ng-readonly="disp_edit1"> -->
+                </li>
+            </ul>
+            </form>
+        </div>
+
+        <div class="form-new-profile" ng-class="{true:'', false:'active'}[disp_edit2]">
+            <form name="Compform" novalidate>
+            <h2 class="heading">Address Info
+                <a class="edit" ng-click="disp_edit2=false">
+                    <span ng-if="disp_edit2"><i class="material-icons">border_color</i></span>
+                </a>
+                <a class="save" ng-click="save_add_info(); disp_edit2=true" ng-disabled="Compform.$invalid">
+                    <span ng-if="!disp_edit2"><i class="material-icons">save</i></span>
+                </a>
+            </h2>
+            <ul>
+                <li>
+                    <p>Street</p>
+                    <input type="text" ng-model="myProfileDetail.street" required ng-readonly="disp_edit2">
+                </li>
+                <li>
+                    <p>State</p>
+                    <select ng-model="myProfileDetail.state_name" ng-disabled="disp_edit2" ng-change="get_profile_districts(myProfileDetail.state_name)">
+                        <option value=" ">Select State</option>
+                        <option ng-repeat="val in state_data">{{val.state_name}}</option>
+                    </select>
+                    <!-- <input type="text" ng-model="myProfileDetail.state_name" required ng-readonly="disp_edit2"> -->
+                </li>
+                <li>
+                    <p>District</p>
+                    <select ng-model="myProfileDetail.district_name" ng-disabled="disp_edit2" ng-change="get_profile_city(myProfileDetail.district_name,myProfileDetail.state_name)">
+                        <option value=" ">Select District</option>
+                        <option ng-repeat="val in district_data">{{val.district_name}}</option>
+                    </select>
+                    <!-- <input type="text" ng-model="myProfileDetail.district_name"  ng-readonly="disp_edit2"> -->
+                </li>
+                <li>
+                    <p>City</p>
+                    <select ng-model="myProfileDetail.city" ng-disabled="disp_edit2" ng-change="get_profile_area(myProfileDetail.city,myProfileDetail.state_name)">
+                        <option value=" ">Select City</option>
+                        <option ng-repeat="val in city_data">{{val.city}}</option>
+                    </select>
+                    <!-- <input type="text" ng-model="myProfileDetail.district_name"  ng-readonly="disp_edit2"> -->
+                </li>
+                <li>
+                    <p>Area</p>
+                    <select ng-model="myProfileDetail.area" ng-disabled="disp_edit2" ng-change="get_profile_pincodes(myProfileDetail.area,myProfileDetail.state_name)">
+                        <option value=" ">Select Area</option>
+                        <option ng-repeat="val in area_data">{{val.area}}</option>
+                    </select>
+                    <!-- <input type="text" ng-model="myProfileDetail.district_name"  ng-readonly="disp_edit2"> -->
+                </li>
+                <li>
+                    <p>Pincode</p>
+                    <select ng-model="myProfileDetail.pincode" ng-disabled="disp_edit2" ng-change="set_profile_area(myProfileDetail.pincode,myProfileDetail.state_name)">
+                        <option value=" ">Select Pincode</option>
+                        <option ng-repeat="val in pincode_data">{{val.pincode}}</option>
+                    </select>
+                    <!-- <input type="text" ng-model="myProfileDetail.pincode"  ng-readonly="disp_edit2"> -->
+                </li>
+            </ul>
+            </form>
+        </div>
+
+         <div class="form-new-profile" ng-class="{true:'', false:'active'}[disp_edit3]">
+            <form name="Loginform" novalidate>
+            <h2 class="heading">Login Info
+                <a class="edit" ng-click="disp_edit3=false">
+                    <span ng-if="disp_edit3"><i class="material-icons">border_color</i></span>
+                </a>
+                <a class="save" ng-click="save_login_info(); disp_edit3=true">
+                    <span ng-if="!disp_edit3"><i class="material-icons">save</i></span>
+                </a>
+            </h2>
+            <ul>
+                <li>
+                    <p>Username</p>
+                    <p>{{myProfileDetail.username}}</p>
+                </li>
+                <li>
+                    <p>Password</p>
+                    <input type="text" ng-model="myProfileDetail.password" ng-readonly="disp_edit3">
+                </li>
+            </ul>
+            </form>
+        </div>
+
+        <div class="form-new-profile" ng-class="{true:'', false:'active'}[disp_edit4]">
+            <form name="Loginform" novalidate>
+            <h2 class="heading">User Details
+                <!-- <a class="edit" ng-click="disp_edit4=false">
+                    <span ng-if="disp_edit4"><i class="material-icons">border_color</i></span>
+                </a>
+                <a class="save" ng-click="save_login_info(); disp_edit4=true">
+                    <span ng-if="!disp_edit4"><i class="material-icons">save</i></span>
+                </a> -->
+            </h2>
+            <ul>
+                <li>
+                    <p>Headquarter</p>
+                    <p>{{myProfileDetail.headquarter}}</p>
+                </li>
+                <li>
+                    <p>Reproting Manager</p>
+                    <p>{{myProfileDetail.reporting_manager}}</p>
+                </li>
+                <li>
+                    <p>CTC</p>
+                    <p>{{myProfileDetail.ctc}}</p>
+                </li>
+            </ul>
+            </form>
+        </div>
+
+
+    </ion-content>
+
+</ion-view>

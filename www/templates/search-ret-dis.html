@@ -1,0 +1,40 @@
+<ion-modal-view class="cs-modal animated">
+    <ion-content>
+
+        <div class="modal-data" ng-init="ret_num=1">
+            <div class="outer">
+                <div class="innear">
+                    <div class="dat">
+                      <form name="Searchform">
+                        <div class="input-file-radio">
+                            <label class="padding-10 no-padding-bottom wp50 left">
+                                <input checked type="radio" ng-model="ret_num" value="1" required style="height: 15px;">
+                                <span class="font-12">Mobile Number</span>
+                            </label>
+                            <label class="padding-10 no-padding-bottom">
+                                <input type="radio" ng-model="ret_num" value="2" required style="height: 15px;">
+                                <span class="font-12">GST Number</span>
+                            </label>
+                        </div>
+
+                        <div class="input-file padding-10">
+                            <input type="{{ret_num == 1 ? 'tel' : 'text'}}" placeholder="Enter Number" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Number'" minlength="{{ret_num == 1 ? '10' : '15'}}" maxlength="{{ret_num == 1 ? '10' : '15'}}" ng-model="mydata.num" name="mob" required>
+                        </div>
+                           <div class="btns">
+                            <ul>
+                                <li><a ng-click="closertd()">cancel</a></li>
+                                <li>
+                                    <input type="submit" ng-click="add_ret(ret_num); closertd()"  value="SUBMIT" ng-style="{'opacity':Searchform.$invalid? 0.5 : 1}" ng-disabled="Searchform.$invalid">
+                                </li>
+                            </ul>
+                            <div class="clearfix"></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</ion-content>
+</ion-modal-view>

@@ -1,0 +1,162 @@
+<ion-view view-title="DWR" >
+
+    <!-- BACKBTN ICON START -->
+    <ion-nav-buttons side="left">
+        <a href="#/home" class="cs-backbtn button button-icon icon ion-android-arrow-back fff"></a>
+    </ion-nav-buttons>
+    <!-- BACKBTN ICON END-->
+
+    <!-- HOME ICON START -->
+    <ion-nav-buttons side="right">
+        <a href="#/home" class="button button-icon icon ion-home fff font-18"></a>
+    </ion-nav-buttons>
+    <!-- HOME ICON END-->
+
+    <ion-content>
+
+        <div class="custome-date-picker no-padding-bottom">
+            <ul>
+                <li><a ng-click="sub_dwr()"><i class="material-icons">keyboard_arrow_left</i></a></li>
+                <li><a href=""><span>{{formatDate(showdwrdate)  | date:  'MMMM dd, y'}}</span></a></li>
+                <li><a ng-click="add_dwr()"><i class="material-icons">keyboard_arrow_right</i></a></li>
+            </ul>
+        </div>
+
+        <div class="user-list small-icon dwr-list mt-16">
+            <div class="list">
+
+                <!-- looP start -->
+                <a class="item item-avatar" ng-click="dwrdata.today_lead>0?dwr_ret_visit('8'):''">
+                    <div class="info-icon top-13">
+                        <div class="outer">
+                            <div class="innear">
+                                <h1 class="font-16">{{dwrdata.today_lead}}</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <h2>Lead Visit</h2>
+                    <button class="button button-icon icon ion-chevron-right font-12 blue-color"></button>
+                </a>
+                <!-- looP end -->
+
+                <!-- looP start -->
+                <a class="item item-avatar" ng-click="dwrdata.today_ret>0?dwr_ret_visit('1'):''">
+                    <div class="info-icon top-13">
+                        <div class="outer">
+                            <div class="innear">
+                                <h1 class="font-16">{{dwrdata.today_ret}}</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <h2>Retailer Visit</h2>
+                    <button class="button button-icon icon ion-chevron-right font-12 blue-color"></button>
+                </a>
+                <!-- looP end -->
+
+                <!-- looP start -->
+                <a class="item item-avatar" ng-click="dwrdata.today_dist>0?dwr_ret_visit('2'):''">
+                    <div class="info-icon top-13">
+                        <div class="outer">
+                            <div class="innear">
+                                <h1 class="font-16">{{dwrdata.today_dist}}</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <h2>Distributor Visit</h2>
+                    <button class="button button-icon icon ion-chevron-right font-12 blue-color"></button>
+                </a>
+                <!-- looP end -->
+
+                <!-- looP start -->
+                <!-- <a class="item item-avatar" href="">
+                    <div class="info-icon top-13">
+                        <div class="outer">
+                            <div class="innear">
+                                <h1 class="font-16">11</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <h2>Payment Follow up</h2>
+                    <button class="button button-icon icon ion-chevron-right font-18 blue-color"></button>
+                </a> -->
+                <!-- looP end -->
+
+                <!-- looP start -->
+                <a class="item item-avatar" ng-click="dwrpaydata.today_pay_col>0?dwr_ret_visit('3'):''">
+                    <div class="info-icon top-13">
+                        <div class="outer">
+                            <div class="innear">
+                                <h1 class="font-16">{{dwrpaydata.today_pay_col}}</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <h2>Payment Collection</h2>
+                    <button class="button button-icon icon ion-chevron-right font-12 blue-color"></button>
+                </a>
+                <!-- looP end -->
+
+                <!-- looP start -->
+                <a class="item item-avatar" ng-click="dwrsecord.today_sec_ord>0?dwr_ret_visit('6'):''">
+                    <div class="info-icon top-13">
+                        <div class="outer">
+                            <div class="innear">
+                                <h1 class="font-16">{{dwrsecord.today_sec_ord}}</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <h2>Secondary Orders</h2>
+                    <button class="button button-icon icon ion-chevron-right font-12 blue-color"></button>
+                </a>
+                <!-- looP end -->
+
+                <!-- looP start -->
+                <a class="item item-avatar" ng-click="dwrprimord.today_prim_ord>0?dwr_ret_visit('7'):''">
+                    <div class="info-icon top-13">
+                        <div class="outer">
+                            <div class="innear">
+                                <h1 class="font-16">{{dwrprimord.today_prim_ord}}</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <h2>Primary Orders</h2>
+                    <button class="button button-icon icon ion-chevron-right font-12 blue-color"></button>
+                </a>
+                <!-- looP end -->
+
+                <!-- looP start -->
+                <a class="item item-avatar" ng-click="dwrretreqdata.today_ret_req>0?dwr_ret_visit('4'):''">
+                    <div class="info-icon top-13">
+                        <div class="outer">
+                            <div class="innear">
+                                <h1 class="font-16">{{dwrretreqdata.today_ret_req}}</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <h2>New Retailer Request</h2>
+                    <button class="button button-icon icon ion-chevron-right font-12 blue-color"></button>
+                </a>
+                <!-- looP end -->
+
+                <!-- looP start -->
+                <a class="item item-avatar" ng-click="dwrdistreqdata.today_dist_req>0?dwr_ret_visit('5'):''">
+                    <div class="info-icon top-13">
+                        <div class="outer">
+                            <div class="innear">
+                                <h1 class="font-16">{{dwrdistreqdata.today_dist_req}}</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <h2>New Distributor Request</h2>
+                    <button class="button button-icon icon ion-chevron-right font-12 blue-color"></button>
+                </a>
+                <!-- looP end -->
+
+            </div>
+        </div>
+    </ion-content>
+
+    <!-- <a class="pluse-icon blue-bg" ng-click="openrt()">
+        <i class="material-icons fff">add</i>
+    </a> -->
+
+</ion-view>

@@ -1,0 +1,87 @@
+<ion-view view-title="Activity">
+
+    <!-- BACKBTN ICON START -->
+    <ion-nav-buttons side="left">
+        <a ng-click="disable_tabs==true ? retailerdetails($root.retailers_id,'3','','','','Ret',dr_status) : retailerdetails($root.retailers_id,'1')" class="cs-backbtn button button-icon icon ion-android-arrow-back fff"></a>
+    </ion-nav-buttons>
+    <!-- BACKBTN ICON END-->
+
+    <!-- HOME ICON START -->
+    <ion-nav-buttons side="right">
+        <a href="#/home" class="button button-icon icon ion-home fff font-18"></a>
+    </ion-nav-buttons>
+    <!-- HOME ICON END-->
+
+    <ion-content ng-controller="ActivityCtrl">
+
+        <div class="custome-date-picker no-padding-bottom">
+            <ul>
+                <li><a href="" ng-click="red_date()"><i class="material-icons">keyboard_arrow_left</i></a></li>
+                <li><a href=""><span>{{formatDate(curDate)  | date:  'MMMM dd, y'}}</span></a></li>
+                <li><a href="" ng-click="ad_date()"><i class="material-icons">keyboard_arrow_right</i></a></li>
+            </ul>
+        </div>
+
+
+
+
+      <form name="activity">
+
+        <label class="item-input item-select cs-select">
+            <div class="input-label">
+                Activity Type
+            </div>
+            <select ng-model="actdata.activity_type" required>
+                <option value="">Select Activity Type</option>
+                <option>Call</option>
+                <option>Meeting</option>
+                <option>Meeting with Senior</option>
+                <option>Plumber Meeting</option>
+            </select>
+        </label>
+
+        <div class="cs-input padding-16 no-padding-bottom">
+            <textarea name="" id="" cols="20" rows="6" ng-model="actdata.remark" required></textarea>
+        </div>
+
+
+        <label class="item-input item-select cs-date">
+            <div class="input-label">
+                Next Follow up Date
+            </div>
+            <input type="date" ng-model="actdata.next_followup" min="{{today_leave}}" required>
+        </label>
+
+        <div class="input-submit padding-16">
+            <button ng-click="activityret(retailer_det.id,'1');" ng-style="{'opacity':activity.$invalid? 0.5 : 1}" ng-disabled="activity.$invalid" >SUBMIT</button>
+        </div>
+        </form>
+
+        <div class="heading">
+            <h2>History</h2>
+        </div>
+
+        <div class="date-type-listing">
+            <div class="list">
+                <!-- looP start -->
+                <a ng-repeat="history in activity_ret_his">
+                     <div class="data">
+                         <div class="date-box">
+                             <div class="date">
+                                 <span class="pt-10">{{formatDate(history.activity_date) | date:'dd MMM'}}</span>
+                             </div>
+                             <div class="ac-type">
+                                 <span class="pt-5">{{history.activity_type}}</span>
+                             </div>
+                         </div>
+                         <p class="mb-5">{{history.remark}}</p>
+                         <p><strong>Next Followup :</strong> <span>{{formatDate(history.next_followup)|  date: 'dd MMM y'}}</span></p>
+                     </div>
+                 </a>
+                <!-- looP end -->
+
+            </div>
+        </div>
+
+    </ion-content>
+</ion-view>

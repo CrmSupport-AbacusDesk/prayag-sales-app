@@ -1,0 +1,32 @@
+<ion-modal-view class="cs-modal animated">
+    <ion-content>
+
+        <div class="modal-data">
+            <div class="outer">
+                <div class="innear">
+                  <form name="Searchform">
+                    <div class="dat">
+                        <div class="pl-30 pr-30 pt-30 pb-30">
+                           <p class="font-18 text-center" style="line-height: 28px;">
+                            <span ng-if="regen_type==1">Do you want to regenrate 'Retailer Request'?</span>
+                            <span ng-if="regen_type==2">Do you want to regenrate 'Distributor Request'?</span>
+                           </p>
+                        </div>
+                        <div class="btns">
+                            <ul>
+                                <li><a ng-click="closeregen()">cancel</a></li>
+                                <li>
+                                    <input type="submit" ng-click="regen_type==1 ? req_reg($root.retailers_id,1) : req_reg($root.retailers_id,2); closeregen()" value="OK">
+                                </li>
+                            </ul>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                  </form>
+                </div>
+            </div>
+        </div>
+
+
+    </ion-content>
+</ion-modal-view>

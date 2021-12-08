@@ -1,0 +1,120 @@
+<ion-view view-title="Home" hide-nav-bar="true">
+    <ion-content class="home">
+        <div class="slide">
+            <div class="zoominheader">
+                <div class="zoomoutheader"></div>
+            </div>
+        </div>
+
+        <div class="heading bl">
+            <h2>{{exec_name}}</h2>
+        </div>
+
+        <div class="home-links">
+            <a ng-click="retailerlist();">
+                <div class="links outer">
+                    <div class="innear">
+                        <div class="icon">
+                            <img src="img/retailer-icon.svg" alt="">
+                        </div>
+                        <h2>Retailers</h2>
+                    </div>
+                </div>
+            </a>
+            <a ng-click="distributorlist();">
+                <div class="links outer">
+                    <div class="innear">
+                        <div class="icon">
+                            <img src="img/distributer-icon.svg" alt="">
+                        </div>
+                        <h2>Distributors & Direct Dealers</h2>
+                    </div>
+                </div>
+            </a>
+            <a ng-click="dwrlist(dwrdate)">
+                <div class="links outer">
+                    <div class="innear">
+                        <div class="icon">
+                            <img src="img/dwr-icon.svg" alt="">
+                        </div>
+                        <h2>Daily Working Reports</h2>
+                    </div>
+                </div>
+            </a>
+            <a ng-click="leave_list()">
+                <div class="links outer">
+                    <div class="innear">
+                        <div class="icon">
+                            <img src="img/holiday-icon.svg" alt="">
+                        </div>
+                        <h2>Leaves & Holidays</h2>
+                    </div>
+                </div>
+            </a>
+            <a ng-click="notice_list()">
+                <div class="links outer">
+                    <div class="innear">
+                        <div class="icon">
+                            <img src="img/announcement-icon.svg" alt="">
+                        </div>
+                        <h2>Announcements</h2>
+                    </div>
+                </div>
+            </a>
+            <a ng-click="nearest_store()">
+                <div class="links outer">
+                    <div class="innear">
+                        <div class="icon">
+                            <img src="img/nearest-icon.svg" alt="">
+                        </div>
+                        <h2>Nearest Store</h2>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </ion-content>
+    <ion-footer-bar position="bottom" keyboard-attach class="home-tabs">
+        <div class="custome-tabs four-tabs">
+            <a ng-click="expense_list()">
+                <div class="outer">
+                    <div class="innear">
+                        <i class="material-icons">account_balance_wallet</i>
+                        <p>EXPENSE</p>
+                    </div>
+                </div>
+            </a>
+            <a ng-click="followup_list()">
+                <div class="outer">
+                    <div class="innear">
+                        <i class="material-icons">contact_phone</i>
+                        <p>FOLLOWUP</p>
+                    </div>
+                </div>
+            </a>
+            <a ng-click="opensp()">
+                <div class="outer">
+                    <div class="innear relative">
+                        <i class="inr-icon-light ab-center font-0 mt-3">inr</i>
+                        <p class="mt-24">PAY MASTER</p>
+                    </div>
+                </div>
+            </a>
+            <a ng-click="get_today_birthday_info_data(1)">
+                <div class="outer">
+                    <div class="innear">
+                        <i class="material-icons">card_giftcard</i>
+                        <p>BIRTHDAY</p>
+                    </div>
+                </div>
+            </a>
+            <a href="#/dashboard">
+                <div class="outer">
+                    <div class="innear">
+                        <i class="material-icons">desktop_mac</i>
+                        <p>DASHBOARD</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </ion-footer-bar>
+</ion-view>

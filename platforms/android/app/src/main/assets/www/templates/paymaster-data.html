@@ -1,0 +1,116 @@
+<ion-view view-title="Pay Master">
+
+    <!-- BACKBTN ICON START -->
+    <ion-nav-buttons side="left">
+        <a ng-click="doTheBack()" class="cs-backbtn button button-icon icon ion-android-arrow-back fff"></a>
+    </ion-nav-buttons>
+    <!-- BACKBTN ICON END-->
+
+    <!-- HOME ICON START -->
+    <ion-nav-buttons side="right">
+        <a href="#/home" class="button button-icon icon ion-home fff font-18"></a>
+    </ion-nav-buttons>
+    <!-- HOME ICON END-->
+
+    <ion-content>
+
+        <div class="total-ds tl-out">
+            <div class="ttl">
+                <p>OUTSTANDING</p>
+            </div>
+            <div class="rate">
+                <p><i class="inr-icon"></i>
+                  <span ng-if="pmaster_data[0].balance">{{pmaster_data[0].balance}}</span>
+                  <span ng-hide="pmaster_data[0].balance">0</span>
+                </p>
+            </div>
+        </div>
+
+        <div class="user-list date-format paymaster-list">
+            <div class="list">
+              <div ng-repeat="data in pmaster_data">
+                <!-- looP start -->
+                <div class="item item-avatar">
+                    <div class="date-info-icon">
+                        <h2>{{formatDate(data.date_created)|  date: 'dd'}}</h2>
+                        <p>{{formatDate(data.date_created)|  date: 'MMM'}}</p>
+                    </div>
+                    <a>
+                        <p class="mmt-4">
+                          <strong class="pr-10"><span ng-if="data.mode">Payment Mode</span><span ng-if="data.order_id != 0">Order No.</span>  &nbsp;  &nbsp;:</strong>
+                          <span ng-if="data.mode">{{data.mode}}</span>
+                          <span ng-if="data.order_id != 0"># {{data.order_id}}</span>
+                        </p>
+                        <p class="mmt-3">
+                          <strong class="pr-10"><span ng-if="data.payment_amount">Amount</span><span ng-if="data.order_amount">Order Value</span>   &nbsp;  &nbsp;:</strong><i class="inr-icon mt-4"></i>
+                          <span class="orange-color pl-15" ng-if="data.payment_amount">{{data.payment_amount}}</span>
+                          <span class="orange-color pl-15" ng-if="data.order_amount">{{data.order_amount}}</span>
+                        </p>
+                    </a>
+                </div>
+                <!-- looP end -->
+
+                <div class="item bal" ng-if="pmaster_data[$index+1].balance">
+                    <div class="total">
+                        <h2>Bal. &nbsp; <i class="inr-icon ml-6"></i>
+                          <span ng-if="pmaster_data[$index+1].balance">{{pmaster_data[$index+1].balance}}</span>
+                          <span ng-hide="pmaster_data[$index+1].balance">0</span>
+                        </h2>
+                    </div>
+                </div>
+
+              </div>
+
+            </div>
+        </div>
+
+    </ion-content>
+    <a class="pluse-icon blue-bg" ng-click="pmaster_type==1?add_paym_click(pmaster_data[0].dr_name,pmaster_data[0].balance,pmaster_data[0].retailer_id,pmaster_data[0].distributor_id,pmaster_type):add_paym_click(pmaster_data[0].company_name,pmaster_data[0].balance,pmaster_data[0].company_name,pmaster_data[0].distributor_id,pmaster_type)">
+        <i class="material-icons fff">add</i>
+    </a>
+
+    <ion-footer-bar position="bottom" keyboard-attach class="home-tabs">
+        <div class="custome-tabs four-tabs">
+            <a href="#/tab/expense">
+                <div class="outer">
+                    <div class="innear">
+                        <i class="material-icons">account_balance_wallet</i>
+                        <p>EXPENSE</p>
+                    </div>
+                </div>
+            </a>
+            <a href="#/tab/followup">
+                <div class="outer">
+                    <div class="innear">
+                        <i class="material-icons">contact_phone</i>
+                        <p>FOLLOWUP</p>
+                    </div>
+                </div>
+            </a>
+            <a ng-click="opensp()" class="active">
+                <div class="outer">
+                    <div class="innear relative">
+                        <i class="inr-icon-light ab-center font-0 mt-3">inr</i>
+                        <p class="mt-24">PAY MASTER</p>
+                    </div>
+                </div>
+            </a>
+            <a ng-click="get_today_birthday_info_data(1)">
+                <div class="outer">
+                    <div class="innear">
+                        <i class="material-icons">card_giftcard</i>
+                        <p>BIRTHDAY</p>
+                    </div>
+                </div>
+            </a>
+            <a href="#/dashboard">
+                <div class="outer">
+                    <div class="innear">
+                        <i class="material-icons">desktop_mac</i>
+                        <p>DASHBOARD</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </ion-footer-bar>
+</ion-view>

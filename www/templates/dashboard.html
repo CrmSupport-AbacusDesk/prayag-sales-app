@@ -1,0 +1,288 @@
+<ion-view view-title="Dashboard">
+    
+    <ion-nav-buttons side="left">
+        <a href="#/home" class="cs-backbtn button button-icon icon ion-home fff"></a>
+    </ion-nav-buttons>
+    
+    <ion-nav-buttons side="right">
+        <div layout="row" layout-align="space-between center" class="ds-profile">
+            <span class="pr-icon" ><i class="material-icons" ng-if="!myProfileDetail.image">person</i>
+                <img src="{{upload_url + myProfileDetail.image}}" ng-if="myProfileDetail.image" style="width: 100%; height: 100%; border-radius: 100%;">
+            </span>
+            <md-select ng-model="drink" class="md-no-underline">
+                <md-option ng-click="profile_detail()">Profile</md-option>
+                <md-option ng-click="logout()">Logout</md-option>
+            </md-select>
+        </div>
+    </ion-nav-buttons>
+    
+    
+    <ion-content class="dashboard">
+        <div class="ds-bx">
+            <div class="img-icon">
+                <canvas id="pie" class="chart chart-pie" chart-data="data_dash" chart-labels="labels" chart-click="clickme" chart-options="options" legend="true" style="width: 500px !important"></canvas>
+            </div>
+            <!-- <div class="right bxc wp50 pl-10">
+                <div class="sale-couter">
+                    <h5>Secondary Sales</h5>
+                    <p><i class="inr-icon"></i><span ng-if="!dash_data.sec_sales.total_sec_sales">0</span><span ng-if="dash_data.sec_sales.total_sec_sales">{{dash_data.sec_sales.total_sec_sales}}</span></p>
+                </div>
+            </div>
+            <div class="right bxc wp50 pr-10">
+                <div class="sale-couter">
+                    <h5>Primary Sales</h5>
+                    <p><i class="inr-icon"></i><span ng-if="!dash_data.prim_sales.total_prim_sales">0</span><span ng-if="dash_data.prim_sales.total_prim_sales">{{dash_data.prim_sales.total_prim_sales}}</span></p>
+                </div>
+            </div> -->
+            <div class="clearfix"></div>
+        </div>
+        <div class="bxe">
+            <h5 class="head">{{m}}-{{y}}</h5>
+            
+            <div class="circule">
+                <ul>
+                    <li>
+                        <div class="counter">
+                            <div class="icn">
+                                <div class="outer">
+                                    <div class="innear">
+                                        {{dash_data.target.total_target}}
+                                    </div>
+                                </div>
+                            </div>
+                            <p>Target</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="counter">
+                            <div class="icn">
+                                <div class="outer">
+                                    <div class="innear">
+                                        {{dash_data.sec_sales.total_sec_sales?dash_data.sec_sales.total_sec_sales:'0'}}
+                                    </div>
+                                </div>
+                            </div>
+                            <p>Achievement</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="counter">
+                            <div class="icn">
+                                <div class="outer">
+                                    <div class="innear">
+                                        {{dash_data.orderReceived.total_business_received}}
+                                    </div>
+                                </div>
+                            </div>
+                            <p>Total Party</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="bxe">
+            <h5 class="head">Retailer Strength</h5>
+            
+            <div class="circule">
+                <ul>
+                    <li>
+                        <div class="counter">
+                            <div class="icn">
+                                <div class="outer">
+                                    <div class="innear">
+                                        {{dash_data.data_ret_old.total_ret_old}}
+                                    </div>
+                                </div>
+                            </div>
+                            <p>Old</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="counter">
+                            <div class="icn">
+                                <div class="outer">
+                                    <div class="innear">
+                                        {{dash_data.data_ret_new.total_ret_new}}
+                                    </div>
+                                </div>
+                            </div>
+                            <p>New</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="counter">
+                            <div class="icn">
+                                <div class="outer">
+                                    <div class="innear">
+                                        {{dash_data.tot_ret.total_ret}}
+                                    </div>
+                                </div>
+                            </div>
+                            <p>Total</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="bxe">
+            <h5 class="head">Distributor Strength</h5>
+            
+            <div class="circule">
+                <ul>
+                    <li>
+                        <div class="counter">
+                            <div class="icn">
+                                <div class="outer">
+                                    <div class="innear">
+                                        {{dash_data.data_dist_old.total_dist_old}}
+                                    </div>
+                                </div>
+                            </div>
+                            <p>Old</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="counter">
+                            <div class="icn">
+                                <div class="outer">
+                                    <div class="innear">
+                                        {{dash_data.data_dist_new.total_dist_new}}
+                                    </div>
+                                </div>
+                            </div>
+                            <p>New</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="counter">
+                            <div class="icn">
+                                <div class="outer">
+                                    <div class="innear">
+                                        {{dash_data.tot_dist.total_dist}}
+                                    </div>
+                                </div>
+                            </div>
+                            <p>Total</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="bxe tdy">
+            <div class="float">
+                <div class="outer">
+                    <div class="innear">
+                        <p>Today</p>
+                        <h2>{{formatDate(ddate) | date:'dd'}}<br><span>{{formatDate(ddate) | date:'MMM'}}</span></h2>
+                    </div>
+                </div>
+            </div>
+            <div class="right">
+                <ul>
+                    <li>
+                        <div class="counter">
+                            <div class="icn">
+                                <div class="outer">
+                                    <div class="innear">
+                                        {{dash_data.today_visit.total_visit}}
+                                    </div>
+                                </div>
+                            </div>
+                            <p>Visit</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="counter">
+                            <div class="icn">
+                                <div class="outer">
+                                    <div class="innear">
+                                        {{dash_data.today_order.total_order}}
+                                    </div>
+                                </div>
+                            </div>
+                            <p>Order</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="counter">
+                            <div class="icn">
+                                <div class="outer">
+                                    <div class="innear">
+                                        {{dash_data.today_payment.total_payment}}
+                                    </div>
+                                </div>
+                            </div>
+                            <p>Payment</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="counter">
+                            <div class="icn">
+                                <div class="outer">
+                                    <div class="innear">
+                                        {{dash_data.today_request.total_request}}
+                                    </div>
+                                </div>
+                            </div>
+                            <p>Request</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        
+        <div class="bxe">
+            <h5 class="head">Awaiting Approval</h5>
+            
+            <div class="circule">
+                <ul>
+                    <li>
+                        <div class="counter">
+                            <div class="icn">
+                                <div class="outer">
+                                    <div class="innear">
+                                        {{dash_data.ret_await.total_ret_await}}
+                                    </div>
+                                </div>
+                            </div>
+                            <p>Retailers</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="counter">
+                            <div class="icn">
+                                <div class="outer">
+                                    <div class="innear">
+                                        {{dash_data.dist_await.total_dist_await}}
+                                    </div>
+                                </div>
+                            </div>
+                            <p>Distributors</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="counter">
+                            <div class="icn">
+                                <div class="outer">
+                                    <div class="innear">
+                                        {{dash_data.order_await.total_order_await}}
+                                    </div>
+                                </div>
+                            </div>
+                            <p>Orders</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+    </ion-content>
+    <script> 
+        var ctx = document.getElementById("pie");
+        ctx.height = 250;
+    </script>
+</ion-view>

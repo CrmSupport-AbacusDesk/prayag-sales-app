@@ -1,0 +1,67 @@
+<ion-view view-title="" >
+
+    <!-- BACKBTN ICON START -->
+    <ion-nav-buttons side="left">
+        <a ng-click="doTheBack()" class="cs-backbtn button button-icon icon ion-android-arrow-back fff"></a>
+    </ion-nav-buttons>
+    <!-- BACKBTN ICON END-->
+
+    <!-- HOME ICON START -->
+    <ion-nav-buttons side="right">
+        <a href="#/home" class="button button-icon icon ion-home fff font-18"></a>
+    </ion-nav-buttons>
+    <!-- HOME ICON END-->
+
+
+    <ion-content class="search-user">
+        <div class="ser-user">
+            <div class="bx">
+                <h2 class="un-line">{{show_ret_det.dr_name}}</h2>
+                <p>{{show_ret_det.contact_person}}</p>
+            </div>
+            <div class="bx bx-1" >
+                <h2>Type  &nbsp;:</h2>
+                <p ng-if="show_ret_det.type=='1'">Retailer</p>
+                <p ng-if="show_ret_det.type=='2'">Distributor</p>
+            </div>
+           <!--  <div class="bx bx-1" ng-if="dr_number_search.Type='2'">
+                <h2>Type  &nbsp;:</h2>
+                <p>Distributor</p>
+            </div> -->
+            <div class="bx bx-1">
+                <h2>Email  &nbsp;:</h2>
+                <p>{{show_ret_det.email}}</p>
+            </div>
+            <div class="bx">
+                <h2>Mobile No.</h2>
+                <p class="cs-icon"><i class="material-icons">call</i>{{show_ret_det.contact_1}}</p>
+                <p class="cs-icon" ng-if="show_ret_det.contact_2"><i class="material-icons">call</i>{{show_ret_det.contact_2}}</p>
+            </div>
+            <div class="bx">
+                <h2>Billing Address  :</h2>
+                <p class="cs-icon">
+                    <i class="material-icons">home</i>
+                    <!-- Opp. S.B.I, 8-885 / A, Mehrauli, New Delhi, Delhi 110030 -->
+                    {{show_ret_det.street}}, {{show_ret_det.area}} , {{show_ret_det.city}} ,{{show_ret_det.district_name}} ,{{show_ret_det.state_name}} ,{{show_ret_det.pincode}}
+                </p>
+            </div>
+            <div class="bx">
+                <h2>Shipping Address  :</h2>
+                <p class="cs-icon">
+                    <i class="material-icons">home</i>
+                    <!-- Opp. S.B.I, 8-885 / A, Mehrauli, New Delhi, Delhi 110030 -->
+                    {{show_ret_det.ship_street}}, {{show_ret_det.ship_area}} , {{show_ret_det.ship_city}} ,{{show_ret_det.ship_district_name}} ,{{show_ret_det.ship_state_name}} ,{{show_ret_det.ship_pincode}}
+                </p>
+            </div>
+        </div>
+
+        <div class="as-user">
+            <h2>Assign To <i class="collen-icon"></i> </h2>
+            <p>{{show_ret_det.assigned_name}}</p>
+        </div>
+
+        <!-- <div class="input-submit icon-submit padding-16">
+            <a href="#/partner"><i class="material-icons">call</i> <span>call to rahul</span></a>
+        </div> -->
+    </ion-content>
+</ion-view>

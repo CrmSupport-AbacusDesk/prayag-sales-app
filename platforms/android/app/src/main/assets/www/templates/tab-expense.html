@@ -1,0 +1,60 @@
+<ion-view view-title="Expenses List" >
+    
+    <!-- BACKBTN ICON START -->
+    <ion-nav-buttons side="left">
+        <a href="#/home" class="cs-backbtn button button-icon icon ion-android-arrow-back fff"></a>
+    </ion-nav-buttons>
+    <!-- BACKBTN ICON END-->
+    
+    <!-- HOME ICON START -->
+    <ion-nav-buttons side="right">
+        <a href="#/home" class="button button-icon icon ion-home fff font-18"></a>
+    </ion-nav-buttons>
+    <!-- HOME ICON END-->
+    
+    <ion-content ng-controller="RETOrderCtrl">
+
+        <div class="data-not-found" ng-hide="exp_data.length">
+            <div class="outer">
+                <div class="innear">
+                    <img src="img/data-not-found.svg" alt="">
+                    <h2>Temporarily , No Expense Available</h2>
+                </div>
+            </div>
+        </div>
+     
+        <div class="order-listing" ng-if="exp_data.length">
+            
+            <a class="list" ng-click="expense_det(val.date_created)" ng-repeat="val in exp_data">
+                <div class="heading-header pl-16">
+                    
+                    <div class="order-no">
+                        <p>
+                            <strong>{{val.date_created | date:'MMMM y'}}</strong></p>
+                            <p class="status">
+                                <strong ng-class="val.status=='Pending' ? 'bluec' : (val.status=='Approved' ? 'greenc' : 'redc')">{{val.status}}</strong>
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="details">
+                        <div class="bx-1 mb-10 pr-50">
+                            <p>
+                                <strong>Total Expense &nbsp;: &nbsp;</strong>
+                                <i class="inr-icon ml-10 mt-5"></i>
+                                <span class="pl-25 orange-color">{{val.total_expense}}</span>
+                            </p>
+                            <i class="material-icons icon-color">keyboard_arrow_right</i>
+                        </div>
+                    </div>
+                </a>
+                
+            </div>
+
+    </ion-content>
+    
+    <a class="pluse-icon blue-bg" ng-click="exp_date_detail(newexpDate)">
+        <i class="material-icons fff">add</i>
+    </a>
+    
+</ion-view>

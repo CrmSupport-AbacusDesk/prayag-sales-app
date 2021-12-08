@@ -1,0 +1,115 @@
+<!--
+  Create tabs with an icon and label, using the tabs-positive style.
+  Each tab's child <ion-nav-view> directive will have its own
+    navigation history that also transitions its views in and out.
+  -->
+  <ion-tabs class="tabs-icon-top tabs-color-active-positive">
+
+
+    <!-- Retailers Tab -->
+    <ion-tab title="RETAILER" icon-off="retailer-icon" icon-on="retailer-icon-active" ng-click="retailerlist()">
+      <ion-nav-view name="tab-retailers"></ion-nav-view>
+    </ion-tab>
+
+    <!-- DWR Tab -->
+    <ion-tab title="dwr" hidden="true" icon-off="retailer-icon" icon-on="retailer-icon-active" href="#/tab/dwr">
+      <ion-nav-view name="tab-dwr"></ion-nav-view>
+    </ion-tab>
+
+    <!-- DWR RET DIST Tab -->
+    <ion-tab title="dwr" hidden="true" icon-off="retailer-icon" icon-on="retailer-icon-active" href="#/tab/dwr-ret-dist">
+      <ion-nav-view name="tab-dwr-ret-dist"></ion-nav-view>
+    </ion-tab>
+
+    <!-- DWR PAY Tab -->
+    <ion-tab title="dwr" hidden="true" icon-off="retailer-icon" icon-on="retailer-icon-active" href="#/tab/dwr-pay">
+      <ion-nav-view name="tab-dwr-pay"></ion-nav-view>
+    </ion-tab>
+
+    <!-- DWR REQ Tab -->
+    <ion-tab title="dwr" hidden="true" icon-off="retailer-icon" icon-on="retailer-icon-active" href="#/tab/dwr-req">
+      <ion-nav-view name="tab-dwr-req"></ion-nav-view>
+    </ion-tab>
+
+    <!-- DWR ORDER Tab -->
+    <ion-tab title="dwr" hidden="true" icon-off="retailer-icon" icon-on="retailer-icon-active" href="#/tab/dwr-ord">
+      <ion-nav-view name="tab-dwr-ord"></ion-nav-view>
+    </ion-tab>
+
+    <!-- Leave Tab -->
+    <ion-tab title="Leave" hidden="true" icon-off="retailer-icon" icon-on="retailer-icon-active" href="#/tab/leave">
+      <ion-nav-view name="tab-leave"></ion-nav-view>
+    </ion-tab>
+
+    <!-- Birthday Tab -->
+    <ion-tab title="Birthday" hidden="true" icon-off="retailer-icon" icon-on="retailer-icon-active" href="#/tab/birthday">
+      <ion-nav-view name="tab-birthday"></ion-nav-view>
+    </ion-tab>
+
+
+    <!--Add Leave Tab -->
+    <ion-tab title="Add Leave" hidden="true" icon-off="retailer-icon" icon-on="retailer-icon-active" href="#/tab/addleave">
+      <ion-nav-view name="tab-addleave"></ion-nav-view>
+    </ion-tab>
+
+    <!--Announcements Tab -->
+    <ion-tab title="Announcements" hidden="true" icon-off="retailer-icon" icon-on="retailer-icon-active" href="#/tab/announcement">
+      <ion-nav-view name="tab-announcement"></ion-nav-view>
+    </ion-tab>
+
+    <!--Announcements Detail Tab -->
+    <ion-tab title="Announcements Detail" hidden="true" icon-off="retailer-icon" icon-on="retailer-icon-active" href="#/tab/announcement-detail">
+      <ion-nav-view name="tab-announcement-detail"></ion-nav-view>
+    </ion-tab>
+
+    <!--Profile Tab -->
+    <ion-tab title="Profile" hidden="true" icon-off="retailer-icon" icon-on="retailer-icon-active" href="#/tab/profile">
+      <ion-nav-view name="tab-profile"></ion-nav-view>
+    </ion-tab>
+
+
+    <!--Profile Edit Tab -->
+    <ion-tab title="Profile Edit" hidden="true" icon-off="retailer-icon" icon-on="retailer-icon-active" href="#/tab/profile-edit">
+      <ion-nav-view name="tab-profile-edit"></ion-nav-view>
+    </ion-tab>
+
+
+    <!--Expenses Tab -->
+    <ion-tab title="Expenses" hidden="true" icon-off="retailer-icon" icon-on="retailer-icon-active" href="#/tab/expense">
+      <ion-nav-view name="tab-expense"></ion-nav-view>
+    </ion-tab>
+
+    <!--Expenses Date Tab -->
+    <ion-tab title="Expenses" hidden="true" icon-off="retailer-icon" icon-on="retailer-icon-active" href="#/tab/expense-date">
+      <ion-nav-view name="tab-expense-date"></ion-nav-view>
+    </ion-tab>
+
+   <!--Expenses Day Tab -->
+    <ion-tab title="Expenses" hidden="true" icon-off="retailer-icon" icon-on="retailer-icon-active" href="#/tab/expense-day">
+      <ion-nav-view name="tab-expense-day"></ion-nav-view>
+    </ion-tab>
+
+    <!--Add Expenses Tab -->
+    <ion-tab title="Expenses" hidden="true" icon-off="retailer-icon" icon-on="retailer-icon-active" href="#/tab/addexpense">
+      <ion-nav-view name="tab-addexpense"></ion-nav-view>
+    </ion-tab>
+
+
+    <!-- Distributor Tab -->
+    <ion-tab title="DISTRIBUTOR" icon-off="distributor-icon" icon-on="distributor-icon-active" ng-click="distributorlist()">
+      <ion-nav-view name="tab-distributor"></ion-nav-view>
+    </ion-tab>
+
+    <!-- Followup Tab -->
+    <ion-tab title="FOLLOWUP" icon-off="followup-icon" icon-on="followup-icon-active" ng-click="followup_list()">
+      <ion-nav-view name="tab-followup"></ion-nav-view>
+    </ion-tab>
+
+
+    <!-- Nearest Stotre Tab -->
+    <ion-tab title="NEAREST STORE" icon-off="nearest-icon" icon-on="nearest-icon-active" ng-click="nearest_store()">
+      <ion-nav-view name="tab-nearest"></ion-nav-view>
+    </ion-tab>
+
+
+  </ion-tabs>

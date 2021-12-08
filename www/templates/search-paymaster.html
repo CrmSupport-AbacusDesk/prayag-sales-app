@@ -1,0 +1,31 @@
+<ion-modal-view class="cs-modal animated" cache-view="false">
+    <ion-content>
+
+        <div class="modal-data">
+            <div class="outer">
+                <div class="innear">
+                    <div class="dat">
+                      <form name="paymasterform">
+                        <div class="input-file-radio">
+                            <label><input type="radio" ng-model="ret_det" value="1" required> <span>Retailer</span></label>
+                            <label><input type="radio" ng-model="ret_det" value="2" required> <span>Distributors</span></label>
+                        </div>
+                        <div class="btns">
+                            <ul>
+                                <li><a ng-click="closesp()">cancel</a></li>
+                                <li>
+                                    <input type="submit" value="SUBMIT" ng-click="outstanding_list(ret_det); closesp()" ng-style="{'opacity':paymasterform.$invalid? 0.5 : 1}" ng-disabled="paymasterform.$invalid">
+                                    <!-- <input type="submit" value="submit"> -->
+                                </li>
+                            </ul>
+                            <div class="clearfix"></div>
+                        </div>
+                      </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </ion-content>
+</ion-modal-view>

@@ -1,0 +1,64 @@
+<ion-view view-title="Nearest Store" >
+
+    <!-- BACKBTN ICON START -->
+    <ion-nav-buttons side="left">
+        <a href="#/home" class="cs-backbtn button button-icon icon ion-android-arrow-back fff"></a>
+    </ion-nav-buttons>
+    <!-- BACKBTN ICON END-->
+
+    <!-- HOME ICON START -->
+    <ion-nav-buttons side="right">
+        <a href="#/home" class="button button-icon icon ion-home fff font-18"></a>
+    </ion-nav-buttons>
+    <!-- HOME ICON END-->
+
+    <ion-content>
+        <div class="data-not-found" ng-hide="near_arr.length">
+            <div class="outer">
+                <div class="innear">
+                    <img src="img/data-not-found.svg" alt="">
+                    <h2>Temporarily , No Nearest Store Available</h2>
+                </div>
+            </div>
+        </div>
+        <div class="user-list" ng-if="near_arr.length">
+            <div class="list">
+                <!-- looP start -->
+                <div class="item item-avatar cs-avatar" ng-if="val.lat" ng-repeat="val in near_arr | orderBy:'distance'">
+                  <a ng-click="retailerdetails(val.id,val.type,'2','5')" style="color:#333;">
+                    <img class="cs-icon" ng-if="val.dr_image" src="{{upload_url+val.dr_image}}" alt="">
+                    <div ng-hide="val.dr_image" class="info-icon">
+                        <div class="outer">
+                            <div class="innear">
+                                <h1 class="font-16">{{val.dr_name[0]}}</h1>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h2>{{val.dr_name}}</h2>
+                    <p class="shop-name">{{val.contact_person}}</p>
+
+                    <ul class="ul-list small-list">
+                        <li><strong>Type</strong></li>
+                        <li><span ng-if="val.type=='1'">Retailer</span><span ng-if="val.type=='2'">Distributor</span><span ng-if="val.type=='3'">Lead</span></li>
+                        <li ng-if="val.activity_date"><strong>Last Visit</strong></li>
+                        <li ng-if="val.activity_date"><span>{{formatDate(val.activity_date) | date: 'dd-MMM-y'}}</span></li>
+                    </ul>
+                  </a>
+                    <div class="clearfix"></div>
+                    <ul class="diamiter mt-10" style="margin-left:-51px;">
+                        <li class="left"><p class="mt-5"><span class="icon-color">Distance :</span> <span class="orange-color"><span ng-if="val.distance < 1">{{val.distance*1000}} M</span> <span ng-if="val.distance >= 1">{{val.distance}} KM</span></span></p></li>
+                        <li class="right" style="z-index:999">
+                            <button ng-click="get_dir(val.lat,val.lng)"><i class="material-icons blue-color">near_me</i>Get Direction</button>
+                        </li>
+                    </ul>
+                    <a ng-click="retailerdetails(val.id,val.type,'2','5')">
+                    <button class="button h70 button-icon icon ion-chevron-right font-12 blue-color pr-20 pl-20"></button>
+                  </a>
+                </div>
+                <!-- looP end -->
+
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

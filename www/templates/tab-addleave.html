@@ -1,0 +1,46 @@
+<ion-view view-title="Add Leave" >
+
+    <!-- BACKBTN ICON START -->
+    <ion-nav-buttons side="left">
+        <a ng-click="doTheBack()" class="cs-backbtn button button-icon icon ion-android-arrow-back fff"></a>
+    </ion-nav-buttons>
+    <!-- BACKBTN ICON END-->
+
+    <!-- HOME ICON START -->
+    <ion-nav-buttons side="right">
+        <a href="#/home" class="button button-icon icon ion-home fff font-18"></a>
+    </ion-nav-buttons>
+    <!-- HOME ICON END-->
+
+    <ion-content>
+       
+        <form name="leaveform">
+        <div class="cs-input padding-16 no-padding-bottom">
+            <textarea name="" id="" cols="20" rows="6" placeholder="Subject" ng-model="data.subj" onfocus="this.placeholder = ''"
+              onblur="this.placeholder = 'Subject'" required ></textarea>
+        </div>
+
+        
+
+        <label class="item-input item-select cs-date cs-calender">
+            <div class="input-label">
+                Date From
+            </div>
+            <input type="date" ng-model="data.st_date" min="{{today_leave}}" ng-change="leave_date(data.st_date)";  required>
+        </label>
+
+        <label class="item-input item-select cs-date cs-calender">
+            <div class="input-label">
+                Date To
+            </div>
+            <input type="date" ng-model="data.end_date" min="{{leave_to}}" required >
+        </label>
+        <!-- <span class="error-left relative pl-16" ng-if="error_con && data.end_date">* Don't Exceed the Assigned Leave Limit</span> -->
+        <div class="input-submit padding-16">
+          <input type="submit" ng-click="add_leave()"  ng-disabled="!data.subj && !data.st_date && !data.end_date">
+        </div>
+      </form>
+    </ion-content>
+
+
+</ion-view>

@@ -1,0 +1,43 @@
+{
+  "_args": [
+    [
+      "cordova-android-support-gradle-release@2.1.0",
+      "E:\\prayag-sales-app"
+    ]
+  ],
+  "_from": "cordova-android-support-gradle-release@2.1.0",
+  "_id": "cordova-android-support-gradle-release@2.1.0",
+  "_inBundle": false,
+  "_integrity": "sha512-rKqNQ5PCHuZ/qUWYrLz5dKJpdJ/ArkhTCEv4CxbFuny0a0JNg5lwufmZ7qfVIqxoK0Nvs9XsIYKiFSGxaQ8lTg==",
+  "_location": "/cordova-android-support-gradle-release",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "cordova-android-support-gradle-release@2.1.0",
+    "name": "cordova-android-support-gradle-release",
+    "escapedName": "cordova-android-support-gradle-release",
+    "rawSpec": "2.1.0",
+    "saveSpec": null,
+    "fetchSpec": "2.1.0"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/cordova-android-support-gradle-release/-/cordova-android-support-gradle-release-2.1.0.tgz",
+  "_spec": "2.1.0",
+  "_where": "E:\\prayag-sales-app",
+  "author": {
+    "name": "Dave Alden"
+  },
+  "dependencies": {
+    "q": "^1.4.1",
+    "semver": "5.1.0",
+    "xml2js": "~0.4.19"
+  },
+  "description": "Cordova/Phonegap plugin to align various versions of the Android Support libraries specified by other plugins to a specific version",
+  "devDependencies": {},
+  "license": "MIT",
+  "name": "cordova-android-support-gradle-release",
+  "version": "2.1.0"
+}

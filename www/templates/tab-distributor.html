@@ -1,0 +1,142 @@
+<ion-view view-title="Distributor" >
+
+    <!-- BACKBTN ICON START -->
+    <ion-nav-buttons side="left">
+        <!-- <a href="#/tab/distributor-det" class="cs-backbtn button button-icon icon ion-android-arrow-back fff"></a> -->
+    </ion-nav-buttons>
+    <!-- BACKBTN ICON END-->
+
+    <!-- HOME ICON START -->
+    <ion-nav-buttons side="right">
+        <a href="#/home" class="button button-icon icon ion-home fff font-18"></a>
+    </ion-nav-buttons>
+    <!-- HOME ICON END-->
+
+    <div class="bar bar-subheader custome-search">
+        <div class="list list-inset">
+            <label class="item item-input">
+                <i class="material-icons">search</i>
+                <input type="text" placeholder="Search" ng-model="search">
+            </label>
+            <div class="mice">
+                <button><i class="material-icons">mic</i></button>
+            </div>
+        </div>
+    </div>
+
+    <ion-content class="has-searchheader">
+   
+       <ul class="cs-tabs" ng-if="!out_data">
+        <li><a ng-click="distributorlist()" ng-class="show_dist_temp ? 'active' : ''">Active</a></li>
+        <li><a ng-click="awaitdistributorlist()" ng-class="show_await_dist_temp ? 'active' : ''">Leads</a></li>
+       </ul>
+
+     <!-- <h3 ng-click="distributorlist()">Active</h3> <h3 ng-click="awaitdistributorlist()">Leads</h3> -->
+      <ion-refresher ng-if="!out_data" pulling-text="Pull to refresh" on-refresh="ref_dist_lst ? distributorlist() : awaitdistributorlist()">
+            <ion-refresher-content></ion-refresher-content>
+      </ion-refresher>
+
+     
+
+    <span ng-if="show_dist_temp">
+         <div class="data-not-found" ng-hide="distributor_list.length">
+            <div class="outer">
+                <div class="innear">
+                    <img src="img/data-not-found.svg" alt="">
+                    <h2>Temporarily , No Distributor Available</h2>
+                </div>
+            </div>
+        </div>
+    </span>
+
+    <span ng-if="show_await_dist_temp">
+        <div class="data-not-found" ng-hide="await_distributor_list.length">
+            <div class="outer">
+                <div class="innear">
+                    <img src="img/data-not-found.svg" alt="">
+                    <h2>Temporarily , No Awaiting Distributor Available</h2>
+                </div>
+            </div>
+        </div>
+    </span>
+
+        <div class="user-list small-icon top-border-remove" ng-if="distributor_list.length">
+            <div class="list">
+
+                <a ng-hide="dist.balance>=0" class="item item-avatar" ng-click="retailerdetails(dist.id,'2')" ng-repeat= "dist in distributor_list | filter:search">
+
+                  <img src="{{upload_url}}{{dist.dr_image}}" ng-if="dist.dr_image">
+
+                  <div class="info-icon" ng-hide="dist.dr_image" >
+                      <div class="outer">
+                          <div class="innear">
+                              <h1 class="font-16">{{dist.dr_name.substring(0,1).toUpperCase()}}</h1>
+                          </div>
+                      </div>
+                  </div>
+
+                    <h2>{{dist.dr_name}}</h2>
+                    <p class="tl-sales">Primary Sales : <i class="inr-icon ml-10 mt-5"></i><span class="pl-25">{{dist.order_total | number:2}}</span>
+                      <span ng-hide="dist.order_total">0</span></p>
+
+                    <button class="button button-icon icon ion-chevron-right font-12 blue-color"></button>
+              </a>
+
+              <a ng-if="dist.balance" class="item item-avatar" ng-click="paymaster_det(dist.distributor_id,'2','1')" ng-repeat= "dist in distributor_list | filter:search">
+
+                <img src="{{upload_url}}{{dist.dr_image}}" ng-if="dist.dr_image">
+
+                <div class="info-icon" ng-hide="dist.dr_image" >
+                    <div class="outer">
+                        <div class="innear">
+                            <h1 class="font-16">{{dist.dr_name.substring(0,1).toUpperCase()}}</h1>
+                        </div>
+                    </div>
+                </div>
+
+                  <h2>{{dist.dr_name}}</h2>
+
+                  <h2 class="mt-5">{{Outstandinglist.dr_name}}</h2>
+                  <p class="tl-sales">Outstanding : <i class="inr-icon ml-10 mt-5"></i><span class="pl-25">{{dist.balance | number:2}}</span></p>
+
+                  <button class="button button-icon icon ion-chevron-right font-12 blue-color"></button>
+            </a>
+
+            </div>
+        </div>
+
+         <div class="user-list small-icon top-border-remove" ng-if="await_distributor_list.length">
+            <div class="list">
+
+                <a class="item item-avatar" ng-click="retailerdetails(dist.id,'3','','','','Dist',dist.status)" ng-repeat= "dist in await_distributor_list | filter:search">
+
+                  <img src="{{upload_url}}{{dist.dr_image}}" ng-if="dist.dr_image">
+
+                  <div class="info-icon" ng-hide="dist.dr_image" >
+                      <div class="outer">
+                          <div class="innear">
+                              <h1 class="font-16">{{dist.dr_name.substring(0,1).toUpperCase()}}</h1>
+                          </div>
+                      </div>
+                  </div>
+
+                    <h2>{{dist.dr_name}}</h2>
+                    
+                    <button class="button button-icon icon ion-chevron-right font-12 blue-color"></button>
+
+                    <ul class="ul-list">
+                    <li><strong>Status</strong></li>
+                    <li><span ng-class="dist.status=='Pending'?'bluec':'redc'">{{dist.status}}</span></li>
+                    </ul>
+                    <p class="rj mt-15" ng-if="dist.status=='Reject'">
+                        <strong>Reason &nbsp; : &nbsp;</strong>{{dist.reason_reject}}
+                    </p>
+              </a>
+
+            </div>
+        </div>
+    </ion-content>
+    <a class="pluse-icon blue-bg" ng-click="openrt('2')">
+        <i class="material-icons fff">add</i>
+    </a>
+</ion-view>

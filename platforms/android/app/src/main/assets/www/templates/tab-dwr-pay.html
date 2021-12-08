@@ -1,0 +1,55 @@
+<ion-view view-title="Payment Collection">
+
+    <!-- BACKBTN ICON START -->
+    <ion-nav-buttons side="left">
+        <a ng-click="dwrlist('{{backdwrdate}}','1');" class="cs-backbtn button button-icon icon ion-android-arrow-back fff"></a>
+    </ion-nav-buttons>
+    <!-- BACKBTN ICON END-->
+
+    <!-- HOME ICON START -->
+    <ion-nav-buttons side="right">
+        <a href="#/home" class="button button-icon icon ion-home fff font-18"></a>
+    </ion-nav-buttons>
+    <!-- HOME ICON END-->
+
+    <ion-content>
+        <div class="user-list">
+            <div class="list">
+                <!-- looP start -->
+                <a class="item item-avatar" ng-repeat="data in ret_visit_lst">
+                    <img ng-if="data.dr_image" src="{{upload_url+data.dr_image}}" alt="">
+                    <div class="info-icon" ng-hide="data.dr_image">
+                        <div class="outer">
+                            <div class="innear">
+                                <h1 class="font-16">{{data.dr_name[0]}}</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <h2>{{data.dr_name}}</h2>
+
+
+                    <ul class="ul-list">
+                        <li><strong>Type</strong></li>
+                        <li><span ng-if="data.type=='Distributor'">Retailer</span><span ng-if="data.type=='Company'">Distributor</span></li>
+                        <li><strong>Payment Date</strong></li>
+                        <li><span>{{formatDate(data.payment_date)  | date: 'dd-MMM-y'}}</span></li>
+                        <li><strong>Payment Amount</strong></li>
+                        <li><span>{{data.amount}}</span></li>
+                        <li><strong>Payment Mode</strong></li>
+                        <li><span>{{data.mode}}</span></li>
+                        <li ng-if="data.mode=='Cheque'"><strong>Cheque Date</strong></li>
+                        <li ng-if="data.mode=='Cheque'"><span>{{formatDate(data.cheque_date)  | date: 'dd-MMM-y'}}</span></li>
+                        <li ng-if="data.mode=='Cheque'"><strong>Cheque No.</strong></li>
+                        <li ng-if="data.mode=='Cheque'"><span>{{data.cheque_no}}</span></li>
+                        <li ng-if="data.mode=='Neft'"><strong>Transaction Id</strong></li>
+                        <li ng-if="data.mode=='Neft'"><span>{{data.transaction_id}}</span></li>
+                    </ul>
+                    <div class="clearfix"></div>
+                    <strong class="shop-name orange-color font-12">{{data.remark}}</strong>
+                    <!-- <button class="button button-icon icon ion-chevron-right font-18 blue-color"></button> -->
+                </a>
+                <!-- looP end -->
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,118 @@
+<ion-view view-title="Retailers" >
+    
+    <ion-nav-buttons side="left">
+    </ion-nav-buttons>
+    
+    <ion-nav-buttons side="right">
+        <a href="#/home" class="button button-icon icon ion-home fff font-18"></a>
+    </ion-nav-buttons>
+    
+    <div class="bar bar-subheader custome-search" >
+        <div class="list list-inset">
+            <label class="item item-input">
+                <i class="material-icons">search</i>
+                <input type="text" placeholder="Search" ng-model="search_ret" ng-change="get_ret_data()">
+            </label>
+            <div class="mice">
+                <button><i class="material-icons">mic</i></button>
+            </div>
+        </div>
+    </div>
+    
+    <ion-content class="has-searchheader">
+        
+        <ul class="cs-tabs" ng-if="!out_data">
+            <li><a ng-click="retailerlist(0); $root.noMoreItemsToDisplay = false" ng-class="show_temp ? 'active' : ''">Active</a></li>
+            <li><a ng-click="awaitretailerlist(0); $root.noMoreItemsToDisplay = false" ng-class="show_await_temp ? 'active' : ''">Leads</a></li>
+        </ul>
+        
+        <ion-refresher ng-if="!out_data" pulling-text="Pull to refresh" on-refresh="ref_ret_lst ? retailerlist(0) : awaitretailerlist(0)">
+            <ion-refresher-content></ion-refresher-content>
+        </ion-refresher>
+        
+        <span ng-if="show_temp">
+            <div class="data-not-found" ng-hide="retailer_list.length">
+                <div class="outer">
+                    <div class="innear">
+                        <img src="img/data-not-found.svg" alt="">
+                        <h2>Temporarily , No Retailer Available</h2>
+                    </div>
+                </div>
+            </div>
+        </span>
+        
+        <span ng-if="show_await_temp">
+            <div class="data-not-found" ng-hide="await_retailer_list.length">
+                <div class="outer">
+                    <div class="innear">
+                        <img src="img/data-not-found.svg" alt="">
+                        <h2>Temporarily , No Awaiting Retailer Available</h2>
+                    </div>
+                </div>
+            </div>
+        </span>
+        
+        <div class="user-list small-icon top-border-remove" ng-if="retailer_list.length">
+            <div class="list">
+                
+                <a ng-click="(!ret.balance) ? retailerdetails(ret.id,'1') : paymaster_det(ret.retailer_id,'1','1')" class="item item-avatar" ng-repeat= "ret in retailer_list" >
+                    
+                    <img src="{{upload_url}}{{ret.dr_image}}" ng-if="ret.dr_image">
+                    
+                    <div class="info-icon" ng-hide="ret.dr_image" >
+                        <div class="outer">
+                            <div class="innear">
+                                <h1 class="font-16">{{ret.dr_name.substring(0,1).toUpperCase()}}</h1>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h2>{{ret.dr_name}}</h2>
+                    <p class="shop-name" ng-if="!ret.balance">{{ret.dists}}</p>
+                    <p class="tl-sales" ng-if="!ret.balance">Secondary Sales : <i class="inr-icon ml-10 mt-5"></i><span class="pl-25">{{ret.order_total | number:2}}</span><span ng-hide="ret.order_total">0</span></p>
+                    <p class="tl-sales" ng-if="!ret.balance">District Name : <span class="pl-25" style="color:#000;">{{ret.district_name}}</span></p>
+                    
+                    <h2 class="mt-5" ng-if="ret.balance">{{Outstandinglist.dr_name}}</h2>
+                    <p class="tl-sales" ng-if="ret.balance">Outstanding : <i class="inr-icon ml-10 mt-5"></i><span class="pl-25">{{ret.balance | number:2}}</span></p>
+                    <button class="button button-icon icon ion-chevron-right font-12 blue-color"></button>
+                </a>
+            </div>
+        </div>
+        
+        <div class="user-list small-icon top-border-remove" ng-if="await_retailer_list.length">
+            <div class="list">
+                
+                <a ng-click="retailerdetails(ret.id,'3','','','','Ret',ret.status)" class="item item-avatar" ng-repeat= "ret in await_retailer_list | filter:search" >
+                    
+                    <img src="{{upload_url}}{{ret.dr_image}}" ng-if="ret.dr_image">
+                    
+                    <div class="info-icon" ng-hide="ret.dr_image" >
+                        <div class="outer">
+                            <div class="innear">
+                                <h1 class="font-16">{{ret.dr_name.substring(0,1).toUpperCase()}}</h1>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h2>{{ret.dr_name}}</h2>
+                    
+                    <button class="button button-icon icon ion-chevron-right font-12 blue-color"></button>
+                    
+                    <ul class="ul-list">
+                        <li><strong>Status</strong></li>
+                        <li><span ng-class="ret.status=='Pending'?'bluec':'redc'">{{ret.status}}</span></li>
+                    </ul>
+                    <p class="rj mt-15" ng-if="ret.status=='Reject'">
+                        <strong>Reason &nbsp; : &nbsp;</strong>{{ret.reason_reject}}
+                    </p>
+                </a>
+            </div>
+        </div>
+        
+        <ion-infinite-scroll  immediate-check="false" ng-if="!$root.noMoreItemsToDisplay" on-infinite="loadMoreData()" distance="20%" use-content="true">
+        </ion-infinite-scroll>
+    </ion-content>
+    <a class="pluse-icon blue-bg" ng-click="openrt('1')">
+        <i class="material-icons fff">add</i>
+    </a>
+</ion-view>

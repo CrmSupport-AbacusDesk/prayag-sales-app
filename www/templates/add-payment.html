@@ -1,0 +1,136 @@
+<ion-view view-title="Add Payment">
+
+    <!-- BACKBTN ICON START -->
+    <ion-nav-buttons side="left">
+        <a ng-click="doTheBack()" class="cs-backbtn button button-icon icon ion-android-arrow-back fff"></a>
+    </ion-nav-buttons>
+    <!-- BACKBTN ICON END-->
+
+    <!-- HOME ICON START -->
+    <ion-nav-buttons side="right">
+        <a href="#/home" class="button button-icon icon ion-home fff font-18"></a>
+    </ion-nav-buttons>
+    <!-- HOME ICON END-->
+
+    <ion-content>
+
+
+        <div class="user-list date-format">
+            <div class="list">
+                <!-- looP start -->
+                <div class="item pl-16" style="border: 0px;">
+                    <a>
+                        <h2 ng-if="d_name!='Polymer' && d_name!='Exim'">{{d_name}}</h2>
+                        <h2 ng-if="d_name=='Polymer'">Prayag Polymer PVT. LTD.</h2>
+                        <h2 ng-if="d_name=='Exim'">Prayag Exim PVT. LTD.</h2>
+                        <p class="mt-5"><span class="pr-10 icon-color">Outstanding   &nbsp;  &nbsp;:</span><i class="inr-icon ml-10 mt-5"></i><span class="orange-color pl-20">{{bal}}</span></p>
+                    </a>
+                </div>
+                <!-- looP end -->
+            </div>
+        </div>
+      <form name="addpay">
+        <div class="addpay-form pb-20">
+            <div class="cs-input padding-16 no-padding-bottom">
+                <input type="number" placeholder="Total Amount" ng-model="data.tot_amt" name="tot" onfocus="this.placeholder = ''"
+                  onblur="this.placeholder = 'Total Amount'" min="1" max="{{bal}}" required>
+                  <span style="color:red" ng-if="addpay.tot.$error.min">* Value Can't be 0</span>
+                  <span style="color:red" ng-if="addpay.tot.$error.max">* Value Can't be Greater than Balance</span>
+            </div>
+
+            <label class="item-input item-select cs-select">
+                <div class="input-label w140p">
+                    Mode of Payment
+                </div>
+                <select class="no-padding-left pr-65" ng-model="data.mode" required>
+                    <option value="Cash" selected>CASH</option>
+                    <option value="Cheque">CHEQUE</option>
+                    <option value="Neft">NEFT</option>
+                </select>
+            </label>
+
+            <label class="item-input item-select cs-date cs-calender mt-20">
+                <div class="input-label">
+                    Payment Date
+                </div>
+                <input type="date" class="no-padding-left" ng-model="data.payment_dt" max="{{today_leave}}" required>
+            </label>
+
+            <div class="cs-input padding-16 no-padding-bottom" ng-if="data.mode=='Cheque'">
+                <input type="number" string-to-number placeholder="Cheque Number" name="numb" ng-model="data.cheque_num" onfocus="this.placeholder = ''"
+                  onblur="this.placeholder = 'Cheque Number'" ng-minlength="6" ng-maxlength="6" required>
+                  <span ng-show="addpay.numb.$error.required">* Enter Cheque Number</span>
+                  <span ng-show="addpay.numb.$error.minlength">* Cheque Number not Valid</span>
+                  <span ng-show="addpay.numb.$error.maxlength">* Cheque Number not Valid</span>
+            </div>
+
+            <label class="item-input item-select cs-date cs-calender" ng-if="data.mode=='Cheque'">
+                <div class="input-label">
+                    Cheque Date
+                </div>
+                <input type="date" class="no-padding-left" ng-model="data.cheque_dt" min="{{today_leave}}" required>
+            </label>
+
+            <div class="cs-input padding-16 no-padding-bottom" ng-if="data.mode=='Neft'">
+                <input type="text" placeholder="Transaction Number" ng-model="data.trans_num" onfocus="this.placeholder = ''"
+                  onblur="this.placeholder = 'Transaction Number'" required>
+            </div>
+
+            <div class="cs-input padding-16 no-padding-bottom" ng-if="data.mode!='Cheque'">
+                <textarea style="background: #ffffff8a;" class="h90" placeholder="Description" ng-model="data.desc" onfocus="this.placeholder = ''"
+                  onblur="this.placeholder = 'Description'">
+                </textarea>
+            </div>
+        </div>
+
+        <div class="input-submit padding-16" ng-click="add_payment()">
+            <button ng-style="{'opacity':addpay.$invalid? 0.5 : 1}" ng-disabled="addpay.$invalid">SUBMIT</button>
+        </div>
+      </form>
+
+    </ion-content>
+    <ion-footer-bar position="bottom" keyboard-attach class="home-tabs">
+        <div class="custome-tabs four-tabs">
+            <a href="#/tab/expense">
+                <div class="outer">
+                    <div class="innear">
+                        <i class="material-icons">account_balance_wallet</i>
+                        <p>EXPENSE</p>
+                    </div>
+                </div>
+            </a>
+            <a href="#/tab/followup">
+                <div class="outer">
+                    <div class="innear">
+                        <i class="material-icons">contact_phone</i>
+                        <p>FOLLOWUP</p>
+                    </div>
+                </div>
+            </a>
+            <a ng-click="opensp()" class="active">
+                <div class="outer">
+                    <div class="innear relative">
+                        <i class="inr-icon-light ab-center font-0 mt-3">inr</i>
+                        <p class="mt-24">PAY MASTER</p>
+                    </div>
+                </div>
+            </a>
+            <a ng-click="get_today_birthday_info_data(1)">
+                <div class="outer">
+                    <div class="innear">
+                        <i class="material-icons">card_giftcard</i>
+                        <p>BIRTHDAY</p>
+                    </div>
+                </div>
+            </a>
+            <a href="#/dashboard">
+                <div class="outer">
+                    <div class="innear">
+                        <i class="material-icons">desktop_mac</i>
+                        <p>DASHBOARD</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </ion-footer-bar>
+</ion-view>

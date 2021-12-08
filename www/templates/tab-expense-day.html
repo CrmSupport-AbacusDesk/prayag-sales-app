@@ -1,0 +1,234 @@
+<ion-view view-title="Expenses" >
+
+    <!-- BACKBTN ICON START -->
+    <ion-nav-buttons side="left">
+        <a ng-click="expense_det(expcurrentDate)" class="cs-backbtn button button-icon icon ion-android-arrow-back fff"></a>
+    </ion-nav-buttons>
+    <!-- BACKBTN ICON END-->
+    
+    <!-- HOME ICON START -->
+    <ion-nav-buttons side="right">
+        <a href="#/home" class="button button-icon icon ion-home fff font-18"></a>
+    </ion-nav-buttons>
+    <!-- HOME ICON END-->
+    
+    <ion-content>
+
+        <div class="custome-date-picker no-padding-bottom">
+            <ul>
+                <li><a href="" ng-click="sub_exp_date()"><i class="material-icons">keyboard_arrow_left</i></a></li>
+                <li><a href=""><span>{{formatDate(expcurrentDate)  | date:  'MMMM dd, y'}}</span></a></li>
+                <li><a href="" ng-click="add_exp_date()"><i class="material-icons" style="opacity: 1;">keyboard_arrow_right</i></a></li>
+            </ul>
+        </div>
+        
+        <div>
+            <form novalidate name="expform">
+                <label class="item-input item-select cs-select cs-select-none">
+                    <div class="input-label">
+                        Expense Type
+                    </div>
+                    <select ng-model="expense_data.type_sel" name="exp_type" required ng-change="expense_data.mode_journey=''">
+                        <option value="">Select an Option</option>
+                        <option value="journey">Journey</option>
+                        <option value="accomodation">Accomodation</option>
+                        <option value="food">Food</option>
+                        <option value="mobile_recharge">Mobile Recharge</option>
+                        <option value="net_surfing">Net Surfing</option>
+                        <option value="courier">Courier</option>
+                        <option value="photocopy">Photocopy</option>
+                        <option value="stationary">Stationary</option>
+                        <option value="misc_expense">Misc. Expense</option>
+                    </select>
+                </label>
+
+                <label class="item-input item-select cs-select cs-select-none" ng-if="expense_data.type_sel=='journey'">
+                    <div class="input-label">
+                        Select Mode
+                    </div>
+
+                    <select ng-model="expense_data.mode_journey" name="mode" required ng-change="expense_data.distance=''; expense_data.amt=''">
+                        <option value="">Select an Option</option>
+                        <option value="bike">Bike</option>
+                        <option value="car">Car</option>
+                        <option value="train">Train</option>
+                        <option value="metro_train">Metro Train</option>
+                        <option value="taxi_registered">Taxi Registered</option>
+                        <option value="taxi_unregistered">Taxi Un-Registered</option>
+                        <option value="local_conveyance">Local Conveyance</option>
+                    </select>
+                </label>
+
+                <label class="item-input select-none relative pr-16" ng-if="expense_data.mode_journey=='bike' || expense_data.mode_journey=='car'">
+                    <div class="input-label">
+                        Enter KM/s
+                    </div>
+                    <input type="text" ng-model="expense_data.distance" name="distance" required class="no-margin">
+                </label>
+
+                <label class="item-input item-select cs-select cs-select-none" ng-if="expense_data.type_sel=='accomodation'">
+                    <div class="input-label">
+                        Select Type
+                    </div>
+                    <select ng-model="expense_data.acc_type" name="accom" required>
+                        <option value="">Select an Option</option>
+                        <option value="hotel_registered">Registered</option>
+                        <option value="hotel_unregistered">Un-Registered</option>
+                    </select>
+                </label>
+
+
+                <label class="item-input item-select cs-select cs-select-none" ng-if="expense_data.type_sel=='food'">
+                    <div class="input-label">
+                        Select Type
+                    </div>
+                    <select ng-model="expense_data.food_type" name="food_type" required>
+                        <option value="">Select an Option</option>
+                        <option value="food_registered">Registered</option>
+                        <option value="food_unregistered">Un-Registered</option>
+                    </select>
+                </label>
+
+                
+
+                <label class="item-input select-none relative pr-16" ng-if="(expense_data.type_sel=='mobile_recharge' || expense_data.type_sel=='net_surfing' || expense_data.type_sel=='courier' || expense_data.type_sel=='photocopy' || expense_data.type_sel=='stationary' || expense_data.type_sel=='misc_expense' || expense_data.acc_type || expense_data.food_type) || (expense_data.mode_journey && expense_data.mode_journey!='bike' && expense_data.mode_journey!='car')">
+                    <div class="input-label">
+                        Enter Amount <i class="inr-icon ml-5"></i>
+                    </div>
+                    <input type="text" ng-model="expense_data.amt" name="amount" required class="no-margin">
+                </label>
+
+                <div class="input-submit custom-bttn padding-16">
+                    <input type="submit"  value="ADD EXPENSE" ng-disabled="expform.$invalid" ng-style="{'opacity': expform.$invalid ? 0.5 : 1}" ng-click="add_expense_detail(exp_date_det.date_created)">
+                </div>
+                
+            </form>
+        </div>
+
+        <div class="day-changes no-margin-top" ng-if="exp_date_det.total_expense">
+            <p>Total Expenses: <i class="inr-icon ml-5 mt-5"></i><span class="orange-color pl-20">{{exp_date_det.total_expense}}</span></p>
+        </div>
+
+        <div class="upload-plus-icon padding-16 no-padding-bottom">
+            <div class="input-label w100">
+                Attach Bill
+            </div>
+            <ul>
+                <li>
+                    <div class="label" ng-click="attach_bill()">
+                        <button type="button">
+                            <i class="material-icons">add</i>
+                        </button>
+                    </div>
+                </li>
+
+                <li ng-repeat="val in bill_data" class="relative">
+                    <i ng-click="del_bill(val.bill_image)" class="material-icons absolute orange-color" style="top: -10px; right: -10px; z-index:1;">clear</i>
+                    <label ng-click="showImages(0,val.bill_image)">
+                        <img src="{{uploadurl+val.bill_image}}">
+                    </label>
+                </li>
+            </ul>
+        </div>
+
+        <div class="leave-new leave-new-changes" ng-if="exp_date_det.total_expense">
+            <table class="relative">
+                <tr>
+                    <th>Type</th>
+                    <th class="w100">Expense</th>
+                </tr>
+
+                <tr ng-if="exp_date_det.bike>0">
+                    <td>Bike &nbsp; <span ng-class="exp_date_det.bike_status=='Pending' ? 'bluec' : (exp_date_det.bike_status=='Approved' ? 'greenc' : 'redc')">({{exp_date_det.bike_status}})</span></td>
+                    <td><i class="inr-icon mt-5 ml-5"></i><span class="orange-color pl-20">{{exp_date_det.bike}}</span> <i ng-click="del_expense_type(exp_date_det.id,'bike',exp_date_det.date_created)" class="material-icons orange-color font-16 pl-20 absolute right-2">delete</i></td>
+                </tr>
+
+                <tr ng-if="exp_date_det.car>0">
+                    <td>Car &nbsp; <span ng-class="exp_date_det.car_status=='Pending' ? 'bluec' : (exp_date_det.car_status=='Approved' ? 'greenc' : 'redc')">({{exp_date_det.car_status}})</span></td>
+                    <td><i class="inr-icon mt-5 ml-5"></i><span class="orange-color pl-20">{{exp_date_det.car}}</span> <i ng-click="del_expense_type(exp_date_det.id,'car',exp_date_det.date_created)" class="material-icons orange-color font-16 pl-20 absolute right-2">delete</i></td>
+                </tr>
+
+                <tr ng-if="exp_date_det.bus>0">
+                    <td>Bus &nbsp; <span ng-class="exp_date_det.bus_status=='Pending' ? 'bluec' : (exp_date_det.bus_status=='Approved' ? 'greenc' : 'redc')">({{exp_date_det.bus_status}})</span></td>
+                    <td><i class="inr-icon mt-5 ml-5"></i><span class="orange-color pl-20">{{exp_date_det.bus}}</span> <i ng-click="del_expense_type(exp_date_det.id,'bus',exp_date_det.date_created)" class="material-icons orange-color font-16 pl-20 absolute right-2">delete</i></td>
+                </tr>
+
+                <tr ng-if="exp_date_det.train>0">
+                    <td>Train &nbsp; <span ng-class="exp_date_det.train_status=='Pending' ? 'bluec' : (exp_date_det.train_status=='Approved' ? 'greenc' : 'redc')">({{exp_date_det.train_status}})</span></td>
+                    <td><i class="inr-icon mt-5 ml-5"></i><span class="orange-color pl-20 ">{{exp_date_det.train}}</span> <i ng-click="del_expense_type(exp_date_det.id,'train',exp_date_det.date_created)" class="material-icons orange-color font-16 pl-20 absolute right-2">delete</i></td>
+                </tr>
+
+                <tr ng-if="exp_date_det.metro_train>0">
+                    <td>Metro Train &nbsp; <span ng-class="exp_date_det.metro_train_status=='Pending' ? 'bluec' : (exp_date_det.metro_train_status=='Approved' ? 'greenc' : 'redc')">({{exp_date_det.metro_train_status}})</span></td>
+                    <td><i class="inr-icon mt-5 ml-5"></i><span class="orange-color pl-20 ">{{exp_date_det.metro_train}}</span> <i ng-click="del_expense_type(exp_date_det.id,'metro_train',exp_date_det.date_created)" class="material-icons orange-color font-16 pl-20 absolute right-2">delete</i></td>
+                </tr>
+
+                <tr ng-if="exp_date_det.taxi_registered>0">
+                    <td>Taxi Registered &nbsp; <span ng-class="exp_date_det.taxi_registered_status=='Pending' ? 'bluec' : (exp_date_det.taxi_registered_status=='Approved' ? 'greenc' : 'redc')">({{exp_date_det.taxi_registered_status}})</span></td>
+                    <td><i class="inr-icon mt-5 ml-5"></i><span class="orange-color pl-20 ">{{exp_date_det.taxi_registered}}</span> <i ng-click="del_expense_type(exp_date_det.id,'taxi_registered',exp_date_det.date_created)" class="material-icons orange-color font-16 pl-20 absolute right-2">delete</i></td>
+                </tr>
+
+                <tr ng-if="exp_date_det.taxi_unregistered>0">
+                    <td>Taxi Un-Registered &nbsp; <span ng-class="exp_date_det.taxi_unregistered_status=='Pending' ? 'bluec' : (exp_date_det.taxi_unregistered_status=='Approved' ? 'greenc' : 'redc')">({{exp_date_det.taxi_unregistered_status}})</span></td>
+                    <td><i class="inr-icon mt-5 ml-5"></i><span class="orange-color pl-20 ">{{exp_date_det.taxi_unregistered}}</span> <i ng-click="del_expense_type(exp_date_det.id,'taxi_unregistered',exp_date_det.date_created)" class="material-icons orange-color font-16 pl-20 absolute right-2">delete</i></td>
+                </tr>
+
+                <tr ng-if="exp_date_det.local_conveyance>0">
+                    <td>Local Conveyance &nbsp; <span ng-class="exp_date_det.local_conveyance_status=='Pending' ? 'bluec' : (exp_date_det.local_conveyance_status=='Approved' ? 'greenc' : 'redc')">({{exp_date_det.local_conveyance_status}})</span></td>
+                    <td><i class="inr-icon mt-5 ml-5"></i><span class="orange-color pl-20 ">{{exp_date_det.local_conveyance}}</span> <i ng-click="del_expense_type(exp_date_det.id,'local_conveyance',exp_date_det.date_created)" class="material-icons orange-color font-16 pl-20 absolute right-2">delete</i></td>
+                </tr>
+
+                <tr ng-if="exp_date_det.hotel_registered>0">
+                    <td>Hotel Registered &nbsp; <span ng-class="exp_date_det.hotel_registered_status=='Pending' ? 'bluec' : (exp_date_det.hotel_registered_status=='Approved' ? 'greenc' : 'redc')">({{exp_date_det.hotel_registered_status}})</span></td>
+                    <td><i class="inr-icon mt-5 ml-5"></i><span class="orange-color pl-20 ">{{exp_date_det.hotel_registered}}</span> <i ng-click="del_expense_type(exp_date_det.id,'hotel_registered',exp_date_det.date_created)" class="material-icons orange-color font-16 pl-20 absolute right-2">delete</i></td>
+                </tr>
+
+                <tr ng-if="exp_date_det.hotel_unregistered>0">
+                    <td>Hotel Un-Registered &nbsp; <span ng-class="exp_date_det.hotel_unregistered_status=='Pending' ? 'bluec' : (exp_date_det.hotel_unregistered_status=='Approved' ? 'greenc' : 'redc')">({{exp_date_det.hotel_unregistered_status}})</span></td>
+                    <td><i class="inr-icon mt-5 ml-5"></i><span class="orange-color pl-20 ">{{exp_date_det.hotel_unregistered}}</span> <i ng-click="del_expense_type(exp_date_det.id,'hotel_unregistered',exp_date_det.date_created)" class="material-icons orange-color font-16 pl-20 absolute right-2">delete</i></td>
+                </tr>
+
+                <tr ng-if="exp_date_det.food_registered>0">
+                    <td>Food Registered &nbsp; <span ng-class="exp_date_det.food_registered_status=='Pending' ? 'bluec' : (exp_date_det.food_registered_status=='Approved' ? 'greenc' : 'redc')">({{exp_date_det.food_registered_status}})</span></td>
+                    <td><i class="inr-icon mt-5 ml-5"></i><span class="orange-color pl-20 ">{{exp_date_det.food_registered}}</span> <i ng-click="del_expense_type(exp_date_det.id,'food_registered',exp_date_det.date_created)" class="material-icons orange-color font-16 pl-20 absolute right-2">delete</i></td>
+                </tr>
+
+                <tr ng-if="exp_date_det.food_unregistered>0">
+                    <td>Food Un-Registered &nbsp; <span ng-class="exp_date_det.food_unregistered_status=='Pending' ? 'bluec' : (exp_date_det.food_unregistered_status=='Approved' ? 'greenc' : 'redc')">({{exp_date_det.food_unregistered_status}})</span></td>
+                    <td><i class="inr-icon mt-5 ml-5"></i><span class="orange-color pl-20 ">{{exp_date_det.food_unregistered}}</span> <i ng-click="del_expense_type(exp_date_det.id,'food_unregistered',exp_date_det.date_created)" class="material-icons orange-color font-16 pl-20 absolute right-2">delete</i></td>
+                </tr>
+
+                <tr ng-if="exp_date_det.mobile_recharge>0">
+                    <td>Mobile Recharge &nbsp; <span ng-class="exp_date_det.mobile_recharge_status=='Pending' ? 'bluec' : (exp_date_det.mobile_recharge_status=='Approved' ? 'greenc' : 'redc')">({{exp_date_det.mobile_recharge_status}})</span></td>
+                    <td><i class="inr-icon mt-5 ml-5"></i><span class="orange-color pl-20 ">{{exp_date_det.mobile_recharge}}</span> <i ng-click="del_expense_type(exp_date_det.id,'mobile_recharge',exp_date_det.date_created)" class="material-icons orange-color font-16 pl-20 absolute right-2">delete</i></td>
+                </tr>
+
+                <tr ng-if="exp_date_det.net_surfing>0">
+                    <td>Net Surfing &nbsp; <span ng-class="exp_date_det.net_surfing_status=='Pending' ? 'bluec' : (exp_date_det.net_surfing_status=='Approved' ? 'greenc' : 'redc')">({{exp_date_det.net_surfing_status}})</span></td>
+                    <td><i class="inr-icon mt-5 ml-5"></i><span class="orange-color pl-20 ">{{exp_date_det.net_surfing}}</span> <i ng-click="del_expense_type(exp_date_det.id,'net_surfing',exp_date_det.date_created)" class="material-icons orange-color font-16 pl-20 absolute right-2">delete</i></td>
+                </tr>
+
+                <tr ng-if="exp_date_det.courier>0">
+                    <td>Courier &nbsp; <span ng-class="exp_date_det.courier_status=='Pending' ? 'bluec' : (exp_date_det.courier_status=='Approved' ? 'greenc' : 'redc')">({{exp_date_det.courier_status}})</span></td>
+                    <td><i class="inr-icon mt-5 ml-5"></i><span class="orange-color pl-20 ">{{exp_date_det.courier}}</span> <i ng-click="del_expense_type(exp_date_det.id,'courier',exp_date_det.date_created)" class="material-icons orange-color font-16 pl-20 absolute right-2">delete</i></td>
+                </tr>
+
+                <tr ng-if="exp_date_det.photocopy>0">
+                    <td>Photocopy &nbsp; <span ng-class="exp_date_det.photocopy_status=='Pending' ? 'bluec' : (exp_date_det.photocopy_status=='Approved' ? 'greenc' : 'redc')">({{exp_date_det.photocopy_status}})</span></td>
+                    <td><i class="inr-icon mt-5 ml-5"></i><span class="orange-color pl-20 ">{{exp_date_det.photocopy}}</span> <i ng-click="del_expense_type(exp_date_det.id,'photocopy',exp_date_det.date_created)" class="material-icons orange-color font-16 pl-20 absolute right-2">delete</i></td>
+                </tr>
+
+                <tr ng-if="exp_date_det.stationary>0">
+                    <td>Stationary &nbsp; <span ng-class="exp_date_det.stationary_status=='Pending' ? 'bluec' : (exp_date_det.stationary_status=='Approved' ? 'greenc' : 'redc')">({{exp_date_det.stationary_status}})</span></td>
+                    <td><i class="inr-icon mt-5 ml-5"></i><span class="orange-color pl-20 ">{{exp_date_det.stationary}}</span> <i ng-click="del_expense_type(exp_date_det.id,'stationary',exp_date_det.date_created)" class="material-icons orange-color font-16 pl-20 absolute right-2">delete</i></td>
+                </tr>
+
+                <tr ng-if="exp_date_det.misc_expense>0">
+                    <td>Misc. Expenses &nbsp; <span ng-class="exp_date_det.misc_expense_status=='Pending' ? 'bluec' : (exp_date_det.misc_expense_status=='Approved' ? 'greenc' : 'redc')">({{exp_date_det.misc_expense_status}})</span></td>
+                    <td><i class="inr-icon mt-5 ml-5"></i><span class="orange-color pl-20 ">{{exp_date_det.misc_expense}}</span> <i ng-click="del_expense_type(exp_date_det.id,'misc_expense',exp_date_det.date_created)" class="material-icons orange-color font-16 pl-20 absolute right-2">delete</i></td>
+                </tr>
+            </table>
+        </div>   
+    </ion-content>
+    
+</ion-view>

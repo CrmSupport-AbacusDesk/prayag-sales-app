@@ -1,0 +1,59 @@
+<ion-view view-title="Birthday's" >
+    
+    <!-- BACKBTN ICON START -->
+    <ion-nav-buttons side="left">
+        <a href="#/home" class="cs-backbtn button button-icon icon ion-android-arrow-back fff"></a>
+    </ion-nav-buttons>
+    <!-- BACKBTN ICON END-->
+    
+    <!-- HOME ICON START -->
+    <ion-nav-buttons side="right">
+        <a href="#/home" class="button button-icon icon ion-home fff font-18"></a>
+    </ion-nav-buttons>
+    <!-- HOME ICON END-->
+    
+    <ion-content>
+        
+        <ul class="cs-tabs">
+            <li><a ng-click="get_today_birthday_info_data(1); show_ret_birth=true" ng-class="show_ret_birth ? 'active' : ''">Today</a></li>
+            <li><a ng-click="get_today_birthday_info_data(2); show_ret_birth=false" ng-class="show_ret_birth ? '' : 'active'">All</a></li>
+        </ul>
+        <div class="data-not-found" ng-hide="birthday_list.length">
+            <div class="outer">
+                <div class="innear">
+                    <img src="img/data-not-found.svg" alt="">
+                    <h2>Temporarily , No Birthday Available</h2>
+                </div>
+            </div>
+        </div>
+        
+        <div class="user-list small-icon top-border-remove" ng-if="birthday_list.length" >
+            <div class="list">
+                
+                <div class="item item-avatar" ng-repeat= "ret in birthday_list" ng-click="goto_birthday_detail(ret.id)">
+                    
+                    <img src="{{upload_url}}{{ret.dr_image}}" ng-if="ret.dr_image">
+                    
+                    <div class="info-icon" ng-hide="ret.dr_image" >
+                        <div class="outer">
+                            <div class="innear">
+                                <h1 class="font-16">{{ret.dr_name.substring(0,1).toUpperCase()}}</h1>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h2  >{{ret.dr_name}}</h2>
+                    <p class="tl-sales" ng-if="!ret.balance">Contact Person : <span class="pl-25">{{ret.contact_person}}</span></p>
+                    <p class="tl-sales" ng-if="!ret.balance">Phone No. : 
+                        <a class="pl-25">{{ret.mobile}}</a> 
+                        <!-- <a ng-if="ret.contact_2" href="tel:{{ret.contact_2}}">{{ ','+ ret.contact_2}}</a> -->
+                    </p>
+                    <!-- <button class="button button-icon icon ion-chevron-right font-12 blue-color"></button> -->
+                </div>
+                
+                
+            </div>
+        </div>
+    </ion-content>
+    
+</ion-view>

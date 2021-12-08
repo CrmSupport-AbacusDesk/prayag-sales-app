@@ -1,0 +1,37 @@
+<ion-view view-title="{{(ret_visit_lst[0].intrested_contact=='Retailer') ? 'New Retailer Request' : 'New Distributor Request'}}" >
+
+    <!-- BACKBTN ICON START -->
+    <ion-nav-buttons side="left">
+        <a ng-click="dwrlist('{{backdwrdate}}','1')" class="cs-backbtn button button-icon icon ion-android-arrow-back fff"></a>
+    </ion-nav-buttons>
+    <!-- BACKBTN ICON END-->
+
+    <!-- HOME ICON START -->
+    <ion-nav-buttons side="right">
+        <a href="#/home" class="button button-icon icon ion-home fff font-18"></a>
+    </ion-nav-buttons>
+    <!-- HOME ICON END-->
+
+    <ion-content>
+
+    <!-- small-icon -->
+
+        <div class="user-list">
+            <div class="list">
+
+                <a ng-click="retailerdetails(ret.id,ret.type,'2','',ret.intrested_contact)" class="item item-avatar" ng-repeat= "ret in ret_visit_lst" >
+                    <img src="{{upload_url}}{{ret.dr_image}}" ng-if="ret.dr_image">
+                    <div class="info-icon" ng-hide="ret.dr_image" >
+                        <div class="outer">
+                            <div class="innear">
+                                <h1 class="font-16">{{ret.dr_name.substring(0,1).toUpperCase()}}</h1>
+                            </div>
+                        </div>
+                    </div>
+                   <h2>{{ret.dr_name}}</h2>
+                  <button class="button button-icon icon ion-chevron-right font-12 blue-color"></button>
+               </a>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,135 @@
+<ion-view view-title="Detail" >
+
+    <!-- BACKBTN ICON START -->
+    <ion-nav-buttons side="left">
+        <a ng-click="bckval?(bckval==='2'?(backnear==='5'?nearest_store():dwr_ret_visit(5,retailer_det.intrested_contact)):followup_list()):distributorlist()" class="cs-backbtn button button-icon icon ion-android-arrow-back fff"></a>
+    </ion-nav-buttons>
+    <!-- BACKBTN ICON END-->
+
+    <!-- HOME ICON START -->
+    <ion-nav-buttons side="right">
+        <a href="#/home" class="button button-icon icon ion-home fff font-18"></a>
+    </ion-nav-buttons>
+    <!-- HOME ICON END-->
+
+
+    <ion-content class="home detail-page sales-detail-retail">
+      <div class="user-information">
+          <div class="top-inf padding-10 no-padding-bottom">
+              <div class="spl">
+                  <div class="outer">
+                      <div class="innear">
+                          <span>{{retailer_det.dr_name.substring(0,1).toUpperCase()}}</span>
+                      </div>
+                  </div>
+              </div>
+              <div class="name">
+                  <h2>{{retailer_det.dr_name}}</h2>
+                  <p class="no-padding-left">{{retailer_det.contact_person}}</p>
+                  <p ng-if="retailer_det.email!=''"><i class="material-icons">question_answer</i> <a href="mailto:{{retailer_det.email}}">{{retailer_det.email}}</a></p>
+              </div>
+              <div class="clearfix"></div>
+          </div>
+          <div class="middle">
+              <p ng-if="retailer_det.street!='' || retailer_det.state_name !='' || retailer_det.district_name !='' || retailer_det.pincode!=''">
+                  <i class="material-icons" >home</i><span  ng-if="retailer_det.street !=''"></span>
+                  {{retailer_det.street}}<span ng-if="retailer_det.area !=''">,</span> {{retailer_det.area}}<span ng-if="retailer_det.city !=''">,</span> {{retailer_det.city}} <span ng-if="retailer_det.district_name !=''">,</span>{{retailer_det.district_name}} <span ng-if="retailer_det.state_name !=''">,</span>{{retailer_det.state_name}} <span ng-if="retailer_det.pincode !=''">,</span>{{retailer_det.pincode}}
+              </p>
+              <p ng-if="retailer_det.landline_no !='' || retailer_det.contact_1 !='' || retailer_det.contact_2 !=''">
+                  <i class="material-icons" >call</i>
+                  <a href="tel:{{retailer_det.landline_no}}" ng-if="retailer_det.landline_no>0">{{retailer_det.landline_no}}</a><span  ng-if="retailer_det.landline_no>0 && retailer_det.contact_1>0">,</span>
+                  <a href="tel:{{retailer_det.contact_1}}" ng-if="retailer_det.contact_1>0">{{retailer_det.contact_1}}</a><span  ng-if="retailer_det.contact_1>0 && retailer_det.contact_2>0 ">,</span>
+                  <a href="tel:{{retailer_det.contact_2}}" ng-if="retailer_det.contact_2>0">{{retailer_det.contact_2}}</a>
+              </p>
+          </div>
+      </div>
+
+      <div class="heading-un">
+            <h2>Shipping Address Information</h2>
+        </div>
+        <div class="padding-16 no-padding-top">
+            <p class="font-12">{{retailer_det.ship_street}} <span ng-if="retailer_det.ship_street && retailer_det.area">,</span> {{retailer_det.ship_area}} <span ng-if="retailer_det.ship_area && retailer_det.ship_city">,</span> {{retailer_det.ship_city}} <span ng-if="retailer_det.ship_city && retailer_det.ship_district_name">,</span> {{retailer_det.ship_district_name}} <span ng-if="retailer_det.ship_district_name && retailer_det.ship_state_name">,</span>{{retailer_det.ship_state_name}}<span ng-if="retailer_det.ship_state_name && retailer_det.ship_pincode">,</span> {{retailer_det.ship_pincode}}</p>
+        </div>
+
+        <div class="heading-un">
+          <h2>Segment Detail</h2>
+        </div>
+        <div class="padding-16 no-padding-top pb-10">
+            <ul class="seg-dt">
+               <li ng-repeat="val in retailer_segs"><span>{{val}}</span></li> &nbsp;
+            </ul>
+        </div>
+
+        <!-- <div class="ass" ng-if="disable_dist_tabs==true && dr_status=='Reject'">
+            <p class="no-margin"><button ng-click="req_reg(retailer_det.id,2)"><strong>Regenerate Retailer Request</strong></button></p>
+        </div> -->
+
+        <div class="ass padding-10">
+            <p class="no-margin"><strong>Associated Since :</strong> {{formatDate(retailer_det.date_created)|  date: 'dd MMM y'}}</p>
+            <button ng-if="disable_tabs==true && dr_status=='Reject'" ng-click="openregen(2)"><img src="img/resend.svg" alt=""></button>
+        </div>
+
+        <div class="home-links">
+            <a ng-click="retactivityhistory(retailer_det.id,'2')">
+                <div class="links outer">
+                    <div class="innear">
+                        <div class="icon">
+                            <img src="img/tabs-icons/activity-icon-active.svg" alt="">
+                        </div>
+                        <h2>Activity</h2>
+                    </div>
+                </div>
+            </a>
+            <a ng-click="disable_dist_tabs ? '' : get_orders(retailer_det.id,'2')" ng-class="disable_dist_tabs==true?'opac-class':''">
+                <div class="links outer">
+                    <div class="innear">
+                        <div class="icon">
+                            <img src="img/tabs-icons/order-sec-icon-active.svg" alt="">
+                        </div>
+                        <h2>Primary sale orders</h2>
+                    </div>
+                </div>
+            </a>
+            <a ng-click="disable_dist_tabs ? '' : dr_img_doc_list(retailer_det.id,'2')" ng-class="disable_dist_tabs==true?'opac-class':''">
+                <div class="links outer">
+                    <div class="innear">
+                        <div class="icon">
+                            <img src="img/tabs-icons/image-icon-active.svg" alt="">
+                        </div>
+                        <h2>Images & documents</h2>
+                    </div>
+                </div>
+            </a>
+            <a ng-click="disable_dist_tabs ? '' : ret_pop_gift_list(retailer_det.id,'2')" ng-class="disable_dist_tabs==true?'opac-class':''">
+                <div class="links outer">
+                    <div class="innear">
+                        <div class="icon">
+                            <img src="img/tabs-icons/pop-icon-active.svg" alt="">
+                        </div>
+                        <h2>POP & Gifts</h2>
+                    </div>
+                </div>
+            </a>
+            <a href="#/tab-dist/tab-edit-dist">
+                <div class="links outer">
+                    <div class="innear">
+                        <div class="icon">
+                            <img src="img/tabs-icons/view-edit-icon.svg" alt="">
+                        </div>
+                        <h2>View & Edit</h2>
+                    </div>
+                </div>
+            </a>
+            <a ng-click="disable_dist_tabs ? '' : location()" ng-class="disable_dist_tabs==true?'opac-class':''">
+                <div class="links outer">
+                    <div class="innear">
+                        <div class="icon">
+                            <img src="img/tabs-icons/location-icon-active.svg" alt="">
+                        </div>
+                        <h2>Point Location</h2>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </ion-content>
+</ion-view>

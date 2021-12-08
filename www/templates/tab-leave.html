@@ -1,0 +1,91 @@
+<ion-view view-title="Leave" >
+
+    <!-- BACKBTN ICON START -->
+    <ion-nav-buttons side="left">
+        <a href="#/home" class="cs-backbtn button button-icon icon ion-android-arrow-back fff"></a>
+    </ion-nav-buttons>
+    <!-- BACKBTN ICON END-->
+
+    <!-- HOME ICON START -->
+    <ion-nav-buttons side="right">
+        <a href="#/home" class="button button-icon icon ion-home fff font-18"></a>
+    </ion-nav-buttons>
+    <!-- HOME ICON END-->
+
+    <ion-content>
+        
+         <ul class="cs-tabs">
+            <li><a ng-click="show_hol=false" ng-class="show_hol ? '' : 'active'">Leave</a></li>
+            <li><a ng-click="show_hol=true" ng-class="show_hol ? 'active' : ''">Holidays</a></li>
+        </ul>
+        <div class="leave-new">
+            <div ng-if="show_hol==false">
+                <table>
+                    <tr ng-repeat="leaves in leave_lsts">
+                        <th>{{leaves.leave_type}}</th>
+                        <td style="width:50px;">{{leaves.total_leave}}</td>
+                    </tr>
+                </table>
+            </div>
+            <div ng-if="show_hol==true">
+                <table>
+                    <tr ng-repeat="hol in national_holiday">
+                        <th>{{hol.subject}}</th>
+                        <th class="red-color w100">{{formatDate(hol.holiday_date) | date:'MMM dd'}}</th>
+                    </tr>
+                  <!--   <tr ng-repeat="reg_hol in regional_holiday">
+                        <th>{{reg_hol.subject}}</th>
+                        <th class="red-color">{{formatDate(reg_hol.holiday_date) | date:'MMM dd'}}</th>
+                    </tr> -->
+                </table>
+            </div>
+        </div>
+        <!-- <div class="data-not-found" ng-hide="leave_lst.length">
+            <div class="outer">
+                <div class="innear">
+                    <img src="img/data-not-found.svg" alt="">
+                    <h2>Temporarily , No Leave Available</h2>
+                </div>
+            </div>
+        </div> -->
+        <div class="user-list date-format" ng-if="leave_lst.length">
+            <div class="list">
+                <!-- looP start -->
+               <!--  <div class="item item-avatar" ng-repeat="value in leave_lst">
+                    <div class="date-info-icon">
+                        <h2>{{formatDate(value.date_created)|  date: 'dd'}}</h2>
+                        <p>{{formatDate(value.date_created)|  date: 'MMM'}}</p>
+                    </div>
+                    <a>
+                        <p class="mt-3"><span class="icon-color pl-15">{{formatDate(value.date_from)|  date: 'dd MMM'}} TO {{formatDate(value.date_to)|  date: 'dd MMM'}}</span></p>
+                        <p class="mt-3"><strong>Subject  &nbsp;:</strong><span class="icon-color pl-15">{{value.leave_reason}}</span></p>
+                        <p class="mt-3" ng-if="value.leave_type"><strong>Type  &nbsp;:</strong><span class="icon-color pl-15">{{value.leave_type}}</span></p>
+                        <p class="mt-3"><strong>Status   &nbsp;  &nbsp;:</strong><strong class="blue-color pl-15">{{value.status}}</strong></p>
+                    </a>
+                    <p ng-if="value.reason_reject" class="mt-3"><strong>Reason Reject   &nbsp;  &nbsp;:</strong><strong class="blue-color pl-15">{{value.reason_reject}}</strong></p>
+                </div> -->
+                <!-- looP end -->
+
+                <!-- looP start -->
+                <div class="item item-avatar pl-16" ng-repeat="value in leave_lst">
+                    <a>
+                        <p class="mt-3 wp50 left"><strong>Date From  &nbsp;:</strong><br><span class="icon-color">{{formatDate(value.date_from)|  date: 'dd MMM y'}} </span></p>
+                        <p class="mt-3 wp50 left"><strong>Date To  &nbsp;:</strong><br><span class="icon-color">{{formatDate(value.date_to)|  date: 'dd MMM y'}}</span></p>
+                        <div class="clearfix"></div>
+                        <p class="mt-10"><strong class="ppt">Subject</strong><span class="icon-color pl-15">:&nbsp; &nbsp;{{value.leave_reason}}</span></p>
+                        <p class="mt-3" ng-if="value.leave_type"><strong class="ppt">Type</strong><span class="icon-color pl-15">:&nbsp; &nbsp;{{value.leave_type}}</span></p>
+                        <p class="mt-3"><strong class="ppt">Status</strong><span class="blue-color pl-15">:&nbsp; &nbsp;{{value.status}}</span></p>
+                        <p class="mt-3" ng-if="value.reason_reject"><strong class="ppt">Reason</strong><span class="icon-color pl-15">:&nbsp; &nbsp;{{value.reason_reject}}</span></p>
+                    </a>
+                </div>
+                <!-- looP end -->
+
+            </div>
+        </div>
+    </ion-content>
+
+    <a class="pluse-icon blue-bg" href="#/tab/addleave">
+        <i class="material-icons fff">add</i>
+    </a>
+
+</ion-view>

@@ -1,0 +1,81 @@
+<ion-view view-title="Detail" >
+
+    <!-- BACKBTN ICON START -->
+    <ion-nav-buttons side="left">
+        <a href="#/birthday" class="cs-backbtn button button-icon icon ion-android-arrow-back fff"></a>
+    </ion-nav-buttons>
+    <!-- BACKBTN ICON END-->
+
+    <!-- HOME ICON START -->
+    <ion-nav-buttons side="right">
+        <a href="#/home" class="button button-icon icon ion-home fff font-18"></a>
+    </ion-nav-buttons>
+    <!-- HOME ICON END-->
+     
+
+    <ion-content class="home detail-page sales-detail-retail" style="margin-bottom: 55px;">
+      <div class="user-information">
+          <div class="top-inf padding-10 no-padding-bottom">
+              <div class="spl">
+                  <div class="outer">
+                      <div class="innear">
+                          <span>{{birthday_detail.dr_name.substring(0,1).toUpperCase()}}</span>
+                      </div>
+                  </div>
+              </div>
+              <div class="name">
+                  <h2>{{birthday_detail.dr_name}}</h2>
+                  <p class="no-padding-left">{{birthday_detail.contact_person}}</p>
+                  <!-- <p ng-if="birthday_detail.email!=''"><i class="material-icons">question_answer</i> <a href="mailto:{{birthday_detail.email}}">{{birthday_detail.email}}</a></p> -->
+              </div>
+              <div class="clearfix"></div>
+          </div>
+          <div class="middle">
+              <p >
+                <i class="material-icons" >home</i><span  ng-if="birthday_detail.address !=''"></span>
+                {{birthday_detail.address}}<span ng-if="birthday_detail.district !=''">,</span>{{birthday_detail.district}} <span ng-if="birthday_detail.state !=''">,</span>{{birthday_detail.state}} <span ng-if="birthday_detail.pincode !=''">,</span>{{birthday_detail.pincode}}
+              <p >
+                  <i class="material-icons" >call</i>
+                  <a >{{birthday_detail.mobile}}</a>
+              </p>
+          </div>
+      </div>
+
+      <!-- <div class="ass padding-10">
+        <p class="no-margin"><strong>Category :</strong> A</p>
+        <button ><img src="img/resend.svg" alt=""></button>
+      </div> -->
+
+      <div class="heading-un" ng-if="birthday_detail.wishing_flag != 0">
+        <h2>Wishing Detail</h2>
+      </div>
+    <div class="padding-16 no-padding-top" ng-if="birthday_detail.wishing_flag != 0">
+      <div class="cs-list-content">
+        <p ><strong>Wishing: </strong>Done</p>
+        <p ><strong>Wishing Time:</strong> {formatDate(birthday_detail.wishing_time)|  date: 'dd MMM y'}}</p>
+      </div>
+    </div>
+
+    <div class="heading-un no-padding-top" ng-if="birthday_detail.gift_type != 0">
+      <h2>Gift Detail</h2>
+    </div>
+
+    <div class="cs-list-content padding-16 no-padding-top" ng-if="birthday_detail.gift_type != 0">
+        <p ><strong>Gift Name: </strong>Mi A3 Mobile</p>
+      </div>
+
+    <div class="multiple-img" style="padding: 0px 16px 16px;" ng-if="birthday_detail.images && birthday_detail.images.length">
+        <label>
+            <img src="https://www.giftcart.com/pub/media/catalog/product/cache/207e23213cf636ccdef205098cf3c8a3/c/o/co-cm05gbgt3831-1.jpg" >
+           
+        </label>
+    </div>
+
+    </ion-content>
+
+    <div class="fix-btn-group">
+        <button ng-if="birthday_detail.wishing_flag == 0">Update Wishing</button>
+        <button  ng-click="openModal()">Update Gift</button>
+        <!-- ng-if="birthday_detail.wishing_flag == 1 && birthday_detail.gift_type == 0" -->
+    </div>
+</ion-view>

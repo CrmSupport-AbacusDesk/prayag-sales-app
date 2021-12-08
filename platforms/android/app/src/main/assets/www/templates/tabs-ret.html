@@ -1,0 +1,42 @@
+<!--
+  Create tabs with an icon and label, using the tabs-positive style.
+  Each tab's child <ion-nav-view> directive will have its own
+    navigation history that also transitions its views in and out.
+  -->
+  <ion-tabs class="tabs-icon-top tabs-color-active-positive">
+
+    <!-- Activity Tab -->
+    <ion-tab title="ACTIVITY" hidden="{{$root.act}}" icon-off="activity-icon-active" icon-on="activity-icon-active" ng-click="retactivityhistory($root.retailers_id,$root.type)">
+      <ion-nav-view name="tab-activity-ret"></ion-nav-view>
+    </ion-tab>
+
+
+    <!-- Secondary sale orders Tab -->
+    <ion-tab title="ORDER" hidden="{{$root.ord}}" icon-off="order-sec-icon-active" icon-on="order-sec-icon-active" ng-click="get_orders($root.retailers_id,$root.type)">
+      <ion-nav-view name="tab-order-ret"></ion-nav-view>
+    </ion-tab>
+
+    <!-- Secondary sale orders Tab -->
+    <ion-tab title="ORDER DETAIL" hidden="true" icon-off="order-sec-icon-active" icon-on="order-sec-icon-active" href="#/tab/order-details-ret">
+      <ion-nav-view name="tab-order-details-ret"></ion-nav-view>
+    </ion-tab>
+
+    <!-- Images & documents Tab -->
+    <ion-tab title="IMAGES" hidden="{{$root.img}}" icon-off="image-icon-active" icon-on="image-icon-active" ng-click="dr_img_doc_list($root.retailers_id,$root.type)">
+      <ion-nav-view name="tab-imgdoc-ret"></ion-nav-view>
+    </ion-tab>
+
+
+    <!-- POP & Gifts Tab -->
+    <ion-tab title="POP" hidden="{{$root.pop}}" icon-off="pop-icon-active" icon-on="pop-icon-active" ng-click="ret_pop_gift_list($root.retailers_id,$root.type)">
+      <ion-nav-view name="tab-pop-ret"></ion-nav-view>
+    </ion-tab>
+
+
+    <!-- View & Edit Tab-->
+    <ion-tab title="DETAIL" hidden="{{$root.edit}}" icon-off="detail-icon-active" icon-on="detail-icon-active" href="#/tab-ret/tab-edit-ret">
+      <ion-nav-view name="tab-edit-ret"></ion-nav-view>
+    </ion-tab>
+
+
+  </ion-tabs>

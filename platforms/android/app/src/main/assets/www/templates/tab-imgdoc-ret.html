@@ -1,0 +1,106 @@
+<ion-view view-title="Image & Document">
+
+    <!-- BACKBTN ICON START -->
+    <ion-nav-buttons side="left">
+        <a ng-click="retailerdetails($root.retailers_id,'1')" class="cs-backbtn button button-icon icon ion-android-arrow-back fff"></a>
+    </ion-nav-buttons>
+    <!-- BACKBTN ICON END-->
+
+    <!-- HOME ICON START -->
+    <ion-nav-buttons side="right">
+        <a href="#/home" class="button button-icon icon ion-home fff font-18"></a>
+    </ion-nav-buttons>
+    <!-- HOME ICON END-->
+
+    <ion-content ng-controller="ImgDocCtrl">
+
+      <form name="imgform">
+        <label class="item-input cs-input pr-16">
+            <div class="input-label">
+                Title
+            </div>
+           <input type="text" ng-model="data.title" required>
+        </label>
+
+
+        <div class="no-padding-top upload-plus-icon padding-16 no-padding-bottom">
+            <div class="input-label w100">
+                Upload Picture
+            </div>
+
+            <ul>
+                <li ng-repeat="mediadatas in mediaData" >
+                    <label>
+                        <img src="{{mediadatas.src}}">
+                    </label>
+                </li>
+
+                <li>
+                    <div class="label" ng-click="camera_click(1);">
+                        <button type="button">
+                            <i class="material-icons">add</i>
+                        </button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+
+        <div class="input-submit padding-16">
+            <a ng-click="mediaData[0].src?upload('1'):'';" ng-style="{'opacity':mediaData[0].src? 1 : 0.5}">SUBMIT</a>
+        </div>
+
+      </form>   
+
+      <div class="data-not-found" ng-hide="dr_doc_imag.length">
+            <div class="outer">
+                <div class="innear">
+                    <img src="img/data-not-found.svg" alt="">
+                    <h2>Temporarily , No Image & Document Available</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="album-type" ng-if="dr_doc_imag.length" ng-repeat="doc in dr_doc_imag">
+            <a ng-click="dr_img_doc_details(retailer_det.id, doc.document_title,'1');" class="ab-headeing" >
+                <div class="heading">
+                    <h2>{{doc.document_title}}</h2>
+                </div>
+                <i class="material-icons">keyboard_arrow_right</i>
+            </a>
+
+            <a ng-click="dr_img_doc_details(retailer_det.id,doc.document_title,'1');" class="last-upload">
+                <span class="counter">{{doc.count}}</span>
+                <div class="img-icon">
+                    <div class="outer">
+                        <div class="innear">
+                            <img src="{{upload_url+doc.url}}" alt="">
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+       <!--  <div class="album-type">
+            <a href="#/tab-ret/gallery-ret" class="ab-headeing">
+                <div class="heading">
+                    <h2>Shop Banner</h2>
+                </div>
+                <i class="material-icons">keyboard_arrow_right</i>
+            </a>
+
+            <a href="#/tab-ret/gallery-ret" class="last-upload">
+                <span class="counter">3</span>
+                <div class="img-icon">
+                    <div class="outer">
+                        <div class="innear">
+                            <img src="img/shop-banner.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div> -->
+
+    </ion-content>
+
+</ion-view>

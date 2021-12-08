@@ -1,0 +1,285 @@
+<ion-view view-title="View & Edit">
+    
+    <ion-nav-buttons side="left">
+        <a ng-click="disable_tabs==true ? retailerdetails($root.retailers_id,'3','','','','Ret',dr_status) : retailerdetails($root.retailers_id,'1')" class="cs-backbtn button button-icon icon ion-android-arrow-back fff"></a>
+    </ion-nav-buttons>
+
+    <ion-nav-buttons side="right">
+        <a ng-click="camera_click(4);" class="button button-icon icon ion-android-camera fff font-18"></a>
+    </ion-nav-buttons>
+    
+    
+    <ion-content class="profile">
+        <ul class="cs-tabs">
+        <li><a ng-click="per_det=true" ng-class="per_det ? 'active' : ''">Personal Details</a></li>
+        <li><a ng-click="edit_dr_seg(retailer_det.id); per_det=false" ng-class="per_det ? '' :'active'">Segment Details</a></li>
+        </ul>
+
+     <div ng-if="per_det==true">
+        <div class="profile-head  pt-30">
+            <div class="pr-icon">
+                <div class="outer">
+                    <div class="innear">
+                        <img style="width: 54px; height: 54px;" src="{{upload_url + retailer_det.dr_image}}" ng-if="retailer_det.dr_image" >
+                        <i class="material-icons" ng-if="!retailer_det.dr_image">person</i>
+                    </div>
+                </div>
+            </div>
+            <h2>{{retailer_det.contact_person}}</h2>
+        </div>
+
+        <div class="form-new-profile" ng-class="{true:'', false:'active'}[disp_edit5]">
+            <form name="Compform" novalidate>
+            <h2 class="heading">Company Info
+                <a class="edit" ng-click="disp_edit5=false">
+                    <span ng-if="disp_edit5"><i class="material-icons">border_color</i></span>
+                </a>
+                <a class="save" ng-click="save_comp_info(); disp_edit5=true" ng-disabled="Compform.$invalid">
+                    <span ng-if="!disp_edit5"><i class="material-icons">save</i></span>
+                </a>
+            </h2>
+            <ul>
+                <li>
+                    <p>Counter Name</p>
+                    <input type="text" ng-model="retailer_det.dr_name" required ng-readonly="disp_edit5">
+                </li>
+                <li>
+                    <p>ID</p>
+                    <p>RET#{{retailer_det.id}}</p>
+                </li>
+                <li>
+                    <p>Associated Since</p>
+                    <p>{{formatDate(retailer_det.date_created) | date:'dd MMMM y'}}</p>
+                </li>
+                <li>
+                    <p>Email</p>
+                    <input type="email" ng-model="retailer_det.email"  ng-readonly="disp_edit5">
+                </li>
+                <li>
+                    <p>GST No.</p>
+                    <input type="text" ng-model="retailer_det.gst_no"  ng-readonly="disp_edit5">
+                </li>
+                <li>
+                    <p>Landline No</p>
+                    <input string-to-number type="number" ng-model="retailer_det.landline_no"  ng-readonly="disp_edit5">
+                </li>
+            </ul>
+            </form>
+        </div>
+
+        <div class="form-new-profile" ng-class="{true:'', false:'active'}[disp_edit6]">
+            <form name="Persform" novalidate>
+            <h2 class="heading">Personal Info
+                <a class="edit" ng-click="disp_edit6=false">
+                    <span ng-if="disp_edit6"><i class="material-icons">border_color</i></span>
+                </a>
+                <a class="save" ng-click="save_dr_pers_info(); disp_edit6=true">
+                    <span ng-if="!disp_edit6"><i class="material-icons">save</i></span>
+                </a>
+            </h2>
+
+
+            <div class="contact-info" ng-repeat="val in retailer_contact">
+                <h2>Contact Person Detail - {{$index+1}}</h2>
+                <ul>
+                    <!-- <li ng-if="!disp_edit6"> -->
+                    <li>
+                        <p>Contact Person</p>
+                        <input type="text" ng-model="val.contact_person" ng-readonly="disp_edit6" style="background: #fff;">
+                    </li>
+                    <li>
+                        <p>Date of Birth</p>
+                        <label><input date-input type="date" ng-model="val.dob" ng-readonly="disp_edit6" style="background: #fff;"></label>
+                    </li>
+                    <li>
+                        <p>Mobile No. 1</p>
+                        <input numbers-only type="tel" name="mob1" ng-model="val.contact_1" minlength="10" maxlength="10" ng-readonly="disp_edit6" style="background: #fff;">
+                        <span class="error-right top-7 right-10" ng-if="Persform.mob1.$invalid">* Number Not Valid</span>
+                    </li>
+                    <li>
+                        <p>Mobile No. 2</p>
+                        <input numbers-only type="tel" name="mob2" ng-model="val.contact_2" minlength="10" maxlength="10" ng-readonly="disp_edit6" style="background: #fff;">
+                        <span class="error-right top-7 right-10" ng-if="Persform.mob2.$invalid">* Number Not Valid</span>
+                    </li>
+                </ul>
+            </div>
+           
+            </form>
+        </div>
+
+         <div class="form-new-profile" ng-if="retailer_det.username">
+            <form name="Loginform" novalidate>
+            <h2 class="heading">Login Info
+                <!-- <a class="edit" ng-click="disp_edit7=false">
+                    <span ng-if="disp_edit7"><i class="material-icons">border_color</i></span>
+                </a>
+                <a class="save" ng-click="save_login_info(); disp_edit7=true">
+                    <span ng-if="!disp_edit7"><i class="material-icons">save</i></span>
+                </a> -->
+            </h2>
+            <ul>
+                <li>
+                    <p>Username</p>
+                    <p>{{retailer_det.username}}</p>
+                </li>
+                <li>
+                    <p>Password</p>
+                    <p>{{retailer_det.password}}</p>
+                    <!-- <input type="text" ng-model="retailer_det.password" ng-readonly="disp_edit7"> -->
+                </li>
+            </ul>
+            </form>
+        </div>
+
+        <div class="form-new-profile" ng-class="{true:'', false:'active'}[disp_edit8]">
+            <form name="Addform" novalidate>
+            <h2 class="heading">Billing Address Info
+                <a class="edit" ng-click="disp_edit8=false">
+                    <span ng-if="disp_edit8"><i class="material-icons">border_color</i></span>
+                </a>
+                <a class="save" ng-click="save_dr_add_info(); disp_edit8=true">
+                    <span ng-if="!disp_edit8"><i class="material-icons">save</i></span>
+                </a>
+            </h2>
+            <ul>
+                <li>
+                    <p>Street</p>
+                    <input type="text" ng-model="retailer_det.street" ng-readonly="disp_edit8">
+                </li>
+                <li>
+                    <p>State</p>
+                    <select ng-model="retailer_det.state_name" ng-disabled="disp_edit8" ng-change="get_profile_districts(retailer_det.state_name,1)">
+                        <option value=" ">Select State</option>
+                        <option ng-repeat="val in ret_state_data">{{val.state_name}}</option>
+                    </select>
+                </li>
+                <li>
+                    <p>District</p>
+                    <select ng-model="retailer_det.district_name" ng-disabled="disp_edit8" ng-change="get_profile_city(retailer_det.district_name,retailer_det.state_name,1)">
+                        <option value=" ">Select District</option>
+                        <option ng-repeat="val in ret_district_data">{{val.district_name}}</option>
+                    </select>
+                </li>
+                 
+                <li>
+                    <p>City</p>
+                    <select ng-model="retailer_det.city" ng-disabled="disp_edit8" ng-change="get_profile_area(retailer_det.city,retailer_det.state_name,1)">
+                        <option value=" ">Select City</option>
+                        <option ng-repeat="val in ret_city_data">{{val.city}}</option>
+                    </select>
+                </li>
+                <li>
+                    <p>Area</p>
+                    <select ng-model="retailer_det.area" ng-disabled="disp_edit8" ng-change="get_profile_pincodes(retailer_det.area,retailer_det.state_name,1)">
+                        <option value=" ">Select Area</option>
+                        <option ng-repeat="val in ret_area_data">{{val.area}}</option>
+                    </select>
+                </li>
+                 <li>
+                    <p>Pincode</p>
+                    <input type="text" ng-model="retailer_det.pincode" ng-readonly="disp_edit8">
+                </li>
+            </ul>
+            </form>
+        </div>
+
+
+        <div class="form-new-profile" ng-class="{true:'', false:'active'}[disp_edit9]">
+            <form name="Addform" novalidate>
+            <h2 class="heading">Shipping Address Info
+                <a class="edit" ng-click="disp_edit9=false">
+                    <span ng-if="disp_edit9"><i class="material-icons">border_color</i></span>
+                </a>
+                <a class="save" ng-click="save_ship_add_info(); disp_edit9=true">
+                    <span ng-if="!disp_edit9"><i class="material-icons">save</i></span>
+                </a>
+            </h2>
+            <ul>
+                <li class="sm-checkbox" ng-if="!disp_edit9">
+                    <label><input type="checkbox" ng-click="same_ship_as_bill_add(toggle_val)"> Same as Billing Address</label>
+                </li>
+                <li>
+                    <p>Street</p>
+                    <input type="text" ng-model="retailer_det.ship_street" ng-readonly="disp_edit9">
+                </li>
+                <li>
+                    <p>State</p>
+                    <select ng-model="retailer_det.ship_state_name" ng-disabled="disp_edit9" ng-change="get_profile_districts(retailer_det.ship_state_name,2)">
+                        <option value=" ">Select State</option>
+                        <option ng-repeat="val in ship_state_data">{{val.state_name}}</option>
+                    </select>
+                </li>
+                <li>
+                    <p>District</p>
+                     <select ng-model="retailer_det.ship_district_name" ng-disabled="disp_edit9" ng-change="get_profile_pincodes(retailer_det.ship_district_name,2)">
+                        <option value=" ">Select District</option>
+                        <option ng-repeat="val in ship_district_data">{{val.district_name}}</option>
+                    </select>
+                </li>
+                <li>
+                    <p>City</p>
+                    <select ng-model="retailer_det.ship_city" ng-disabled="disp_edit9" ng-change="get_profile_area(retailer_det.ship_city,retailer_det.ship_state_name,2)">
+                        <option value=" ">Select City</option>
+                        <option ng-repeat="val in ship_city_data">{{val.city}}</option>
+                    </select>
+                </li>
+                <li>
+                    <p>Area</p>
+                    <select ng-model="retailer_det.ship_area" ng-disabled="disp_edit9" ng-change="get_profile_pincodes(retailer_det.ship_area,retailer_det.ship_state_name,2)">
+                        <option value=" ">Select Area</option>
+                        <option ng-repeat="val in ship_area_data">{{val.area}}</option>
+                    </select>
+                </li>
+                 <li>
+                    <p>Pincode</p>
+                    <input type="text" ng-model="retailer_det.ship_pincode" ng-readonly="disp_edit9">
+                </li>
+            </ul>
+            </form>
+        </div>       
+        
+        <div class="form-new-profile">
+            <h2 class="heading">Segment Info
+            </h2>
+            <div class="padding-10">
+                <table>
+                    <tr>
+                        <th>Segment</th>
+                        <th>Discount (%)</th>
+                    </tr>
+                    <tr ng-repeat="value in mysegments">
+                        <td ng-repeat="val in value">{{val}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="form-new-profile">
+            <h2 class="heading">Prayag Executive
+            </h2>
+            <ul>
+                <li>
+                    <p style="line-height: 0px;">&nbsp;</p>
+                    <p>{{retailer_det.exec_name}} &nbsp; ( <a href="tel: {{retailer_det.exec_mob1}}">{{retailer_det.exec_mob1}}</a>  <a href="tel: {{retailer_det.exec_mob2}}">{{retailer_det.exec_mob2}}</a>)</p>
+                </li>
+            </ul>
+        </div>
+     </div>
+
+     <form ng-if="per_det==false">
+        <div class="cs-check-right">
+            <ion-checkbox ng-model="check_all" ng-change="format(check_all,'')">Select All</ion-checkbox>
+        </div>
+            <ul>
+                 <ion-checkbox  ng-repeat="seg in segment_names" ng-model="seg_select[$index]" ng-click="format('null',$index)" value="{{seg}}" ng-checked="check_all">{{seg}} </ion-checkbox>
+                <li>
+                    <div class="input-submit">
+                        <input type="submit" value="submit" ng-click="save_edit_dr_seg(1)">
+                    </div>
+                </li>
+            </ul>
+     </form>
+    </ion-content>
+    
+    
+    </ion-view>

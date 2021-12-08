@@ -1,0 +1,111 @@
+<ion-view view-title="Expenses" >
+    
+    <!-- BACKBTN ICON START -->
+    <ion-nav-buttons side="left">
+        <a ng-click="doTheBack()" class="cs-backbtn button button-icon icon ion-android-arrow-back fff"></a>
+    </ion-nav-buttons>
+    <!-- BACKBTN ICON END-->
+    
+    <!-- HOME ICON START -->
+    <ion-nav-buttons side="right">
+        <a href="#/home" class="button button-icon icon ion-home fff font-18"></a>
+    </ion-nav-buttons>
+    <!-- HOME ICON END-->
+    
+    <ion-content>
+        
+        <div class="custome-date-picker no-padding-bottom">
+            <ul>
+                <li><a ng-click="sub_new_exp_date()"><i class="material-icons">keyboard_arrow_left</i></a></li>
+                <li><a href=""><span>{{newexpDate | date:'longDate'}}</span></a></li>
+                <li><a ng-click="add_new_exp_date()"><i class="material-icons" style="opacity: 1;">keyboard_arrow_right</i></a></li>
+            </ul>
+        </div>
+        
+                <div>
+            <form novalidate name="expform">
+                <label class="item-input item-select cs-select cs-select-none">
+                    <div class="input-label">
+                        Expense Type
+                    </div>
+                    <select ng-model="expense_data.type_sel" name="exp_type" required>
+                        <option value="">Select an Option</option>
+                        <option value="journey">Journey</option>
+                        <option value="accomodation">Accomodation</option>
+                        <option value="food">Food</option>
+                        <option value="mobile_recharge">Mobile Recharge</option>
+                        <option value="net_surfing">Net Surfing</option>
+                        <option value="courier">Courier</option>
+                        <option value="photocopy">Photocopy</option>
+                        <option value="stationary">Stationary</option>
+                        <option value="misc_expense">Misc. Expense</option>
+                    </select>
+                </label>
+
+                <label class="item-input item-select cs-select cs-select-none" ng-if="expense_data.type_sel=='journey'">
+                        <div class="input-label">
+                            Select Mode
+                        </div>
+
+                        <select ng-model="expense_data.mode_journey" name="mode" required>
+                            <option value="">Select an Option</option>
+                            <option value="bike">Bike</option>
+                            <option value="car">Car</option>
+                            <option value="train">Train</option>
+                            <option value="metro_train">Metro Train</option>
+                            <option value="taxi_registered">Taxi Registered</option>
+                            <option value="taxi_unregistered">Taxi Un-Registered</option>
+                            <option value="local_conveyance">Local Conveyance</option>
+                        </select>
+                </label>
+
+                <label class="item-input cs-select select-none" ng-if="expense_data.mode_journey=='bike' || expense_data.mode_journey=='car'">
+                    <div class="input-label">
+                        Enter KM/s
+                    </div>
+                    <input type="text" ng-model="expense_data.distance" name="distance" required>
+                </label>
+
+                <label class="item-input item-select cs-select cs-select-none" ng-if="expense_data.type_sel=='accomodation'">
+                        <div class="input-label">
+                            Select Type
+                        </div>
+                        <select ng-model="expense_data.acc_type" name="accom" required>
+                            <option value="">Select an Option</option>
+                            <option value="hotel_registered">Registered</option>
+                            <option value="hotel_unregistered">Un-Registered</option>
+                        </select>
+                </label>
+
+
+                <label class="item-input item-select cs-select cs-select-none" ng-if="expense_data.type_sel=='food'">
+                        <div class="input-label">
+                            Select Type
+                        </div>
+                         <select ng-model="expense_data.food_type" name="food_type" required>
+                            <option value="">Select an Option</option>
+                            <option value="food_registered">Registered</option>
+                            <option value="food_unregistered">Un-Registered</option>
+                         </select>
+                </label>
+
+                
+
+                <label class="item-input cs-select select-none" ng-if="(expense_data.type_sel=='mobile_recharge' || expense_data.type_sel=='net_surfing' || expense_data.type_sel=='courier' || expense_data.type_sel=='photocopy' || expense_data.type_sel=='stationary' || expense_data.type_sel=='misc_expense' || expense_data.acc_type || expense_data.food_type) || (expense_data.mode_journey && expense_data.mode_journey!='bike' && expense_data.mode_journey!='car')">
+                    <div class="input-label">
+                        Enter Amount <i class="inr-icon ml-5"></i>
+                    </div>
+                    <input type="text" ng-model="expense_data.amt" name="amount" required>
+                </label>
+
+                <div class="input-submit custom-bttn padding-16">
+                    <input type="submit"  value="ADD EXPENSE" ng-disabled="expform.$invalid" ng-style="{'opacity': expform.$invalid ? 0.5 : 1}" ng-click="add_new_expense(newexpDate)">
+                </div>
+                
+            </form>
+        </div>
+        
+    </ion-content>
+    
+    
+</ion-view>
