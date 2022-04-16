@@ -3952,7 +3952,7 @@ input[type="date"] {
 /*
 =====================
 =====================   'DASHBOARD PAGE'
-===================== 
+=====================
 */
 .dashboard-1 .message {
   position: absolute;
@@ -4344,7 +4344,7 @@ input[type="date"] {
 /*
 =====================
 =====================   'HOME PAGE'
-===================== 
+=====================
 */
 .home .slide {
   overflow: hidden;
@@ -4842,7 +4842,7 @@ input[type="date"] {
 /*
 =====================
 =====================   'DETAIL PAGE'
-===================== 
+=====================
 */
 .detail-page .user-information {
   background: #ECECEC;
@@ -5098,7 +5098,7 @@ input[type="date"] {
 /*
 =====================
 =====================   'ORDER PAGE'
-===================== 
+=====================
 */
 .order-listing .list {
   margin-bottom: 0px;
@@ -5236,7 +5236,7 @@ input[type="date"] {
 /*
 =====================
 =====================   'ADD PRODUCT PAGE'
-===================== 
+=====================
 */
 .intimate-row .input-label {
   width: 100%;
@@ -5476,7 +5476,7 @@ input[type="date"] {
 /*
 =====================
 =====================   'IMAGES & DOCUMENT PAGE'
-===================== 
+=====================
 */
 .upload-plus-icon ul li {
   display: inline-block;
@@ -5563,7 +5563,7 @@ input[type="date"] {
 /*
 =====================
 =====================   'GALLERY PAGE'
-===================== 
+=====================
 */
 .camera-icon {
   text-align: center;
@@ -5613,7 +5613,7 @@ input[type="date"] {
 /*
 =====================
 =====================   'VIEW AND EDIT PAGE'
-===================== 
+=====================
 */
 .form-list .item {
   padding-bottom: 0px;
@@ -5664,7 +5664,7 @@ input[type="date"] {
 /*
 =====================
 =====================   'SEARCH USER PAGE'
-===================== 
+=====================
 */
 .search-user .ser-user {
   background: #ECECEC;
@@ -5759,7 +5759,7 @@ input[type="date"] {
 /*
 =====================
 =====================   'SEARCH USER PAGE'
-===================== 
+=====================
 */
 .become-partner {
   padding: 16px;
@@ -6016,7 +6016,7 @@ input[type="date"] {
 /*
 =====================
 =====================   'ADD EXPENSES PAGE'
-===================== 
+=====================
 */
 .ex-form .box-loop {
   margin-top: 15px;
@@ -6293,7 +6293,7 @@ input[type="date"] {
 /*
 =====================
 =====================   'ADD PAYMENT PAGE'
-===================== 
+=====================
 */
 .addpay-form {
   background: #ECECEC;
@@ -6343,7 +6343,7 @@ input[type="date"] {
 /*
 =====================
 =====================   'PROFILE PAGE'
-===================== 
+=====================
 */
 .profile .profile-head {
   text-align: center;
@@ -6691,7 +6691,7 @@ input[type="date"] {
 /*
 =====================
 =====================   'DISTRIBUTOR DETAIL PAGE'
-===================== 
+=====================
 */
 .det-details .profile-head {
   text-align: left;
@@ -6878,7 +6878,7 @@ input[type="date"] {
 /*
 =====================
 =====================   'FEEDBACK PAGE'
-===================== 
+=====================
 */
 .fed-height {
   height: 90vh;
@@ -8280,7 +8280,7 @@ ul.pie-legend li span {
   outline: none;
 }
 
-.multiple-img 
+.multiple-img
 {
   display: flex;
   grid-template-columns: 100px 1;
@@ -8302,7 +8302,7 @@ ul.pie-legend li span {
   position: relative;
 }
 
-.multiple-img label.add 
+.multiple-img label.add
 {
   background: #e5f4fd;
   border-color: #52a5da;
@@ -8370,7 +8370,7 @@ ul.pie-legend li span {
   font-weight: 600;
 }
 
-.fix-btn-group 
+.fix-btn-group
 {
   position: absolute;
   bottom: 50px;
@@ -8382,7 +8382,7 @@ ul.pie-legend li span {
 }
 
 .fix-btn-group button,
-.fix-btn-group a 
+.fix-btn-group a
 {
   width: 100%;
   height: 34px;
@@ -8394,8 +8394,127 @@ ul.pie-legend li span {
   box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.2), 0px -3px 6px 0px rgba(0, 0, 0, 0.2);
   border-radius: 8px
 }
-.cs-list-content p 
+.cs-list-content p
 {
   font-size: 12px;
   margin: 0px;
 }
+
+/* multi dropdown */
+.searchable-multi-select {
+  position: relative;
+}
+.searchable-multi-select a {
+  width: 100%;
+  padding: 5px 10px;
+  overflow: hidden;
+}
+
+.sel-btn {
+  border: 1px solid #B8B8B8;
+  height: 40px;
+  line-height: 30px;
+  padding: 0px 10px;
+  box-sizing: border-box;
+  font-size: 12px;
+  display: block;
+  position: relative;
+}
+.searchable-multi-select a .caret
+{
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+}
+.sel-btn small
+{
+  font-size: 100%;
+  color: #000;
+}
+
+.btn-default {
+  color: #333;
+  background-color: #fff;
+  border-color: #ccc;
+}
+
+ul.dropdown-menu-search
+{
+  box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.2);
+  border: 1px solid #ccc;
+  margin-top: -1px;
+  min-height: auto;
+  max-height: 250px;
+  overflow: auto;
+  background: #ffffff;
+  display: none;
+}
+
+
+ul.dropdown-menu-search li:first-child
+{
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  background: #ffffff;
+  border-bottom: 1px solid #e8e8e8;
+  padding: 5px;
+}
+
+ul.dropdown-menu-search li input[type=text]:not(.browser-default)
+{
+  border: 1px solid #9e9e9e !important;
+  height: 30px;
+  width: 100%;
+  font-size: 12px;
+  margin: 0 0 0px 0;
+  padding: 0px 10px;
+  box-sizing: border-box;
+  background: #fff;
+  border-radius: 50px;
+}
+
+ul.dropdown-menu-search li label
+{
+  display: block;
+  position: relative;
+  font-size: 12px;
+  color: #000;
+  padding: 7px 10px;
+}
+ul.dropdown-menu-search li label.text-success
+{
+  font-weight: 600;
+  background: #f9f9f9;
+}
+ul.dropdown-menu-search li label.text-success::after
+{
+  content: 'done';
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 18px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  color: #00bd15;
+}
+.searchable-multi-select.open ul.dropdown-menu-search
+{
+  display: block;
+}
+
+.field-input
+{
+  position: relative;
+}
+/* multi dropdown */

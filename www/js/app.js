@@ -14,7 +14,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
         if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
             cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
             cordova.plugins.Keyboard.disableScroll(true);
-            
+
         }
         if (window.StatusBar) {
             // org.apache.cordova.statusbar required
@@ -22,20 +22,20 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
             StatusBar.backgroundColorByHexString("#086289");
             StatusBar.overlaysWebView(false);
         }
-        
+
         $ionicPlatform.registerBackButtonAction(function () {
-            
+
             if ($ionicHistory.currentStateName() === 'login' || $ionicHistory.currentStateName() === 'home'|| $ionicHistory.currentStateName() === 'dashboard') {
-                
+
                 if(backbutton==0) {
                     backbutton++;
                     window.plugins.toast.showShortBottom('Press Again to Exit');
                     $timeout(function(){backbutton=0;},2500);
-                    
+
                 } else {
                     ionic.Platform.exitApp();
                 }
-                
+
             } else if ($ionicHistory.currentStateName() === 'tab.profile') {
                 $state.go('dashboard');
             }
@@ -45,7 +45,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
                     backbutton++;
                     window.plugins.toast.showShortBottom('Order will Vanish once you go back!!!');
                     $timeout(function(){backbutton=0;},2500);
-                    
+
                 } else
                 {
                     navigator.app.backHistory();
@@ -54,9 +54,9 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
             else {
                 navigator.app.backHistory();
             }
-            
+
         }, 100);
-        
+
         if (window.cordova) {
             // db = $cordovaSQLite.openDB({name:"my.app_prayag", iosDatabaseLocation: 'default'});
             db = window.openDatabase("my.app",'1','my',1024 * 1024 * 100);
@@ -66,72 +66,72 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
             db = window.openDatabase("my.app",'1','my',1024 * 1024 * 100);
             console.log("browser");
         }
-        
+
         var posOptions = {
             // enableHighAccuracy: true,
             timeout: 30000,
             maximumAge: 0
         };
-        
-        
+
+
         function onRequestSuccess(success) {
             $rootScope.isGpsEnabled = true;
             console.log("Successfully requested accuracy: "+success.message);
-            
+
             var options = {timeout: 10000, enableHighAccuracy: true};
             $cordovaGeolocation.getCurrentPosition(options).then(function(position){
                 console.log(position.coords.latitude+" "+position.coords.longitude);
-                
+
                 mySharedService.lat = position.coords.latitude;
                 mySharedService.lng = position.coords.longitude;
-                
+
             })
         }
-        
-        
+
+
         function onRequestFailure(error) {
-            
+
             $rootScope.isGpsEnabled = false;
             console.error("Accuracy request failed: error code="+error.code+"; error message="+error.message);
-            
+
             if(error.code !== cordova.plugins.locationAccuracy.ERROR_USER_DISAGREED) {
                 cordova.plugins.diagnostic.switchToLocationSettings();
-                
+
                 $cordovaGeolocation.getCurrentPosition(posOptions).then(function (position) {
                     console.log(position.coords.latitude+" "+position.coords.longitude);
-                    
+
                     mySharedService.lat = position.coords.latitude;
                     mySharedService.lng = position.coords.longitude;
-                    
+
                 }, function(err) {
                     console.log(err.code+" "+err.message);
                     console.log("Could not get location");
                 });
-                
+
             } else {
                 ionic.Platform.exitApp();
             }
         }
-        
+
         $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS "+dbTableName+" (id integer primary key, username text,password text)");
-        
+
         var query ="SELECT username, password FROM "+dbTableName+" ORDER BY id DESC LIMIT 1";
         $cordovaSQLite.execute(db, query).then(function(res) {
             for(i=0;i<res.rows.length;i++)
             {
                 console.log(res.rows.item(i));
             }
-            
+
             if(res.rows.length > 0) {
-                
+
                 $ionicLoading.show({
                     template: '<span class="icon spin ion-loading-d"></span> Loading...'
                 });
-                
+
                 if(res.rows.item(0).username && res.rows.item(0).password){
-                    
+
                     loginService.loginuser(res.rows.item(0).username,res.rows.item(0).password)
-                    
+
                     .then(function (result) {
                         console.log(result);
                         $timeout(function () {
@@ -149,8 +149,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
                         mySharedService.image = result.data.image;
                         $ionicLoading.hide();
                         console.log(salesexe_district);
-                        
-                        
+
+
                         $state.go('dashboard');
                         // commented
                         // if (ionic.Platform.isAndroid())
@@ -158,9 +158,9 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
                         //     cordova.plugins.locationAccuracy.request(onRequestSuccess, onRequestFailure, cordova.plugins.locationAccuracy.REQUEST_PRIORITY_HIGH_ACCURACY);
                         //     BackgroundGeolocationService.init(salesexe_id);
                         // }
-                        
+
                     }, function (result) {
-                        
+
                         $ionicLoading.hide();
                         $timeout(function () {
                             navigator.splashscreen.hide();
@@ -171,9 +171,9 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
                         });
                         $state.go('login');
                     });
-                    
+
                 }
-                
+
             } else {
                 $timeout(function () {
                     navigator.splashscreen.hide();
@@ -184,7 +184,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
             console.error(err);
         });
     });
-    
+
     $rootScope.seg_amt=[];
     $rootScope.default_category=[];
     $rootScope.show_default_category=[];
@@ -198,13 +198,13 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
 })
 
 .config(function($stateProvider, $urlRouterProvider, $httpProvider) {
-    
+
     // Ionic uses AngularUI Router which uses the concept of states
     // Learn more here: https://github.com/angular-ui/ui-router
     // Set up the various states which the app can be in.
     // Each state's controller can be found in controllers.js
     $stateProvider
-    
+
     // setup an abstract state for the tabs directive
     .state('tab', {
         url: '/tab',
@@ -212,54 +212,54 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
         templateUrl: 'templates/tabs.html',
         controller: 'PrayagCtrl'
     })
-    
+
     // Each tab has its own nav history stack:
-    
+
     .state('login', {
         url: '/login',
         templateUrl: 'templates/login.html',
         controller : 'PrayagCtrl'
     })
-    
-    
+
+
     .state('dashboard', {
         url: '/dashboard',
         cache:false,
         templateUrl: 'templates/dashboard.html',
         controller : 'PrayagCtrl'
     })
-    
-    
+
+
     .state('home', {
         url: '/home',
         templateUrl: 'templates/home.html',
         controller : 'PrayagCtrl'
     })
-    
-    
+
+
     .state('paymaster', {
         url: '/paymaster',
         cache:false,
         templateUrl: 'templates/paymaster.html',
         controller : 'PrayagCtrl'
     })
-    
+
     .state('paymaster-data', {
         url: '/paymaster-data',
         cache:false,
         templateUrl: 'templates/paymaster-data.html',
         controller : 'PrayagCtrl'
     })
-    
-    
+
+
     .state('add-payment', {
         url: '/add-payment',
         templateUrl: 'templates/add-payment.html',
         cache:false,
         controller : 'PrayagCtrl'
     })
-    
-    
+
+
     .state('tab.retailers', {
         url: '/retailers',
         cache:false,
@@ -270,7 +270,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
             }
         }
     })
-    
+
     .state('tab.retailers-det', {
         url: '/retailers-det',
         cache:false,
@@ -281,7 +281,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
             }
         }
     })
-    
+
     .state('tab.user-detail', {
         url: '/user',
         views: {
@@ -291,14 +291,14 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
             }
         }
     })
-    
-    
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
+
+
     .state('tab.distributor', {
         url: '/distributor',
         cache:false,
@@ -309,8 +309,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
             }
         }
     })
-    
-    
+
+
     .state('tab.distributor-det', {
         url: '/distributor-det',
         cache:false,
@@ -321,7 +321,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
             }
         }
     })
-    
+
     .state('tab.dwr', {
         url: '/dwr',
         cache:false,
@@ -332,7 +332,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
             }
         }
     })
-    
+
     .state('tab.dwr-ret-dist', {
         url: '/dwr-ret-dist',
         cache:false,
@@ -343,7 +343,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
             }
         }
     })
-    
+
     .state('tab.dwr-pay', {
         url: '/dwr-pay',
         cache:false,
@@ -354,7 +354,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
             }
         }
     })
-    
+
     .state('tab.dwr-req', {
         url: '/dwr-req',
         cache:false,
@@ -365,7 +365,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
             }
         }
     })
-    
+
     .state('tab.dwr-ord', {
         url: '/dwr-ord',
         cache:false,
@@ -376,7 +376,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
             }
         }
     })
-    
+
     .state('tab.leave', {
         url: '/leave',
         cache:false,
@@ -387,8 +387,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
             }
         }
     })
-    
-    
+
+
     .state('tab.addleave', {
         url: '/addleave',
         cache:false,
@@ -399,7 +399,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
             }
         }
     })
-    
+
     .state('tab.birthday', {
         url: '/birthday',
         cache:false,
@@ -421,7 +421,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
             }
         }
     })
-    
+
     .state('tab.announcement', {
         url: '/announcement',
         cache:false,
@@ -432,7 +432,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
             }
         }
     })
-    
+
     .state('tab.announcement-detail', {
         url: '/announcement-detail',
         cache:false,
@@ -443,7 +443,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
             }
         }
     })
-    
+
     .state('tab.profile', {
         url: '/profile',
         cache:false,
@@ -454,8 +454,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
             }
         }
     })
-    
-    
+
+
     .state('tab.profile-edit', {
         url: '/profile-edit',
         cache:false,
@@ -466,8 +466,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
             }
         }
     })
-    
-    
+
+
     .state('tab.expense', {
         url: '/expense',
         cache:false,
@@ -478,7 +478,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
             }
         }
     })
-    
+
     .state('tab.expense-date', {
         url: '/expense-date',
         cache:false,
@@ -489,7 +489,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
             }
         }
     })
-    
+
     .state('tab.expense-day', {
         url: '/expense-day',
         cache:false,
@@ -500,7 +500,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
             }
         }
     })
-    
+
     .state('tab.addexpense', {
         url: '/addexpense',
         views: {
@@ -510,7 +510,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
             }
         }
     })
-    
+
     .state('tab.followup', {
         url: '/followup',
         cache:false,
@@ -521,8 +521,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
             }
         }
     })
-    
-    
+
+
     .state('tab.nearest', {
         url: '/nearest',
         cache:false,
@@ -533,30 +533,30 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
             }
         }
     })
-    
-    
-    
+
+
+
     .state('become-partner', {
         url: '/partner',
         cache:false,
         templateUrl: 'templates/become-partner.html',
         controller:'PrayagCtrl'
     })
-    
+
     .state('assign-segment', {
         url: '/assign-segment',
         cache:false,
         templateUrl: 'templates/assign-segment.html',
         controller:'PrayagCtrl'
     })
-    
+
     .state('assign-distributor', {
         url: '/assign-distributor',
         cache:false,
         templateUrl: 'templates/assign-distributor.html',
         controller:'PrayagCtrl'
     })
-    
+
     //
     // .state('tab.chats', {
     //     url: '/chats',
@@ -577,7 +577,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     //         }
     //     }
     // })
-    
+
     // .state('tab.account', {
     //     url: '/account',
     //     views: {
@@ -587,7 +587,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     //         }
     //     }
     // })
-    
+
     //
     // RETAILERS TABS
     //
@@ -597,8 +597,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
         templateUrl: 'templates/tabs-ret.html',
         controller: 'PrayagCtrl'
     })
-    
-    
+
+
     .state('tab-ret.tab-activity-ret', {
         url: '/tab-activity-ret',
         cache:false,
@@ -609,21 +609,21 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
             }
         }
     })
-    
+
     .state('map-ret', {
         url: '/map-ret',
         templateUrl: 'templates/point-loc-ret.html',
         cache:false,
         controller: 'PrayagCtrl'
     })
-    
+
     .state('nearest-map', {
         url: '/nearest-map',
         templateUrl: 'templates/nearest-store-map.html',
         cache:false,
         controller: 'PrayagCtrl'
     })
-    
+
     .state('tab-ret.tab-order-ret', {
         url: '/tab-order-ret',
         cache:false,
@@ -634,8 +634,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
             }
         }
     })
-    
-    
+
+
     .state('tab-ret.addproduct-ret', {
         url: '/addproduct-ret',
         views: {
@@ -645,7 +645,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
             }
         }
     })
-    
+
     .state('tab-ret.orderdt-ret', {
         url: '/orderdt-ret',
         views: {
@@ -655,8 +655,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
             }
         }
     })
-    
-    
+
+
     .state('tab-ret.confirmord-ret', {
         url: '/confirmord-ret',
         views: {
@@ -666,7 +666,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
             }
         }
     })
-    
+
     .state('tab-ret.order-details', {
         url: '/order-details-ret',
         cache: false,
@@ -677,7 +677,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
             }
         }
     })
-    
+
     .state('tab-ret.tab-imgdoc-ret', {
         url: '/tab-imgdoc-ret',
         cache:false,
@@ -688,8 +688,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
             }
         }
     })
-    
-    
+
+
     .state('tab-ret.gallery-ret', {
         url: '/gallery-ret',
         cache:false,
@@ -700,8 +700,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
             }
         }
     })
-    
-    
+
+
     .state('tab-ret.tab-pop-ret', {
         url: '/tab-pop-ret',
         cache:false,
@@ -712,9 +712,9 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
             }
         }
     })
-    
-    
-    
+
+
+
     .state('tab-ret.addpop-ret', {
         url: '/addpop-ret',
         views: {
@@ -724,8 +724,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
             }
         }
     })
-    
-    
+
+
     .state('tab-ret.tab-edit-ret', {
         url: '/tab-edit-ret',
         cache:false,
@@ -736,8 +736,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
             }
         }
     })
-    
-    
+
+
     //
     // DISTRIBUTER TABS
     //
@@ -747,8 +747,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
         templateUrl: 'templates/tabs-dist.html',
         controller: 'PrayagCtrl'
     })
-    
-    
+
+
     .state('tab-dist.tab-activity-dist', {
         url: '/tab-activity-dist',
         cache:false,
@@ -759,7 +759,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
             }
         }
     })
-    
+
     .state('tab-dist.tab-order-dist', {
         url: '/tab-order-dist',
         cache:false,
@@ -770,8 +770,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
             }
         }
     })
-    
-    
+
+
     .state('tab-dist.addproduct-dist', {
         url: '/addproduct-dist',
         views: {
@@ -781,7 +781,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
             }
         }
     })
-    
+
     .state('tab-dist.orderdt-dist', {
         url: '/orderdt-dist',
         views: {
@@ -791,8 +791,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
             }
         }
     })
-    
-    
+
+
     .state('tab-dist.confirmord-dist', {
         url: '/confirmord-dist',
         views: {
@@ -802,9 +802,9 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
             }
         }
     })
-    
-    
-    
+
+
+
     .state('tab-dist.tab-imgdoc-dist', {
         url: '/tab-imgdoc-dist',
         cache:false,
@@ -815,8 +815,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
             }
         }
     })
-    
-    
+
+
     .state('tab-dist.gallery-dist', {
         url: '/gallery-dist',
         cache:false,
@@ -827,8 +827,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
             }
         }
     })
-    
-    
+
+
     .state('tab-dist.tab-pop-dist', {
         url: '/tab-pop-dist',
         cache:false,
@@ -839,9 +839,9 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
             }
         }
     })
-    
-    
-    
+
+
+
     .state('tab-dist.addpop-dist', {
         url: '/addpop-dist',
         views: {
@@ -851,8 +851,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
             }
         }
     })
-    
-    
+
+
     .state('tab-dist.tab-edit-dist', {
         url: '/tab-edit-dist',
         cache:false,
@@ -863,19 +863,19 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
             }
         }
     });
-    
-    
+
+
     // if none of the above states are matched, use this as the fallback
-    
+
     $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
-    
+
     var param = function(obj) {
         var query = '',
         name, value, fullSubName, subName, subValue, innerObj, i;
-        
+
         for (name in obj) {
             value = obj[name];
-            
+
             if (value instanceof Array) {
                 for (i = 0; i < value.length; ++i) {
                     subValue = value[i];
@@ -896,19 +896,94 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
             }
             else if (value !== undefined && value !== null) query += encodeURIComponent(name) + '=' + encodeURIComponent(value) + '&';
         }
-        
+
         return query.length ? query.substr(0, query.length - 1) : query;
     };
-    
+
     $httpProvider.defaults.transformRequest = [function(data) {
         return angular.isObject(data) && String(data) !== '[object File]' ? param(data) : data;
     }];
-    
-    
+
+
 })
 
 
 .config(function($ionicConfigProvider) {
     $ionicConfigProvider.tabs.position('bottom');
     $ionicConfigProvider.views.forwardCache(false);
+});
+
+app.directive("searchableMultiselect", function($timeout) {
+  return {
+    templateUrl: 'templates/manualSearchandselect.html',
+
+    restrict: 'AE',
+    scope: {
+      displayAttr: '@',
+      selectedItems: '=',
+      allItems: '=',
+      readOnly: '=',
+      removeItem: '&',
+      addItem: '&',
+    },
+    link: function(scope, element, attrs) {
+      element.bind('click', function (e) {
+        e.stopPropagation();
+      });
+
+      scope.width = element[0].getBoundingClientRect();
+
+      scope.updateSelectedItems = function(obj)
+      {
+        console.log(obj);
+
+        var selectedObj;
+        var index;
+        for (i = 0; typeof scope.selectedItems !== 'undefined' && i < scope.selectedItems.length; i++)
+        {
+          if (scope.selectedItems[i].toUpperCase() === obj.Key.toUpperCase())
+          {
+            selectedObj = scope.selectedItems[i];
+            index = i;
+            break;
+          }
+        }
+        console.log(selectedObj);
+
+        if ( typeof selectedObj === 'undefined' )
+        {
+          scope.addItem({item: obj});
+        }
+        else
+        {
+          scope.addItem({item: obj});
+        }
+      };
+
+      scope.isItemSelected = function(item)
+      {
+        if ( typeof scope.selectedItems === 'undefined' ) return false;
+        var tmpItem;
+        for (i=0; i < scope.selectedItems.length; i++) {
+          tmpItem = scope.selectedItems[i];
+          if ( typeof tmpItem !== 'undefined'
+          &&	typeof tmpItem !== 'undefined'
+          &&	typeof item[scope.displayAttr] !== 'undefined'
+          &&	tmpItem.toUpperCase() === item[scope.displayAttr].toUpperCase() ) {
+            return true;
+          }
+        }
+        return false;
+      };
+
+      scope.commaDelimitedSelected = function() {
+        var list = "";
+        angular.forEach(scope.selectedItems, function (item, index) {
+          list += item;
+          if (index < scope.selectedItems.length - 1) list += ', ';
+        });
+        return list.length ? list : "Select an option";
+      }
+    }
+  }
 });

@@ -17,9 +17,9 @@
     "#DEV:/",
     "#USER"
   ],
-  "_resolved": "git+https://github.com/whiteoctober/cordova-plugin-app-version.git#93e61ec7bbf7637022b6b00d797c45786a27ed60",
+  "_resolved": "git+https://github.com/whiteoctober/cordova-plugin-app-version.git#5539b786fafcae67dc492a46a78ebd428a1012db",
   "_spec": "git+https://github.com/whiteoctober/cordova-plugin-app-version.git",
-  "_where": "E:\\prayag-sales-app",
+  "_where": "D:\\git_projects\\prayag-sales-app",
   "author": {
     "name": "whiteoctober"
   },

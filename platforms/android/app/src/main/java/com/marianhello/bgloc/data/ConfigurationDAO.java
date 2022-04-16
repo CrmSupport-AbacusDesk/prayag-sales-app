@@ -8,6 +8,6 @@ import org.json.JSONException;
 import com.marianhello.bgloc.Config;
 
 public interface ConfigurationDAO {
-    boolean persistConfiguration(Config config) throws NullPointerException;
-    Config retrieveConfiguration() throws JSONException;
+    public boolean persistConfiguration(Config config) throws NullPointerException;
+    public Config retrieveConfiguration() throws JSONException;
 }

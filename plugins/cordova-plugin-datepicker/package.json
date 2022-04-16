@@ -1,32 +1,28 @@
 {
-  "_args": [
-    [
-      "cordova-plugin-datepicker@0.9.3",
-      "E:\\prayag-sales-app"
-    ]
-  ],
-  "_from": "cordova-plugin-datepicker@0.9.3",
+  "_from": "cordova-plugin-datepicker@^0.9.3",
   "_id": "cordova-plugin-datepicker@0.9.3",
   "_inBundle": false,
   "_integrity": "sha1-JVipzlmY9tbcBs+S/Yu7nQkB8Wo=",
   "_location": "/cordova-plugin-datepicker",
   "_phantomChildren": {},
   "_requested": {
-    "type": "version",
+    "type": "range",
     "registry": true,
-    "raw": "cordova-plugin-datepicker@0.9.3",
+    "raw": "cordova-plugin-datepicker@^0.9.3",
     "name": "cordova-plugin-datepicker",
     "escapedName": "cordova-plugin-datepicker",
-    "rawSpec": "0.9.3",
+    "rawSpec": "^0.9.3",
     "saveSpec": null,
-    "fetchSpec": "0.9.3"
+    "fetchSpec": "^0.9.3"
   },
   "_requiredBy": [
-    "/"
+    "#DEV:/",
+    "#USER"
   ],
   "_resolved": "https://registry.npmjs.org/cordova-plugin-datepicker/-/cordova-plugin-datepicker-0.9.3.tgz",
-  "_spec": "0.9.3",
-  "_where": "E:\\prayag-sales-app",
+  "_shasum": "2558a9ce5998f6d6dc06cf92fd8bbb9d0901f16a",
+  "_spec": "cordova-plugin-datepicker@^0.9.3",
+  "_where": "D:\\git_projects\\prayag-sales-app",
   "author": {
     "name": "Vitalii Blagodir",
     "email": "vitalii.blagodir@gmail.com"
@@ -34,6 +30,7 @@
   "bugs": {
     "url": "https://github.com/VitaliiBlagodir/cordova-plugin-datepicker/issues"
   },
+  "bundleDependencies": false,
   "cordova": {
     "id": "cordova-plugin-datepicker",
     "platforms": [
@@ -42,6 +39,7 @@
       "windows"
     ]
   },
+  "deprecated": false,
   "description": "Cordova DatePicker Plugin",
   "homepage": "https://github.com/VitaliiBlagodir/cordova-plugin-datepicker#readme",
   "keywords": [

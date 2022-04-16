@@ -3,28 +3,28 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
 // .controller('loginCtrl', function($scope) {})
 
 .controller('DashCtrl', function($scope, $ionicModal,$state) {
-    
+
     $scope.doTheBack = function() {
         window.history.back();
     }
-    
+
     $scope.retailer_list= function() {
         $state.go('tab.retailers');
     }
-    
-    
+
+
     $scope.distributer_list= function() {
         $state.go('tab.distributor');
     }
-    
-    
+
+
     $scope.profile= function() {
         $state.go('tab.profile');
     }
-    
-    
+
+
     //===============
-    
+
 })
 
 
@@ -68,12 +68,12 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
     //
     //$scope.$on('$ionicView.enter', function(e) {
     //});
-    
+
     $scope.doTheBack = function() {
         window.history.back();
     };
-    
-    
+
+
     $scope.chats = Chats.all();
     $scope.remove = function(chat) {
         Chats.remove(chat);
@@ -81,20 +81,20 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
 })
 
 .controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
-    
+
     $scope.doTheBack = function() {
         window.history.back();
     };
-    
+
     $scope.chat = Chats.get($stateParams.chatId);
 })
 
 .controller('AccountCtrl', function($scope) {
-    
+
     $scope.doTheBack = function() {
         window.history.back();
     };
-    
+
     $scope.settings = {
         enableFriends: true
     };
@@ -102,11 +102,11 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
 
 
 .controller('ActivityCtrl', function($scope, $rootScope) {
-    
+
     $scope.doTheBack = function() {
         window.history.back();
     };
-    
+
     $rootScope.act=true;
     $rootScope.img=false;
     $rootScope.pop=false;
@@ -115,11 +115,11 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
 })
 
 .controller('RETOrderCtrl', function($scope, $rootScope) {
-    
+
     $scope.doTheBack = function() {
         window.history.back();
     };
-    
+
     $rootScope.act=false;
     $rootScope.img=false;
     $rootScope.pop=false;
@@ -128,11 +128,11 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
 })
 
 .controller('RADDproCtrl', function($scope, $rootScope) {
-    
+
     $scope.doTheBack = function() {
         window.history.back();
     };
-    
+
     $rootScope.act=false;
     $rootScope.img=false;
     $rootScope.pop=false;
@@ -141,11 +141,11 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
 })
 
 .controller('OrderDtCtrl', function($scope, $rootScope) {
-    
+
     $scope.doTheBack = function() {
         window.history.back();
     };
-    
+
     $rootScope.act=false;
     $rootScope.ord=true;
     $rootScope.pop=false;
@@ -155,17 +155,17 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
 
 
 .controller('ConfirmOrdCtrl', function($scope, $rootScope) {
-    
+
     $scope.doTheBack = function() {
         window.history.back();
     };
-    
+
     $rootScope.act=false;
     $rootScope.ord=true;
     $rootScope.pop=false;
     $rootScope.img=false;
     $rootScope.edit=false;
-    
+
     //  $scope.currentDate = new Date();
     //  $scope.formatDate = function(date){
     // return new Date(date)
@@ -177,16 +177,16 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
     //     $scope.orderDate = moment($scope.currentDate).format('DD-MM-YYYY');
     //     console.log($scope.orderDate);
     //   }
-    
+
 })
 
 
 .controller('ImgDocCtrl', function($scope, $rootScope) {
-    
+
     $scope.doTheBack = function() {
         window.history.back();
     };
-    
+
     $rootScope.act=false;
     $rootScope.ord=false;
     $rootScope.pop=false;
@@ -195,11 +195,11 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
 })
 
 .controller('GalleryCtrl', function($scope, $rootScope) {
-    
+
     $scope.doTheBack = function() {
         window.history.back();
     };
-    
+
     $rootScope.act=false;
     $rootScope.ord=false;
     $rootScope.img=true;
@@ -208,11 +208,11 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
 })
 
 .controller('PopCtrl', function($scope, $rootScope) {
-    
+
     $scope.doTheBack = function() {
         window.history.back();
     };
-    
+
     $rootScope.act=false;
     $rootScope.ord=false;
     $rootScope.img=false;
@@ -222,11 +222,11 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
 
 
 .controller('ADDPopCtrl', function($scope, $rootScope) {
-    
+
     $scope.doTheBack = function() {
         window.history.back();
     };
-    
+
     $rootScope.act=false;
     $rootScope.ord=false;
     $rootScope.img=false;
@@ -236,11 +236,11 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
 
 
 .controller('EditCtrl', function($scope, $rootScope) {
-    
+
     $scope.doTheBack = function() {
         window.history.back();
     };
-    
+
     $rootScope.act=false;
     $rootScope.ord=false;
     $rootScope.img=false;
@@ -250,11 +250,11 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
 
 
 .controller('AddpartnerCtrl', function($scope, $rootScope) {
-    
+
     $scope.doTheBack = function() {
         window.history.back();
     };
-    
+
     $scope.activeButton='1';
 })
 
@@ -262,22 +262,22 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
 
 .controller('PrayagCtrl',function($scope,$ionicModal,$timeout,loginService,$state,$ionicLoading,$cordovaSQLite,$ionicPopup,mySharedService,Camera,$ionicActionSheet,$cordovaFileTransfer,$cordovaImagePicker,$ionicHistory,$rootScope,$ionicHistory,$cordovaToast,$cordovaFile, $cordovaGeolocation,$filter, $cordovaNativeStorage, $ionicScrollDelegate, BackgroundGeolocationService,$cordovaAppVersion,$window,$location)
 {
-    
+
     $scope.data=[];
     $scope.default_segment=[];
     $scope.default_segment1=[];
     $rootScope.search_data = {};
     $scope.m={}
     $scope.y={}
-    
-    
+
+
     $scope.exec_name=mySharedService.ecex_name;
-    
+
     $scope.default_segment=mySharedService.default_segment;
     $scope.default_segment1=mySharedService.default_segment1;
     $rootScope.default_category=mySharedService.default_category;
     $rootScope.default_products=mySharedService.default_products;
-    
+
     const month = new Array();
     month[0] = "January";
     month[1] = "February";
@@ -291,63 +291,133 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
     month[9] = "October";
     month[10] = "November";
     month[11] = "December";
-    
+
     $scope.m = month[new Date().getMonth()];
     $scope.y = new Date().getFullYear().toString();
-    
+
     console.log($scope.m,$scope.y)
-    
-    
+
+
     $scope.getAllProductinfo=function()
     {
         console.log("function call");
-        
+
         var data ={ 'ret_id':mySharedService.shareRetailerDetaildata.id, 'state':mySharedService.shareRetailerDetaildata.state_name,};
-        
-        
+
+
         console.log(mySharedService.shareRetailerDetaildata)
-        
+
         loginService.orpPostServiceRequest('/index.php/master/getallproduct_info',data)
         .then(function (result)
         {
             console.log(result.data);
             $rootScope.dr_default_segment= [];
             $rootScope.dr_default_category= [];
-            
+
+            mySharedService.default_category = [];
+            $rootScope.default_category=[];
+
+            mySharedService.default_products = [];
+            $rootScope.default_products = [];
+
+            mySharedService.temp_default_category = [];
+            mySharedService.temp_default_products = [];
+
+            mySharedService.dr_default_segment=[];
+
+            mySharedService.default_category
+
             for(i=0;i<result.data.length;i++)
             {
                 $rootScope.dr_default_segment.push({'seg_name':result.data[i].segment_name});
+                mySharedService.dr_default_segment.push({'seg_name':result.data[i].segment_name});
             }
             for(j=0;j<result.data1.length;j++)
             {
-                $rootScope.dr_default_category.push({'cat_nos':result.data1[j].product_category_no,'seg_name':result.data1[j].segment_name,'product':result.data1[j].product_name,'id':result.data1[j].id});
+                // $rootScope.dr_default_category.push({'cat_nos':result.data1[j].product_category_no,'seg_name':result.data1[j].segment_name,'product':result.data1[j].product_name,'id':result.data1[j].id});
+                mySharedService.default_category.push({'cat_nos':result.data1[j].product_category_no,'seg_name':result.data1[j].segment_name,'product':result.data1[j].product_name,'id':result.data1[j].id});
+
+                $rootScope.default_category.push({'cat_nos':result.data1[j].product_category_no,'seg_name':result.data1[j].segment_name,'product':result.data1[j].product_name,'id':result.data1[j].id});
             }
-            
-            mySharedService.dr_default_segment=$rootScope.dr_default_segment
-            mySharedService.dr_default_category=$rootScope.dr_default_category
-            
-            
+
+            for(j=0;j<result.data2.length;j++)
+            {
+                mySharedService.default_products.push({'cat_nos':result.data2[j].product_category_no,'seg_name':result.data2[j].segment_name,'product':result.data2[j].product_name,'id':result.data2[j].id});
+
+                $rootScope.default_products.push({'cat_nos':result.data2[j].product_category_no,'seg_name':result.data2[j].segment_name,'product':result.data2[j].product_name,'id':result.data2[j].id});
+            }
+
+            mySharedService.temp_default_category = mySharedService.default_category;
+            mySharedService.temp_default_products = mySharedService.default_products;
+
+            // mySharedService.dr_default_segment=$rootScope.dr_default_segment;
+            // mySharedService.dr_default_category=$rootScope.dr_default_category;
+
+            console.log("****************** NEW ******* $rootScope.dr_default_segment ***********************");
+            console.log($rootScope.dr_default_segment);
+            console.log("****************** NEW ******* mySharedService.dr_default_segment ***********************");
+            console.log(mySharedService.dr_default_segment);
+
+            console.log("****************** NEW ******* mySharedService.default_category ***********************");
+            console.log(mySharedService.default_category);
+            console.log("****************** NEW ******* $rootScope.default_category ***********************");
+            console.log($rootScope.default_category);
+
+            console.log("****************** mySharedService.default_products *******************************");
+            console.log(mySharedService.default_products);
+            console.log("****************** $rootScope.default_products *******************************");
+            console.log($rootScope.default_products);
+
+            console.log("****************** mySharedService.temp_default_category *******************************");
+            console.log(mySharedService.temp_default_category);
+            console.log("****************** mySharedService.temp_default_products *******************************");
+            console.log(mySharedService.temp_default_products);
+
+
+            mySharedService.show_default_category = [];
+            $rootScope.show_default_category = [];
+            for(i=0;i<50;i++)
+            {
+                if(i<mySharedService.default_category.length)
+                {
+                    mySharedService.show_default_category.push(mySharedService.default_category[i]);
+                    $rootScope.show_default_category.push(mySharedService.default_category[i]);
+                }
+            }
+
+            mySharedService.show_default_product = [];
+            $rootScope.show_default_product = [];
+            for(i=0;i<50;i++)
+            {
+                if(i<mySharedService.default_products.length)
+                {
+                  mySharedService.show_default_product.push(mySharedService.default_products[i]);
+                  $rootScope.show_default_product.push(mySharedService.default_products[i]);
+                }
+            }
+
+
         },
         function (resultData) {
             $ionicLoading.hide();
-            
+
         });
-        
-        
+
+
     }
-    
+
     console.log($location.path());
 
     if($location.path()=='/tab/retailers-det' || $location.path()=='/tab/distributor-det')
     {
         console.log("sssssssss")
-        
-        $scope.getAllProductinfo();        
+
+        // $scope.getAllProductinfo();
         console.log("pppppppppppp")
-        
+
     }
-    
-    
+
+
     if($ionicHistory.currentStateName() === 'dashboard')
     {
         $scope.default_segment=[];
@@ -355,7 +425,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
         mySharedService.default_segment=[];
         mySharedService.default_category=[];
         mySharedService.default_products=[];
-        
+
         loginService.default_segment()
         .then(function (result)
         {
@@ -364,17 +434,17 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
             {
                 mySharedService.default_segment.push({'seg_name':result.data.data[i].segment_name});
             }
-            
+
             for(j=0;j<result.data.data1.length;j++)
             {
                 mySharedService.default_category.push({'cat_nos':result.data.data1[j].product_category_no,'seg_name':result.data.data1[j].segment_name,'product':result.data.data1[j].product_name,'id':result.data.data1[j].id});
             }
-            
+
             for(k=0;k<result.data.data2.length;k++)
             {
                 mySharedService.default_products.push({'cat_nos':result.data.data2[k].product_category_no,'seg_name':result.data.data2[k].segment_name,'product':result.data.data2[k].product_name,'id':result.data.data2[k].id});
             }
-            
+
             $cordovaNativeStorage.setItem("ref", mySharedService.default_segment).then(function (value) {
                 $cordovaNativeStorage.getItem("ref").then(function (value) {
                     console.log(value);
@@ -384,7 +454,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
             }, function (error) {
                 console.log(error);
             });
-            
+
             $cordovaNativeStorage.setItem("catt", mySharedService.default_category).then(function (value) {
                 $cordovaNativeStorage.getItem("catt").then(function (value) {
                     console.log(value);
@@ -394,7 +464,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
             }, function (error) {
                 console.log(error);
             });
-            
+
             $cordovaNativeStorage.setItem("prodd", mySharedService.default_products).then(function (value) {
                 $cordovaNativeStorage.getItem("prodd").then(function (value) {
                     console.log(value);
@@ -412,29 +482,32 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
         mySharedService.store_default_category=mySharedService.default_category;
         mySharedService.store_default_products=mySharedService.default_products;
     }
-    
+
     $scope.default_segment_select = {
         seg_name: ""
     };
-    
+
     $scope.default_category_select = {
         seg_name: "",
         cat_nos: "",
         id: ""
     };
-    
+
     $rootScope.default_product_select = {
         seg_name: "",
         cat_nos: "",
         id: "",
         product: ""
     };
-    
+
+    $scope.seg_flag=false;
     $scope.select_all=function(searchkey,pno)
     {
         console.log(searchkey+" "+pno);
+        console.log(mySharedService.dr_default_segment);
+        if(searchkey && pno){
+        $scope.seg_flag=true;
         $rootScope.dr_default_segment=[];
-        
         for(i=0;i<mySharedService.dr_default_segment.length;i++)
         {
             if(mySharedService.dr_default_segment[i].seg_name.slice(0,searchkey.length)==searchkey || (mySharedService.dr_default_segment[i].seg_name.slice(0,searchkey.length)).toLowerCase()==searchkey)
@@ -448,9 +521,41 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
         {
             $rootScope.dr_default_segment=mySharedService.dr_default_segment;
         }
+        }
+        else{
+
+          if($scope.seg_flag)
+          {
+              // mySharedService.show_default_category=[];
+              // $rootScope.show_default_category=[];
+              $rootScope.dr_default_segment=[];
+              console.log("0 In iF");
+              $rootScope.dr_default_segment=mySharedService.dr_default_segment;
+              // for(i=0;i<50;i++)
+              // {
+              //     if(i<mySharedService.default_category.length)
+              //     {
+              //         mySharedService.show_default_category.push(mySharedService.default_category[i]);
+              //         $rootScope.show_default_category.push(mySharedService.default_category[i]);
+              //     }
+              // }
+              $scope.flag=false;
+          }else{
+
+            console.log("ELSE");
+            $rootScope.dr_default_segment = [];
+            var o = mySharedService.dr_default_segment.length;
+            console.log(mySharedService.dr_default_segment.length+" : dr Segment length");
+            for(i=0;i<o;i++)
+            {
+                $rootScope.dr_default_segment.push({'seg_name':mySharedService.dr_default_segment[i].seg_name});
+                $scope.$digest();
+            }
+            }
+          }
         console.log($rootScope.dr_default_segment);
     }
-    
+
     $scope.flag=false;
     $scope.select_all_cat=function(searchkey,pno)
     {
@@ -458,63 +563,130 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
         {
             mySharedService.temp_default_category=$rootScope.default_category;
         }
-        
+
         if(mySharedService.temp_default_products.length == 0)
         {
             mySharedService.temp_default_products=$rootScope.default_products;
         }
         console.log(searchkey+" "+pno);
+        // if(searchkey)
+        // {
+        //     $scope.flag=true;
+        //     console.log("IF");
+        //     $rootScope.dr_default_category=[];
+        //     $rootScope.show_default_category=[];
+        //     console.log(searchkey.length);
+        //     for(i=0;i<mySharedService.dr_default_category.length;i++)
+        //     {
+        //         if(mySharedService.dr_default_category[i].cat_nos.slice(0,searchkey.length)==searchkey || (mySharedService.dr_default_category[i].cat_nos.slice(0,searchkey.length)).toLowerCase()==searchkey)
+        //         {
+        //             console.log(i);
+        //             $rootScope.dr_default_category.push({'cat_nos':mySharedService.dr_default_category[i].cat_nos,'seg_name':mySharedService.dr_default_category[i].seg_name,'id':mySharedService.dr_default_category[i].id,'product':mySharedService.dr_default_category[i].product});
+
+        //             $rootScope.show_default_category.push({'cat_nos':mySharedService.dr_default_category[i].cat_nos,'seg_name':mySharedService.dr_default_category[i].seg_name,'id':mySharedService.dr_default_category[i].id,'product':mySharedService.dr_default_category[i].product});
+        //         }
+        //     }
+        //     var o = $rootScope.show_default_category.length;
+        //     var x = 50 + $rootScope.show_default_category.length;
+        //     for(i=o;i<x;i++)
+        //     {
+        //         if(i<mySharedService.dr_default_category.length)
+        //         {
+        //             mySharedService.show_default_category.push(mySharedService.dr_default_category[i]);
+        //             // $scope.$digest();
+        //         }
+        //     }
+        //     if(searchkey.length==0)
+        //     {
+        //         $rootScope.dr_default_category=mySharedService.dr_default_category;
+        //     }
+        // }
         if(searchkey)
         {
             $scope.flag=true;
             console.log("IF");
-            $rootScope.dr_default_category=[];
+            $rootScope.default_category=[];
             $rootScope.show_default_category=[];
             console.log(searchkey.length);
-            for(i=0;i<mySharedService.dr_default_category.length;i++)
+            for(i=0;i<mySharedService.default_category.length;i++)
             {
-                if(mySharedService.dr_default_category[i].cat_nos.slice(0,searchkey.length)==searchkey || (mySharedService.dr_default_category[i].cat_nos.slice(0,searchkey.length)).toLowerCase()==searchkey)
+                if(mySharedService.default_category[i].cat_nos.slice(0,searchkey.length)==searchkey || (mySharedService.default_category[i].cat_nos.slice(0,searchkey.length)).toLowerCase()==searchkey)
                 {
                     console.log(i);
-                    $rootScope.dr_default_category.push({'cat_nos':mySharedService.dr_default_category[i].cat_nos,'seg_name':mySharedService.dr_default_category[i].seg_name,'id':mySharedService.dr_default_category[i].id,'product':mySharedService.dr_default_category[i].product});
-                    
-                    $rootScope.show_default_category.push({'cat_nos':mySharedService.dr_default_category[i].cat_nos,'seg_name':mySharedService.dr_default_category[i].seg_name,'id':mySharedService.dr_default_category[i].id,'product':mySharedService.dr_default_category[i].product});
+                    console.log(mySharedService.default_category[i].cat_nos);
+                    $rootScope.default_category.push({'cat_nos':mySharedService.default_category[i].cat_nos,'seg_name':mySharedService.default_category[i].seg_name,'id':mySharedService.default_category[i].id,'product':mySharedService.default_category[i].product});
+
+                    $rootScope.show_default_category.push({'cat_nos':mySharedService.default_category[i].cat_nos,'seg_name':mySharedService.default_category[i].seg_name,'id':mySharedService.default_category[i].id,'product':mySharedService.default_category[i].product});
+
+                    console.log($rootScope.default_category);
+                    console.log($rootScope.show_default_category);
                 }
             }
             var o = $rootScope.show_default_category.length;
             var x = 50 + $rootScope.show_default_category.length;
             for(i=o;i<x;i++)
             {
-                if(i<mySharedService.dr_default_category.length)
+                if(i<mySharedService.default_category.length)
                 {
-                    mySharedService.show_default_category.push(mySharedService.dr_default_category[i]);
+                    mySharedService.show_default_category.push(mySharedService.default_category[i]);
                     // $scope.$digest();
                 }
             }
             if(searchkey.length==0)
             {
-                $rootScope.dr_default_category=mySharedService.dr_default_category;
+                $rootScope.default_category=mySharedService.default_category;
             }
         }
         else
         {
+            // if($scope.flag)
+            // {
+            //     mySharedService.show_default_category=[];
+            //     $rootScope.show_default_category=[];
+            //     $rootScope.dr_default_category=[];
+            //     console.log("0 In iF");
+            //     $rootScope.dr_default_category=mySharedService.dr_default_category;
+            //     for(i=0;i<50;i++)
+            //     {
+            //         if(i<mySharedService.dr_default_category.length)
+            //         {
+            //             mySharedService.show_default_category.push(mySharedService.dr_default_category[i]);
+            //             $rootScope.show_default_category.push(mySharedService.dr_default_category[i]);
+            //         }
+            //     }
+            //     $scope.flag=false;
+            // }
             if($scope.flag)
             {
                 mySharedService.show_default_category=[];
                 $rootScope.show_default_category=[];
-                $rootScope.dr_default_category=[];
+                $rootScope.default_category=[];
                 console.log("0 In iF");
-                $rootScope.dr_default_category=mySharedService.dr_default_category;
+                $rootScope.default_category=mySharedService.default_category;
                 for(i=0;i<50;i++)
                 {
-                    if(i<mySharedService.dr_default_category.length)
+                    if(i<mySharedService.default_category.length)
                     {
-                        mySharedService.show_default_category.push(mySharedService.dr_default_category[i]);
-                        $rootScope.show_default_category.push(mySharedService.dr_default_category[i]);
+                        mySharedService.show_default_category.push(mySharedService.default_category[i]);
+                        $rootScope.show_default_category.push(mySharedService.default_category[i]);
                     }
                 }
                 $scope.flag=false;
             }
+            // else
+            // {
+            //     console.log("ELSE");
+            //     var o = $rootScope.show_default_category.length;
+            //     var x = 50 + $rootScope.show_default_category.length;
+            //     for(i=o;i<x;i++)
+            //     {
+            //         if(i<mySharedService.dr_default_category.length)
+            //         {
+            //             $rootScope.show_default_category.push(mySharedService.dr_default_category[i]);
+            //             $scope.$digest();
+            //         }
+            //     }
+            // }
             else
             {
                 console.log("ELSE");
@@ -522,32 +694,39 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                 var x = 50 + $rootScope.show_default_category.length;
                 for(i=o;i<x;i++)
                 {
-                    if(i<mySharedService.dr_default_category.length)
+                    // if(i<mySharedService.default_category.length)
+                    // {
+                    //     $rootScope.show_default_category.push(mySharedService.default_category[i]);
+                    //     $scope.$digest();
+                    // }
+
+                    if(i<$rootScope.default_category.length)
                     {
-                        $rootScope.show_default_category.push(mySharedService.dr_default_category[i]);
+                        $rootScope.show_default_category.push($rootScope.default_category[i]);
                         $scope.$digest();
                     }
                 }
             }
         }
+        console.log(mySharedService.default_category);
         console.log($rootScope.dr_default_category);
         console.log(mySharedService.dr_default_category);
         console.log($rootScope.show_default_category);
     }
-    
+
     console.log(app_version);
     console.log(salesexe_id);
-    
+
     // commented
     // if(ionic.Platform.isAndroid() && salesexe_id) {
-    
+
     //     $cordovaAppVersion.getVersionNumber()
     //     .then(function (version) {
     //         console.log("app version");
-    
+
     //         console.log(version);
     //         appVersion = version;
-    
+
     //         if(app_version!==version)
     //         {
     //             versionerr(app_version,version);
@@ -556,18 +735,18 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
     //                 e.preventDefault();
     //             },401);
     //         };
-    //     }); 
-    
+    //     });
+
     //     versionerr = function(newv,oldv) {
-    
+
     //         var myPopup = $ionicPopup.show({
     //             title: "Update Available",
     //             template: "A newer version("+newv+") of this app is available for download. Please update it from PlayStore ! ",
     //             subTitle: 'Current version : '+oldv,
-    //             buttons: [{ 
+    //             buttons: [{
     //                 text: 'Exit',
     //                 type: 'button-dark',
-    //                 onTap: function(e) {     
+    //                 onTap: function(e) {
     //                     ionic.Platform.exitApp();
     //                 }
     //             }, {
@@ -576,16 +755,16 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
     //                 onTap: function(e) {
     //                     $window.open("https://play.google.com/store/apps/details?id=com.ab_prayag.sales", '_system');
     //                     ionic.Platform.exitApp();
-    //                 }  
+    //                 }
     //             }]
     //         });
     //     }
     // }
-    
-    
-    
-    
-    
+
+
+
+
+
     $scope.prod_flag=false;
     $scope.select_all_prod=function(searchkey,pno)
     {
@@ -593,7 +772,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
         {
             mySharedService.temp_default_category=$rootScope.default_category;
         }
-        
+
         if(mySharedService.temp_default_products.length == 0)
         {
             mySharedService.temp_default_products=$rootScope.default_products;
@@ -612,7 +791,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                 {
                     console.log(i);
                     $rootScope.default_products.push({'cat_nos':mySharedService.default_products[i].cat_nos,'seg_name':mySharedService.default_products[i].seg_name,'id':mySharedService.default_products[i].id,'product':mySharedService.default_products[i].product});
-                    
+
                     $rootScope.show_default_product.push({'cat_nos':mySharedService.default_products[i].cat_nos,'seg_name':mySharedService.default_products[i].seg_name,'id':mySharedService.default_products[i].id,'product':mySharedService.default_products[i].product});
                 }
             }
@@ -653,7 +832,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
             }
             else
             {
-                
+
                 console.log("ELSE");
                 var o = $rootScope.show_default_product.length;
                 var x = 50 + $rootScope.show_default_product.length;
@@ -665,23 +844,23 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                         $scope.$digest();
                     }
                 }
-                
+
             }
         }
         console.log($rootScope.default_products);
         console.log(mySharedService.default_products);
         console.log($rootScope.show_default_product);
     }
-    
+
     $scope.activeButton='1';
     $scope.per_det=true;
     $scope.doTheBack = function() {
         $rootScope.cache_val=true;
         window.history.back();
     };
-    
+
     $scope.dr_type=mySharedService.dr_type;
-    
+
     //===============SEARCH RETAILER & DISTRIBUTOR WITH MOBILE NO. MODAL DATA START
     //===============
     // ++++++++++++++++++ modal name +++++++++++++++++++++++ //
@@ -703,11 +882,11 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
     $scope.closertd = function() {
         $scope.searchrtt.hide();
     };
-    
+
     //===============
     //===============SEARCH RETAILER & DISTRIBUTOR WITH MOBILE NO. MODAL DATA END..........
     //===============
-    
+
     //===============
     //===============SEARCH PAYMASTER RETAILER & DISTRIBUTOR MODAL DATA START
     //===============
@@ -726,67 +905,67 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
     $scope.closesp = function() {
         $scope.searchrt.hide();
     };
-    
+
     //===============
     //===============SEARCH RETAILER & DISTRIBUTOR WITH MOBILE NO. MODAL DATA END..........
     //===============
-    
-    
+
+
     var posOptions = {
         // enableHighAccuracy: true,
         timeout: 30000,
         maximumAge: 0
     };
-    
-    
+
+
     function onRequestSuccess(success) {
         $rootScope.isGpsEnabled = true;
         console.log("Successfully requested accuracy: "+success.message);
-        
+
         var options = {timeout: 10000, enableHighAccuracy: true};
         $cordovaGeolocation.getCurrentPosition(options).then(function(position){
             console.log(position.coords.latitude+" "+position.coords.longitude);
-            
+
             $scope.latitude=position.coords.latitude;
             $scope.longitude=position.coords.longitude;
-            
+
             mySharedService.lat = position.coords.latitude;
             mySharedService.lng = position.coords.longitude;
-            
+
         })
     }
-    
-    
+
+
     function onRequestFailure(error) {
-        
+
         $rootScope.isGpsEnabled = false;
         console.error("Accuracy request failed: error code="+error.code+"; error message="+error.message);
-        
+
         if(error.code !== cordova.plugins.locationAccuracy.ERROR_USER_DISAGREED) {
             cordova.plugins.diagnostic.switchToLocationSettings();
-            
+
             $cordovaGeolocation.getCurrentPosition(posOptions).then(function (position) {
                 console.log(position.coords.latitude+" "+position.coords.longitude);
-                
+
                 $scope.latitude=position.coords.latitude;
                 $scope.longitude=position.coords.longitude;
-                
+
                 mySharedService.lat = position.coords.latitude;
                 mySharedService.lng = position.coords.longitude;
-                
-                
+
+
             }, function(err) {
                 console.log(err.code+" "+err.message);
                 console.log("Could not get location");
             });
-            
+
         } else {
             ionic.Platform.exitApp();
         }
     }
-    
+
     $scope.myProfileDetail={};
-    
+
     /*Login function of controller prayag start*/
     $scope.login = function (uname,pswrd)
     {
@@ -794,14 +973,14 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
         ({
             template: '<span class="icon spin ion-loading-d"></span> Loading...'
         });
-        
+
         loginService.loginuser(uname,pswrd)
         .then(function (result)
         {
             console.log(result.data);
-            
+
             $('.ion-navicon-round').trigger('click');
-            
+
             var query = "INSERT INTO "+dbTableName+" (username,password) VALUES (?,?)";
             $cordovaSQLite.execute(db, query,[uname,pswrd]).then(function(resultData) {
                 username = uname;
@@ -816,20 +995,20 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                 app_version = result.data.varsion;
                 salesexe_state = result.data.state_name;
                 $scope.myProfileDetail.image=result.data.image;
-                
+
                 console.log(salesexe_district);
-                
-                
+
+
                 console.log("INSERT USERNAME -> " + username);
                 console.log("INSERT PASSWORD -> " + password);
                 console.log("INSERT ID -> " + salesexe_id);
                 console.log("INSERT PIN -> " + salesexe_pincode);
-                
+
                 $state.go('dashboard');
                 if (ionic.Platform.isAndroid())
                 {
                     cordova.plugins.locationAccuracy.request(onRequestSuccess, onRequestFailure, cordova.plugins.locationAccuracy.REQUEST_PRIORITY_HIGH_ACCURACY);
-                    
+
                     BackgroundGeolocationService.init(salesexe_id);
                 }
                 $timeout(function () { $ionicLoading.hide(); }, 200);
@@ -846,13 +1025,13 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                 template: 'Please check your credentials!'
             });
         });
-        
+
     }
-    
+
     /*Login function of controller prayag end*/
-    
+
     /*Retailer listing function of controller prayag start*/
-    
+
     $scope.retailer_list=[];
     $scope.retailer_list= mySharedService.shareRetailerdata;
     $scope.retailerlist= function (val=0)
@@ -877,11 +1056,11 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
         ({
             template: '<span class="icon spin ion-loading-d"></span> Loading...'
         });
-        
+
         loginService.retailerlist(val)
         .then(function (result)
         {
-            
+
             if(result.length == 0)
             {
                 $rootScope.noMoreItemsToDisplay = true;
@@ -889,23 +1068,23 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
             $scope.$broadcast('scroll.infiniteScrollComplete');
             $scope.retailer_list = $scope.retailer_list.concat(result);
             mySharedService.shareRetailerdata = mySharedService.shareRetailerdata.concat(result);
-            
+
             // $scope.retailer_list = result;
             // $scope.contact_person=result.contact_person;
-            
+
             console.log($scope.retailer_list);
-            
+
             mySharedService.prepForRetailerDataBroadcast(result);
-            
+
             console.log($ionicHistory.currentStateName());
-            
-            
+
+
             if(!$rootScope.isDetailClicked) {
                 $state.go('tab.retailers');
             }
-            
+
             $timeout(function () { $ionicLoading.hide(); }, 200);
-            
+
             $ionicLoading.hide();
             $scope.$broadcast('scroll.refreshComplete');
         },
@@ -914,9 +1093,9 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
             console.error(err);
         })
     }
-    
+
     /*Retailer listing function of controller prayag end*/
-    
+
     $rootScope.noMoreItemsToDisplay = false;
     $scope.loadMoreData = function() {
         console.log("FF1");
@@ -933,9 +1112,9 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
             }
         }, 200);
     }
-    
+
     /*Awaiting Retailer listing function of controller prayag start*/
-    
+
     $scope.await_retailer_list=[];
     $scope.await_retailer_list= mySharedService.shareAwaitRetailerdata;
     $scope.awaitretailerlist= function (val=0)
@@ -945,18 +1124,18 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
             $scope.await_retailer_list = [];
             mySharedService.shareAwaitRetailerdata = [];
         }
-        
+
         $rootScope.show_await_temp=true;
         $rootScope.show_temp=false;
         $rootScope.ref_ret_lst=false;
         $scope.retailer_list=[];
         mySharedService.shareRetailerdata=[];
-        
+
         $ionicLoading.show
         ({
             template: '<span class="icon spin ion-loading-d"></span> Loading...'
         });
-        
+
         loginService.awaitretailerlist(val)
         .then(function (result)
         {
@@ -964,18 +1143,18 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
             {
                 $rootScope.noMoreItemsToDisplay = true;
             }
-            
+
             $scope.$broadcast('scroll.infiniteScrollComplete');
             $scope.await_retailer_list = $scope.await_retailer_list.concat(result);
             mySharedService.shareAwaitRetailerdata = mySharedService.shareAwaitRetailerdata.concat(result);
-            
+
             // $scope.await_retailer_list = result;
             // mySharedService.shareAwaitRetailerdata = result;
             // mySharedService.prepForRetailerDataBroadcast(result);
             console.log($scope.await_retailer_list);
             $state.go('tab.retailers');
             $timeout(function () { $ionicLoading.hide(); }, 200);
-            
+
             $ionicLoading.hide();
             $scope.$broadcast('scroll.refreshComplete');
         },
@@ -984,9 +1163,9 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
             console.error(err);
         })
     }
-    
+
     /*Awaiting Retailer listing function of controller prayag end*/
-    
+
     /*distrretailer search number function of ctrl prayag start
     if num exist it will refer to the user-detail
     page if not than refer to the become partner page*/
@@ -1005,32 +1184,32 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
             } else{
                 $state.go('become-partner');
             }
-            
+
             // $scope.contact_person=result.contact_person;
             console.log($scope.dr_number_search);
             mySharedService.prepForDrNUmSearchDataBroadcast(result);
             $timeout(function () { $ionicLoading.hide(); }, 200);
-            
+
             $ionicLoading.hide();
             document.getElementById('enter_num_blank').value='';
-            
+
         },
         function (err) {
             $ionicLoading.hide();
             console.error(err);
         })
     }
-    
-    
+
+
     /*distrretailer search number function of ctrl prayag end
     if num exist it will refer to the user-detail
     page if not than refer to the become partner page*/
-    
+
     //   /*Become a new partner function start*/
     //      $scope.becpartnerdata=[];
     //      $scope.become_partner= function ()
     //      {
-    
+
     //       var contact_num = $scope.dr_number_search.enter_num;
     //       var next_followup = moment($scope.actdata.next_followup).format('YYYY-MM-DD');
     //       console.log(next_followup);
@@ -1041,7 +1220,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
     //           $state.go('tab.retailers');
     //           $timeout(function () { $ionicLoading.hide(); }, 200);
     //           $ionicLoading.hide();
-    
+
     //         },
     //            function (err) {
     //              $ionicLoading.hide();
@@ -1049,15 +1228,15 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
     //           })
     //       }
     // /*Become a new partner function end*/
-    
+
     /*dateformat function start*/
     $scope.formatDate = function(date){
         return new Date(date)
     }
     /*dateformat function end*/
-    
+
     /*Paymaster function of prayag ctrl start*/
-    
+
     $scope.paymaster_lst=[];
     $scope.paymaster_lst=mySharedService.sharePaymasterListdata;
     console.log($scope.paymaster_lst);
@@ -1068,7 +1247,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
         ({
             template: '<span class="icon spin ion-loading-d"></span> Loading...'
         });
-        
+
         loginService.paymaster_lst(id,type)
         .then(function (result)
         {
@@ -1091,9 +1270,9 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
         })
     }
     /*Paymaster function of prayag ctrl end*/
-    
+
     /*Paymaster Data function of prayag ctrl start*/
-    
+
     $scope.pmaster_data=[];
     $scope.pmaster_type=mySharedService.sharePaymasterTypedata;
     $scope.pmaster_data=mySharedService.sharePaymasterdata;
@@ -1105,7 +1284,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
         ({
             template: '<span class="icon spin ion-loading-d"></span> Loading...'
         });
-        
+
         loginService.paymaster_data(id,r_id,type)
         .then(function (result)
         {
@@ -1114,9 +1293,9 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
             $scope.pmaster_type=type;
             mySharedService.sharePaymasterTypedata=type;
             mySharedService.prepForPaymasterDataBroadcast(result);
-            
+
             $state.go('paymaster-data');
-            
+
             $timeout(function () { $ionicLoading.hide(); }, 200);
         },
         function (err) {
@@ -1125,14 +1304,14 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
         })
     }
     /*Paymaster Data function of prayag ctrl end*/
-    
+
     /*Add Paymaster BUTTON function of prayag ctrl start*/
-    
+
     $scope.d_name=mySharedService.shareDistName;
     $scope.bal=mySharedService.shareBaldata;
     $scope.r_id=mySharedService.shareR_ID;
     $scope.d_id=mySharedService.shareD_ID;
-    
+
     console.log($scope.d_name);
     console.log($scope.bal);
     $scope.add_paym_click= function (d_name,bal,r_id,d_id,type)
@@ -1149,12 +1328,12 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
         $state.go('add-payment');
     }
     /*Add Paymaster BUTTON function of prayag ctrl end*/
-    
-    
+
+
     /*Add Paymaster Payment function of prayag ctrl start*/
-    
+
     $scope.paymaster_payment=[];
-    
+
     $scope.add_payment= function ()
     {
         if($scope.pmaster_type==2)
@@ -1165,23 +1344,23 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
         console.log($scope.data.tot_amt);
         console.log($scope.data.mode);
         console.log($scope.data.cheque_num);
-        
+
         console.log($scope.data.trans_num);
         console.log($scope.data.desc);
-        
+
         if($scope.data.cheque_dt)
         {
             $scope.data.chq_dt = moment($scope.data.cheque_dt).format('YYYY-MM-DD');
         }
         $scope.data.pay_dt = moment($scope.data.payment_dt).format('YYYY-MM-DD');
-        
+
         console.log($scope.data.chq_dt);
         console.log($scope.data.pay_dt);
         $ionicLoading.show
         ({
             template: '<span class="icon spin ion-loading-d"></span> Loading...'
         });
-        
+
         loginService.add_payment($scope.pmaster_type,$scope.r_id,$scope.d_id,$scope.data.tot_amt,$scope.data.mode,$scope.data.cheque_num,$scope.data.chq_dt,$scope.data.pay_dt,$scope.data.trans_num,$scope.data.desc)
         .then(function (result)
         {
@@ -1195,10 +1374,10 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
         })
     }
     /*Add Paymaster Payment function of prayag ctrl end*/
-    
-    
+
+
     /*Retailer detail function of prayag ctrl start*/
-    
+
     $scope.retailer_det={};
     $scope.retailer_det=mySharedService.shareRetailerDetaildata;
     mySharedService.shareRetailerDetaildata = $scope.retailer_det;
@@ -1219,7 +1398,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
     $scope.ret_pincode_data = mySharedService.ret_pincode_data;
     $scope.ret_city_data = mySharedService.ret_city_data;
     $scope.ret_area_data = mySharedService.ret_area_data;
-    
+
     $scope.ship_state_data = mySharedService.ship_state_data;
     $scope.ship_district_data = mySharedService.ship_district_data;
     $scope.ship_city_data = mySharedService.ship_city_data;
@@ -1230,10 +1409,10 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
     console.log($scope.data.selectedValue2);
     $scope.retailer_segs=mySharedService.retailer_segs;
     $scope.retailer_contact = mySharedService.retailer_contact;
-    
+
     $scope.retailerdetails= function (id,type,bckval,backnear,int_cont,dr_typee,dr_status)
     {
-        
+
         $rootScope.isDetailClicked = true;
         console.log(dr_typee);
         console.log(dr_status);
@@ -1252,13 +1431,13 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                 mySharedService.sharebckneardata=backnear;
             }
         }
-        
+
         console.log(id);
         $ionicLoading.show
         ({
             template: '<span class="icon spin ion-loading-d"></span> Loading...'
         });
-        
+
         // if(mySharedService.land_on_order)
         // {
         //   type=3;
@@ -1274,7 +1453,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
             mySharedService.int_typee=result.data.intrested_contact;
             $scope.retailer_contact = result.contact_data;
             mySharedService.retailer_contact = result.contact_data;
-            
+
             console.log( $scope.retailer_det);
             $scope.data.selectedValue=$scope.retailer_det.state_name;
             mySharedService.selectedValue=$scope.retailer_det.state_name;
@@ -1304,7 +1483,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
             mySharedService.ret_city_data = result.city;
             $scope.ret_area_data=result.area;
             mySharedService.ret_area_data = result.area;
-            
+
             $scope.ship_state_data=result.ship_states;
             mySharedService.ship_state_data = result.ship_states;
             $scope.ship_district_data=result.ship_dists;
@@ -1317,8 +1496,8 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
             mySharedService.ship_pincode_data = result.ship_pins;
             console.log($scope.retailer_det);
             console.log($rootScope.retailers_id);
-            
-            
+
+
             loginService.get_state()
             .then(function (result)
             {
@@ -1329,7 +1508,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
             },function (err) {
                 console.error(err);
             })
-            
+
             loginService.get_district($scope.retailer_det.state_name)
             .then(function (result)
             {
@@ -1340,7 +1519,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
             },function (err) {
                 console.error(err);
             })
-            
+
             loginService.get_city($scope.retailer_det.district_name,$scope.retailer_det.state_name)
             .then(function (result)
             {
@@ -1350,7 +1529,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
             },function (err) {
                 console.error(err);
             })
-            
+
             loginService.get_area($scope.retailer_det.city,$scope.retailer_det.state_name)
             .then(function (result)
             {
@@ -1362,7 +1541,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
             },function (err) {
                 console.error(err);
             })
-            
+
             loginService.set_pincode($scope.retailer_det.area,$scope.retailer_det.state_name)
             .then(function (result)
             {
@@ -1375,7 +1554,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
             },function (err) {
                 console.error(err);
             })
-            
+
             loginService.set_area($scope.retailer_det.pincode,$scope.retailer_det.state_name)
             .then(function (result)
             {
@@ -1388,7 +1567,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
             },function (err) {
                 console.error(err);
             })
-            
+
             mySharedService.prepForRetailerDetailDataBroadcast(result.data);
             if(int_cont=='Retailer' || type=='1' || dr_typee=='Ret')
             {
@@ -1400,7 +1579,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                 }
                 $state.go('tab.retailers-det');
             }
-            
+
             if(int_cont=='Distributor' || type=='2' ||  dr_typee=='Dist')
             {
                 console.log("DIST");
@@ -1411,7 +1590,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                 }
                 $state.go('tab.distributor-det');
             }
-            
+
             if(type==3)
             {
                 if(result.data.intrested_contact=='Retailer')
@@ -1431,11 +1610,11 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                     $state.go('tab.distributor-det');
                 }
             }
-            
+
             $timeout(function () { $ionicLoading.hide(); }, 200);
-            
+
             $timeout(function () { $rootScope.isDetailClicked = false; }, 2000);
-            
+
             mySharedService.default_segment=[];
             for(i=0;i<mySharedService.store_default_segments.length;i++)
             {
@@ -1447,11 +1626,11 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                     }
                     else
                     {
-                        
+
                     }
                 }
             }
-            
+
             mySharedService.default_category=[];
             for(i=0;i<mySharedService.store_default_category.length;i++)
             {
@@ -1463,11 +1642,11 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                     }
                     else
                     {
-                        
+
                     }
                 }
             }
-            
+
             mySharedService.default_products=[];
             for(i=0;i<mySharedService.store_default_products.length;i++)
             {
@@ -1479,23 +1658,23 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                     }
                     else
                     {
-                        
+
                     }
                 }
             }
-            
+
         },
         function (err) {
             $ionicLoading.hide();
             console.error(err);
         })
     }
-    
-    
-    
-    
+
+
+
+
     /*Retailer detail function of prayag ctrl end*/
-    
+
     $scope.edit_dr_seg=function(dr_id)
     {
         console.log(dr_id);
@@ -1531,7 +1710,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
             console.error(err);
         })
     }
-    
+
     $scope.get_ret_data=function()
     {
         console.log($scope.search_ret);
@@ -1556,12 +1735,12 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
             console.error(err);
         })
     }
-    
+
     $scope.show_ret_birth = true;
     $scope.birthday_list = mySharedService.birthday_list;
     $scope.birthday_detail = mySharedService.birthday_detail;
     console.log($scope.birthday_detail);
-    
+
     $scope.get_today_birthday_info_data=function(type)
     {
         $scope.birthday_list =[];
@@ -1583,12 +1762,12 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
             console.error(err);
         })
     }
-    
+
     $scope.goto_birthday_detail = function(id)
     {
         console.log(id);
         // $scope.birthday_detail(id)
-        
+
         $scope.birthday_detail = {};
         $ionicLoading.show
         ({
@@ -1602,16 +1781,16 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
             console.log($scope.birthday_detail);
             $state.go('tab.birthday-detail');
             $ionicLoading.hide();
-            
+
         },
         function (err) {
             $ionicLoading.hide();
             console.error(err);
         })
-        
-        
+
+
     }
-    
+
     // $scope.birthday_detail = function(id)
     // {
     //     console.log(id);
@@ -1632,9 +1811,9 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
     //         $ionicLoading.hide();
     //         console.error(err);
     //     })
-    
+
     // }
-    
+
     $scope.save_edit_dr_seg=function(type)
     {
         console.log($scope.modifiedOrder);
@@ -1669,7 +1848,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
             console.error(err);
         })
     }
-    
+
     $scope.req_reg=function(dr_id,type)
     {
         console.log(dr_id);
@@ -1690,28 +1869,28 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
             $ionicLoading.hide();
             console.error(err);
         })
-        
+
     }
-    
-    
+
+
     /*Retailer view_edit(update) function of prayag ctrl start*/
     $scope.retailereditview={};
     $scope.retailereditview=mySharedService.shareRetailerViewEditdata
     $scope.retailer_view_edit= function (id,type)
     {
-        
+
         $ionicLoading.show
         ({
             template: '<span class="icon spin ion-loading-d"></span> Loading...'
         });
-        
+
         console.log(id);
         console.log($scope.retailer_det);
-        
+
         loginService.retailer_view_edit(id,$scope.retailer_det.dr_name,$scope.retailer_det.email,$scope.retailer_det.contact_person,$scope.retailer_det.contact_2,$scope.retailer_det.street,$scope.data.selectedValue,$scope.data.selectedValue2,$scope.data.selectedValue1,$scope.data.selectedValue3,$scope.data.selectedValue6)
         .then(function (result)
         {
-            
+
             mySharedService.prepForRetailerDetailViewEditBroadcast(result);
             if(type=='1')
             {
@@ -1723,11 +1902,11 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                 // $state.go('tab.distributor-det');
                 $scope.retailerdetails(id,type);
             }
-            
+
             $timeout(function () { $ionicLoading.hide(); }, 200);
-            
+
             $ionicLoading.hide();
-            
+
         },
         function (err) {
             $ionicLoading.hide();
@@ -1735,18 +1914,18 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
         })
     }
     /*Retailer view_edit(update) function of prayag ctrl start*/
-    
+
     /*Retailer activity-history function of prayag ctrl start*/
     $scope.activity_ret_his={};
     $scope.activity_ret_his=mySharedService.shareActivityRetHistorydata;
     $scope.retactivityhistory= function (ret_id,type)
     {
-        
+
         $ionicLoading.show
         ({
             template: '<span class="icon spin ion-loading-d"></span> Loading...'
         });
-        
+
         loginService.activity_ret_history(ret_id)
         .then(function (result)
         {
@@ -1763,9 +1942,9 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                 $state.go('tab-dist.tab-activity-dist');
             }
             $timeout(function () { $ionicLoading.hide(); }, 200);
-            
+
             $ionicLoading.hide();
-            
+
         },
         function (err) {
             $ionicLoading.hide();
@@ -1773,10 +1952,10 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
         })
     }
     /*Retailer activity-history function of prayag ctrl end*/
-    
-    
+
+
     /*Retailer activity-ret function of prayag ctrl start*/
-    
+
     $scope.actdata=[];
     $scope.ordate;
     $scope.curDate = new Date();
@@ -1784,14 +1963,14 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
     $scope.formatDate = function(date){
         return new Date(date)
     }
-    
+
     $scope.red_date = function()
     {
         $scope.curDate = moment($scope.curDate).subtract(1, 'days');
         $scope.ordate = moment($scope.curDate).format('YYYY-MM-DD');
         console.log($scope.ordate);
     }
-    
+
     $scope.today = new Date();
     $scope.ad_date = function()
     {
@@ -1805,7 +1984,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
             console.log($scope.ordate);
         }
     }
-    
+
     $scope.activityret= function (ret_id,type)
     {
         console.log(type);
@@ -1817,7 +1996,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
         ({
             template: '<span class="icon spin ion-loading-d"></span> Loading...'
         });
-        
+
         loginService.activity_ret_service(ret_id,$scope.actdata.activity_date,$scope.actdata.activity_type,$scope.actdata.remark,next_followup)
         .then(function (result)
         {
@@ -1832,15 +2011,15 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
             {
                 $state.go('tab-dist.tab-activity-dist');
             }
-            
+
             $scope.actdata=[];
             $timeout(function () { $ionicLoading.hide(); }, 200);
-            
+
             $cordovaToast.show('Activity Created Successfully', 'short', 'bottom').then(function(success) {
             }, function (error) {
             });
             $ionicLoading.hide();
-            
+
         },
         function (err) {
             $ionicLoading.hide();
@@ -1848,9 +2027,9 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
         })
     }
     /*Retailer activity-ret function of prayag ctrl end*/
-    
+
     //MY CODE FOR TEXT RECOGINITION
-    
+
     // $scope.number_cam=mySharedService.number_cam;
     //  var me = this;
     // // me.current_image = 'img/koro-sensei.png';
@@ -1953,8 +2132,8 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
     //
     //
     // }
-    
-    
+
+
     // $scope.upload_micro = function() {
     //     var options = {
     //           quality : 100,
@@ -2053,11 +2232,156 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
     //       });
     //   })
     // }
-    
+
+
+    $scope.getGallary = function(src) {
+
+      console.log(src);
+      console.log("inside gallary")
+      if(src == 2 || src == 3 || src == 4  || src == 7) {
+
+          var options = {
+              maximumImagesCount: 1, // Max number of selected images, I'm using only one for this example
+              width: 500,
+              height: 500,
+              quality: 50  // Higher is better
+          };
+
+      } else  {
+
+          var options = {
+              maximumImagesCount: 10, // Max number of selected images, I'm using only one for this example
+              width: 500,
+              height: 500,
+              quality: 50  // Higher is better
+          };
+      }
+
+      // $cordovaImagePicker.getPictures(options).then(function (results) {
+      //     console.log(results);
+      //     if(src==7)
+      //     {
+      //         $scope.mediaData = [];
+      //     }
+      //     //Loop through acquired images
+      //     for (var i = 0; i < results.length; i++) {
+      //         $scope.mediaData.push({
+      //             src: results[i]
+      //         });
+      //     }
+
+      //     console.log($scope.mediaData);
+
+
+      //     if(src == 2 && $scope.mediaData.length) {
+      //         $scope.profile_update(2);
+      //     }
+
+      //     if(src == 3 && $scope.mediaData.length) {
+      //         $scope.bill_upload();
+      //     }
+
+      //     if(src == 4 && $scope.mediaData.length) {
+      //         $scope.lead_pic();
+      //     }
+
+      // }, function(error) {
+      //     console.log('Error: ' + JSON.stringify(error));    // In case of error
+      // });
+
+
+
+
+      navigator.camera.getPicture(onPhotoURISuccess, onFail,{
+          quality: 50,
+          sourceType: navigator.camera.PictureSourceType.SAVEDPHOTOALBUM,
+          destinationType: navigator.camera.DestinationType.FILE_URI
+      });
+      // }
+      function onPhotoURISuccess(imageURI){
+          console.log("onPhotoURISuccess"+imageURI);
+          $scope.mediaData.push({
+              src:imageURI,
+          });
+          console.log($scope.mediaData);
+          console.log($scope.mediaData[0].src);
+
+          if(src == 2 && $scope.mediaData.length) {
+              $scope.profile_update(2);
+          }
+
+          if(src == 3 && $scope.mediaData.length) {
+              $scope.bill_upload();
+          }
+
+          if(src == 4 && $scope.mediaData.length) {
+              $scope.lead_pic();
+          }
+
+      }
+      function onFail(message) {
+          console.log('onFail: ' + message);
+          alert('Failed beause' + message);
+      }
+
+
+
+  }
+
+
+    $scope.uploadurl=upload_url;
+
+    $scope.perm=function(src)
+    {
+
+      console.log(src);
+        // cordova.plugins.diagnostic.getCameraAuthorizationStatus({
+        //     successCallback: function(status) {
+
+        //         console.log('1st'+status);
+
+        //         if(status === cordova.plugins.diagnostic.permissionStatus.GRANTED){
+
+        $scope.getGallary(src);
+
+        //         } else {
+
+        //             cordova.plugins.diagnostic.requestCameraAuthorization({
+        //                 successCallback: function(data_status) {
+
+        //                     console.log('2nd'+data_status);
+
+        //                     if(data_status != 'DENIED') {
+        //                         $scope.getGallary(src);
+        //                     }
+        //                 },
+        //                 errorCallback: function(error){
+        //                     console.error(error);
+        //                 },
+        //                 externalStorage: true
+        //             });
+        //         }
+        //     },
+        //     errorCallback: function(error){
+        //         console.error("The following error occurred: "+error);
+        //     },
+        //     externalStorage: true
+        // });
+    }
+
+
+
     /*Function to provide option either gallery or Camera start*/
     $scope.camera_click = function(src)
     {
-        
+        // if($scope.mediaData){
+        //   console.log($scope.mediaData);
+        //   if ($scope.mediaData[0].src) {
+        //     console.log($scope.mediaData[0].src);
+        //   }
+        // }
+        console.log(src);
+
         if(src == 1 || !$scope.myProfileDetail.image || src == 4) {
             var val = 'remove-pic';
         } else {
@@ -2076,7 +2400,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
             },
             buttonClicked: function(index) {
                 //return true;
-                
+
                 if(index === 0) { // Manual Button
                     $scope.perm(src);
                 }
@@ -2085,12 +2409,12 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                     // $scope.textrecog();
                     // $scope.upload_micro();
                 }
-                
+
                 else if(index === 2) {
                     $scope.deletePicture(src);
                 }
-                
-                
+
+
                 return true;
             }
         })
@@ -2099,16 +2423,16 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
     task  call on submit button start*/
     $scope.mediaData = [];
     $scope.takePicture = function (srcc,options) {
-        
+
         var options = {
             quality : 50,
             targetWidth: 500,
             targetHeight: 500,
             saveToPhotoAlbum: false
         };
-        
+
         Camera.getPicture(options).then(function(imageData) {
-            
+
             var options = {
                 fileKey: "image",
                 fileName: "image.jpg",
@@ -2116,170 +2440,40 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                 mimeType: "image/*",
                 params : {'salesexe_id': salesexe_id}
             };
-            
+
             if(srcc==7)
             {
                 $scope.mediaData = [];
             }
-            
+
             $scope.mediaData.push({
                 src: imageData
-                
+
             });
-            
+
             console.log(imageData);
-            
+
             if(srcc == 2 && $scope.mediaData.length) {
                 $scope.profile_update(2);
             }
-            
+
             if(srcc == 3 && $scope.mediaData.length) {
                 $scope.bill_upload();
             }
-            
+
             if(srcc == 4 && $scope.mediaData.length) {
                 $scope.lead_pic();
             }
-            
+
         }, function(err) {
-            
+
         })
     };
-    
-    $scope.uploadurl=upload_url;
-    
-    $scope.perm=function(src)
-    {
-        // cordova.plugins.diagnostic.getCameraAuthorizationStatus({
-        //     successCallback: function(status) {
-        
-        //         console.log('1st'+status);
-        
-        //         if(status === cordova.plugins.diagnostic.permissionStatus.GRANTED){
-        
-        $scope.getGallary(src);
-        
-        //         } else {
-        
-        //             cordova.plugins.diagnostic.requestCameraAuthorization({
-        //                 successCallback: function(data_status) {
-        
-        //                     console.log('2nd'+data_status);
-        
-        //                     if(data_status != 'DENIED') {
-        //                         $scope.getGallary(src);
-        //                     }
-        //                 },
-        //                 errorCallback: function(error){
-        //                     console.error(error);
-        //                 },
-        //                 externalStorage: true
-        //             });
-        //         }
-        //     },
-        //     errorCallback: function(error){
-        //         console.error("The following error occurred: "+error);
-        //     },
-        //     externalStorage: true
-        // });
-    }
-    
-    
-    $scope.getGallary = function(src) {
-        
-        console.log("inside gallary")
-        if(src == 2 || src == 3 || src == 4  || src == 7) {
-            
-            var options = {
-                maximumImagesCount: 1, // Max number of selected images, I'm using only one for this example
-                width: 500,
-                height: 500,
-                quality: 50  // Higher is better
-            };
-            
-        } else  {
-            
-            var options = {
-                maximumImagesCount: 10, // Max number of selected images, I'm using only one for this example
-                width: 500,
-                height: 500,
-                quality: 50  // Higher is better
-            };
-        }
-        
-        // $cordovaImagePicker.getPictures(options).then(function (results) {
-        //     console.log(results);
-        //     if(src==7)
-        //     {
-        //         $scope.mediaData = [];
-        //     }
-        //     //Loop through acquired images
-        //     for (var i = 0; i < results.length; i++) {
-        //         $scope.mediaData.push({
-        //             src: results[i]
-        //         });
-        //     }
-        
-        //     console.log($scope.mediaData);
-        
-        
-        //     if(src == 2 && $scope.mediaData.length) {
-        //         $scope.profile_update(2);
-        //     }
-        
-        //     if(src == 3 && $scope.mediaData.length) {
-        //         $scope.bill_upload();
-        //     }
-        
-        //     if(src == 4 && $scope.mediaData.length) {
-        //         $scope.lead_pic();
-        //     }
-        
-        // }, function(error) {
-        //     console.log('Error: ' + JSON.stringify(error));    // In case of error
-        // });
-        
-        
-        
-        
-        navigator.camera.getPicture(onPhotoURISuccess, onFail,{
-            quality: 50,
-            sourceType: navigator.camera.PictureSourceType.SAVEDPHOTOALBUM,
-            destinationType: navigator.camera.DestinationType.FILE_URI
-        });
-        // }
-        function onPhotoURISuccess(imageURI){
-            console.log("onPhotoURISuccess"+imageURI);
-            $scope.mediaData.push({
-                src:imageURI,
-            });
-            console.log($scope.mediaData);
-            
-            if(src == 2 && $scope.mediaData.length) {
-                $scope.profile_update(2);
-            }
-            
-            if(src == 3 && $scope.mediaData.length) {
-                $scope.bill_upload();
-            }
-            
-            if(src == 4 && $scope.mediaData.length) {
-                $scope.lead_pic();
-            }
-            
-        }
-        function onFail(message) {
-            console.log('onFail: ' + message);
-            alert('Failed beause' + message);
-        }
-        
-        
-        
-    }
-    
+
+
     /* Profile Delete Function Start*/
     $scope.deletePicture = function(src) {
-        
+
         if(src == 2) {
             $scope.myProfileDetail.image = '';
             mySharedService.image ='';
@@ -2287,14 +2481,14 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
         }
     }
     /*Profile Delete Function End*/
-    
+
     $scope.lead_pic = function()
     {
         $ionicLoading.show
         ({
             template: '<span class="icon spin ion-loading-d"></span> Loading...'
         });
-        
+
         var options = {
             fileKey: "file",
             fileName: "image.jpg",
@@ -2318,8 +2512,8 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
         }, function (progress) {
         });
     }
-    
-    
+
+
     /*Function to click pic ,picimagefromgallery and show images at front end
     task  call on submit button start*/
     /*upload function start*/
@@ -2329,26 +2523,26 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
         console.log($scope.data.title);
         console.log($scope.gall_title);
         console.log(mySharedService.shareDrimagDocDetails);
-        
+
         if($ionicHistory.currentStateName() === 'tab-ret.gallery-ret'){
             $scope.data.title=mySharedService.shareDrimagDocDetails[0].document_title;
             console.log($scope.data.title);
         }
-        
+
         if($ionicHistory.currentStateName() === 'tab-dist.gallery-dist'){
             $scope.data.title=mySharedService.shareDrimagDocDetails[0].document_title;
             console.log($scope.data.title);
         }
-        
-        
+
+
         $ionicLoading.show({
             template: '<span class="icon spin ion-loading-d"></span> Loading...'
         });
         var count=0;
         if($scope.mediaData.length) {
-            
+
             angular.forEach($scope.mediaData, function(val, key) {
-                
+
                 var options = {
                     fileKey: "file",
                     fileName: "image.jpg",
@@ -2357,20 +2551,20 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                 };
                 $cordovaFileTransfer.upload(server_url+"/upload.php?ret_id="+$scope.retailer_det.id+"&title="+$scope.data.title+"&created_by="+salesexe_id,val.src, options).then(function(result) {
                     console.log("SUCCESS: " + JSON.stringify(result));
-                    
+
                     if($scope.mediaData.length == (count+1)) {
                         console.log('length '+ $scope.mediaData.length);
                         console.log('file key '+ (count+1));
                         $scope.data=[];
                         $scope.mediaData=[];
                         $scope.dr_img_doc_list($scope.retailer_det.id,type);
-                        
+
                         $timeout(function (){
-                            
+
                             $ionicLoading.hide();
-                            
+
                             $cordovaToast.show('Document/s Uploaded Successfully', 'short', 'bottom').then(function(success) {
-                                
+
                             }, function (error) {
                             });
                         }, 500);
@@ -2379,12 +2573,12 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                 }, function(err) {
                     console.log("ERROR: " + JSON.stringify(err));
                 }, function (progress) {
-                    
+
                 });
             });
-            
+
         } else {
-            
+
             $ionicLoading.hide();
             $cordovaToast.show('Profile Picture Updated Successfully', 'short', 'bottom').then(function(success) {
             }, function (error) {
@@ -2399,28 +2593,28 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
             }
         }
     }
-    
+
     /*upload function end*/
-    
+
     /*listing of uploaded document and images of dr funt of prayag ctrl start*/
     $scope.dr_doc_imag={};
     $scope.dr_doc_imag = mySharedService.shareDr_imagDoc;
     console.log($scope.dr_doc_imag);
     // console.log($scope.dr_doc_imag[0].document_title);
-    
-    
+
+
     $scope.dr_img_doc_list= function (dr_id,type)
     {
-        
+
         $ionicLoading.show
         ({
             template: '<span class="icon spin ion-loading-d"></span> Loading...'
         });
-        
+
         loginService.dr_img_doc_list(dr_id)
         .then(function (result)
         {
-            
+
             console.log(result);
             $scope.dr_doc_imag = result;
             console.log($scope.dr_doc_imag);
@@ -2434,9 +2628,9 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                 $state.go('tab-dist.tab-imgdoc-dist');
             }
             $timeout(function () { $ionicLoading.hide(); }, 200);
-            
+
             $ionicLoading.hide();
-            
+
         },
         function (err) {
             $ionicLoading.hide();
@@ -2444,25 +2638,25 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
         })
     }
     /*listing of uploaded document and images of dr funt of prayag end*/
-    
+
     /*Details of uploaded document and images of dr on the basis of doc_title funtion
     of prayag ctrl  start*/
-    
+
     $scope.mediaData=[];
-    
-    
+
+
     $scope.myDocAddGallaryList =  mySharedService.shareDrimagDocDetails;
-    
-    
-    
+
+
+
     $scope.dr_img_doc_details= function (dr_id,document_title,type)
     {
-        
+
         $ionicLoading.show
         ({
             template: '<span class="icon spin ion-loading-d"></span> Loading...'
         });
-        
+
         loginService.dr_img_doc_details(dr_id, document_title)
         .then(function (result)
         {
@@ -2480,33 +2674,33 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                 $state.go('tab-dist.gallery-dist');
             }
             $timeout(function () { $ionicLoading.hide(); }, 200);
-            
+
             $ionicLoading.hide();
-            
+
         },
         function (err) {
             $ionicLoading.hide();
             console.error(err);
         })
     }
-    
+
     /*Details of uploaded document and images of dr on the basis of doc_title funtion
     of prayag ctrl  start*/
-    
+
     /*function to call on imgdoc back button start*/
     // $scope.dr_img_doc_details_back= function (document_title)
     //       {
-    
+
     //        alert("jhjf");
     //          $scope.mediaData=[];
     //            //$state.go('tab-ret.tab-imgdoc-ret');
-    
+
     //        }
-    
+
     /*function to call on imgdoc back button start*/
-    
+
     /*Retailer particular retailer pop abd gift listing function of prayag ctrl start*/
-    
+
     $scope.ret_pop_gift_data={};
     $scope.ret_pop_gift_data =  mySharedService.shareRetPopGiftdata ;
     $scope.ret_pop_gift_list= function (ret_id,type)
@@ -2515,7 +2709,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
         ({
             template: '<span class="icon spin ion-loading-d"></span> Loading...'
         });
-        
+
         loginService.ret_pop_gift_list(ret_id)
         .then(function (result)
         {
@@ -2532,9 +2726,9 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                 $state.go('tab-dist.tab-pop-dist');
             }
             $timeout(function () { $ionicLoading.hide(); }, 200);
-            
+
             $ionicLoading.hide();
-            
+
         },
         function (err) {
             $ionicLoading.hide();
@@ -2542,9 +2736,9 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
         })
     }
     /*Retailer particular retailer pop abd gift listing function of prayag ctrl end*/
-    
+
     /*Retailer View & Edit function of prayag ctrl start*/
-    
+
     // $scope.view_edit_data=[];
     // $scope.view_edit_data =  mySharedService.shareViewEidtdata ;
     // $scope.view_edit= function (ret_id,type)
@@ -2565,7 +2759,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
     //      },function (err) {
     //           console.error(err);
     //      })
-    
+
     // loginService.view_edit_list(ret_id)
     // .then(function (result)
     // {
@@ -2583,9 +2777,9 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
     //       $state.go('tab-dist.tab-pop-dist');
     //     }
     //     $timeout(function () { $ionicLoading.hide(); }, 200);
-    
+
     //     $ionicLoading.hide();
-    
+
     //   },
     //      function (err) {
     //        $ionicLoading.hide();
@@ -2593,9 +2787,9 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
     //     })
     // }
     /*Retailer View & Edit function of prayag ctrl end*/
-    
+
     /*Executive Pop and Gift stock info and listing for retailer function of prayag ctrl start*/
-    
+
     $scope.exe_pop_giftstock_data={};
     $scope.exe_pop_giftstock_data =  mySharedService.shareExePopGiftStockdata ;
     $scope.exe_pop_gift_stock_data= function (type)
@@ -2604,7 +2798,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
         ({
             template: '<span class="icon spin ion-loading-d"></span> Loading...'
         });
-        
+
         loginService.exe_pop_gift_stock_data()
         .then(function (result)
         {
@@ -2621,9 +2815,9 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                 $state.go('tab-dist.addpop-dist');
             }
             $timeout(function () { $ionicLoading.hide(); }, 200);
-            
+
             $ionicLoading.hide();
-            
+
         },
         function (err) {
             $ionicLoading.hide();
@@ -2631,19 +2825,19 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
         })
     }
     /*Executive Pop and Gift stock info and listing  for retailer function of prayag ctrl start*/
-    
+
     /*Giving pop_gift to the retailer function of prayag ctrl start*/
-    
+
     $scope.assignpopgifts_ret_data={};
     $scope.assignpopgifts_ret_data =  mySharedService.shareAssignPopGiftRet ;
     $scope.assignpopgift_ret= function (ret_id,pop_gift_id,qty,type,delnote)
     {
-        
+
         $ionicLoading.show
         ({
             template: '<span class="icon spin ion-loading-d"></span> Loading...'
         });
-        
+
         loginService.assignpopgift_ret(ret_id,pop_gift_id,qty,delnote)
         .then(function (result)
         {
@@ -2657,11 +2851,11 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                 $cordovaToast.show('Pop Gift Sent Succesfully!', 'short', 'bottom').then(function(success) { },
                 function (error) {
                 });
-                
+
             }, 300);
-            
+
             $ionicLoading.hide();
-            
+
         },
         function (err) {
             $ionicLoading.hide();
@@ -2669,7 +2863,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
         })
     }
     /*Giving pop_gift to the retailer function of prayag ctrl end*/
-    
+
     $scope.new_result=[];
     $scope.out_data=mySharedService.out_data;
     /*Outstanding retailer listing fuction start*/
@@ -2683,12 +2877,12 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
         // ({
         //     template: '<span class="icon spin ion-loading-d"></span> Loading...'
         // });
-        
+
         loginService.outstanding_list(type)
         .then(function (result)
         {
             console.log(result);
-            
+
             if(type=='1')
             {
                 $scope.retailer_list = mySharedService.prepForRetailerDataBroadcast(result);
@@ -2707,13 +2901,13 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
             console.error(err);
         })
     }
-    
-    
+
+
     /*Outstanding retailer listing fuction end*/
-    
-    
+
+
     /*Distributor listing function  of prayag ctrl start*/
-    
+
     $scope.distributor_list=[];
     $scope.distributor_list= mySharedService.shareDistributorListdata;
     $scope.distributorlist= function ()
@@ -2733,34 +2927,34 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
         ({
             template: '<span class="icon spin ion-loading-d"></span> Loading...'
         });
-        
-        
+
+
         loginService.distributorlist()
         .then(function (result)
         {
-            
+
             $scope.distributor_list = result;
             $scope.contact_person=result.contact_person;
             console.log($scope.distributor_list);
-            
+
             mySharedService.prepForDistributorListDataBroadcast(result);
             $state.go('tab.distributor');
             $timeout(function () { $ionicLoading.hide(); }, 200);
-            
+
             $ionicLoading.hide();
             $scope.$broadcast('scroll.refreshComplete');
-            
+
         },
         function (err) {
             $ionicLoading.hide();
             console.error(err);
         })
     }
-    
+
     /*Distributor listing function of prayag ctrl end*/
-    
+
     /*Awaiting Distributor listing function  of prayag ctrl start*/
-    
+
     $scope.await_distributor_list=[];
     $scope.await_distributor_list= mySharedService.shareAwaitDistributorListdata;
     $scope.awaitdistributorlist= function ()
@@ -2770,38 +2964,38 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
         $scope.distributor_list=[];
         $rootScope.ref_dist_lst=false;
         mySharedService.shareDistributorListdata=[];
-        
+
         $ionicLoading.show
         ({
             template: '<span class="icon spin ion-loading-d"></span> Loading...'
         });
-        
-        
+
+
         loginService.awaitdistributorlist()
         .then(function (result)
         {
-            
+
             $scope.await_distributor_list = result;
             console.log($scope.await_distributor_list);
             mySharedService.shareAwaitDistributorListdata = result;
             // mySharedService.prepForDistributorListDataBroadcast(result);
             $state.go('tab.distributor');
             $timeout(function () { $ionicLoading.hide(); }, 200);
-            
+
             $ionicLoading.hide();
             $scope.$broadcast('scroll.refreshComplete');
-            
+
         },
         function (err) {
             $ionicLoading.hide();
             console.error(err);
         })
     }
-    
+
     /*Awaiting Distributor listing function of prayag ctrl end*/
-    
+
     /*Distributor listing details function of prayag ctrl start*/
-    
+
     $scope.distributor_details={};
     $scope.distributor_details= mySharedService.shareDistributorDetailsdata;
     $scope.distributorDetails= function (id)
@@ -2810,37 +3004,37 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
         ({
             template: '<span class="icon spin ion-loading-d"></span> Loading...'
         });
-        
-        
+
+
         loginService.distributorDetails(id)
         .then(function (result)
         {
-            
+
             $scope.distributor_details = result;
             console.log("dist details");
             console.log($scope.distributor_details);
-            
+
             mySharedService.prepForDistributorDetailsDataBroadcast(result);
             $state.go('tab.distributor-det');
             $timeout(function () { $ionicLoading.hide(); }, 200);
-            
+
             $ionicLoading.hide();
-            
+
         },
         function (err) {
             $ionicLoading.hide();
             console.error(err);
         })
     }
-    
+
     /*Distributor listing details function of prayag ctrl end*/
-    
+
     //  /*Distributor activity-add function start*/
-    
+
     //    $scope.distr_actdata=[];
     //    $scope.activityret= function (distr_id)
     //    {
-    
+
     //     $scope.distr_actdata.activity_date='2017-09-06';
     //     var next_followup = moment($scope.distr_actdata.next_followup).format('YYYY-MM-DD');
     //     console.log(next_followup);
@@ -2848,16 +3042,16 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
     //     ({
     //         template: '<span class="icon spin ion-loading-d"></span> Loading...'
     //     });
-    
+
     //     loginService.activity_ret_service(distr_id,$scope.distr_actdata.activity_date,$scope.distr_actdata.activity_type,$scope.distr_actdata.remark,next_followup)
     //     .then(function (result)
     //     {
     //        console.log(result);
     //         $state.go('tab.distributor-det');
     //         $timeout(function () { $ionicLoading.hide(); }, 200);
-    
+
     //         $ionicLoading.hide();
-    
+
     //       },
     //          function (err) {
     //            $ionicLoading.hide();
@@ -2865,34 +3059,34 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
     //         })
     //     }
     // /*Distributor activity-add function end*/
-    
-    
-    
+
+
+
     /*Distributor view_edit(update) function of prayag ctrl start*/
     $scope.distributoreditview={};
     $scope.distributoreditview=mySharedService.shareDistributorViewEditdata
     $scope.distributor_view_edit= function (id)
     {
-        
+
         $ionicLoading.show
         ({
             template: '<span class="icon spin ion-loading-d"></span> Loading...'
         });
-        
+
         console.log(id);
         console.log($scope.distributor_details);
-        
+
         loginService.distributor_view_edit(id,$scope.distributor_details.dr_name,$scope.distributor_details.contact_person,$scope.distributor_details.street_name,$scope.distributor_details.email,$scope.distributor_details.pincode,$scope.distributor_details.state,$scope.distributor_details.contact_02
             )
             .then(function (result)
             {
-                
+
                 mySharedService.prepForDistributorDetailViewEditBroadcast(result);
                 $state.go('tab.distributor-det');
                 $timeout(function () { $ionicLoading.hide(); }, 200);
-                
+
                 $ionicLoading.hide();
-                
+
             },
             function (err) {
                 $ionicLoading.hide();
@@ -2900,8 +3094,8 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
             })
         }
         /*Distributor view_edit(update) function of prayag ctrl end*/
-        
-        
+
+
         /*salesexe profile data function of prayag ctrl start*/
         $scope.salesexeprofiledata={};
         // $scope.salesexeprofiledata= mySharedService.shareSalesExeProfiledata;
@@ -2911,36 +3105,36 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
             loginService.salesexe_profile()
             .then(function (result)
             {
-                
+
                 console.log("profile");
                 console.log(result);
                 $scope.salesexeprofiledata = result;
                 console.log($scope.salesexeprofiledata);
-                
+
                 // mySharedService.prepForSalesExeProfileDataBroadcast(result);
                 $timeout(function () { $ionicLoading.hide(); }, 200);
-                
+
                 $ionicLoading.hide();
-                
+
             },
             function (err) {
                 $ionicLoading.hide();
                 console.error(err);
             })
         }
-        
-        
-        
+
+
+
         $scope.product_segment={};
         $scope.product_segment= mySharedService.shareProductsdata;
-        
+
         console.log(mySharedService.show_default_category);
         $rootScope.show_default_category=mySharedService.show_default_category;
         $rootScope.show_default_product=mySharedService.show_default_product;
-        
+
         $scope.add_product_ret = function(val,type)
         {
-            
+
             $rootScope.cache_val=false;
             mySharedService.edit_enable=false;
             mySharedService.edit_enable_button=false;
@@ -2954,7 +3148,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
             mySharedService.next_followup_date=[];
             mySharedService.distributor_idd=[];
             mySharedService.new_arrr=[];
-            
+
             $ionicLoading.show
             ({
                 template: '<span class="icon spin ion-loading-d"></span> Loading...'
@@ -2967,14 +3161,14 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                 $scope.product_segment=result.seg;
                 $scope.product_cat_data=result.cat;
                 mySharedService.shareProductsCatdata=result.cat;
-                
+
                 // $ionicHistory.clearHistory();
                 // $ionicHistory.clearCache();
                 if(val=='1')
                 {
                     $ionicLoading.hide();
                 }
-                
+
                 if(val=='2')
                 {
                     mySharedService.share_seg_comb_data=[];
@@ -2987,7 +3181,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                         mySharedService.dist_name=[];
                         $rootScope.prod_feature=[];
                         $rootScope.valid=false;
-                        
+
                         if(type=='1')
                         {
                             $state.go('tab-ret.addproduct-ret');
@@ -3011,15 +3205,15 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                 $ionicLoading.hide();
                 console.error(err);
             })
-            
+
         }
-        
+
         $scope.click_me=function()
         {
             console.log("IN CLICK ME");
             $ionicLoading.hide();
         }
-        
+
         $scope.bck_btn=0;
         $scope.ask_perm=function(type)
         {
@@ -3039,11 +3233,11 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                 {
                     $scope.get_orders($rootScope.retailers_id,'2');
                 }
-                
+
             }
         }
-        
-        
+
+
         $scope.product_cat_data={};
         $rootScope.product_data={};
         $scope.segment_array=[];
@@ -3064,6 +3258,18 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
         //$scope.dist_array= mySharedService.shareDistributordata;
         // $scope.prod_feature= mySharedService.shareProdFeaturedata;
         // $scope.cat_val=mySharedService.shareCatValData;\
+        console.log("******************** mySharedService.temp_default_category *******************************");
+        console.log(mySharedService.temp_default_category);
+        console.log("******************** $rootScope.default_category *******************************");
+        console.log($rootScope.default_category);
+        console.log("******************** mySharedService.default_category *******************************");
+        console.log(mySharedService.default_category);
+        console.log("******************** $rootScope.show_default_category *******************************");
+        console.log($rootScope.show_default_category);
+        console.log("******************** mySharedService.show_default_category *******************************");
+        console.log(mySharedService.show_default_category);
+
+
         console.log($scope.data.cat_val);
         $scope.get_cat_no = function(all_val,seg_name,valn,type,search_var)
         {
@@ -3071,17 +3277,34 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
             console.log("GET CAT NO"+" "+seg_name+" "+valn +" "+type);
             console.log($rootScope.conf_district_name);
             console.log($rootScope.conf_state_name);
-            
+
+            //---------------------- + --------------------
+            console.log("Inserting rest data after selection");
+            $rootScope.default_category=[];
+            mySharedService.show_default_category = [];
+            $rootScope.show_default_category = [];
+            $rootScope.default_category=mySharedService.default_category;
+            for(i=0;i<50;i++)
+            {
+                if(i<mySharedService.default_category.length)
+                {
+                    mySharedService.show_default_category.push(mySharedService.default_category[i]);
+                    $rootScope.show_default_category.push(mySharedService.default_category[i]);
+                }
+            }
+            //---------------------- + --------------------
+
+
             if(mySharedService.temp_default_category.length == 0)
             {
                 mySharedService.temp_default_category=$rootScope.default_category;
             }
-            
+
             if(mySharedService.temp_default_products.length == 0)
             {
                 mySharedService.temp_default_products=$rootScope.default_products;
             }
-            
+
             $ionicLoading.show
             ({
                 template: '<span class="icon spin ion-loading-d"></span> Loading...'
@@ -3091,30 +3314,30 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
             {
                 $rootScope.pass_seg_name=all_val.seg_name;
                 $rootScope.pass_prod_cat_val=all_val.cat_nos;
-                
+
                 mySharedService.show_default_category=[];
                 $rootScope.show_default_category=[];
                 mySharedService.default_category=[];
                 $rootScope.default_category=[];
-                
+
                 mySharedService.show_default_product=[];
                 $rootScope.show_default_product=[];
                 mySharedService.default_products=[];
                 $rootScope.default_products=[];
-                
+
                 angular.forEach(mySharedService.temp_default_category, function(value, key) {
                     if(value.seg_name==all_val.seg_name)
                     {
                         mySharedService.show_default_category.push(value);
                         mySharedService.default_category.push(value);
                         $rootScope.default_category.push(value);
-                        
+
                         mySharedService.show_default_product.push(value);
                         mySharedService.default_products.push(value);
                         $rootScope.default_products.push(value);
                     }
                 });
-                
+
                 if(mySharedService.show_default_category.length>=50)
                 {
                     for(i=0;i<50;i++)
@@ -3131,39 +3354,39 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                         $rootScope.show_default_product.push(mySharedService.show_default_product[i]);
                     }
                 }
-                
+
                 console.log(mySharedService.show_default_category);
                 console.log($rootScope.show_default_category);
                 console.log(mySharedService.default_category);
                 console.log($rootScope.default_category);
-                
+
                 $rootScope.pass_seg_name=seg_name;
                 console.log($rootScope.pass_seg_name);
-                
+
                 // $scope.prod_feature=[];
                 $scope.prod_state_price=[];
                 // console.log($scope.prod_feature);
-                
+
                 console.log("PIN");
                 console.log($scope.retailer_det.pincode);
                 console.log($scope.retailer_det.state_name);
                 // $rootScope.product_data=[];
-                
+
                 if($rootScope.conf_district_name)
                 {
                     console.log("DIST");
                     $scope.retailer_det.district_name=$rootScope.conf_district_name;
                     console.log($scope.retailer_det.district_name);
                 }
-                
+
                 if($rootScope.conf_state_name)
                 {
                     console.log("ST");
                     $scope.retailer_det.state_name=$rootScope.conf_state_name;
                     console.log($scope.retailer_det.state_name);
                 }
-                
-                
+
+
                 loginService.fetch_prod_cat_det_ret(seg_name,valn,type,$scope.retailer_det.district_name,'',$scope.retailer_det.state_name,$rootScope.retailers_id)
                 .then(function (result)
                 {
@@ -3171,20 +3394,82 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
 
 
                     $rootScope.dr_default_category=[];
+                    $rootScope.default_category = [];
+                    mySharedService.default_category = [];
+                    $rootScope.show_default_category = [];
+                    mySharedService.show_default_category = [];
                     for(j=0;j<result.data.length;j++)
                     {
-                        $rootScope.dr_default_category.push({'cat_nos':result.data[j].product_category_no,'seg_name':result.data[j].segment_name,'product':result.data[j].product_name,'id':result.data[j].id});
+                        // $rootScope.dr_default_category.push({'cat_nos':result.data[j].product_category_no,'seg_name':result.data[j].segment_name,'product':result.data[j].product_name,'id':result.data[j].id});
+
+                        $rootScope.default_category.push({'cat_nos':result.data[j].product_category_no,'seg_name':result.data[j].segment_name,'product':result.data[j].product_name,'id':result.data[j].id});
+
+                        // $rootScope.show_default_category
+                        // $rootScope.default_category
+                        // mySharedService.default_category
+                        // mySharedService.show_default_category
                     }
-                    
-                    
-                    mySharedService.dr_default_category=$rootScope.dr_default_category;
-                    
+
+
+                    mySharedService.default_category=$rootScope.default_category;
+                    if($rootScope.default_category.length>50){
+                      for(let i=0;i<50;i++){
+                        $rootScope.show_default_category.push($rootScope.default_category[i]);
+                        mySharedService.show_default_category.push($rootScope.default_category[i]);
+                      }
+                    }
+                    else{
+                      $rootScope.show_default_category=$rootScope.default_category;
+                      mySharedService.show_default_category = $rootScope.default_category;
+                    }
+                    // mySharedService.dr_default_category=$rootScope.dr_default_category;
+                    console.log("************selected $rootScope.default_category****************");
+                    console.log($rootScope.default_category);
+                    console.log("************selected mySharedService.default_category****************");
+                    console.log(mySharedService.default_category);
+                    console.log("************selected $rootScope.show_default_category****************");
+                    console.log($rootScope.show_default_category);
+                    console.log("************selected mySharedService.show_default_category****************");
+                    console.log(mySharedService.show_default_category);
+
+
+                    $rootScope.default_products = [];
+                    mySharedService.default_products = [];
+                    $rootScope.show_default_product = [];
+                    mySharedService.show_default_product = [];
+                    for(j=0;j<result.data.length;j++)
+                    {
+
+                        $rootScope.default_products.push({'cat_nos':result.data[j].product_category_no,'seg_name':result.data[j].segment_name,'product':result.data[j].product_name,'id':result.data[j].id});
+                    }
+
+
+                    mySharedService.default_products=$rootScope.default_products;
+                    if($rootScope.default_products.length>50){
+                      for(let i=0;i<50;i++){
+                        $rootScope.show_default_product.push($rootScope.default_products[i]);
+                        mySharedService.show_default_product.push($rootScope.default_products[i]);
+                      }
+                    }
+                    else{
+                      $rootScope.show_default_product=$rootScope.default_products;
+                      mySharedService.show_default_product = $rootScope.default_products;
+                    }
+
+                    console.log("************selected $rootScope.default_products****************");
+                    console.log($rootScope.default_products);
+                    console.log("************selected mySharedService.default_products****************");
+                    console.log(mySharedService.default_products);
+                    console.log("************selected $rootScope.show_default_product****************");
+                    console.log($rootScope.show_default_product);
+                    console.log("************selected mySharedService.show_default_product****************");
+                    console.log(mySharedService.show_default_product);
 
                     mySharedService.prepFoProductsCatDataBroadcast(result.data);
                     $scope.product_cat_data=result.data;
                     $scope.outstand_data=result.outstand_bal;
                     mySharedService.outstand_data=result.outstand_bal;
-                    
+
                     mySharedService.prepForDistributorNameBroadcast(result.distributor_data);
                     if($rootScope.dist_array.length)
                     {
@@ -3215,7 +3500,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                                     {
                                         $rootScope.dist_array.splice($rootScope.dist_array.length-1,1);
                                     }
-                                    
+
                                     if(i==$rootScope.dist_array.length-1)
                                     {
                                         $rootScope.dist_array.push({ segment_name: seg_name, distributors: result.distributor_data});
@@ -3228,7 +3513,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                     {
                         $rootScope.dist_array.push({ segment_name: seg_name, distributors: result.distributor_data});
                     }
-                    
+
                     if(result.disc_data.length)
                     {
                         for(i=0;i<result.disc_data.length;i++)
@@ -3244,7 +3529,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                         }
                     }
                     // }
-                    
+
                     console.log($rootScope.dist_array);
                     $ionicLoading.hide();
                 },
@@ -3253,41 +3538,41 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                     console.error(err);
                 })
             }
-            
+
             if(valn == 2 && type=='2')
             {
                 // $scope.prod_feature=[];
                 $scope.prod_state_price=[];
                 // console.log($scope.prod_feature);
-                
+
                 $rootScope.pass_seg_name=all_val.seg_name;
                 $rootScope.pass_prod_cat_val=all_val.cat_nos;
-                
+
                 mySharedService.show_default_category=[];
                 $rootScope.show_default_category=[];
                 mySharedService.default_category=[];
                 $rootScope.default_category=[];
-                
+
                 mySharedService.show_default_product=[];
                 $rootScope.show_default_product=[];
                 mySharedService.default_products=[];
                 $rootScope.default_products=[];
-                
-                
-                
+
+
+
                 angular.forEach(mySharedService.temp_default_category, function(value, key) {
                     if(value.seg_name==all_val.seg_name)
                     {
                         mySharedService.show_default_category.push(value);
                         mySharedService.default_category.push(value);
                         $rootScope.default_category.push(value);
-                        
+
                         mySharedService.show_default_product.push(value);
                         mySharedService.default_products.push(value);
                         $rootScope.default_products.push(value);
                     }
                 });
-                
+
                 if(mySharedService.show_default_category.length>=50)
                 {
                     for(i=0;i<50;i++)
@@ -3304,15 +3589,15 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                         $rootScope.show_default_product.push(mySharedService.show_default_product[i]);
                     }
                 }
-                
+
                 console.log(mySharedService.show_default_category);
                 console.log($rootScope.show_default_category);
                 console.log(mySharedService.default_category);
                 console.log($rootScope.default_category);
-                
+
                 $rootScope.pass_seg_name=seg_name;
                 console.log($rootScope.pass_seg_name);
-                
+
                 console.log("PIN");
                 console.log($scope.retailer_det.pincode);
                 // $rootScope.product_data=[];
@@ -3322,9 +3607,73 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                     mySharedService.prepFoProductsCatDataBroadcast(result.data);
                     // $scope.data.segment_name=  {id : id, segment_name : $scope.data.selectedValue4};
                     $scope.product_cat_data=result.data;
-                    
+
+                    $rootScope.default_category = [];
+                    mySharedService.default_category = [];
+                    $rootScope.show_default_category = [];
+                    mySharedService.show_default_category = [];
+                    for(j=0;j<result.data.length;j++)
+                    {
+                        $rootScope.default_category.push({'cat_nos':result.data[j].product_category_no,'seg_name':result.data[j].segment_name,'product':result.data[j].product_name,'id':result.data[j].id});
+                    }
+
+
+                    mySharedService.default_category=$rootScope.default_category;
+                    if($rootScope.default_category.length>50){
+                      for(let i=0;i<50;i++){
+                        $rootScope.show_default_category.push($rootScope.default_category[i]);
+                        mySharedService.show_default_category.push($rootScope.default_category[i]);
+                      }
+                    }
+                    else{
+                      $rootScope.show_default_category=$rootScope.default_category;
+                      mySharedService.show_default_category = $rootScope.default_category;
+                    }
+
+                    console.log("************selected $rootScope.default_category****************");
+                    console.log($rootScope.default_category);
+                    console.log("************selected mySharedService.default_category****************");
+                    console.log(mySharedService.default_category);
+                    console.log("************selected $rootScope.show_default_category****************");
+                    console.log($rootScope.show_default_category);
+                    console.log("************selected mySharedService.show_default_category****************");
+                    console.log(mySharedService.show_default_category);
+
+
+                    $rootScope.default_products = [];
+                    mySharedService.default_products = [];
+                    $rootScope.show_default_product = [];
+                    mySharedService.show_default_product = [];
+                    for(j=0;j<result.data.length;j++)
+                    {
+
+                        $rootScope.default_products.push({'cat_nos':result.data[j].product_category_no,'seg_name':result.data[j].segment_name,'product':result.data[j].product_name,'id':result.data[j].id});
+                    }
+
+
+                    mySharedService.default_products=$rootScope.default_products;
+                    if($rootScope.default_products.length>50){
+                      for(let i=0;i<50;i++){
+                        $rootScope.show_default_product.push($rootScope.default_products[i]);
+                        mySharedService.show_default_product.push($rootScope.default_products[i]);
+                      }
+                    }
+                    else{
+                      $rootScope.show_default_product=$rootScope.default_products;
+                      mySharedService.show_default_product = $rootScope.default_products;
+                    }
+
+                    console.log("************selected $rootScope.default_products****************");
+                    console.log($rootScope.default_products);
+                    console.log("************selected mySharedService.default_products****************");
+                    console.log(mySharedService.default_products);
+                    console.log("************selected $rootScope.show_default_product****************");
+                    console.log($rootScope.show_default_product);
+                    console.log("************selected mySharedService.show_default_product****************");
+                    console.log(mySharedService.show_default_product);
+
                     mySharedService.prepForDistributorNameBroadcast(result.distributor_data);
-                    
+
                     if($rootScope.dist_array.length)
                     {
                         for(i=0;i<$rootScope.dist_array.length;i++)
@@ -3352,7 +3701,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                                     {
                                         $rootScope.dist_array.splice($rootScope.dist_array.length-1,1);
                                     }
-                                    
+
                                     if(i==$rootScope.dist_array.length-1)
                                     {
                                         $rootScope.dist_array.push({ segment_name: seg_name, distributors: result.distributor_data});
@@ -3365,7 +3714,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                     {
                         $rootScope.dist_array.push({ segment_name: seg_name, distributors: result.distributor_data});
                     }
-                    
+
                     if(result.disc_data.length)
                     {
                         for(i=0;i<result.disc_data.length;i++)
@@ -3380,7 +3729,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                             }
                         }
                     }
-                    
+
                     console.log($rootScope.dist_array);
                     $ionicLoading.hide();
                 },
@@ -3389,7 +3738,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                     console.error(err);
                 })
             }
-            
+
             if(valn == 3)
             {
                 $scope.default_segment_select = {
@@ -3399,19 +3748,19 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                 $rootScope.pass_prod_cat_val=all_val.cat_nos;
                 console.log($rootScope.pass_prod_cat_val);
                 console.log(type);
-                
-                
+                console.log(all_val);
+
                 loginService.fetch_prod_cat_det_ret(seg_name,valn,type,$scope.retailer_det.district_name,all_val.seg_name,$scope.retailer_det.state_name,$rootScope.retailers_id)
                 .then(function (result)
                 {
                     console.log(result);
                     console.log(result.data);
-                    
+
                     mySharedService.prepFoProductsNameDataBroadcast(result.data);
                     $rootScope.product_data=result.data;
                     $rootScope.prod_feature=result.data_feat;
                     $scope.prod_state_price=result.prod_state_price;
-                    
+
                     if($rootScope.dist_array.length)  {
                         console.log($rootScope.dist_array);
                         for(i=0;i<$rootScope.dist_array.length;i++)
@@ -3435,7 +3784,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                                     {
                                         $rootScope.dist_array.splice($rootScope.dist_array.length-1,1);
                                     }
-                                    
+
                                     if(i==$rootScope.dist_array.length-1)
                                     {
                                         $rootScope.dist_array.push({ segment_name: all_val.seg_name, distributors: result.distributor_data});
@@ -3444,14 +3793,14 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                                 // break;
                             }
                         }
-                        
+
                     } else {
-                        
+
                         $rootScope.dist_array.push({ segment_name: all_val.seg_name, distributors: result.distributor_data});
                     }
-                    
+
                     console.log($rootScope.dist_array);
-                    
+
                     if(result.disc_data.length)
                     {
                         for(i=0;i<result.disc_data.length;i++)
@@ -3484,7 +3833,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                             }
                         }
                     }
-                    
+
                     $ionicLoading.hide();
                 },
                 function (err) {
@@ -3492,24 +3841,58 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                     console.error(err);
                 })
             }
-            
+
             if(valn == 4)
             {
                 $rootScope.pass_seg_name=all_val.seg_name;
                 $rootScope.pass_prod_cat_val=all_val.cat_nos;
                 console.log(all_val);
                 console.log(type);
-                
+
                 console.log(all_val.cat_nos);
                 loginService.fetch_prod_cat_det_ret(all_val.cat_nos,valn,type,$scope.retailer_det.district_name,all_val.seg_name,$scope.retailer_det.state_name,$rootScope.retailers_id)
                 .then(function (result)
                 {
+
+
+                  $rootScope.default_products = [];
+                  mySharedService.default_products = [];
+                  $rootScope.show_default_product = [];
+                  mySharedService.show_default_product = [];
+                  for(j=0;j<result.data.length;j++)
+                  {
+
+                      $rootScope.default_products.push({'cat_nos':result.data[j].product_category_no,'seg_name':result.data[j].segment_name,'product':result.data[j].product_name,'id':result.data[j].id});
+                  }
+
+
+                  mySharedService.default_products=$rootScope.default_products;
+                  if($rootScope.default_products.length>50){
+                    for(let i=0;i<50;i++){
+                      $rootScope.show_default_product.push($rootScope.default_products[i]);
+                      mySharedService.show_default_product.push($rootScope.default_products[i]);
+                    }
+                  }
+                  else{
+                    $rootScope.show_default_product=$rootScope.default_products;
+                    mySharedService.show_default_product = $rootScope.default_products;
+                  }
+
+                  console.log("************selected $rootScope.default_products****************");
+                  console.log($rootScope.default_products);
+                  console.log("************selected mySharedService.default_products****************");
+                  console.log(mySharedService.default_products);
+                  console.log("************selected $rootScope.show_default_product****************");
+                  console.log($rootScope.show_default_product);
+                  console.log("************selected mySharedService.show_default_product****************");
+                  console.log(mySharedService.show_default_product);
+
                     console.log(result);
                     mySharedService.shareProductsNamedata = result.data;
                     $rootScope.product_data=result.data;
                     $rootScope.prod_feature=result.data_feat;
                     $scope.prod_state_price=result.prod_state_price;
-                    
+
                     if($rootScope.dist_array.length)  {
                         console.log($rootScope.dist_array);
                         for(i=0;i<$rootScope.dist_array.length;i++)
@@ -3533,7 +3916,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                                     {
                                         $rootScope.dist_array.splice($rootScope.dist_array.length-1,1);
                                     }
-                                    
+
                                     if(i==$rootScope.dist_array.length-1)
                                     {
                                         $rootScope.dist_array.push({ segment_name: all_val.seg_name, distributors: result.distributor_data});
@@ -3542,17 +3925,17 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                                 // break;
                             }
                         }
-                        
+
                     } else {
-                        
+
                         $rootScope.dist_array.push({ segment_name: all_val.seg_name, distributors: result.distributor_data});
                     }
-                    
+
                     console.log($rootScope.dist_array);
                     console.log(mySharedService.int_typee);
                     console.log($scope.type);
                     console.log($scope.dr_type);
-                    
+
                     if(result.disc_data.length)
                     {
                         for(i=0;i<result.disc_data.length;i++)
@@ -3586,23 +3969,23 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                             }
                         }
                     }
-                    
+
                     $ionicLoading.hide();
                 }, function (err) {
                     $ionicLoading.hide();
                     console.error(err);
                 })
-                
+
             }
-            
+
         }
-        
+
         $scope.idExists = function(id) {
             return $scope.cart_arr.some(function(el) {
                 return el.feat_id === id;
             });
         }
-        
+
         $scope.price_val_chg=[];
         $scope.cart_arr=[];
         // $scope.seg_amt=[];
@@ -3614,7 +3997,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
             segment_name=$rootScope.pass_seg_name;
             $scope.data.prod_qty=1;
             console.log($scope.retailer_id);
-            
+
             console.log(segment_name + cat_no + qnty + product_name + " "+product_amount+" "+feat_id);
             if($scope.cart_arr.length)
             {
@@ -3660,8 +4043,8 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                 $scope.cart_arr.push({ segment_name: segment_name, catg_no: cat_no, quantity: parseFloat(qnty).toFixed(2), product_name: product_name, amount: parseFloat(product_amount).toFixed(2), dist_id:0, feat_id: feat_id, feature: feature});
             }
             console.log($scope.cart_arr);
-            
-            
+
+
             if($rootScope.seg_amt.length)
             {
                 for(i=0;i<$rootScope.seg_amt.length;i++)
@@ -3686,7 +4069,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
             {
                 $rootScope.seg_amt.push({segment_name: segment_name, price:(parseFloat(product_amount)*parseFloat(qnty)).toFixed(2)});
             }
-            
+
             if($rootScope.price_val_chg.length)
             {
                 for(i=0;i<$rootScope.price_val_chg.length;i++)
@@ -3710,16 +4093,16 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
             {
                 $rootScope.price_val_chg.push({seg_name: segment_name, price_val:(parseFloat(product_amount)*parseFloat(qnty)).toFixed(2)});
             }
-            
+
             console.log($rootScope.seg_amt);
             console.log($rootScope.price_val_chg);
-            
+
             var seg_len= $rootScope.seg_amt.length;
             console.log(seg_len);
             console.log($scope.segment_comb_array.length);
-            
-            
-            
+
+
+
             console.log(mySharedService.share_seg_comb_data);
             if(mySharedService.share_seg_comb_data.length)
             {
@@ -3732,7 +4115,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                     $rootScope.valid=true;
                 }
             }
-            
+
             else
             {
                 if($scope.segment_comb_array.length!=seg_len)
@@ -3745,7 +4128,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                 }
             }
             console.log($rootScope.valid);
-            
+
             $scope.default_segment=mySharedService.default_segment;
             $rootScope.default_product_select = {
                 seg_name: "",
@@ -3753,12 +4136,12 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                 id: "",
                 product: ""
             };
-            
+
             console.log(mySharedService.temp_default_category);
             console.log(mySharedService.show_default_category);
             console.log($rootScope.show_default_category);
             console.log($rootScope.default_category);
-            
+
             mySharedService.show_default_category=[];
             $rootScope.show_default_category=[];
             $rootScope.default_category=[];
@@ -3769,14 +4152,14 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                 {
                     mySharedService.show_default_category.push(mySharedService.temp_default_category[i]);
                     $rootScope.show_default_category.push(mySharedService.temp_default_category[i]);
-                    
+
                 }
             }
             $rootScope.default_category=mySharedService.temp_default_category;
             mySharedService.default_category=mySharedService.temp_default_category;
-            
+
             console.log(mySharedService.temp_default_products);
-            
+
             mySharedService.show_default_product=[];
             $rootScope.show_default_product=[];
             $rootScope.default_products=[];
@@ -3791,7 +4174,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
             }
             $rootScope.default_products=mySharedService.temp_default_products;
             mySharedService.default_products=mySharedService.temp_default_products;
-            
+
             $scope.product_segment=[];
             $scope.product_cat_data=[];
             $rootScope.product_data=[];
@@ -3802,7 +4185,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
             $scope.$broadcast('reset');
             $scope.add_product_ret(1,type);
         }
-        
+
         $scope.del_cart = function(index)
         {
             if(mySharedService.share_seg_comb_data.length)
@@ -3834,12 +4217,12 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                             }
                             else
                             {
-                                
+
                             }
                         }
-                        
+
                     }
-                    
+
                     function findOccurrences(arr, val) {
                         console.log(val);
                         var i, j,
@@ -3849,40 +4232,40 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                         }
                         return count;
                     }
-                    
+
                     cnt = findOccurrences($scope.cart_arr, $scope.cart_arr[index].segment_name);
-                    
+
                     if(cnt==1)
                     {
-                        
+
                         for(i=0;i<$rootScope.seg_amt.length;i++)
                         {
                             if($rootScope.seg_amt[i].segment_name==$scope.cart_arr[index].segment_name)
                             {
                                 $rootScope.seg_amt.splice(i,1);
-                            }                                                                                                                                                                             
+                            }
                         }
                     }
-                    
+
                     $scope.cart_arr.splice(index,1);
                     console.log(cnt);
                     $scope.segment_comb_array.splice(index,1);
                     $rootScope.dist_array.splice(index,1);
                     $scope.price_val_chg.splice(index,1);
-                    
+
                     console.log($scope.cart_arr);
                     console.log($rootScope.seg_amt);
                     console.log($rootScope.dist_array);
                     console.log($scope.segment_comb_array);
-                    
+
                     var seg_len= $rootScope.seg_amt.length;
                     console.log(seg_len);
-                    
+
                     if(seg_len==0)
                     {
                         $rootScope.valid=false;
                     }
-                    
+
                     for(i=0;i<seg_len;i++)
                     {
                         if($scope.segment_comb_array[i].dist==undefined)
@@ -3897,16 +4280,16 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                             }
                         }
                     }
-                    
+
                 } else {
                     console.log('You are not sure');
                 }
             });
-            
+
         }
-        
+
         /*Retailer Order Listing function start*/
-        
+
         $scope.ret_orders=[];
         $scope.retailer_id=mySharedService.shareRetIddata;
         $scope.ret_orders=mySharedService.shareRetOrdersdata;
@@ -3921,12 +4304,12 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
             ({
                 template: '<span class="icon spin ion-loading-d"></span> Loading...'
             });
-            
+
             loginService.ret_orders_list(ret_id)
-            
+
             .then(function (result)
             {
-                
+
                 console.log(result);
                 mySharedService.prepForRetOrdersBroadcast(result.data);
                 $scope.ret_orders = result.data;
@@ -3938,7 +4321,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                 console.log($scope.retailer_id);
                 mySharedService.show_default_category=[];
                 mySharedService.show_default_product=[];
-                
+
                 if(conf)
                 {
                     mySharedService.lead_order=true;
@@ -3953,12 +4336,12 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                             }
                             else
                             {
-                                
+
                             }
                         }
                     }
                     console.log(mySharedService.default_segment);
-                    
+
                     mySharedService.default_category=[];
                     for(i=0;i<mySharedService.store_default_category.length;i++)
                     {
@@ -3970,12 +4353,12 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                             }
                             else
                             {
-                                
+
                             }
                         }
                     }
                     console.log(mySharedService.default_category);
-                    
+
                     mySharedService.default_products=[];
                     for(i=0;i<mySharedService.store_default_products.length;i++)
                     {
@@ -3987,42 +4370,42 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                             }
                             else
                             {
-                                
+
                             }
                         }
                     }
                     console.log(mySharedService.default_products);
-                    
+
                     for(i=0;i<50;i++)
                     {
                         mySharedService.show_default_category.push(mySharedService.default_category[i]);
                     }
                     console.log(mySharedService.show_default_category);
-                    
-                    
+
+
                     for(i=0;i<50;i++)
                     {
                         mySharedService.show_default_product.push(mySharedService.default_products[i]);
                     }
                     console.log(mySharedService.show_default_product);
-                    
+
                 }
-                
+
                 else {
-                    
+
                     mySharedService.lead_order=false;
-                    
+
                     for(i=0;i<50;i++)
                     {
                         mySharedService.show_default_category.push($rootScope.default_category[i]);
                     }
-                    
+
                     for(i=0;i<50;i++)
                     {
                         mySharedService.show_default_product.push($rootScope.default_products[i]);
                     }
                 }
-                
+
                 if(type=='1')
                 {
                     $state.go('tab-ret.tab-order-ret');
@@ -4032,13 +4415,13 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                     $state.go('tab-dist.tab-order-dist');
                 }
                 $ionicLoading.hide();
-                
+
             },
             function (err) {
                 $ionicLoading.hide();
                 console.error(err);
             })
-            
+
             if(type==1)
             {
                 console.log(mySharedService.selectedValue2 +" "+$rootScope.retailers_id);
@@ -4082,13 +4465,13 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                         $scope.data.selectedValue5=$scope.search_result.search_val;
                         $scope.get_cat_no(id,$scope.search_result.search_val,3,type,'1');
                     }
-                    
+
                 },
                 function (err) {
                     $ionicLoading.hide();
                     console.error(err);
                 })
-                
+
             }
             loginService.get_search(search_value,$rootScope.retailers_id)
             .then(function (result)
@@ -4101,7 +4484,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                 console.error(err);
             })
         }
-        
+
         $scope.model="";
         $scope.callbackMethod = function (query, isInitializing) {
             console.log(query);
@@ -4127,15 +4510,15 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                 //       };
             }
         }
-        
+
         $scope.doSomthing = function(item) {
             console.log('The selected item is: '+item);
         }
-        
+
         $scope.itemsClicked = function (query) {
             console.log(query);
         }
-        
+
         $scope.counterr=0;
         $scope.save_qty_val=function(qty)
         {
@@ -4146,7 +4529,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                 $scope.counterr++;
             }
         }
-        
+
         $scope.save_qty=function(qty,cat_no,seg_name,amt)
         {
             $scope.counterr=0;
@@ -4157,9 +4540,9 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
             if(mySharedService.saved_qty)
             {
                 upd_qty=parseFloat(mySharedService.saved_qty)-parseFloat(qty);
-                
+
                 console.log(upd_qty);
-                
+
                 for(i=0;i<$rootScope.seg_amt.length;i++)
                 {
                     console.log($rootScope.seg_amt[i].segment_name + seg_name);
@@ -4177,7 +4560,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                         }
                     }
                 }
-                
+
                 if($rootScope.price_val_chg.length)
                 {
                     console.log("IFFF");
@@ -4204,16 +4587,16 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                     $rootScope.price_val_chg.push({seg_name: seg_name, price_val:(parseFloat(amt)*parseFloat(upd_qty)).toFixed(2)});
                 }
                 mySharedService.saved_qty='';
-                
+
                 console.log(mySharedService.share_seg_comb_data);
             }
             console.log($rootScope.seg_amt);
             console.log($rootScope.price_val_chg);
         }
-        
+
         $scope.order_det=[];
         $scope.tot_order_det=[];
-        
+
         $scope.seg_price_disc=0;
         $scope.push_details=function(seg_name,seg_price,discount,distributor,dist_img,dist_id,typee)
         {
@@ -4222,17 +4605,17 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
             {
                 discount=0;
             }
-            
+
             console.log(mySharedService.share_seg_comb_data);
-            
+
             if(mySharedService.share_seg_comb_data.length)
             {
                 $scope.segment_comb_array=mySharedService.share_seg_comb_data;
             }
-            
+
             $scope.seg_price_disc= (parseFloat(seg_price) - parseFloat((seg_price*discount)/100)).toFixed(2);
-            
-            
+
+
             if($scope.segment_comb_array.length)
             {
                 console.log("IF");
@@ -4242,7 +4625,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                     if($scope.segment_comb_array[i].dist == distributor)
                     {
                         console.log("INSO IF"+i);
-                        
+
                         for(j=0;j<$scope.segment_comb_array.length;j++)
                         {
                             console.log(j+" "+$scope.segment_comb_array[j].disc+" "+discount);
@@ -4264,7 +4647,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                                     $scope.segment_comb_array.push({seg_name: seg_name, segment_price_mrp: parseFloat(seg_price).toFixed(2), seg_price_disc:parseFloat($scope.seg_price_disc).toFixed(2), disc: parseFloat(discount).toFixed(2), dist: distributor, distr_img: dist_img, dist_id:dist_id, gst: 0, gst_amt: 0, after_gst_amt: 0});
                                     break;
                                 }
-                                
+
                             }
                         }
                         console.log($scope.segment_comb_array);
@@ -4315,7 +4698,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                             $scope.segment_comb_array.push({seg_name: seg_name, segment_price_mrp: parseFloat(seg_price).toFixed(2), seg_price_disc:parseFloat($scope.seg_price_disc).toFixed(2), disc: parseFloat(discount).toFixed(2), dist: distributor, distr_img: dist_img, dist_id:dist_id, gst: 0, gst_amt: 0, after_gst_amt: 0});
                             break;
                         }
-                        
+
                     }
                 }
             }
@@ -4324,11 +4707,11 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                 console.log("ELSE");
                 $scope.segment_comb_array.push({seg_name: seg_name, segment_price_mrp: parseFloat(seg_price).toFixed(2), seg_price_disc:parseFloat($scope.seg_price_disc).toFixed(2), disc: parseFloat(discount).toFixed(2), dist: distributor, distr_img: dist_img, dist_id:dist_id, gst: 0, gst_amt: 0, after_gst_amt: 0});
             }
-            
+
             console.log("ORDER DET");
             console.log($scope.order_det);
             console.log($scope.segment_comb_array);
-            
+
             var seg_len= $rootScope.seg_amt.length;
             console.log(seg_len);
             for(i=0;i<seg_len;i++)
@@ -4350,8 +4733,8 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                 }
             }
             console.log($rootScope.valid);
-            
-            
+
+
         }
         $scope.ind_value=0;
         $scope.value=function(val)
@@ -4360,14 +4743,14 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
             $scope.ind_value=val;
         }
         console.log($rootScope.valid);
-        
-        
+
+
         $scope.oid = mySharedService.shareLastOIDdata;
         $scope.distr_arr=[];
         $scope.distr_arr= mySharedService.shareDistListdata;
         $scope.order_lst=mySharedService.shareOrdDistListdata;
         $scope.total_order_val;
-        
+
         function checkProperty(prop, newObj) {
             var result;
             Object.keys(newObj).forEach(function (key) {
@@ -4377,34 +4760,34 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
             });
             return result;
         }
-        
+
         $scope.upload_url=upload_url;
-        
+
         $scope.show_proceed_btn=mySharedService.show_proceed_btn;
-        
+
         $scope.fetch_all=function(type,value)
         {
             $scope.tot_order_det=[];
             $scope.new_gst_arr=[];
             mySharedService.new_arrr=[];
             mySharedService.shareOrdDistListdata=[];
-            
+
             console.log(mySharedService.share_seg_comb_data);
-            
+
             if(mySharedService.share_seg_comb_data.length)
             {
                 $scope.segment_comb_array=mySharedService.share_seg_comb_data;
             }
-            
+
             $ionicLoading.show
             ({
                 template: '<span class="icon spin ion-loading-d"></span> Loading...'
             });
-            
+
             for(i=0;i<$rootScope.seg_amt.length;i++)
             {
                 $scope.seg_price_discount= (parseFloat($rootScope.seg_amt[i].price) - (parseFloat($rootScope.seg_amt[i].price)*parseFloat($rootScope.disc_val[$rootScope.seg_amt[i].segment_name]))/100).toFixed(2);
-                
+
                 if(type=='1')
                 {
                     var exists = checkProperty($scope.data.dist_name[$rootScope.seg_amt[i].segment_name].dr_name, $scope.tot_order_det);
@@ -4413,7 +4796,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                 {
                     var exists = checkProperty($scope.data.dist_name[$rootScope.seg_amt[i].segment_name], $scope.tot_order_det);
                 }
-                
+
                 console.log(typeof(exists));
                 if ($scope.tot_order_det.length == 0 || !exists)
                 {
@@ -4426,8 +4809,8 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                     {
                         $scope.tot_order_det.push({seg_name: $rootScope.seg_amt[i].segment_name, segment_price_mrp: parseFloat($rootScope.seg_amt[i].price).toFixed(2), seg_price_disc:parseFloat($scope.seg_price_discount).toFixed(2), disc: parseFloat($rootScope.disc_val[$rootScope.seg_amt[i].segment_name]).toFixed(2), dist: $scope.data.dist_name[$rootScope.seg_amt[i].segment_name], distr_img: $scope.data.dist_name[$rootScope.seg_amt[i].segment_name].dr_image, dist_id: $scope.data.dist_name[$rootScope.seg_amt[i].segment_name], gst: 0, gst_amt: 0, after_gst_amt: 0});
                     }
-                    
-                    
+
+
                 }
                 else {
                     console.log("ELSE");
@@ -4446,16 +4829,16 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                     $scope.tot_order_det[exists].seg_price_disc = (parseFloat($scope.tot_order_det[exists].seg_price_disc) + parseFloat($scope.seg_price_disc)).toFixed(2);
                     $scope.tot_order_det[exists].disc = (parseFloat($scope.tot_order_det[exists].disc) + parseFloat($rootScope.disc_val[$rootScope.seg_amt[i].segment_name])).toFixed(2);
                     $scope.tot_order_det[exists].distr_img = $scope.data.dist_name[$rootScope.seg_amt[i].segment_name].dr_image;
-                    
+
                 }
             }
-            
+
             console.log($scope.tot_order_det);
             console.log($scope.segment_comb_array);
-            
+
             console.log($rootScope.price_val_chg);
-            
-            
+
+
             if($scope.segment_comb_array.length)
             {
                 $scope.total_order_val=0;
@@ -4469,7 +4852,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                         $scope.segment_comb_array[i].seg_price_disc=parseFloat($scope.chg_val).toFixed(2);
                     }
                     $scope.segment_comb_array[i].gst_amt= ((parseFloat($scope.segment_comb_array[i].gst)*parseFloat($scope.segment_comb_array[i].seg_price_disc))/100).toFixed(2);
-                    
+
                     $scope.segment_comb_array[i].after_gst_amt= (parseFloat($scope.segment_comb_array[i].seg_price_disc) + (parseFloat($scope.segment_comb_array[i].gst)*parseFloat($scope.segment_comb_array[i].seg_price_disc))/100).toFixed(2);
                     $scope.total_order_val=(parseFloat($scope.total_order_val)+parseFloat($scope.segment_comb_array[i].after_gst_amt)).toFixed(2);
                     if(type=='1')
@@ -4487,7 +4870,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                 console.log($scope.tot_order_det);
                 console.log($scope.segment_comb_array);
             }
-            
+
             if($scope.tot_order_det.length)
             {
                 $scope.total_order_val_final=0;
@@ -4495,7 +4878,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                 {
                     console.log(i+"hi");
                     console.log($scope.tot_order_det[i].gst);
-                    
+
                     for(j=0;j<$scope.segment_comb_array.length;j++)
                     {
                         if($scope.tot_order_det[i].dist == $scope.segment_comb_array[j].dist)
@@ -4503,7 +4886,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                             console.log(i+" "+j);
                             console.log($scope.tot_order_det[i].dist + $scope.segment_comb_array[j].dist);
                             $scope.tot_order_det[i].gst_amt= ((parseFloat($scope.segment_comb_array[j].gst)*parseFloat($scope.segment_comb_array[j].seg_price_disc))/100).toFixed(2);
-                            
+
                             $scope.tot_order_det[i].after_gst_amt= (parseFloat($scope.tot_order_det[i].after_gst_amt) + parseFloat($scope.segment_comb_array[j].seg_price_disc) + (parseFloat($scope.segment_comb_array[j].gst)*parseFloat($scope.segment_comb_array[j].seg_price_disc))/100).toFixed(2);
                         }
                     }
@@ -4513,11 +4896,11 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
             console.log($scope.tot_order_det);
             console.log($scope.segment_comb_array);
             console.log($rootScope.price_val_chg);
-            
+
             console.log(mySharedService.saved_order_id);
             console.log($scope.cart_arr);
             console.log($scope.total_order_val_final);
-            
+
             loginService.insert_in_order($scope.retailer_id,$scope.cart_arr,$scope.segment_comb_array,$scope.total_order_val_final,$scope.tot_order_det,type,value,mySharedService.saved_order_id,mySharedService.lead_order)
             .then(function (result)
             {
@@ -4550,14 +4933,14 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                 console.error(err);
             })
         }
-        
-        
+
+
         $scope.show_last_payment=function(type)
         {
             console.log(mySharedService.saved_order_id);
             console.log($scope.order_lst);
             console.log($rootScope.retailers_id);
-            
+
             $ionicLoading.show
             ({
                 template: '<span class="icon spin ion-loading-d"></span> Loading...'
@@ -4579,7 +4962,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                     {
                         mySharedService.payment_type[i]='Credit';
                     }
-                    
+
                     // if(result.data.length==$scope.order_lst.length)
                     // {
                     for(j=0;j<$scope.order_lst.length;j++)
@@ -4596,12 +4979,12 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                 {
                     $state.go('tab-ret.confirmord-ret');
                 }
-                
+
                 if(type==2)
                 {
                     $state.go('tab-dist.confirmord-dist');
                 }
-                
+
                 $ionicLoading.hide();
             },
             function (err) {
@@ -4610,16 +4993,16 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
             })
             mySharedService.last_payment=true;
         }
-        
+
         $scope.neew_tmp_arr=[];
-        
+
         if(mySharedService.new_arrr.length)
         {
             console.log($scope.order_lst);
             console.log(mySharedService.shareOrdDistListdata);
             $scope.neew_tmp_arr=$scope.order_lst;
             console.log(mySharedService.new_arrr);
-            
+
             if(mySharedService.new_arrr.length==$scope.order_lst.length)
             {
                 $scope.order_lst=mySharedService.new_arrr;
@@ -4632,8 +5015,8 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                 {
                     for(j=0;j<mySharedService.new_arrr.length;j++)
                     {
-                        if($scope.neew_tmp_arr[i]) 
-                        { 
+                        if($scope.neew_tmp_arr[i])
+                        {
                             if(mySharedService.new_arrr[j].dist_id==$scope.neew_tmp_arr[i].dist_id)
                             {
                                 $scope.order_lst.push(mySharedService.new_arrr[j]);
@@ -4649,11 +5032,11 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                     $scope.order_lst.push(mySharedService.shareOrdDistListdata[k]);
                 }
                 console.log($scope.order_lst);
-                
+
             }
         }
-        
-        
+
+
         $scope.payment_data={};
         $scope.payment_data.payment_type=[];
         $scope.payment_data.payment_mode=[];
@@ -4676,7 +5059,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                 $scope.payment_data.distributor_idd[i]=mySharedService.distributor_idd[i];
             }
         }
-        
+
         $ionicModal.fromTemplateUrl('templates/ret-gst-info.html', {
             scope: $scope,
             animation: 'zoomIn'
@@ -4694,21 +5077,21 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
         $scope.close_gst_modal = function() {
             $scope.gst_modal.hide();
         };
-        
+
         $scope.orderDate;
         $scope.currentDate = new Date();
         $scope.orderDate = moment($scope.currentDate).format('YYYY-MM-DD');
         $scope.formatDate = function(date){
             return new Date(date)
         }
-        
+
         $scope.sub_date = function()
         {
             $scope.currentDate = moment($scope.currentDate).subtract(1, 'days');
             $scope.orderDate = moment($scope.currentDate).format('YYYY-MM-DD');
             console.log($scope.orderDate);
         }
-        
+
         $scope.today = new Date();
         $scope.add_date = function()
         {
@@ -4722,14 +5105,14 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                 console.log($scope.orderDate);
             }
         }
-        
+
         $scope.next_followup_dt;
         $scope.date_val=function(dt)
         {
             console.log(dt);
             $scope.next_followup_dt=dt;
         }
-        
+
         $scope.payment_mode=[];
         $scope.payment_type=[];
         $scope.next_followup_date=[];
@@ -4746,7 +5129,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
         $scope.credit_arr=[];
         $scope.credit_date=[];
         $scope.new_credit_type_id_arr=[];
-        
+
         $scope.confirm_order=function(type)
         {
             $scope.segment_comb_array=[];
@@ -4758,7 +5141,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
             $rootScope.price_val_chg=[];
             console.log($scope.order_lst);
             console.log($scope.payment_data);
-            
+
             if($scope.order_lst.length<$scope.payment_data.distributor_idd.length)
             {
                 console.log("IN IF");
@@ -4787,21 +5170,21 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                     }
                 }
             }
-            
+
             console.log($scope.order_lst);
             console.log($scope.payment_data);
-            
-            
+
+
             if($scope.payment_data.payment_mode=='Neft')
             {
                 $scope.order_cno=[];
             }
-            
+
             if($scope.payment_data.payment_mode=='Cheque')
             {
                 $scope.order_ref=[];
             }
-            
+
             if($scope.payment_data.next_followup_date.length)
             {
                 for(i=0;i<$scope.payment_data.next_followup_date.length;i++)
@@ -4809,15 +5192,15 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                     $scope.next_followup_dt[i]=moment($scope.payment_data.next_followup_date[i]).format('YYYY-MM-DD');
                 }
             }
-            
+
             console.log($scope.payment_data.payment_type)
-            
+
             // for(i=0;i<$scope.payment_data.payment_type.length;i++)
             for(i=0;i<$scope.order_lst.length;i++)
             {
-                
+
                 console.log($scope.order_lst);
-                
+
                 if($scope.payment_data.payment_type[i]=='Advance')
                 {
                     if(type=='1')
@@ -4838,17 +5221,17 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                 {
                     console.log($scope.order_lst)
                     console.log('type1',' ',type)
-                    
-                    
+
+
                     if(type=='1')
                     {
                         console.log('type1')
                         console.log($scope.order_lst[i].dist_id)
                         $scope.new_credit_type_id_arr.push($scope.order_lst[i].dist_id);
                         console.log($scope.order_lst[i].dist_id)
-                        
+
                         console.log($scope.new_credit_type_id_ar)
-                        
+
                     }
                     if(type=='2')
                     {
@@ -4856,7 +5239,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                         console.log($scope.order_lst[i].dist_id)
                         $scope.new_credit_type_id_arr.push($scope.order_lst[i].dist);
                     }
-                    
+
                     $scope.credit_arr.push($scope.payment_data.payment_type[i]);
                     // $scope.new_credit_type_id_arr.push($scope.order_lst[i].dist);
                     $scope.credit_date.push($scope.next_followup_dt[i]);
@@ -4876,7 +5259,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                 template: '<span class="icon spin ion-loading-d"></span> Loading...'
             });
             console.log($scope.oid);
-            
+
             console.log($rootScope.retailers_id);
             console.log($scope.orderDate);
             console.log(mySharedService.last_payment);
@@ -4902,7 +5285,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                 $ionicLoading.hide();
             })
         }
-        
+
         /*Edit Order Function Start*/
         $scope.edit_order=function()
         {
@@ -4916,7 +5299,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
             $scope.make_dist_arr=[];
             mySharedService.share_seg_comb_data=[];
             $rootScope.valid=true;
-            
+
             console.log(mySharedService.type)
             $ionicLoading.show
             ({
@@ -4936,16 +5319,16 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                 for(i=0;i<$scope.myDistAllOrderDetail.order_segment.length;i++)
                 {
                     $rootScope.seg_amt.push({segment_name: $scope.myDistAllOrderDetail.order_segment[i].segment_name, price:$scope.myDistAllOrderDetail.order_segment[i].segment_total_mrp});
-                    
+
                     $rootScope.price_val_chg.push({seg_name: $scope.myDistAllOrderDetail.order_segment[i].segment_name, price_val:$scope.myDistAllOrderDetail.order_segment[i].segment_total_mrp});
-                    
+
                     for(k=0;k<mySharedService.saved_seg_dist.length;k++)
                     {
                         if(mySharedService.saved_seg_dist[k].segment_name==$scope.myDistAllOrderDetail.order_segment[i].segment_name)
                         {
                             $rootScope.dist_array.push(mySharedService.saved_seg_dist[k]);
                             console.log($rootScope.dist_array);
-                            
+
                             for(m=0;m<mySharedService.saved_seg_dist[k].distributors.length;m++)
                             if(mySharedService.saved_seg_dist[k].distributors[m].dr_name==$scope.myDistAllOrderDetail.order_segment[i].distributor)
                             {
@@ -4953,25 +5336,25 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                             }
                         }
                     }
-                    
+
                     mySharedService.share_seg_comb_data.push({seg_name: $scope.myDistAllOrderDetail.order_segment[i].segment_name, segment_price_mrp: $scope.myDistAllOrderDetail.order_segment[i].segment_total_mrp, seg_price_disc:$scope.myDistAllOrderDetail.order_segment[i].segment_total, disc: $scope.myDistAllOrderDetail.order_segment[i].segment_discount, dist: $scope.myDistAllOrderDetail.order_segment[i].distributor, distr_img: $scope.myDistAllOrderDetail.order_segment[i].dr_image, dist_id:$scope.myDistAllOrderDetail.order_segment[i].distributor_id, gst: $scope.myDistAllOrderDetail.order_segment[i].gst_percent, after_gst_amt: $scope.myDistAllOrderDetail.order_segment[i].segment_total_amount, gst_amt: $scope.myDistAllOrderDetail.order_segment[i].gst_amount});
-                    
+
                     $rootScope.disc_val[$scope.myDistAllOrderDetail.order_segment[i].segment_name]=$scope.myDistAllOrderDetail.order_segment[i].segment_discount;
                 }
             }
-            
+
             if(mySharedService.type==2)
             {
                 for(i=0;i<$scope.myDistAllOrderDetail.order_segment.length;i++)
                 {
                     $rootScope.seg_amt.push({segment_name: $scope.myDistAllOrderDetail.order_segment[i].segment_name, price:$scope.myDistAllOrderDetail.order_segment[i].segment_total_mrp});
-                    
+
                     $rootScope.price_val_chg.push({seg_name: $scope.myDistAllOrderDetail.order_segment[i].segment_name, price_val:$scope.myDistAllOrderDetail.order_segment[i].segment_total_mrp});
-                    
+
                     mySharedService.share_seg_comb_data.push({seg_name: $scope.myDistAllOrderDetail.order_segment[i].segment_name, segment_price_mrp: $scope.myDistAllOrderDetail.order_segment[i].segment_total_mrp, seg_price_disc:$scope.myDistAllOrderDetail.order_segment[i].segment_total, disc: $scope.myDistAllOrderDetail.order_segment[i].segment_discount, dist: $scope.myDistAllOrderDetail.order_segment[i].segment_delivery, distr_img: null, dist_id:$scope.myDistAllOrderDetail.order_segment[i].segment_delivery, gst: $scope.myDistAllOrderDetail.order_segment[i].gst_percent, after_gst_amt: $scope.myDistAllOrderDetail.order_segment[i].segment_total_amount, gst_amt: $scope.myDistAllOrderDetail.order_segment[i].gst_amount});
-                    
+
                     mySharedService.dist_name[$scope.myDistAllOrderDetail.order_segment[i].segment_name]=$scope.myDistAllOrderDetail.order_segment[i].segment_delivery;
-                    
+
                     $rootScope.disc_val[$scope.myDistAllOrderDetail.order_segment[i].segment_name]=$scope.myDistAllOrderDetail.order_segment[i].segment_discount;
                 }
             }
@@ -4982,14 +5365,14 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                 {
                     mySharedService.cart_arr.push({ segment_name: $scope.myDistAllOrderDetail.order_item[i].segment_name, catg_no: $scope.myDistAllOrderDetail.order_item[i].cat_no, quantity: $scope.myDistAllOrderDetail.order_item[i].qty, product_name: $scope.myDistAllOrderDetail.order_item[i].product_name, amount: $scope.myDistAllOrderDetail.order_item[i].rate, dist_id:0, feat_id: $scope.myDistAllOrderDetail.order_item[i].feat_id, feature: $scope.myDistAllOrderDetail.order_item[i].feature});
                 }
-                
+
                 mySharedService.edit_enable=true;
                 mySharedService.edit_enable_button=true;
                 mySharedService.temp_cart_arr=mySharedService.cart_arr;
             }
-            
-            
-            
+
+
+
             $ionicHistory.clearCache().then(function () {
                 // $state.go('tab.addorder');
                 if(mySharedService.type=='1')
@@ -5004,22 +5387,22 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
             });
         }
         /*Edit Order Function End*/
-        
+
         $scope.cart_arr=mySharedService.cart_arr;
         $scope.data.dist_name=mySharedService.dist_name;
         $scope.edit_enable=mySharedService.edit_enable;
         $scope.edit_enable_button=mySharedService.edit_enable_button;
         console.log($scope.data.dist_name);
         console.log($rootScope.dist_array);
-        
-        
+
+
         $scope.ddate = new Date();
         if(!$scope.dwrdate)
         {
             console.log("IF NOT DWR DATE");
             $scope.dwrdate = moment($scope.ddate).format('YYYY-MM-DD');
         }
-        
+
         $scope.sub_dwr = function()
         {
             if($scope.backdwrdate)
@@ -5040,7 +5423,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                 $scope.dwrlist($scope.dwrdate);
             }
         }
-        
+
         $scope.today = new Date();
         $scope.add_dwr = function()
         {
@@ -5074,7 +5457,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                 }
             }
         }
-        
+
         $scope.dwrdata=mySharedService.dwrdata;
         $scope.dwrpaydata=mySharedService.dwrpaydata;
         $scope.showdwrdate=mySharedService.showdwrdate;
@@ -5082,7 +5465,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
         $scope.dwrdistreqdata=mySharedService.dwrdistreqdata;
         $scope.dwrsecord=mySharedService.dwrsecord;
         $scope.dwrprimord=mySharedService.dwrprimord;
-        
+
         $scope.dwrlist=function(date,type)
         {
             console.log(date);
@@ -5115,10 +5498,10 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                 mySharedService.dwrretreqdata=result.data.data2;
                 $scope.dwrdistreqdata=result.data.data3;
                 mySharedService.dwrdistreqdata=result.data.data3;
-                
+
                 $scope.dwrsecord=result.data.data4;
                 mySharedService.dwrsecord=result.data.data4;
-                
+
                 $scope.dwrprimord=result.data.data5;
                 mySharedService.dwrprimord=result.data.data5;
                 $state.go('tab.dwr');
@@ -5129,12 +5512,12 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                 $ionicLoading.hide();
             })
         }
-        
+
         $scope.ret_visit_lst=mySharedService.visitdata;
         $scope.backdwrdate=mySharedService.backdwrdate;
-        
+
         console.log(mySharedService.backdwrdate);
-        
+
         $scope.dwr_ret_visit=function(type,int_cont)
         {
             console.log(int_cont);
@@ -5198,9 +5581,9 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                 $ionicLoading.hide();
             })
         }
-        
+
         $scope.leave_lst=mySharedService.leavedata;
-        
+
         $scope.leave_lsts=mySharedService.leave_lsts;
         $scope.national_holiday=mySharedService.national_holiday;
         $scope.show_hol=mySharedService.show_hol;
@@ -5238,7 +5621,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                     mySharedService.leave_lsts=result.data.leave_lst;
                     $scope.national_holiday=result.data.nat_holiday;
                     mySharedService.national_holiday=result.data.nat_holiday;
-                    
+
                     $state.go('tab.leave');
                     $ionicLoading.hide();
                 },
@@ -5252,19 +5635,19 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                 $ionicLoading.hide();
             })
         }
-        
+
         $scope.leave_date=function(l_date)
         {
             console.log(l_date);
             $scope.leave_to=moment(l_date).format('YYYY-MM-DD');
         }
-        
+
         $scope.today_leave = new Date();
         $scope.today_leave=moment($scope.today_leave).format('YYYY-MM-DD');
         $scope.next_follow_act = moment($scope.today_leave).add(1, 'days');
         $scope.next_followup_act=moment($scope.next_follow_act).format('YYYY-MM-DD');
         console.log($scope.next_followup_act);
-        
+
         // $scope.check_add_leave=function()
         // {
         //   console.log($scope.today_leave);
@@ -5304,15 +5687,15 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
         //   })
         // }
         var _MS_PER_DAY = 1000 * 60 * 60 * 24;
-        
+
         function dateDiffInDays(a, b) {
             // Discard the time and time-zone information.
             var utc1 = Date.UTC(a.getFullYear(), a.getMonth(), a.getDate());
             var utc2 = Date.UTC(b.getFullYear(), b.getMonth(), b.getDate());
-            
+
             return Math.floor((utc2 - utc1) / _MS_PER_DAY);
         }
-        
+
         $scope.error_con=true;
         $scope.assigned_range=function()
         {
@@ -5331,8 +5714,8 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                     val=$scope.leave_lsts[i].total_leave;
                 }
             }
-            
-            
+
+
             if($scope.difference_val>=0 && $scope.data.subj && $scope.data.leave_type)
             {
                 if($scope.difference_val>parseInt(val))
@@ -5344,10 +5727,10 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                     $scope.error_con=false;
                 }
                 console.log($scope.error_con);
-                
+
             }
         }
-        
+
         $scope.add_leave=function()
         {
             console.log($scope.data.leave_type);
@@ -5375,7 +5758,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                 $ionicLoading.hide();
             })
         }
-        
+
         $scope.follow_lst=mySharedService.followupdata;
         $scope.last_follow_lst=mySharedService.lastfollowupdata;
         $scope.followup_list=function()
@@ -5400,9 +5783,9 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                 $ionicLoading.hide();
             })
         }
-        
-        
-        
+
+
+
         $scope.myNoticeList= mySharedService.shareNoticeList;
         console.log($scope.myNoticeList);
         $scope.notice_list = function ()
@@ -5418,13 +5801,13 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                 mySharedService.shareNoticeList = result.data;
                 $state.go('tab.announcement');
                 $ionicLoading.hide();
-                
+
             }, function (err) {
                 $ionicLoading.hide();
                 console.error(err);
             })
         }
-        
+
         $scope.myNoticeDet= mySharedService.shareNoticeDet;
         $scope.ann_id=mySharedService.ann_id;
         $scope.notice_detail = function (id)
@@ -5441,15 +5824,15 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                 mySharedService.shareNoticeDet = result.data;
                 $state.go('tab.announcement-detail');
                 $ionicLoading.hide();
-                
+
             }, function (err) {
-                
+
                 $ionicLoading.hide();
                 console.error(err);
             })
         }
-        
-        
+
+
         $scope.notice_download = function (file_name)
         {
             var url = upload_url + file_name;
@@ -5457,7 +5840,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
             var trustHosts = true;
             var options = {};
             console.log(targetPath);
-            
+
             $cordovaFileTransfer.download(url, targetPath, options, trustHosts).then(function(result) {
                 // Success!
             }, function(err) {
@@ -5468,21 +5851,21 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                     $ionicLoading.show({
                         template: "Downloaded：" + Math.floor($scope.downloadProgress) + "%"
                     });
-                    
+
                     if ($scope.downloadProgress == 100) {
                         $ionicLoading.hide();
                     }
-                    
+
                     console.log('Notice Download = ' + $scope.downloadProgress);
                 });
-                
+
             });
         }
         $scope.disp_edit1=true;
         $scope.disp_edit2=true;
         $scope.disp_edit3=true;
         $scope.disp_edit4=true;
-        
+
         $scope.disp_edit5=true;
         $scope.disp_edit6=true;
         $scope.disp_edit7=true;
@@ -5518,17 +5901,17 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                 mySharedService.city_data = result.data.city;
                 $scope.area_data=result.data.area;
                 mySharedService.area_data = result.data.area;
-                
+
                 $state.go('tab.profile');
                 $timeout(function () { $ionicLoading.hide(); }, 300);
-                
+
             }, function (err) {
-                
+
                 $ionicLoading.hide();
                 console.error(err);
             })
         }
-        
+
         $scope.save_comp_info=function()
         {
             console.log($scope.retailer_det);
@@ -5540,13 +5923,13 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                 console.error(err);
             })
         }
-        
+
         $scope.save_dr_pers_info=function()
         {
             console.log($scope.retailer_contact);
             $scope.retailer_contact.map(function(item){
                 console.log(item.dob);
-                
+
                 item.dob = moment(item.dob).format('YYYY-MM-DD');
             });
             // $scope.ret_date_birth=moment($scope.retailer_det.dob).format('YYYY-MM-DD');
@@ -5559,7 +5942,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                 console.error(err);
             })
         }
-        
+
         $scope.save_dr_add_info=function()
         {
             loginService.save_dr_add_info($scope.retailer_det)
@@ -5570,7 +5953,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                 console.error(err);
             })
         }
-        
+
         $scope.save_ship_add_info=function()
         {
             loginService.save_ship_add_info($scope.retailer_det)
@@ -5581,12 +5964,12 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                 console.error(err);
             })
         }
-        
+
         $scope.save_pers_info=function()
         {
             $scope.profile_date_birth=moment($scope.myProfileDetail.date_birth).format('YYYY-MM-DD');
             $scope.profile_date_join=moment($scope.myProfileDetail.date_joining).format('YYYY-MM-DD');
-            
+
             loginService.save_pers_info($scope.myProfileDetail,$scope.profile_date_birth,$scope.profile_date_join)
             .then(function (result)
             {
@@ -5595,7 +5978,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                 console.error(err);
             })
         }
-        
+
         $scope.save_add_info=function()
         {
             loginService.save_add_info($scope.myProfileDetail)
@@ -5606,7 +5989,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                 console.error(err);
             })
         }
-        
+
         $scope.save_login_info=function()
         {
             loginService.save_login_info($scope.myProfileDetail)
@@ -5614,7 +5997,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
             {
                 var query = "UPDATE "+dbTableName+" SET password='"+$scope.myProfileDetail.password+"'";
                 console.log(query);
-                
+
                 $cordovaSQLite.execute(db, query).then(function(res) {
                     console.log(res);
                 }, function (err) {
@@ -5625,7 +6008,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                 console.error(err);
             })
         }
-        
+
         $scope.get_profile_districts=function(st_name,val)
         {
             console.log(st_name);
@@ -5662,7 +6045,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                 console.error(err);
             })
         }
-        
+
         $scope.get_profile_city=function(dist_name,st_name,val)
         {
             console.log(st_name);
@@ -5697,7 +6080,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                 console.error(err);
             })
         }
-        
+
         $scope.get_profile_area=function(city,st_name,val)
         {
             console.log(st_name);
@@ -5734,7 +6117,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                 console.error(err);
             })
         }
-        
+
         $scope.get_profile_pincodes=function(area,st_name,val)
         {
             console.log(area+" "+st_name);
@@ -5756,20 +6139,20 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                     mySharedService.pincode_data = result.data.pincode;
                     $scope.myProfileDetail.pincode=result.data.pincode[0].pincode;
                 }
-                
+
                 $ionicLoading.hide();
             }, function (err) {
                 $ionicLoading.hide();
                 console.error(err);
             })
         }
-        
+
         $scope.toggle_val=1;
-        
+
         $scope.same_ship_as_bill_add=function(tg_val)
         {
             console.log(tg_val);
-            
+
             if(tg_val==1)
             {
                 $scope.retailer_det.ship_street=$scope.retailer_det.street;
@@ -5778,7 +6161,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                 $scope.retailer_det.ship_pincode=$scope.retailer_det.pincode;
                 $scope.retailer_det.ship_city=$scope.retailer_det.city;
                 $scope.retailer_det.ship_area=$scope.retailer_det.area;
-                
+
                 $scope.ship_state_data=$scope.ret_state_data;
                 mySharedService.ship_state_data = mySharedService.ret_state_data;
                 $scope.ship_district_data=$scope.ret_district_data;
@@ -5806,11 +6189,11 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                 mySharedService.ship_area_data = [];
             }
         }
-        
+
         $scope.lead_toggle_val=1;
         $scope.show_ship=false;
         $scope.isShipAdd='';
-        
+
         $scope.same_ship_as_bill_add_lead=function(l_tg_val)
         {
             console.log(l_tg_val);
@@ -5818,27 +6201,27 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
             if(l_tg_val==1)
             {
                 $scope.show_ship=false;
-                
+
                 $scope.ship_state_arr=$scope.state_arr;
                 $scope.ship_dist_arr=$scope.dist_arr;
                 $scope.ship_area_arr=$scope.area_arr;
                 $scope.ship_city_arr=$scope.city_arr;
                 $scope.ship_pin_arr=$scope.pin_arr;
-                
+
                 $scope.data.selectedValue12=$scope.data.selectedValue7;
                 $scope.data.selectedValue13=$scope.data.selectedValue8;
                 $scope.data.selectedValue14=$scope.data.selectedValue10;
                 $scope.data.selectedValue15=$scope.data.selectedValue11;
                 $scope.data.selectedValue16=$scope.data.selectedValue9;
                 $scope.mydata.ship_street=$scope.mydata.street;
-                
+
                 $scope.lead_toggle_val=2;
             }
             else
             {
                 $scope.lead_toggle_val=1;
                 $scope.show_ship=true;
-                
+
                 $scope.data.selectedValue12=null;
                 $scope.data.selectedValue13=null;
                 $scope.data.selectedValue14=null;
@@ -5847,7 +6230,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                 $scope.mydata.ship_street='';
             }
         }
-        
+
         $scope.set_profile_area=function(pin,st_name)
         {
             console.log(pin);
@@ -5862,7 +6245,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                 console.error(err);
             })
         }
-        
+
         $scope.profile_update = function(type)
         {
             console.log("update profile")
@@ -5871,7 +6254,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                 template: '<span class="icon spin ion-loading-d"></span> Loading...'
             });
             if(type == 1) {
-                
+
                 $scope.myProfileDetail.date_birth = moment($scope.myProfileDetail.date_birth).format('YYYY-MM-DD');
                 loginService.profile_update($scope.myProfileDetail)
                 .then(function (result)
@@ -5881,54 +6264,54 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                         $cordovaToast.show('Profile Updated Successfully!', 'short', 'bottom').then(function(success) { },
                         function (error) {
                         });
-                        
+
                     }, 500);
                     $scope.profile_detail();
-                    
+
                     $ionicLoading.hide();
                 }, function (err) {
                     $ionicLoading.hide();
                     console.error(err);
                 })
             }
-            
+
             if(type == 2) {
-                
+
                 var options = {
-                    
+
                     fileKey: "file",
                     fileName: "image.jpg",
                     chunkedMode: false,
                     mimeType: "image/*",
                 };
-                
+
                 $cordovaFileTransfer.upload(server_url+"/profile_update.php?exec_id="+salesexe_id, $scope.mediaData[0].src, options).then(function(result) {
                     $ionicLoading.hide();
                     $scope.mediaData=[];
                     console.log("SUCCESS: " + JSON.stringify(result));
                     $scope.profile_detail();
-                    
+
                 }, function(err) {
                     $ionicLoading.hide();
                     console.log("ERROR: " + JSON.stringify(err));
                 }, function (progress) {
-                    
+
                 });
             }
         }
-        
+
         /*Retailer's Distributor & All Order Detail Start*/
         $scope.myDistAllOrderDetail=mySharedService.shareDistAllOrderDetail;
         $scope.more_ord_details=mySharedService.more_ord_details;
         $scope.order_detail = function (dist_id, order_id,type)
         {
             mySharedService.saved_order_id=order_id;
-            
+
             $ionicLoading.show
             ({
                 template: '<span class="icon spin ion-loading-d"></span> Loading...'
             });
-            
+
             loginService.order_detail(dist_id, order_id,type)
             .then(function (result)
             {
@@ -5937,18 +6320,18 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                 $scope.more_ord_details = result.data.data1;
                 mySharedService.more_ord_details = result.data.data1;
                 console.log(result);
-                
+
                 $state.go('tab-ret.order-details');
-                
+
                 $ionicLoading.hide();
-                
+
             },function (err) {
                 $ionicLoading.hide();
                 console.error(err);
             })
         }
         /*Retailer's Distributor & All Order Detail End*/
-        
+
         $scope.latitude=mySharedService.lat;
         $scope.longitude=mySharedService.long;
         $scope.last_gps_add=mySharedService.last_gps;
@@ -5960,29 +6343,29 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                 console.log(result);
                 $scope.last_gps_add=result.data.gps_address;
                 mySharedService.last_gps=result.data.gps_address;
-                
+
                 var options = {timeout: 10000, enableHighAccuracy: true};
                 $cordovaGeolocation.getCurrentPosition(options).then(function(position){
                     console.log(position.coords.latitude+" "+position.coords.longitude);
-                    
+
                     $scope.latitude=position.coords.latitude;
                     $scope.longitude=position.coords.longitude;
-                    
+
                     mySharedService.lat=position.coords.latitude;
                     mySharedService.long=position.coords.longitude;
                     $state.go('map-ret');
                 }, function(error){
                     console.log("Could not get location");
                 });
-                
-                
-                
+
+
+
             },function (err) {
                 console.error(err);
             })
-            
+
         }
-        
+
         $scope.add_loc=function()
         {
             console.log($rootScope.retailers_id);
@@ -5996,7 +6379,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                 console.error(err);
             })
         }
-        
+
         $scope.near_arr=mySharedService.near;
         $scope.nearest_store=function()
         {
@@ -6016,13 +6399,13 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
             var options = {timeout: 10000, enableHighAccuracy: true};
             $cordovaGeolocation.getCurrentPosition(options).then(function(position){
                 console.log(position.coords.latitude+" "+position.coords.longitude);
-                
+
                 $scope.latitude=position.coords.latitude;
                 $scope.longitude=position.coords.longitude;
-                
+
                 mySharedService.lat=position.coords.latitude;
                 mySharedService.long=position.coords.longitude;
-                
+
                 loginService.get_nearest(position.coords.latitude,position.coords.longitude)
                 .then(function (result)
                 {
@@ -6039,9 +6422,9 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                 $ionicLoading.hide();
                 console.log("Could not get location");
             });
-            
+
         }
-        
+
         $scope.get_dir=function(lat,lng)
         {
             console.log(lat+" "+lng);
@@ -6059,10 +6442,10 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                     app: app
                 });
             });
-            
+
             // $state.go('nearest-map');
         }
-        
+
         $scope.mydata=[];
         $scope.show_ret_det=mySharedService.show_ret_det;
         $scope.state_arr=[];
@@ -6085,7 +6468,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
         $scope.data.selectedValue16;
         $scope.mobile_disable=mySharedService.mobile_disable;
         $scope.gst_disable=mySharedService.gst_disable;
-        
+
         $scope.add_ret=function(val)
         {
             console.log(val);
@@ -6107,14 +6490,14 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                 mySharedService.mobile1='';
                 $scope.mydata.mob='';
             }
-            
+
             loginService.add_ret($scope.mydata.num,$scope.dr_type)
             .then(function (result)
             {
                 console.log(result);
                 if(result.data[0])
-                { 
-                    // $scope.closert(); 
+                {
+                    // $scope.closert();
                     $scope.show_ret_det=result.data[0];
                     mySharedService.show_ret_det=result.data[0];
                     $state.go('tab.user-detail');
@@ -6154,8 +6537,8 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                         // mySharedService.segment_names = ["PTMT", "CPVC PIPE", "CP", "HARDWARE", "COCKROACH TRAPS", "SINK", "UPVC", "SANITARY WARE"];
                         // $scope.closert(); /
                         $state.go('become-partner');
-                        
-                        
+
+
                     },function (err) {
                         console.error(err);
                     })
@@ -6166,7 +6549,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                 console.error(err);
             })
         }
-        
+
         $scope.distributors_name=mySharedService.distributors_name;
         $scope.dist_arr=[];
         $scope.dist_arr=mySharedService.dist_arr;
@@ -6177,7 +6560,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
         $scope.area_arr=[];
         $scope.area_arr=mySharedService.area_arr;
         $scope.taluk_arr=[];
-        
+
         $scope.ship_dist_arr=[];
         $scope.ship_dist_arr=mySharedService.ship_dist_arr;
         $scope.ship_pin_arr=[];
@@ -6191,7 +6574,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
             console.log(st_name);
             if(become_part==1)
             {
-                
+
                 if(type=='1')
                 {
                     $timeout(function () { console.log($scope.data.selectedValue7);
@@ -6206,7 +6589,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                         })
                     }, 500);
                 }
-                
+
                 if(type=='2')
                 {
                     $timeout(function () { console.log($scope.data.selectedValue8);
@@ -6221,7 +6604,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                         })
                     }, 500);
                 }
-                
+
                 if(type=='3')
                 {
                     $timeout(function () { console.log($scope.data.selectedValue10);
@@ -6238,7 +6621,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                         })
                     },500);
                 }
-                
+
                 if(type=='4')
                 {
                     $timeout(function () { console.log($scope.data.selectedValue11);
@@ -6253,7 +6636,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                         })
                     },500);
                 }
-                
+
                 if(type=='5')
                 {
                     $timeout(function () { console.log($scope.data.selectedValue9);
@@ -6268,7 +6651,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                         })
                     },500);
                 }
-                
+
                 if(type=='6')
                 {
                     $timeout(function () { console.log($scope.data.selectedValue12);
@@ -6283,7 +6666,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                         })
                     }, 500);
                 }
-                
+
                 if(type=='7')
                 {
                     $timeout(function () { console.log($scope.data.selectedValue13);
@@ -6298,7 +6681,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                         })
                     }, 500);
                 }
-                
+
                 if(type=='8')
                 {
                     $timeout(function () { console.log($scope.data.selectedValue14);
@@ -6315,7 +6698,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                         })
                     },500);
                 }
-                
+
                 if(type=='9')
                 {
                     $timeout(function () { console.log($scope.data.selectedValue15);
@@ -6330,7 +6713,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                         })
                     },500);
                 }
-                
+
                 if(type=='10')
                 {
                     $timeout(function () { console.log($scope.data.selectedValue16);
@@ -6346,7 +6729,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                     },500);
                 }
             }
-            
+
             else
             {
                 if(type=='1')
@@ -6371,7 +6754,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                     mySharedService.selectedValue3=null;
                     mySharedService.selectedValue6=null;
                 }
-                
+
                 if(type=='2')
                 {
                     $timeout(function () { console.log($scope.data.selectedValue2);
@@ -6386,7 +6769,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                         })
                     }, 500);
                 }
-                
+
                 if(type=='3')
                 {
                     $timeout(function () { console.log($scope.data.selectedValue3);
@@ -6403,7 +6786,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                         })
                     },500);
                 }
-                
+
                 if(type=='4')
                 {
                     $timeout(function () { console.log($scope.data.selectedValue6);
@@ -6418,7 +6801,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                         })
                     },500);
                 }
-                
+
                 if(type=='5')
                 {
                     $timeout(function () { console.log($scope.data.selectedValue1);
@@ -6433,10 +6816,10 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                         })
                     },500);
                 }
-                
+
             }
         }
-        
+
         function checkDistArrProperty(prop, newObj) {
             var result;
             Object.keys(newObj).forEach(function (key) {
@@ -6446,7 +6829,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
             });
             return result;
         }
-        
+
         function checkArrProperty(prop, newObj) {
             var result;
             Object.keys(newObj).forEach(function (key) {
@@ -6456,7 +6839,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
             });
             return result;
         }
-        
+
         $scope.filter_data=[];
         $scope.seg_select=[];
         $scope.modifiedOrder=[];
@@ -6481,7 +6864,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                     $ionicLoading.hide();
                     console.error(err);
                 })
-                
+
             }
             else if(all==false)
             {
@@ -6491,7 +6874,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
             {
                 console.log($scope.modifiedOrder);
                 console.log(index);
-                
+
                 $scope.filter_data=$filter('filter')($scope.modifiedOrder, {value:$scope.segment_names[index]}, true);
                 console.log($scope.filter_data);
                 if($scope.filter_data.length)
@@ -6514,10 +6897,10 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
             }
             console.log($scope.modifiedOrder);
         }
-        
+
         $scope.dist_select=[];
         $scope.modifiedDistOrder=[];
-        
+
         $scope.format_dists=function(all,index){
             console.log(all);
             console.log(index);
@@ -6539,7 +6922,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
             {
                 console.log($scope.modifiedDistOrder);
                 console.log(index);
-                
+
                 $scope.filter_data=$filter('filter')($scope.modifiedDistOrder, {id:$scope.distributors_name[index].id}, true);
                 console.log($scope.filter_data);
                 if($scope.filter_data.length)
@@ -6563,8 +6946,8 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
             }
             console.log($scope.modifiedDistOrder);
         }
-        
-        
+
+
         $scope.pageone=true;
         $scope.pagetwo=false;
         $scope.pagethree=false;
@@ -6576,7 +6959,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
             console.log($scope.mydata);
             $ionicScrollDelegate.scrollTop();
         }
-        
+
         $scope.go_two=function()
         {
             $scope.pageone=false;
@@ -6585,8 +6968,8 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
             console.log($scope.mydata);
             $ionicScrollDelegate.scrollTop();
         }
-        
-        
+
+
         $scope.last_dr_id=mySharedService.last_dr_id;
         $scope.submit_permission = true;
         $scope.add_dr=function()
@@ -6597,7 +6980,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
             $scope.mydata.pincode=$scope.data.selectedValue9;
             $scope.mydata.city=$scope.data.selectedValue10;
             $scope.mydata.area=$scope.data.selectedValue11;
-            
+
             $scope.mydata.ship_state=$scope.data.selectedValue12;
             $scope.mydata.ship_district=$scope.data.selectedValue13;
             $scope.mydata.ship_pincode=$scope.data.selectedValue16;
@@ -6639,9 +7022,9 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                         mimeType: "image/*",
                     };
                     console.log($scope.mediaData);
-                    
+
                     if($scope.mediaData.length)
-                    {                    
+                    {
                         $cordovaFileTransfer.upload(server_url+"/lead_pic.php?id="+$scope.last_dr_id, $scope.mediaData[0].src, options).then(function(result) {
                             $ionicLoading.hide();
                             $scope.mediaData=[];
@@ -6652,7 +7035,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                         }, function (progress) {
                         });
                     }
-                    
+
                     loginService.get_distributors()
                     .then(function (result)
                     {
@@ -6660,30 +7043,30 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                         $scope.distributors_name=result;
                         mySharedService.distributors_name=result;
                         $state.go('assign-segment');
-                        
+
                     },function (err) {
                         console.error(err);
                     })
-                    
+
                 },function (err) {
                     console.error(err);
                 });
-                
+
             }
         }
-        
+
         $scope.add_dr_seg=function()
         {
             console.log($scope.distributors_name);
             console.log($scope.modifiedOrder);
-            
+
             console.log($scope.dr_type);
             console.log($scope.last_dr_id);
             loginService.add_dr_seg($scope.last_dr_id,$scope.modifiedOrder,1)
             .then(function (result)
             {
                 console.log(result);
-                
+
                 if($scope.dr_type=='1')
                 {
                     if($scope.distributors_name.length && mySharedService.land_on_order)
@@ -6712,16 +7095,16 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                         $scope.awaitdistributorlist();
                     }
                 }
-                
+
             },function (err) {
                 console.error(err);
             })
         }
-        
+
         $scope.add_dr_dists=function()
         {
             console.log($scope.modifiedDistOrder);
-            
+
             console.log($scope.dr_type);
             console.log($scope.last_dr_id);
             loginService.add_dr_dists($scope.last_dr_id,$scope.modifiedDistOrder)
@@ -6737,12 +7120,12 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                 {
                     $scope.awaitretailerlist();
                 }
-                
+
             },function (err) {
                 console.error(err);
             })
         }
-        
+
         $scope.skip_func=function()
         {
             console.log($scope.dr_type);
@@ -6755,17 +7138,17 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                 $scope.distributorlist();
             }
         }
-        
-        
+
+
         $scope.clickme = function($event){
             console.log($event);
             // alert("You've clicked upon "+$event[0].label);
         }
-        
+
         $scope.hoverme = function ($event) {
             alert("You hovered over " + $event[0]._view.label);
         }
-        
+
         dashboard();
         $scope.labels=[];
         $scope.data_dash=[];
@@ -6780,17 +7163,17 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
             loginService.dashboard_det()
             .then(function (result)
             {
-                
+
                 console.log(result.data);
                 $scope.dash_segments=result.data.segments_name;
                 mySharedService.dash_segments=result.data.segments_name;
-                
+
                 // for(i=0;i<$scope.dash_segments.length;i++)
                 // {
                 //   $scope.labels.push($scope.dash_segments[i].segment_name);
                 // $scope.data_dash.push(2);
                 // }
-                
+
                 for (var key in result.data.data_seg) {
                     if (result.data.data_seg.hasOwnProperty(key)) {
                         console.log(key + " -> " + result.data.data_seg[key]);
@@ -6800,17 +7183,17 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                             val=0;
                         }
                         $scope.labels.push(key);
-                        
+
                         $scope.data_dash.push(val);
-                        
+
                     }
                 }
-                
-                
+
+
                 console.log($scope.dash_segments);
                 console.log($scope.labels);
                 console.log($scope.data_dash);
-                
+
                 if($scope.dash_segments)
                 {
                     for(i=0;i<$scope.dash_segments.length;i++)
@@ -6824,51 +7207,51 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                         }
                     }
                 }
-                
+
                 console.log($scope.labels);
                 console.log($scope.data_dash);
-                
+
                 //     if(result.data.data_seg.PTMTSYMET){
                 //      ptmt_val=Math.round((parseInt(result.data.data_seg.PTMTSYMET)/parseInt(result.data.qty_tot))*100);
                 //    }else{
                 //     ptmt_val=0;
                 //   }
-                
+
                 //     if(result.data.data_seg.CP){
                 //      cp_val=Math.round((parseInt(result.data.data_seg.CP)/parseInt(result.data.qty_tot))*100);
                 //    }else{
                 //     cp_val=0;
                 //   }
-                
+
                 //     if(result.data.data_seg.SINK){
                 //      sink_val=Math.round((parseInt(result.data.data_seg.SINK)/parseInt(result.data.qty_tot))*100);
                 //    }else{
                 //     sink_val=0;
                 //   }
-                
+
                 //     if(result.data.data_seg.HARDWARE){
                 //      hard_val=Math.round((parseInt(result.data.data_seg.HARDWARE)/parseInt(result.data.qty_tot))*100);
                 //    }else{
                 //     hard_val=0;
                 //   }
-                
+
                 //   if(result.data.data_seg.COCKROACHTRAPSGRATINGS){
                 //    cock_val=Math.round((parseInt(result.data.data_seg.COCKROACHTRAPSGRATINGS)/parseInt(result.data.qty_tot))*100);
                 //  }else{
                 //   cock_val=0;
                 // }
-                
+
                 //   if(result.data.data_seg.QUAA){
                 //    quaa_val=Math.round((parseInt(result.data.data_seg.QUAA)/parseInt(result.data.qty_tot))*100);
                 //   }else{
                 //     quaa_val=0;
                 //   }
-                
+
                 // console.log(ptmt_val+" "+cp_val+" "+hard_val+" "+cock_val+" "+sink_val+" "+quaa_val);
                 // $scope.labels = ["P.T.M.T. SYMET", "C.P.", "SINK", "COCKROACH TRAPS & GRATINGS", "HARDWARE", "QUAA"];
                 // $scope.data_dash = [ptmt_val, cp_val, sink_val, cock_val, hard_val, quaa_val];
                 // $scope.colorsPie = ['#4776B7', '#F5911D', '#3DB549', '#FDCE36', '#5DC5C6', '#F04F3D'];
-                
+
                 $scope.options = {
                     legend: {
                         display: true
@@ -6884,7 +7267,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                             return obj.value !== 0;
                         });
                         console.log(this.segments.length);
-                        
+
                         for(i=0;i<this.segments.length;i++)
                         {
                             this.segments[i].label='';
@@ -6904,7 +7287,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                         this.showTooltip(this.segments, true);
                     },
                 };
-                
+
                 $scope.dash_data=result.data;
                 mySharedService.dash_data=result.data;
                 $ionicLoading.hide();
@@ -6913,13 +7296,13 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                 $ionicLoading.hide();
             })
         }
-        
+
         $scope.onClickSlice = function (points, evt) {
             console.log(points);
         }
         console.log($scope.data);
-        
-        
+
+
         $scope.regen_type=mySharedService.regen_type;
         /*Rejet Request Regenrate Function Start*/
         $ionicModal.fromTemplateUrl('templates/regen_lead_req.html', {
@@ -6939,9 +7322,9 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
         $scope.closeregen = function() {
             $scope.searchregen.hide();
         };
-        
+
         /*Rejet Request Regenrate Function End*/
-        
+
         $scope.exp_data=[];
         $scope.exp_data=mySharedService.exp_data;
         /*Expense Listing Function Start*/
@@ -6966,12 +7349,12 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
             })
         }
         /*Expense Listing Function End*/
-        
+
         $scope.exp_det=mySharedService.exp_det;
         $scope.expense_det=function(dt)
         {
             dt = moment(dt).format('YYYY-MM-DD');
-            
+
             $ionicLoading.show
             ({
                 template: '<span class="icon spin ion-loading-d"></span> Loading...'
@@ -7002,7 +7385,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
             console.log($scope.expcurrentDate);
             $scope.exp_date_detail($scope.expDate);
         }
-        
+
         $scope.add_exp_date = function()
         {
             $scope.expcurrentDate = moment($scope.expcurrentDate).add(1, 'days');
@@ -7010,7 +7393,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
             $scope.expDate = moment($scope.expcurrentDate).format('YYYY-MM-DD');
             $scope.exp_date_detail($scope.expDate);
         }
-        
+
         // $scope.today = new Date();
         // $scope.add_exp_date = function()
         // {
@@ -7025,19 +7408,19 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
         //     $scope.exp_date_detail($scope.expDate);
         //   }
         // }
-        
+
         $scope.exp_date_det=mySharedService.exp_date_det;
         $scope.bill_data=mySharedService.bill_data;
         $scope.exp_date_detail=function(date_val)
         {
             date_val = moment(date_val).format('YYYY-MM-DD');
             console.log(date_val);
-            
+
             $ionicLoading.show
             ({
                 template: '<span class="icon spin ion-loading-d"></span> Loading...'
             });
-            
+
             loginService.exp_date_detail(date_val)
             .then(function (result)
             {
@@ -7054,7 +7437,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                     mySharedService.expcurrentDate=$scope.exp_date_det.date_created;
                 }
                 console.log($scope.expcurrentDate);
-                
+
                 $state.go('tab.expense-day');
                 $ionicLoading.hide();
             },function (err) {
@@ -7062,7 +7445,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                 console.error(err);
             })
         }
-        
+
         $scope.del_expense_type=function(id,type,dt)
         {
             var confirmPopup = $ionicPopup.confirm({
@@ -7101,32 +7484,32 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
             {
                 $scope.exp_type = $scope.expense_data.type_sel;
             }
-            
+
             if($scope.expense_data.mode_journey == 'bike' || $scope.expense_data.mode_journey == 'car' || $scope.expense_data.mode_journey == 'train' || $scope.expense_data.mode_journey == 'metro_train' || $scope.expense_data.mode_journey == 'taxi_registered' || $scope.expense_data.mode_journey == 'taxi_unregistered' || $scope.expense_data.mode_journey == 'local_conveyance')
             {
                 $scope.exp_type = $scope.expense_data.mode_journey;
             }
-            
+
             if($scope.expense_data.acc_type== 'hotel_registered' || $scope.expense_data.acc_type == 'hotel_unregistered')
             {
                 $scope.exp_type = $scope.expense_data.acc_type;
             }
-            
+
             if($scope.expense_data.food_type== 'food_registered' || $scope.expense_data.food_type == 'food_unregistered')
             {
                 $scope.exp_type = $scope.expense_data.food_type;
             }
-            
+
             if($scope.expense_data.amt)
             {
                 $scope.exp_val=$scope.expense_data.amt;
             }
-            
+
             if($scope.expense_data.distance)
             {
                 $scope.exp_val=$scope.expense_data.distance;
             }
-            
+
             loginService.add_expense_detail($scope.exp_type,$scope.exp_val,dt)
             .then(function (result)
             {
@@ -7147,7 +7530,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
             console.log($scope.newexpDate);
             $scope.exp_date_detail($scope.newexpDate);
         }
-        
+
         $scope.add_new_exp_date = function(id,eid)
         {
             $scope.currentDate = moment($scope.newexpDate).add(1, 'days');
@@ -7155,7 +7538,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
             console.log($scope.newexpDate);
             $scope.exp_date_detail($scope.newexpDate);
         }
-        
+
         $scope.add_new_expense=function(date_val)
         {
             $ionicLoading.show
@@ -7167,32 +7550,32 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
             {
                 $scope.exp_type = $scope.expense_data.type_sel;
             }
-            
+
             if($scope.expense_data.mode_journey == 'bike' || $scope.expense_data.mode_journey == 'car' || $scope.expense_data.mode_journey == 'train' || $scope.expense_data.mode_journey == 'metro_train' || $scope.expense_data.mode_journey == 'taxi_registered' || $scope.expense_data.mode_journey == 'taxi_unregistered' || $scope.expense_data.mode_journey == 'local_conveyance')
             {
                 $scope.exp_type = $scope.expense_data.mode_journey;
             }
-            
+
             if($scope.expense_data.acc_type== 'hotel_registered' || $scope.expense_data.acc_type == 'hotel_unregistered')
             {
                 $scope.exp_type = $scope.expense_data.acc_type;
             }
-            
+
             if($scope.expense_data.food_type== 'food_registered' || $scope.expense_data.food_type == 'food_unregistered')
             {
                 $scope.exp_type = $scope.expense_data.food_type;
             }
-            
+
             if($scope.expense_data.amt)
             {
                 $scope.exp_val=$scope.expense_data.amt;
             }
-            
+
             if($scope.expense_data.distance)
             {
                 $scope.exp_val=$scope.expense_data.distance;
             }
-            
+
             loginService.add_new_expense($scope.exp_type,$scope.exp_val,dt)
             .then(function (result)
             {
@@ -7206,7 +7589,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
             })
             console.log($scope.expense_data);
         }
-        
+
         $scope.attach_bill=function()
         {
             var hideSheet = $ionicActionSheet.show({
@@ -7219,37 +7602,37 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                     // add cancel code..
                 },
                 buttonClicked: function(index) {
-                    
+
                     if(index === 0) { // Manual Button
                         $scope.perm_gallery();
                     }
                     else if(index === 1){
                         $scope.takePicture(3);
                     }
-                    
+
                     return true;
                 }
             })
         }
-        
+
         $scope.perm_gallery=function()
         {
             cordova.plugins.diagnostic.getCameraAuthorizationStatus({
                 successCallback: function(status) {
-                    
+
                     console.log('1st'+status);
-                    
+
                     if(status === cordova.plugins.diagnostic.permissionStatus.GRANTED){
-                        
+
                         $scope.getGallary(3);
-                        
+
                     } else {
-                        
+
                         cordova.plugins.diagnostic.requestCameraAuthorization({
                             successCallback: function(data_status) {
-                                
+
                                 console.log('2nd'+data_status);
-                                
+
                                 if(data_status != 'DENIED') {
                                     $scope.getGallary(3);
                                 }
@@ -7267,21 +7650,21 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                 externalStorage: true
             });
         }
-        
+
         $scope.bill_upload = function()
         {
             $ionicLoading.show
             ({
                 template: '<span class="icon spin ion-loading-d"></span> Loading...'
             });
-            
+
             var options = {
                 fileKey: "file",
                 fileName: "image.jpg",
                 chunkedMode: false,
                 mimeType: "image/*",
             };
-            
+
             $cordovaFileTransfer.upload(server_url+"/bill_upload.php?exec_id="+salesexe_id+"&date="+$scope.expcurrentDate, $scope.mediaData[0].src, options).then(function(result) {
                 $ionicLoading.hide();
                 console.log("SUCCESS: " + JSON.stringify(result));
@@ -7290,16 +7673,16 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                 }, function (error) {
                 });
                 $scope.exp_date_detail($scope.expcurrentDate);
-                
+
             }, function(err) {
                 $ionicLoading.hide();
                 console.log("ERROR: " + JSON.stringify(err));
             }, function (progress) {
-                
+
             });
-            
+
         }
-        
+
         $scope.del_bill=function(bill_img)
         {
             var confirmPopup = $ionicPopup.confirm({
@@ -7329,15 +7712,15 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                 }
             });
         }
-        
-        
-        
-        
-        
-        
-        
-        
-        
+
+
+
+
+
+
+
+
+
         $scope.showModal = function(templateUrl) {
             $ionicModal.fromTemplateUrl(templateUrl, {
                 scope: $scope
@@ -7346,19 +7729,19 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                 $scope.modal.show();
             });
         }
-        
+
         $scope.closeModal = function() {
             $scope.modal.remove()
         };
-        
-        
+
+
         $scope.zoomMin = 1;
         $scope.showImages = function(index,img_val) {
             $scope.activeSlide = index;
             $scope.img_val=img_val;
             $scope.showModal('templates/zoom.html');
         };
-        
+
         $scope.range = function(min, max, step) {
             step = step || 1;
             var input = [];
@@ -7367,7 +7750,7 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
             }
             return input;
         }
-        
+
         $scope.updateSlideStatus = function(slide) {
             var zoomFactor = $ionicScrollDelegate.$getByHandle('scrollHandle' + slide).getScrollPosition().zoom;
             if (zoomFactor == $scope.zoomMin) {
@@ -7376,19 +7759,19 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                 $ionicSlideBoxDelegate.enableSlide(false);
             }
         };
-        
+
         $scope.zoom= function(slide){
             $ionicScrollDelegate.$getByHandle('scrollHandle' + slide).zoomBy(1.5,true);
         }
         $scope.myProfileDetail.image=mySharedService.image;
         console.log($scope.myProfileDetail.image);
-        
+
         $scope.logout = function() {
             $ionicLoading.show
             ({
                 template: '<span class="icon spin ion-loading-d"></span> Logging out...'
             });
-            
+
             var query = "DELETE FROM "+dbTableName;
             $cordovaSQLite.execute(db, query, []).then(function(results) {
                 $state.go('login');
@@ -7397,12 +7780,12 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
                 console.error(err);
             });
         }
-        
+
         $scope.attach_image = function()
         {
             console.log("tfctftyft")
         }
-        
+
         // ++++++++++++++++++ Birthday Modal Start +++++++++++++++++++++++ //
         $ionicModal.fromTemplateUrl('templates/birthday-modal.html', {
             scope: $scope,
@@ -7420,8 +7803,24 @@ angular.module('starter.controllers', ['ionic','ngMaterial','chart.js','dcbImgFa
             $scope.birthdaysearch.hide();
         };
         // ++++++++++++++++++ Birthday modal End +++++++++++++++++++++++ //
-        
-        
-        
+
+        if($location.path() == "/tab-ret/addproduct-ret" || $location.path() == "/tab-dist/addproduct-dist" ||  $location.path() == "/tab/retailers-det" ){
+
+          console.log($location.path() + "  ret order page");
+
+          $scope.getAllProductinfo();
+
+          // $scope.select_all_cat("",0);
+        }
+
+        console.log("****************** mySharedService.show_default_product *******************************");
+        console.log(mySharedService.show_default_product);
+        console.log("****************** $rootScope.show_default_product *******************************");
+        console.log($rootScope.show_default_product);
+        console.log("****************** mySharedService.default_products *******************************");
+        console.log(mySharedService.default_products);
+        console.log("****************** $rootScope.default_products *******************************");
+        console.log($rootScope.default_products);
+
+
     });
-    

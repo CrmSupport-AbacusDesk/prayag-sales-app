@@ -1,75 +1,33 @@
 package com.marianhello.bgloc;
 
 import android.os.Build;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.util.Log;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
+import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.util.HashMap;
+import java.io.OutputStream;
+import java.io.PrintWriter;
 import java.util.Map;
 import java.util.Iterator;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.net.URL;
 import java.net.HttpURLConnection;
 import java.io.OutputStreamWriter;
 
 public class HttpPostService {
-    public static final int BUFFER_SIZE = 1024;
 
-    private String mUrl;
-    private HttpURLConnection mHttpURLConnection;
-
-    public interface UploadingProgressListener {
-        void onProgress(int progress);
-    }
-
-    public HttpPostService(String url) {
-        mUrl = url;
-    }
-
-    public HttpPostService(final HttpURLConnection httpURLConnection) {
-        mHttpURLConnection = httpURLConnection;
-    }
-
-    private HttpURLConnection openConnection() throws IOException {
-        if (mHttpURLConnection == null) {
-            mHttpURLConnection = (HttpURLConnection) new URL(mUrl).openConnection();
-        }
-        return mHttpURLConnection;
-    }
-
-    public int postJSON(JSONObject json, Map headers) throws IOException {
-        String jsonString = "null";
-        if (json != null) {
-            jsonString = json.toString();
-        }
-
-        return postJSONString(jsonString, headers);
-    }
-
-    public int postJSON(JSONArray json, Map headers) throws IOException {
-        String jsonString = "null";
-        if (json != null) {
-            jsonString = json.toString();
-        }
-
-        return postJSONString(jsonString, headers);
-    }
-
-    public int postJSONString(String body, Map headers) throws IOException {
-        if (headers == null) {
-            headers = new HashMap();
-        }
-
-        HttpURLConnection conn = this.openConnection();
+    public static int postJSON(String url, Object json, Map headers) throws IOException {
+        String jsonString = json.toString();
+        HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
         conn.setDoOutput(true);
-        conn.setFixedLengthStreamingMode(body.length());
+        conn.setFixedLengthStreamingMode(jsonString.length());
         conn.setRequestMethod("POST");
         conn.setRequestProperty("Content-Type", "application/json");
         Iterator<Map.Entry<String, String>> it = headers.entrySet().iterator();
@@ -81,7 +39,7 @@ public class HttpPostService {
         OutputStreamWriter os = null;
         try {
             os = new OutputStreamWriter(conn.getOutputStream());
-            os.write(body);
+            os.write(json.toString());
 
         } finally {
             if (os != null) {
@@ -93,22 +51,13 @@ public class HttpPostService {
         return conn.getResponseCode();
     }
 
-    public int postJSONFile(File file, Map headers, UploadingProgressListener listener) throws IOException {
-        return postJSONFile(new FileInputStream(file), headers, listener);
-    }
-
-    public int postJSONFile(InputStream stream, Map headers, UploadingProgressListener listener) throws IOException {
-        if (headers == null) {
-            headers = new HashMap();
-        }
-
-        final long streamSize = stream.available();
-        HttpURLConnection conn = this.openConnection();
+    public static int postFile(String url, File file, Map headers, UploadingCallback callback) throws IOException {
+        HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
 
         conn.setDoInput(false);
         conn.setDoOutput(true);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            conn.setFixedLengthStreamingMode(streamSize);
+            conn.setFixedLengthStreamingMode(file.length());
         } else {
             conn.setChunkedStreamingMode(0);
         }
@@ -122,20 +71,20 @@ public class HttpPostService {
 
         long progress = 0;
         int bytesRead = -1;
-        byte[] buffer = new byte[BUFFER_SIZE];
+        byte[] buffer = new byte[1024];
 
         BufferedInputStream is = null;
         BufferedOutputStream os = null;
         try {
-            is = new BufferedInputStream(stream);
+            is = new BufferedInputStream(new FileInputStream(file));
             os = new BufferedOutputStream(conn.getOutputStream());
             while ((bytesRead = is.read(buffer)) != -1) {
                 os.write(buffer, 0, bytesRead);
                 os.flush();
                 progress += bytesRead;
-                int percentage = (int) ((progress * 100L) / streamSize);
-                if (listener != null) {
-                    listener.onProgress(percentage);
+                int percentage = (int) ((progress * 100L) / file.length());
+                if (callback != null) {
+                    callback.uploadListener(percentage);
                 }
             }
         } finally {
@@ -149,20 +98,5 @@ public class HttpPostService {
         }
 
         return conn.getResponseCode();
-    }
-
-    public static int postJSON(String url, JSONObject json, Map headers) throws IOException {
-        HttpPostService service = new HttpPostService(url);
-        return service.postJSON(json, headers);
-    }
-
-    public static int postJSON(String url, JSONArray json, Map headers) throws IOException {
-        HttpPostService service = new HttpPostService(url);
-        return service.postJSON(json, headers);
-    }
-
-    public static int postJSONFile(String url, File file, Map headers, UploadingProgressListener listener) throws IOException {
-        HttpPostService service = new HttpPostService(url);
-        return service.postJSONFile(file, headers, listener);
     }
 }

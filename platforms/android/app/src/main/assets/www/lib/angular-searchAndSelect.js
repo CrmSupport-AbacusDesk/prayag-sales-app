@@ -56,7 +56,7 @@
 
             scope.isActive = function (item) {
                     return item[scope.key1] === scope.selecteditem[scope.key1];
-                
+
             };
 
             scope.textChanged = function (searchKey) {
@@ -87,11 +87,17 @@
             elm.find(".dropdown").bind('scroll', function () {
                 var currentItem = $(this);
                 if (currentItem.scrollTop() + currentItem.innerHeight() >= currentItem[0].scrollHeight) {
-
+                    console.log(scope.pagenumber);
                     if (!scope.pagenumber) scope.pagenumber = 2;
                     else
                         scope.pagenumber = scope.pagenumber + 1;
-
+                    console.log(currentItem.innerHeight());
+                    console.log(currentItem.scrollTop());
+                    console.log(currentItem[0].scrollHeight);
+                    console.log(scope.totalrecords);
+                    console.log(scope.values.length);
+                    console.log('scope.searchKey : '+scope.searchKey);
+                    console.log('scope.pagenumber : '+scope.pagenumber);
                     scope.onscroll({
                         searchKey: scope.searchKey,
                         pagenumber: scope.pagenumber
