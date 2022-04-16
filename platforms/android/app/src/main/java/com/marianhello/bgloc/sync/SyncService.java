@@ -13,6 +13,7 @@ import android.os.IBinder;
  * onPerformSync().
  */
 public class SyncService extends Service {
+
     // Storage for an instance of the sync adapter
     private static SyncAdapter sSyncAdapter = null;
     // Object to use as a thread-safe lock
@@ -51,11 +52,11 @@ public class SyncService extends Service {
         return sSyncAdapter.getSyncAdapterBinder();
     }
 
-    public static void sync(Account account, String authority, boolean manual) {
+    public static void sync(Account account, String authority) {
         // Pass the settings flags by inserting them in a bundle
         Bundle settingsBundle = new Bundle();
-        settingsBundle.putBoolean(ContentResolver.SYNC_EXTRAS_MANUAL, manual);
-        settingsBundle.putBoolean(ContentResolver.SYNC_EXTRAS_EXPEDITED, manual);
+        settingsBundle.putBoolean(ContentResolver.SYNC_EXTRAS_MANUAL, true);
+        settingsBundle.putBoolean(ContentResolver.SYNC_EXTRAS_EXPEDITED, false);
         settingsBundle.putBoolean(ContentResolver.SYNC_EXTRAS_DO_NOT_RETRY, false);
         settingsBundle.putBoolean(ContentResolver.SYNC_EXTRAS_UPLOAD, true);
 

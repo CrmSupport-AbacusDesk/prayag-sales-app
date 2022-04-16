@@ -1,36 +1,33 @@
 {
-  "_args": [
-    [
-      "cordova-plugin-mauron85-background-geolocation@2.3.6",
-      "E:\\prayag-sales-app"
-    ]
-  ],
-  "_from": "cordova-plugin-mauron85-background-geolocation@2.3.6",
+  "_from": "cordova-plugin-mauron85-background-geolocation@^2.3.6",
   "_id": "cordova-plugin-mauron85-background-geolocation@2.3.6",
   "_inBundle": false,
   "_integrity": "sha512-+3tqQi0K7sc4z9TJDc96HJ9GeSPU+rF9weykE8yJJWvW6WkaTv9dv4JEPtroXIj+XaNxPjH/Hgceh8ET19/NDw==",
   "_location": "/cordova-plugin-mauron85-background-geolocation",
   "_phantomChildren": {},
   "_requested": {
-    "type": "version",
+    "type": "range",
     "registry": true,
-    "raw": "cordova-plugin-mauron85-background-geolocation@2.3.6",
+    "raw": "cordova-plugin-mauron85-background-geolocation@^2.3.6",
     "name": "cordova-plugin-mauron85-background-geolocation",
     "escapedName": "cordova-plugin-mauron85-background-geolocation",
-    "rawSpec": "2.3.6",
+    "rawSpec": "^2.3.6",
     "saveSpec": null,
-    "fetchSpec": "2.3.6"
+    "fetchSpec": "^2.3.6"
   },
   "_requiredBy": [
-    "/"
+    "#DEV:/",
+    "#USER"
   ],
   "_resolved": "https://registry.npmjs.org/cordova-plugin-mauron85-background-geolocation/-/cordova-plugin-mauron85-background-geolocation-2.3.6.tgz",
-  "_spec": "2.3.6",
-  "_where": "E:\\prayag-sales-app",
+  "_shasum": "4b206c03d2319adf7998e36a08ac446cb24bcc40",
+  "_spec": "cordova-plugin-mauron85-background-geolocation@^2.3.6",
+  "_where": "D:\\git_projects\\prayag-sales-app",
   "author": "",
   "bugs": {
     "url": "https://github.com/mauron85/cordova-plugin-background-geolocation/issues"
   },
+  "bundleDependencies": false,
   "cordova": {
     "id": "cordova-plugin-mauron85-background-geolocation",
     "platforms": [
@@ -38,6 +35,7 @@
       "ios"
     ]
   },
+  "deprecated": "Using deprecated version! 🖕🖕🖕 Pkg has been moved to @mauron85/cordova-plugin-background-geolocation. Please update your dependencies.",
   "description": "Cordova Background Geolocation Plugin",
   "engines": {
     "cordovaDependencies": {

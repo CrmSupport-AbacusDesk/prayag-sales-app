@@ -7,22 +7,43 @@
     "files": {}
   },
   "installed_plugins": {
-    "cordova-android-support-gradle-release": {
-      "ANDROID_SUPPORT_VERSION": "27.+",
+    "cordova-plugin-device": {
       "PACKAGE_NAME": "com.ab_prayag.sales"
     },
-    "cordova-plugin-actionsheet": {
+    "cordova-plugin-ionic-webview": {
       "PACKAGE_NAME": "com.ab_prayag.sales"
     },
-    "cordova-plugin-android-permissions": {
+    "cordova-plugin-splashscreen": {
       "PACKAGE_NAME": "com.ab_prayag.sales"
     },
-    "cordova-plugin-app-version": {
+    "ionic-plugin-keyboard": {
       "PACKAGE_NAME": "com.ab_prayag.sales"
     },
-    "cordova-plugin-background-geolocation": {
+    "cordova-plugin-x-toast": {
+      "PACKAGE_NAME": "com.ab_prayag.sales"
+    },
+    "cordova-plugin-file": {
+      "PACKAGE_NAME": "com.ab_prayag.sales"
+    },
+    "cordova-plugin-geolocation": {
+      "PACKAGE_NAME": "com.ab_prayag.sales"
+    },
+    "cordova.plugins.diagnostic": {
+      "PACKAGE_NAME": "com.ab_prayag.sales"
+    },
+    "cordova-plugin-request-location-accuracy": {
+      "PLAY_SERVICES_LOCATION_VERSION": "16.+",
+      "PACKAGE_NAME": "com.ab_prayag.sales"
+    },
+    "cordova-plugin-nativestorage": {
+      "PACKAGE_NAME": "com.ab_prayag.sales"
+    },
+    "cordova-plugin-statusbar": {
+      "PACKAGE_NAME": "com.ab_prayag.sales"
+    },
+    "cordova-plugin-mauron85-background-geolocation": {
       "GOOGLE_PLAY_SERVICES_VERSION": "11+",
-      "ANDROID_SUPPORT_LIBRARY_VERSION": "26+",
+      "ANDROID_SUPPORT_LIBRARY_VERSION": "23+",
       "ICON": "@mipmap/icon",
       "SMALL_ICON": "@mipmap/icon",
       "ACCOUNT_NAME": "@string/app_name",
@@ -34,31 +55,39 @@
     "cordova-plugin-camera": {
       "PACKAGE_NAME": "com.ab_prayag.sales"
     },
-    "cordova-plugin-console": {
+    "cordova-plugin-actionsheet": {
+      "PACKAGE_NAME": "com.ab_prayag.sales"
+    },
+    "cordova-android-support-gradle-release": {
+      "ANDROID_SUPPORT_VERSION": "27.+",
       "PACKAGE_NAME": "com.ab_prayag.sales"
     },
     "cordova-plugin-datepicker": {
       "PACKAGE_NAME": "com.ab_prayag.sales"
     },
-    "cordova-plugin-device": {
-      "PACKAGE_NAME": "com.ab_prayag.sales"
-    },
     "cordova-plugin-dialogs": {
       "PACKAGE_NAME": "com.ab_prayag.sales"
     },
-    "cordova-plugin-file": {
+    "cordova-plugin-console": {
+      "PACKAGE_NAME": "com.ab_prayag.sales"
+    },
+    "cordova-sqlite-storage": {
       "PACKAGE_NAME": "com.ab_prayag.sales"
     },
     "cordova-plugin-file-transfer": {
       "PACKAGE_NAME": "com.ab_prayag.sales"
     },
-    "cordova-plugin-geolocation": {
-      "PACKAGE_NAME": "com.ab_prayag.sales"
-    },
     "cordova-plugin-image-picker": {
       "PACKAGE_NAME": "com.ab_prayag.sales"
     },
-    "cordova-plugin-ionic-webview": {
+    "cordova-plugin-app-version": {
+      "PACKAGE_NAME": "com.ab_prayag.sales"
+    },
+    "uk.co.workingedge.phonegap.plugin.launchnavigator": {
+      "OKHTTP_VERSION": "3.12.0",
+      "PACKAGE_NAME": "com.ab_prayag.sales"
+    },
+    "cordova-plugin-android-permissions": {
       "PACKAGE_NAME": "com.ab_prayag.sales"
     },
     "cordova-plugin-whitelist": {

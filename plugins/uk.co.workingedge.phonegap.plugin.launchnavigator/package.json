@@ -1,38 +1,35 @@
 {
-  "_args": [
-    [
-      "uk.co.workingedge.phonegap.plugin.launchnavigator@4.2.2",
-      "E:\\prayag-sales-app"
-    ]
-  ],
-  "_from": "uk.co.workingedge.phonegap.plugin.launchnavigator@4.2.2",
+  "_from": "uk.co.workingedge.phonegap.plugin.launchnavigator@^4.2.2",
   "_id": "uk.co.workingedge.phonegap.plugin.launchnavigator@4.2.2",
   "_inBundle": false,
   "_integrity": "sha512-KpLGHrY3tX3Ysj39Q4whQawIleKomhsq48zBAqZXDxs/wxAnWcMvIxgix3AIB5CMdjetF6JNYZAGBOqsNkl+0g==",
   "_location": "/uk.co.workingedge.phonegap.plugin.launchnavigator",
   "_phantomChildren": {},
   "_requested": {
-    "type": "version",
+    "type": "range",
     "registry": true,
-    "raw": "uk.co.workingedge.phonegap.plugin.launchnavigator@4.2.2",
+    "raw": "uk.co.workingedge.phonegap.plugin.launchnavigator@^4.2.2",
     "name": "uk.co.workingedge.phonegap.plugin.launchnavigator",
     "escapedName": "uk.co.workingedge.phonegap.plugin.launchnavigator",
-    "rawSpec": "4.2.2",
+    "rawSpec": "^4.2.2",
     "saveSpec": null,
-    "fetchSpec": "4.2.2"
+    "fetchSpec": "^4.2.2"
   },
   "_requiredBy": [
-    "/"
+    "#DEV:/",
+    "#USER"
   ],
   "_resolved": "https://registry.npmjs.org/uk.co.workingedge.phonegap.plugin.launchnavigator/-/uk.co.workingedge.phonegap.plugin.launchnavigator-4.2.2.tgz",
-  "_spec": "4.2.2",
-  "_where": "E:\\prayag-sales-app",
+  "_shasum": "9a9e3027fc71c2f043b89d7128b3c0fa45944261",
+  "_spec": "uk.co.workingedge.phonegap.plugin.launchnavigator@^4.2.2",
+  "_where": "D:\\git_projects\\prayag-sales-app",
   "author": {
     "name": "Dave Alden"
   },
   "bugs": {
     "url": "https://github.com/dpa99c/phonegap-launch-navigator/issues"
   },
+  "bundleDependencies": false,
   "cordova": {
     "id": "uk.co.workingedge.phonegap.plugin.launchnavigator",
     "platforms": [
@@ -43,6 +40,7 @@
     ]
   },
   "cordova_name": "Launch Navigator",
+  "deprecated": false,
   "description": "Cordova/Phonegap plugin to navigate to a destination using native navigation apps on Android, iOS, and Windows Phone",
   "engines": {
     "cordovaDependencies": {

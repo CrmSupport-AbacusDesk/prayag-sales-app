@@ -13,15 +13,14 @@ public class AccountHelper {
      *
      * @param context The application context
      */
-    public static android.accounts.Account CreateSyncAccount(Context context, String accountName, String accountType) {
-        Account account = new Account(accountName, accountType);
+    public static android.accounts.Account CreateSyncAccount(Context context, Account newAccount) {
         // Get an instance of the Android account manager
         AccountManager accountManager =  (AccountManager) context.getSystemService(Context.ACCOUNT_SERVICE);
         /*
          * Add the account and account type, no password or user data
          * If successful, return the Account object, otherwise report an error.
          */
-        if (accountManager.addAccountExplicitly(account, null, null)) {
+        if (accountManager.addAccountExplicitly(newAccount, null, null)) {
             /*
              * If you don't set android:syncable="true" in
              * in your <provider> element in the manifest,
@@ -34,6 +33,6 @@ public class AccountHelper {
              * or handle it internally.
              */
         }
-        return account;
+        return newAccount;
     }
 }

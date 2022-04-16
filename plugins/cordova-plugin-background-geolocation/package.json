@@ -1,37 +1,34 @@
 {
-  "_args": [
-    [
-      "@mauron85/cordova-plugin-background-geolocation@3.1.0",
-      "E:\\prayag-sales-app"
-    ]
-  ],
-  "_from": "@mauron85/cordova-plugin-background-geolocation@3.1.0",
+  "_from": "@mauron85/cordova-plugin-background-geolocation@~3.1.0",
   "_id": "@mauron85/cordova-plugin-background-geolocation@3.1.0",
   "_inBundle": false,
   "_integrity": "sha512-ZZDwkO5m0Bbi8VDJsO3ssBgXrgCiu43/kOBvSneh5djIFyRrQZJbj6IMNt/hP7F/m7Pmw0x7F5ASXjPMwjEAjg==",
   "_location": "/@mauron85/cordova-plugin-background-geolocation",
   "_phantomChildren": {},
   "_requested": {
-    "type": "version",
+    "type": "range",
     "registry": true,
-    "raw": "@mauron85/cordova-plugin-background-geolocation@3.1.0",
+    "raw": "@mauron85/cordova-plugin-background-geolocation@~3.1.0",
     "name": "@mauron85/cordova-plugin-background-geolocation",
     "escapedName": "@mauron85%2fcordova-plugin-background-geolocation",
     "scope": "@mauron85",
-    "rawSpec": "3.1.0",
+    "rawSpec": "~3.1.0",
     "saveSpec": null,
-    "fetchSpec": "3.1.0"
+    "fetchSpec": "~3.1.0"
   },
   "_requiredBy": [
-    "/"
+    "#DEV:/",
+    "#USER"
   ],
   "_resolved": "https://registry.npmjs.org/@mauron85/cordova-plugin-background-geolocation/-/cordova-plugin-background-geolocation-3.1.0.tgz",
-  "_spec": "3.1.0",
-  "_where": "E:\\prayag-sales-app",
+  "_shasum": "137d6c7554eb09a470623e23b7cbd68c95a55d8d",
+  "_spec": "@mauron85/cordova-plugin-background-geolocation@~3.1.0",
+  "_where": "D:\\git_projects\\prayag-sales-app",
   "author": "",
   "bugs": {
     "url": "https://github.com/mauron85/cordova-plugin-background-geolocation/issues"
   },
+  "bundleDependencies": false,
   "cordova": {
     "id": "@mauron85/cordova-plugin-background-geolocation",
     "platforms": [
@@ -39,6 +36,7 @@
       "ios"
     ]
   },
+  "deprecated": false,
   "description": "Cordova Background Geolocation Plugin",
   "engines": {
     "cordovaDependencies": {

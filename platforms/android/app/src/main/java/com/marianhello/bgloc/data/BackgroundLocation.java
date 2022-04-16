@@ -1,7 +1,5 @@
 package com.marianhello.bgloc.data;
 
-import android.content.ContentValues;
-import android.database.Cursor;
 import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
@@ -9,17 +7,10 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.support.v4.util.TimeUtils;
 
-import com.marianhello.bgloc.data.sqlite.SQLiteLocationContract;
-import com.marianhello.bgloc.data.sqlite.SQLiteLocationContract.LocationEntry;
-
-import org.json.JSONException;
 import org.json.JSONObject;
+import org.json.JSONException;
 
 public class BackgroundLocation implements Parcelable {
-    public static final int DELETED = 0;
-    public static final int POST_PENDING = 1;
-    public static final int SYNC_PENDING = 2;
-
     private Long locationId = null;
     private Integer locationProvider = null;
     private Long batchStartMillis = null;
@@ -38,13 +29,47 @@ public class BackgroundLocation implements Parcelable {
     private boolean hasSpeed = false;
     private boolean hasBearing = false;
     private boolean hasRadius = false;
-    private int mockFlags = 0x0000;
-    private int status = POST_PENDING;
+    private boolean isFromMockProvider = false;
+    private boolean isValid = true;
     private Bundle extras = null;
 
     private static final long TWO_MINUTES_IN_NANOS = 1000000000L * 60 * 2;
 
     public BackgroundLocation() {}
+
+    public BackgroundLocation(Integer locationProvider, Location location) {
+        this.locationProvider = locationProvider;
+        provider = location.getProvider();
+        latitude = location.getLatitude();
+        longitude = location.getLongitude();
+        time = location.getTime();
+        accuracy = location.getAccuracy();
+        speed = location.getSpeed();
+        bearing = location.getBearing();
+        altitude = location.getAltitude();
+        hasAccuracy = location.hasAccuracy();
+        hasAltitude = location.hasAltitude();
+        hasSpeed = location.hasSpeed();
+        hasBearing = location.hasBearing();
+        extras = location.getExtras();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+            elapsedRealtimeNanos = location.getElapsedRealtimeNanos();
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) {
+            isFromMockProvider = location.isFromMockProvider();
+        }
+    }
+
+    /**
+     * Construct stationary BackgroundLocation.
+     * @param locationProvider
+     * @param location
+     * @param radius radius of stationary region
+     */
+    public BackgroundLocation(Integer locationProvider, Location location, float radius) {
+        this(null, location);
+        setRadius(radius);
+    }
 
     public BackgroundLocation(String provider) {
         this.provider = provider;
@@ -54,27 +79,8 @@ public class BackgroundLocation implements Parcelable {
      * Construct BackgroundLocation by copying properties from android Location.
      * @param location
      */
-    @Deprecated
     public BackgroundLocation(Location location) {
-        this(BackgroundLocation.fromLocation(location));
-    }
-
-    @Deprecated
-    public BackgroundLocation(Integer locationProvider, Location location) {
-        this(location);
-        this.locationProvider = locationProvider;
-    }
-
-    /**
-     * Construct stationary BackgroundLocation.
-     * @param locationProvider
-     * @param location
-     * @param radius radius of stationary region
-     */
-    @Deprecated
-    public BackgroundLocation(Integer locationProvider, Location location, float radius) {
-        this(locationProvider, location);
-        setRadius(radius);
+        this(null, location);
     }
 
     /**
@@ -100,100 +106,33 @@ public class BackgroundLocation implements Parcelable {
         hasSpeed = l.hasSpeed;
         hasBearing = l.hasBearing;
         hasRadius = l.hasRadius;
-        mockFlags = l.mockFlags;
-        status = l.status;
+        isFromMockProvider = l.isFromMockProvider;
+        isValid = l.isValid;
         extras = (l.extras == null) ? null : new Bundle(l.extras);
     }
 
-    private static BackgroundLocation fromParcel(Parcel in) {
-        BackgroundLocation l = new BackgroundLocation();
-
-        l.locationId = in.readLong();
-        l.locationProvider = in.readInt();
-        l.batchStartMillis = in.readLong();
-        l.provider = in.readString();
-        l.latitude = in.readDouble();
-        l.longitude = in.readDouble();
-        l.time = in.readLong();
-        l.elapsedRealtimeNanos = in.readLong();
-        l.accuracy = in.readFloat();
-        l.speed = in.readFloat();
-        l.bearing = in.readFloat();
-        l.altitude = in.readDouble();
-        l.radius = in.readFloat();
-        l.hasAccuracy = in.readInt() != 0;
-        l.hasAltitude = in.readInt() != 0;
-        l.hasSpeed = in.readInt() != 0;
-        l.hasBearing = in.readInt() != 0;
-        l.hasRadius = in.readInt() != 0;
-        l.mockFlags = in.readInt();
-        l.status = in.readInt();
-        l.extras = in.readBundle();
-
-        return l;
-    }
-
-    public static BackgroundLocation fromLocation(Location location) {
-        BackgroundLocation l = new BackgroundLocation();
-
-        l.provider = location.getProvider();
-        l.latitude = location.getLatitude();
-        l.longitude = location.getLongitude();
-        l.time = location.getTime();
-        l.accuracy = location.getAccuracy();
-        l.speed = location.getSpeed();
-        l.bearing = location.getBearing();
-        l.altitude = location.getAltitude();
-        l.hasAccuracy = location.hasAccuracy();
-        l.hasAltitude = location.hasAltitude();
-        l.hasSpeed = location.hasSpeed();
-        l.hasBearing = location.hasBearing();
-        l.extras = location.getExtras();
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-            l.elapsedRealtimeNanos = location.getElapsedRealtimeNanos();
-        }
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) {
-            l.setIsFromMockProvider(location.isFromMockProvider());
-        }
-
-        return l;
-    }
-
-    /**
-     * Create a new Location from a cursor
-     *
-     * @param c the cursor
-     * @return the note
-     */
-    public static BackgroundLocation fromCursor(Cursor c) {
-        BackgroundLocation l = new BackgroundLocation();
-
-        l.setProvider(c.getString(c.getColumnIndex(LocationEntry.COLUMN_NAME_PROVIDER)));
-        l.setTime(c.getLong(c.getColumnIndex(LocationEntry.COLUMN_NAME_TIME)));
-        if (c.getInt(c.getColumnIndex(LocationEntry.COLUMN_NAME_HAS_ACCURACY)) == 1) {
-            l.setAccuracy(c.getFloat(c.getColumnIndex(LocationEntry.COLUMN_NAME_ACCURACY)));
-        }
-        if (c.getInt(c.getColumnIndex(LocationEntry.COLUMN_NAME_HAS_SPEED)) == 1) {
-            l.setSpeed(c.getFloat(c.getColumnIndex(LocationEntry.COLUMN_NAME_SPEED)));
-        }
-        if (c.getInt(c.getColumnIndex(LocationEntry.COLUMN_NAME_HAS_BEARING)) == 1) {
-            l.setBearing(c.getFloat(c.getColumnIndex(LocationEntry.COLUMN_NAME_BEARING)));
-        }
-        if (c.getInt(c.getColumnIndex(LocationEntry.COLUMN_NAME_HAS_ALTITUDE)) == 1) {
-            l.setAltitude(c.getDouble(c.getColumnIndex(LocationEntry.COLUMN_NAME_ALTITUDE)));
-        }
-        if (c.getInt(c.getColumnIndex(LocationEntry.COLUMN_NAME_HAS_RADIUS)) == 1) {
-            l.setRadius(c.getFloat(c.getColumnIndex(LocationEntry.COLUMN_NAME_RADIUS)));
-        }
-        l.setLatitude(c.getDouble(c.getColumnIndex(LocationEntry.COLUMN_NAME_LATITUDE)));
-        l.setLongitude(c.getDouble(c.getColumnIndex(LocationEntry.COLUMN_NAME_LONGITUDE)));
-        l.setLocationProvider(c.getInt(c.getColumnIndex(LocationEntry.COLUMN_NAME_LOCATION_PROVIDER)));
-        l.setBatchStartMillis(c.getLong(c.getColumnIndex(LocationEntry.COLUMN_NAME_BATCH_START_MILLIS)));
-        l.setStatus(c.getInt(c.getColumnIndex(LocationEntry.COLUMN_NAME_STATUS)));
-        l.setLocationId(c.getLong(c.getColumnIndex(LocationEntry._ID)));
-        l.setMockFlags(c.getInt((c.getColumnIndex(LocationEntry.COLUMN_NAME_MOCK_FLAGS))));
-
-        return l;
+    private BackgroundLocation(Parcel in) {
+        locationId = in.readLong();
+        locationProvider = in.readInt();
+        batchStartMillis = in.readLong();
+        provider = in.readString();
+        latitude = in.readDouble();
+        longitude = in.readDouble();
+        time = in.readLong();
+        elapsedRealtimeNanos = in.readLong();
+        accuracy = in.readFloat();
+        speed = in.readFloat();
+        bearing = in.readFloat();
+        altitude = in.readDouble();
+        radius = in.readFloat();
+        hasAccuracy = in.readInt() != 0;
+        hasAltitude = in.readInt() != 0;
+        hasSpeed = in.readInt() != 0;
+        hasBearing = in.readInt() != 0;
+        hasRadius = in.readInt() != 0;
+        isFromMockProvider = in.readInt() != 0;
+        isValid = in.readInt() != 0;
+        extras = in.readBundle();
     }
 
     @Override
@@ -221,21 +160,21 @@ public class BackgroundLocation implements Parcelable {
         dest.writeInt(hasSpeed ? 1 : 0);
         dest.writeInt(hasBearing ? 1 : 0);
         dest.writeInt(hasRadius ? 1 : 0);
-        dest.writeInt(mockFlags);
-        dest.writeInt(status);
+        dest.writeInt(isFromMockProvider ? 1 : 0);
+        dest.writeInt(isValid ? 1 : 0);
         dest.writeBundle(extras);
     }
 
     public static final Parcelable.Creator<BackgroundLocation> CREATOR
             = new Parcelable.Creator<BackgroundLocation>() {
         public BackgroundLocation createFromParcel(Parcel in) {
-            return BackgroundLocation.fromParcel(in);
+            return new BackgroundLocation(in);
         }
         public BackgroundLocation[] newArray(int size) {
             return new BackgroundLocation[size];
         }
     };
-
+    
     public BackgroundLocation makeClone() {
         return new BackgroundLocation(this);
     }
@@ -558,107 +497,30 @@ public class BackgroundLocation implements Parcelable {
     }
 
     /**
-     * Mock flags is 4-bit representation of mock status
-     *
-     * xxx0 - isFromMockProvider is false
-     * xxx1 - isFromMockProvider is true
-     * xx0x - hasIsFromMockProvider is false
-     * xx1x - hasIsFromMockProvider is true
-     * x0xx - areMockLocationsEnabled is false
-     * x1xx - areMockLocationsEnabled is true
-     * 0xxx - hasMockLocationsEnabled is false
-     * 1xxx - hasMockLocationsEnabled is true
-     *
-     * @return mock flags
-     */
-    public int getMockFlags() {
-        return mockFlags;
-    }
-
-    public void setMockFlags(int mockFlags) {
-        this.mockFlags = mockFlags;
-    }
-
-    /**
-     * Return true if method setIsFromMockProvider was called on location instance
-     * @return true indicates that result from isFromMockProvider method is valid
-     */
-    public boolean hasIsFromMockProvider() {
-        return ((mockFlags & 0x0002) >> 1) == 1;
-    }
-
-    /**
      * Returns true if the Location came from a mock provider.
-     * Always check hasIsFromMockProvider() before this method
      *
      * @return true if this Location came from a mock provider, false otherwise
      */
     public boolean isFromMockProvider() {
-        return (mockFlags & 0x0001) == 1;
+        return isFromMockProvider;
     }
 
+
     /**
-     * Method should be called to indicate that location was recorded by mock provider
-     * If this method was called hasIsFromMockProvider method will always return true
+     * Returns true if location is considered valid.
+     * Location are actually not deleted from db, but instead
+     * marked as non-valid.
      *
-     * @param isFromMockProvider
+     * @return true if location is valid (non deleted), false otherwise
      */
-    public void setIsFromMockProvider(boolean isFromMockProvider) {
-        mockFlags |= isFromMockProvider ? 0x0003 : 0x0002;
-    }
+    public boolean isValid() { return isValid; }
 
     /**
-     * Return true if method setMockLocationsEnabled was called on location instance
-     * @return true indicates that result from areMockLocationsEnabled method is valid
+     * Sets location validity
+     * @param isValid
      */
-    public boolean hasMockLocationsEnabled() {
-        return ((mockFlags & 0x0008) >> 3) == 1;
-    }
-
-    /**
-     * Returns true if mock locations were enabled
-     * Always check hasMockLocationsEnabled() before this method
-     *
-     * @return true if mock locations were enabled
-     */
-    public boolean areMockLocationsEnabled() {
-        return ((mockFlags & 0x0004) >> 2) == 1;
-    }
-
-    /**
-     * Method should be called when mock locations were detect in settings
-     * If this method was called hasMockLocationsEnabled method will always return true
-     *
-     * @param mockLocationsEnabled
-     */
-    public void setMockLocationsEnabled(Boolean mockLocationsEnabled) {
-        mockFlags |= mockLocationsEnabled ? 0x000C : 0x0008;
-    }
-
-    /**
-     * Returns status of location. Can be one of:
-     * <ul>
-     *     <li>{@value #DELETED}</li>
-     *     <li>{@value #POST_PENDING}</li>
-     *     <li>{@value #SYNC_PENDING}</li>
-     * </ul>
-     * @return status
-     */
-    public int getStatus() {
-        return status;
-    }
-
-    /**
-     * Sets status of location. Can be one of:
-     * <ul>
-     *     <li>{@value #DELETED}</li>
-     *     <li>{@value #POST_PENDING}</li>
-     *     <li>{@value #SYNC_PENDING}</li>
-     * </ul>
-     * @param status
-     */
-    public void setStatus(int status) {
-        this.status = status;
+    public void setValid(boolean isValid) {
+        this.isValid = isValid;
     }
 
     /**
@@ -827,8 +689,7 @@ public class BackgroundLocation implements Parcelable {
         if (hasSpeed) s.append(" vel=").append(speed);
         if (hasBearing) s.append(" bear=").append(bearing);
         if (hasRadius) s.append(" radius=").append(radius);
-        if (isFromMockProvider()) s.append(" mock");
-        if (areMockLocationsEnabled()) s.append(" mocksEnabled");
+        if (isFromMockProvider) s.append(" mock");
         if (extras != null) {
             s.append(" {").append(extras).append('}');
         }
@@ -845,7 +706,6 @@ public class BackgroundLocation implements Parcelable {
     public JSONObject toJSONObject() throws JSONException {
         JSONObject json = new JSONObject();
         json.put("provider", provider);
-        json.put("locationProvider", locationProvider);
         json.put("time", time);
         json.put("latitude", latitude);
         json.put("longitude", longitude);
@@ -854,8 +714,7 @@ public class BackgroundLocation implements Parcelable {
         if (hasAltitude) json.put("altitude", altitude);
         if (hasBearing) json.put("bearing", bearing);
         if (hasRadius) json.put("radius", radius);
-        if (hasIsFromMockProvider()) json.put("isFromMockProvider", isFromMockProvider());
-        if (hasMockLocationsEnabled()) json.put("mockLocationsEnabled", areMockLocationsEnabled());
+        json.put("locationProvider", locationProvider);
 
         return json;
   	}
@@ -868,79 +727,8 @@ public class BackgroundLocation implements Parcelable {
      * @throws JSONException
      */
     public JSONObject toJSONObjectWithId() throws JSONException {
-        JSONObject json = toJSONObject();
-        json.put("id", locationId);
+        JSONObject json = this.toJSONObject();
+        json.put("locationId", locationId);
         return json;
-    }
-
-    /**
-     * Return the contentvalues for this record
-     */
-    public ContentValues toContentValues() {
-        ContentValues values = new ContentValues();
-        //values.put(LocationEntry._ID, locationId);
-        values.put(LocationEntry.COLUMN_NAME_TIME, time);
-        values.put(LocationEntry.COLUMN_NAME_ACCURACY, accuracy);
-        values.put(LocationEntry.COLUMN_NAME_SPEED, speed);
-        values.put(LocationEntry.COLUMN_NAME_BEARING, bearing);
-        values.put(LocationEntry.COLUMN_NAME_ALTITUDE, altitude);
-        values.put(LocationEntry.COLUMN_NAME_LATITUDE, latitude);
-        values.put(LocationEntry.COLUMN_NAME_LONGITUDE, longitude);
-        values.put(LocationEntry.COLUMN_NAME_RADIUS, radius);
-        values.put(LocationEntry.COLUMN_NAME_HAS_ACCURACY, hasAccuracy);
-        values.put(LocationEntry.COLUMN_NAME_HAS_SPEED, hasSpeed);
-        values.put(LocationEntry.COLUMN_NAME_HAS_BEARING, hasBearing);
-        values.put(LocationEntry.COLUMN_NAME_HAS_ALTITUDE, hasAltitude);
-        values.put(LocationEntry.COLUMN_NAME_HAS_RADIUS, hasRadius);
-        values.put(LocationEntry.COLUMN_NAME_PROVIDER, provider);
-        values.put(LocationEntry.COLUMN_NAME_LOCATION_PROVIDER, locationProvider);
-        values.put(LocationEntry.COLUMN_NAME_STATUS, status);
-        values.put(LocationEntry.COLUMN_NAME_BATCH_START_MILLIS, batchStartMillis);
-        values.put(LocationEntry.COLUMN_NAME_MOCK_FLAGS, mockFlags);
-        return values;
-    }
-
-    public Object getValueForKey(String key) {
-        if ("@id".equals(key)) {
-            return locationId;
-        }
-        if ("@provider".equals(key)) {
-            return provider;
-        }
-        if ("@locationProvider".equals(key)) {
-            return locationProvider;
-        }
-        if ("@time".equals(key)) {
-            return time;
-        }
-        if ("@latitude".equals(key)) {
-            return latitude;
-        }
-        if ("@longitude".equals(key)) {
-            return longitude;
-        }
-        if ("@accuracy".equals(key)) {
-            return hasAccuracy ? accuracy : JSONObject.NULL;
-        }
-        if ("@speed".equals(key)) {
-            return hasSpeed ? speed : JSONObject.NULL;
-        }
-        if ("@altitude".equals(key)) {
-            return hasAltitude ? altitude : JSONObject.NULL;
-        }
-        if ("@bearing".equals(key)) {
-            return hasBearing ? bearing : JSONObject.NULL;
-        }
-        if ("@radius".equals(key)) {
-            return hasRadius ? radius : JSONObject.NULL;
-        }
-        if ("@isFromMockProvider".equals(key)) {
-            return hasIsFromMockProvider() ? isFromMockProvider() : JSONObject.NULL;
-        }
-        if ("@mockLocationsEnabled".equals(key)) {
-            return hasMockLocationsEnabled() ? areMockLocationsEnabled() : JSONObject.NULL;
-        }
-
-        return null;
     }
 }

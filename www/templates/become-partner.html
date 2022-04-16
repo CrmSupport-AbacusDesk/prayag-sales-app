@@ -6,22 +6,22 @@
                 <img src="img/white-logo.svg" alt="">
             </div>
         </div>
-        
+
         <style type="text/css">
             .dnone{display: none}
             .dherit{display: inherit;}
             sup{color:#f00;font-size: 12px;top: -2px;}
         </style>
-        
+
         <div class="form-data">
             <h2 class="heading-c">Become a Partner</h2>
-            
+
             <form name="Addform">
                 <div class="b-partner" ng-class="pageone==true ? '' : 'dnone'">
                     <div class="heading">
                         <h2>Basic Information</h2>
                     </div>
-                    
+
                     <ul>
                         <li>
                             <label>
@@ -87,12 +87,12 @@
                     </ul>
                 </div>
             </form>
-            
+
             <div class="b-partner animated bounceInRight" ng-class="pagetwo==true ? 'dherit' : 'dnone'" >
                 <div class="heading">
                     <h2>Address Information</h2>
                 </div>
-                
+
                 <ul>
                     <li><h1>Billing Address</h1></li>
                     <li>
@@ -139,7 +139,7 @@
                         </label>
                         <div style="clear: both;"></div>
                     </li>
-                    
+
                     <span ng-if="show_ship">
                         <li>
                             <label>Shipping State <sup>*</sup></label>
@@ -179,9 +179,9 @@
                         <button ng-click="go_two()" class="go">GO</button>
                     </li>
                 </ul>
-                
+
             </div>
-            
+
             <div class="b-partner animated bounceInRight" ng-class="pagethree==true ? 'dherit' : 'dnone'">
                 <div class="heading">
                     <h2>Profile Information</h2>
@@ -206,15 +206,16 @@
                         </li>
                         <li class="relative" ng-if="mediaData[0].src">
                             <label>
-                                <img src="{{mediaData[0].src}}">
+                                <!-- <img src="{{mediaData[0].src}}"> -->
+                                <img ng-src="{{mediaData[0].src}}">
                             </label>
                         </li>
                     </ul>
                 </div>
-                
+
                 <ul class="no-padding-bottom">
                     <li style="margin: 0px !important;">
-                        <div class="input-submit">                            
+                        <div class="input-submit">
                             <input type="submit" value="submit" ng-style="{'opacity' : (mydata.desc && mediaData[0].src) ? 1 : 0.5}"  ng-click="(mydata.desc && mediaData[0].src) ? add_dr() : ''">
                         </div>
                     </li>

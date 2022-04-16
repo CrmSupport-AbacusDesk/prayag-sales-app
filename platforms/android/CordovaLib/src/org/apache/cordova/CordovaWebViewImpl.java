@@ -156,13 +156,13 @@ public class CordovaWebViewImpl implements CordovaWebView {
 
                 // Handle other errors by passing them to the webview in JS
                 JSONObject data = new JSONObject();
-                // try {
-                //     data.put("errorCode", -6);
-                //     data.put("description", "The connection to the server was unsuccessful.");
-                //     data.put("url", url);
-                // } catch (JSONException e) {
-                //     // Will never happen.
-                // }
+                try {
+                    data.put("errorCode", -6);
+                    data.put("description", "The connection to the server was unsuccessful.");
+                    data.put("url", url);
+                } catch (JSONException e) {
+                    // Will never happen.
+                }
                 pluginManager.postMessage("onReceivedError", data);
             }
         };

@@ -11,7 +11,6 @@ import org.json.JSONException;
 
 import com.marianhello.bgloc.Config;
 import com.marianhello.bgloc.data.ConfigurationDAO;
-import com.marianhello.bgloc.data.LocationTemplateFactory;
 import com.marianhello.bgloc.data.sqlite.SQLiteConfigurationContract.ConfigurationEntry;
 
 public class SQLiteConfigurationDAO implements ConfigurationDAO {
@@ -32,7 +31,7 @@ public class SQLiteConfigurationDAO implements ConfigurationDAO {
     Cursor cursor = null;
 
     String[] columns = {
-      ConfigurationEntry._ID,
+    	ConfigurationEntry._ID,
       ConfigurationEntry.COLUMN_NAME_RADIUS,
       ConfigurationEntry.COLUMN_NAME_DISTANCE_FILTER,
       ConfigurationEntry.COLUMN_NAME_DESIRED_ACCURACY,
@@ -46,7 +45,6 @@ public class SQLiteConfigurationDAO implements ConfigurationDAO {
       ConfigurationEntry.COLUMN_NAME_STOP_ON_STILL,
       ConfigurationEntry.COLUMN_NAME_START_BOOT,
       ConfigurationEntry.COLUMN_NAME_START_FOREGROUND,
-      ConfigurationEntry.COLUMN_NAME_NOTIFICATIONS_ENABLED,
       ConfigurationEntry.COLUMN_NAME_LOCATION_PROVIDER,
       ConfigurationEntry.COLUMN_NAME_INTERVAL,
       ConfigurationEntry.COLUMN_NAME_FASTEST_INTERVAL,
@@ -55,8 +53,7 @@ public class SQLiteConfigurationDAO implements ConfigurationDAO {
       ConfigurationEntry.COLUMN_NAME_SYNC_URL,
       ConfigurationEntry.COLUMN_NAME_SYNC_THRESHOLD,
       ConfigurationEntry.COLUMN_NAME_HEADERS,
-      ConfigurationEntry.COLUMN_NAME_MAX_LOCATIONS,
-      ConfigurationEntry.COLUMN_NAME_TEMPLATE
+      ConfigurationEntry.COLUMN_NAME_MAX_LOCATIONS
     };
 
     String whereClause = null;
@@ -98,7 +95,7 @@ public class SQLiteConfigurationDAO implements ConfigurationDAO {
   }
 
   private Config hydrate(Cursor c) throws JSONException {
-    Config config = Config.getDefault();
+    Config config = new Config();
     config.setStationaryRadius(c.getFloat(c.getColumnIndex(ConfigurationEntry.COLUMN_NAME_RADIUS)));
     config.setDistanceFilter(c.getInt(c.getColumnIndex(ConfigurationEntry.COLUMN_NAME_DISTANCE_FILTER)));
     config.setDesiredAccuracy(c.getInt(c.getColumnIndex(ConfigurationEntry.COLUMN_NAME_DESIRED_ACCURACY)));
@@ -112,7 +109,6 @@ public class SQLiteConfigurationDAO implements ConfigurationDAO {
     config.setStopOnStillActivity( (c.getInt(c.getColumnIndex(ConfigurationEntry.COLUMN_NAME_STOP_ON_STILL)) == 1) ? true : false );
     config.setStartOnBoot( (c.getInt(c.getColumnIndex(ConfigurationEntry.COLUMN_NAME_START_BOOT)) == 1) ? true : false );
     config.setStartForeground( (c.getInt(c.getColumnIndex(ConfigurationEntry.COLUMN_NAME_START_FOREGROUND)) == 1) ? true : false );
-    config.setNotificationsEnabled( (c.getInt(c.getColumnIndex(ConfigurationEntry.COLUMN_NAME_NOTIFICATIONS_ENABLED)) == 1) ? true : false );
     config.setLocationProvider(c.getInt(c.getColumnIndex(ConfigurationEntry.COLUMN_NAME_LOCATION_PROVIDER)));
     config.setInterval(c.getInt(c.getColumnIndex(ConfigurationEntry.COLUMN_NAME_INTERVAL)));
     config.setFastestInterval(c.getInt(c.getColumnIndex(ConfigurationEntry.COLUMN_NAME_FASTEST_INTERVAL)));
@@ -122,7 +118,6 @@ public class SQLiteConfigurationDAO implements ConfigurationDAO {
     config.setSyncThreshold(c.getInt(c.getColumnIndex(ConfigurationEntry.COLUMN_NAME_SYNC_THRESHOLD)));
     config.setHttpHeaders(new JSONObject(c.getString(c.getColumnIndex(ConfigurationEntry.COLUMN_NAME_HEADERS))));
     config.setMaxLocations(c.getInt(c.getColumnIndex(ConfigurationEntry.COLUMN_NAME_MAX_LOCATIONS)));
-    config.setTemplate(LocationTemplateFactory.fromJSONString(c.getString(c.getColumnIndex(ConfigurationEntry.COLUMN_NAME_TEMPLATE))));
 
     return config;
   }
@@ -143,7 +138,6 @@ public class SQLiteConfigurationDAO implements ConfigurationDAO {
     values.put(ConfigurationEntry.COLUMN_NAME_STOP_ON_STILL, (config.getStopOnStillActivity() == true) ? 1 : 0);
     values.put(ConfigurationEntry.COLUMN_NAME_START_BOOT, (config.getStartOnBoot() == true) ? 1 : 0);
     values.put(ConfigurationEntry.COLUMN_NAME_START_FOREGROUND, (config.getStartForeground() == true) ? 1 : 0);
-    values.put(ConfigurationEntry.COLUMN_NAME_NOTIFICATIONS_ENABLED, (config.getNotificationsEnabled() == true) ? 1 : 0);
     values.put(ConfigurationEntry.COLUMN_NAME_LOCATION_PROVIDER, config.getLocationProvider());
     values.put(ConfigurationEntry.COLUMN_NAME_INTERVAL, config.getInterval());
     values.put(ConfigurationEntry.COLUMN_NAME_FASTEST_INTERVAL, config.getFastestInterval());
@@ -153,7 +147,6 @@ public class SQLiteConfigurationDAO implements ConfigurationDAO {
     values.put(ConfigurationEntry.COLUMN_NAME_SYNC_THRESHOLD, config.getSyncThreshold());
     values.put(ConfigurationEntry.COLUMN_NAME_HEADERS, new JSONObject(config.getHttpHeaders()).toString());
     values.put(ConfigurationEntry.COLUMN_NAME_MAX_LOCATIONS, config.getMaxLocations());
-    values.put(ConfigurationEntry.COLUMN_NAME_TEMPLATE, config.hasTemplate() ? config.getTemplate().toString() : null);
 
     return values;
   }

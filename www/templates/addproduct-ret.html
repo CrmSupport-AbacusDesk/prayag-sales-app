@@ -1,33 +1,37 @@
 <ion-view view-title="Add Order">
-    
-    
+
+
     <!-- BACKBTN ICON START -->
     <ion-nav-buttons side="left">
         <span ng-if="!edit_enable"><a ng-click="ask_perm(1)" class="cs-backbtn button button-icon icon ion-android-arrow-back fff"></a></span>
         <span ng-if="edit_enable"><a ng-click="get_orders($root.retailers_id,'1')" class="cs-backbtn button button-icon icon ion-android-arrow-back fff"></a></span>
     </ion-nav-buttons>
-    
+
     <ion-nav-buttons side="right">
         <a href="#/home" class="button button-icon icon ion-home fff font-18"></a>
     </ion-nav-buttons>
-    
-    
-    
+
+
+
     <ion-content ng-controller="RADDproCtrl">
         <form name="AddProdform">
-            
+
             <div class="add-css-select" ng-init="$root.valll=1">
                 <searchandselect selecteditem="$root.default_product_select" values="dr_default_segment" key1="seg_name" key="seg_name" totalrecords="dr_default_segment.length" onscroll="select_all(searchKey, pagenumber)" ng-click="$root.search_data.val=2; $root.search_data.type=1"></searchandselect>
             </div>
-            
-            <div class="add-css-select" ng-init="$root.valll=2">
+
+            <!-- <div class="add-css-select" ng-init="$root.valll=2">
                 <searchandselect selecteditem="$root.default_product_select" values="dr_default_category" key1="id" key="cat_nos" totalrecords="dr_default_category.length" onscroll="select_all_cat(searchKey, pagenumber)" ng-click="$root.search_data.val=3; $root.search_data.type=1"></searchandselect>
-            </div>
-            
+            </div> -->
+
+            <div class="add-css-select" ng-init="$root.valll=2">
+              <searchandselect selecteditem="$root.default_product_select" values="$root.show_default_category" key1="id" key="cat_nos" totalrecords="$root.default_category.length" onscroll="select_all_cat(searchKey, pagenumber)" ng-click="$root.search_data.val=3; $root.search_data.type=1"></searchandselect>
+          </div>
+
             <div class="add-css-select" ng-init="$root.valll=3">
                 <searchandselect selecteditem="$root.default_product_select" values="$root.show_default_product" key1="id" key="product" totalrecords="$root.default_products.length" onscroll="select_all_prod(searchKey, pagenumber)" ng-click="$root.search_data.val=4; $root.search_data.type=1"></searchandselect>
             </div>
-            
+
             <div class="padding-16" ng-if="$root.prod_feature[0].feature">
                 <div class="heading">
                     <h2>Feature</h2>
@@ -41,7 +45,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="row intimate-row no-margin-bottom mb-12 mt-20" ng-init="data.prod_qty=1">
                 <div class="col">
                     <div class="input-label">
@@ -55,46 +59,46 @@
                     </div>
                     <p class="mll-8 no-margin mt-6"><i class="inr-icon ml-10 mt-4"></i>
                         <span class="pl-25 orange-color" ng-hide="product_data[0].price || $root.prod_feature[ind_value].price || $root.prod_feature[ind_value].prod_state_price || prod_state_price.price">0</span>
-                        
+
                         <span class="pl-25 orange-color" ng-if="$root.prod_feature[ind_value].price && !$root.prod_feature[ind_value].prod_state_price">{{$root.prod_feature[ind_value].price}}</span>
-                        
+
                         <span class="pl-25 orange-color" ng-if="$root.prod_feature[ind_value].price && $root.prod_feature[ind_value].prod_state_price">{{$root.prod_feature[ind_value].prod_state_price}}</span>
-                        
+
                         <span class="pl-25 orange-color" ng-if="!$root.prod_feature[ind_value].price && product_data[0].price && !$root.prod_feature[ind_value].prod_state_price && !prod_state_price.price">{{product_data[0].price}}</span>
-                        
+
                         <span class="pl-25 orange-color" ng-if="!$root.prod_feature[ind_value].price && product_data[0].price && !$root.prod_feature[ind_value].prod_state_price && prod_state_price.price">{{prod_state_price.price}}</span>
                     </p>
                 </div>
-                
+
                 <div class="col text-right">
                     <div class="input-label no-padding-right">
                         Amount
                     </div>
                     <p class="no-margin mt-6"><i class="inr-icon ml-10 mt-4"></i>
-                        
+
                         <span class="pl-25 orange-color" ng-hide="product_data[0].price || $root.prod_feature[ind_value].price || $root.prod_feature[ind_value].prod_state_price || prod_state_price.price">0</span>
-                        
-                        <span class="pl-25 orange-color" ng-if="$root.prod_feature[ind_value].price && !$root.prod_feature[ind_value].prod_state_price"><font ng-if="!data.prod_qty">0</font><font ng-if="data.prod_qty">{{data.prod_qty*$root.prod_feature[ind_value].price}}</font></span>
-                        
-                        <span class="pl-25 orange-color" ng-if="$root.prod_feature[ind_value].price && $root.prod_feature[ind_value].prod_state_price"><font ng-if="!data.prod_qty">0</font><font ng-if="data.prod_qty">{{data.prod_qty*$root.prod_feature[ind_value].prod_state_price}}</font></span>
-                        
-                        <span class="pl-25 orange-color" ng-if="!$root.prod_feature[ind_value].price && !$root.prod_feature[ind_value].prod_state_price && product_data[0].price && !prod_state_price.price"><font ng-if="!data.prod_qty">0</font><font ng-if="data.prod_qty">{{data.prod_qty*product_data[0].price}}</font></span>
-                        
-                        <span class="pl-25 orange-color" ng-if="!$root.prod_feature[ind_value].price && !$root.prod_feature[ind_value].prod_state_price && product_data[0].price && prod_state_price.price"><font ng-if="!data.prod_qty">0</font><font ng-if="data.prod_qty">{{data.prod_qty*prod_state_price.price}}</font></span>
+
+                        <span class="pl-25 orange-color" ng-if="$root.prod_feature[ind_value].price && !$root.prod_feature[ind_value].prod_state_price"><font ng-if="!data.prod_qty">0</font><font ng-if="data.prod_qty">{{(data.prod_qty*$root.prod_feature[ind_value].price).toFixed(2)}}</font></span>
+
+                        <span class="pl-25 orange-color" ng-if="$root.prod_feature[ind_value].price && $root.prod_feature[ind_value].prod_state_price"><font ng-if="!data.prod_qty">0</font><font ng-if="data.prod_qty">{{(data.prod_qty*$root.prod_feature[ind_value].prod_state_price).toFixed(2)}}</font></span>
+
+                        <span class="pl-25 orange-color" ng-if="!$root.prod_feature[ind_value].price && !$root.prod_feature[ind_value].prod_state_price && product_data[0].price && !prod_state_price.price"><font ng-if="!data.prod_qty">0</font><font ng-if="data.prod_qty">{{(data.prod_qty*product_data[0].price).toFixed(2)}}</font></span>
+
+                        <span class="pl-25 orange-color" ng-if="!$root.prod_feature[ind_value].price && !$root.prod_feature[ind_value].prod_state_price && product_data[0].price && prod_state_price.price"><font ng-if="!data.prod_qty">0</font><font ng-if="data.prod_qty">{{(data.prod_qty*prod_state_price.price).toFixed(2)}}</font></span>
                     </p>
                 </div>
             </div>
-            
+
             <div class="table-format pr-16">
                 <div class="padding">
                     <div class="pluse relative wp100" style="right: inherit;"  ng-style="{'opacity':product_data[0].product_name? 1 : 0.5}">
-                        
+
                         <a ng-click="product_data[0].product_name ? addtocart(data.prod_qty,product_data[0].product_name,$root.prod_feature[0].feature ? ($root.prod_feature[ind_value].prod_state_price ? $root.prod_feature[ind_value].prod_state_price : $root.prod_feature[ind_value].price) : (prod_state_price.price ? prod_state_price.price : product_data[0].price),'1',$root.prod_feature[ind_value].feat_id,$root.prod_feature[ind_value].feature) : '' ">
                             <i class="material-icons fff">add</i>
                         </a>
                     </div>
                 </div>
-                
+
                 <table>
                     <tr>
                         <th style="width:40px;">S.No</th>
@@ -107,7 +111,7 @@
                         </td>
                         <td>
                             <p>{{cart.catg_no}}<span ng-if="cart.feature">({{cart.feature}})</span></p>
-                            
+
                             <button class="delete" ng-click="del_cart($index)">
                                 <i class="material-icons">delete_sweep</i>
                             </button>
@@ -126,10 +130,10 @@
                             </span>
                         </td>
                     </tr>
-                    
+
                 </table>
             </div>
-            
+
             <div class="add-product-listing pl-16 pr-16">
                 <!-- Loop Start -->
                 <a class="list" ng-if="seg_amt" ng-repeat="seg_det in seg_amt">
@@ -171,7 +175,7 @@
                 </a>
                 <!-- Loop End... -->
             </div>
-            <div class="input-submit padding-16" > 
+            <div class="input-submit padding-16" >
                 <a ng-if="!edit_enable" type="button" ng-click="(AddProdform.$valid && (cart_arr.length > 0) && (seg_amt.length > 0)) ? fetch_all(1,1) : '' " ng-style="{'opacity' : (AddProdform.$valid && (cart_arr.length > 0) && (seg_amt.length > 0)) ? 1 : 0.5 }">PROCEED</a>
                 <a ng-if="edit_enable" type="button" ng-click="(AddProdform.$valid && (cart_arr.length > 0) && (seg_amt.length > 0)) ? fetch_all(1,2) : '' " ng-style="{'opacity' : (AddProdform.$valid && (cart_arr.length > 0) && (seg_amt.length > 0)) ? 1 : 0.5 }">PROCEED</a>
             </div>

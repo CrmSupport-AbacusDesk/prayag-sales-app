@@ -3,15 +3,15 @@ angular.module('starter.services', [])
 .service('loginService', function($q, $http,$state)
 {
     return {
-        
+
         /*Default Segment list start*/
         default_segment: function()
         {
             var deferred = $q.defer();
             var promise = deferred.promise;
-            
+
             $http.post(root_url+"/index.php/master/getallproduct", {
-                
+
             }).then(function (response)  {
                 console.log(response);
                 deferred.resolve(response);
@@ -32,14 +32,14 @@ angular.module('starter.services', [])
             return promise;
         },
         /*Default Segment list end*/
-        
+
         /*sales executive login function of service start*/
         loginuser: function(username, password)
         {
-            
+
             var deferred = $q.defer();
             var promise = deferred.promise;
-            
+
             $http.post(server_url+"/login.php",
             {
                 'username':username,
@@ -47,7 +47,7 @@ angular.module('starter.services', [])
                 'src':'m'
             })
             .then(function (response) {
-                
+
                 console.log(response);
                 if (response.data.data.sys_user_id) {
                     console.log("User 1st login successful: " + JSON.stringify(response.data));
@@ -60,9 +60,9 @@ angular.module('starter.services', [])
                 console.log("Server Error on 1st login: " + JSON.stringify(error));
                 deferred.reject(error);
             });
-            
-            
-            
+
+
+
             promise.success = function (fn)
             {
                 promise.then(fn);
@@ -73,18 +73,18 @@ angular.module('starter.services', [])
                 promise.then(null, fn);
                 return promise;
             };
-            
+
             return promise;
         },
         /*sales executive login function of service end*/
-        
+
         /*Retailer listing function of service start*/
-        
+
         retailerlist: function(len)
         {
-            
+
             console.log("hello"+salesexe_id);
-            
+
             var deferred = $q.defer();
             var promise = deferred.promise;
             $http.post(server_url+"/get_retailer_new.php",
@@ -95,14 +95,14 @@ angular.module('starter.services', [])
                 'len':len,
             })
             .then(function (response) {
-                
+
                 console.log(response);
                 deferred.resolve(response.data);
             }, function (error) {
                 console.log("Server Error on response: " + JSON.stringify(error));
                 deferred.reject(error);
             });
-            
+
             promise.success = function (fn)
             {
                 promise.then(fn);
@@ -113,7 +113,7 @@ angular.module('starter.services', [])
                 promise.then(null, fn);
                 return promise;
             };
-            
+
             return promise;
         },
 
@@ -121,23 +121,25 @@ angular.module('starter.services', [])
         orpPostServiceRequest: function(url,data)
         {
             // console.log(data);
-            
+
             console.log("hello"+salesexe_id);
-            
+
             var deferred = $q.defer();
             var promise = deferred.promise;
             $http.post(root_url+url,JSON.stringify({
-                data
+                "data":data
             }),{timeout:15000})
+            // $http.post(root_url+url,
+            //   {data:data},{timeout:15000})
             .then(function (response) {
-                
+
                 console.log(response);
                 deferred.resolve(response.data);
             }, function (error) {
                 console.log("Server Error on response: " + JSON.stringify(error));
                 deferred.reject(error);
             });
-            
+
             promise.success = function (fn)
             {
                 promise.then(fn);
@@ -148,11 +150,11 @@ angular.module('starter.services', [])
                 promise.then(null, fn);
                 return promise;
             };
-            
+
             return promise;
         },
-        
-        
+
+
         get_ret_data: function(data)
         {
             var deferred = $q.defer();
@@ -163,14 +165,14 @@ angular.module('starter.services', [])
                 'data':data
             })
             .then(function (response) {
-                
+
                 console.log(response);
                 deferred.resolve(response.data);
             }, function (error) {
                 console.log("Server Error on response: " + JSON.stringify(error));
                 deferred.reject(error);
             });
-            
+
             promise.success = function (fn)
             {
                 promise.then(fn);
@@ -181,11 +183,11 @@ angular.module('starter.services', [])
                 promise.then(null, fn);
                 return promise;
             };
-            
+
             return promise;
         },
         /*Retailer listing function of service end*/
-        
+
         get_today_birthday_info_data: function(type)
         {
             var deferred = $q.defer();
@@ -196,14 +198,14 @@ angular.module('starter.services', [])
                 'type':type
             })
             .then(function (response) {
-                
+
                 console.log(response);
                 deferred.resolve(response.data);
             }, function (error) {
                 console.log("Server Error on response: " + JSON.stringify(error));
                 deferred.reject(error);
             });
-            
+
             promise.success = function (fn)
             {
                 promise.then(fn);
@@ -214,7 +216,7 @@ angular.module('starter.services', [])
                 promise.then(null, fn);
                 return promise;
             };
-            
+
             return promise;
         },
 
@@ -228,14 +230,14 @@ angular.module('starter.services', [])
                 // 'type':type
             })
             .then(function (response) {
-                
+
                 console.log(response);
                 deferred.resolve(response.data);
             }, function (error) {
                 console.log("Server Error on response: " + JSON.stringify(error));
                 deferred.reject(error);
             });
-            
+
             promise.success = function (fn)
             {
                 promise.then(fn);
@@ -246,12 +248,12 @@ angular.module('starter.services', [])
                 promise.then(null, fn);
                 return promise;
             };
-            
+
             return promise;
         },
-        
+
         /*Await Retailer listing function of service start*/
-        
+
         awaitretailerlist: function(len)
         {
             var deferred = $q.defer();
@@ -264,14 +266,14 @@ angular.module('starter.services', [])
                 'len':len,
             })
             .then(function (response) {
-                
+
                 console.log(response);
                 deferred.resolve(response.data);
             }, function (error) {
                 console.log("Server Error on response: " + JSON.stringify(error));
                 deferred.reject(error);
             });
-            
+
             promise.success = function (fn)
             {
                 promise.then(fn);
@@ -282,33 +284,33 @@ angular.module('starter.services', [])
                 promise.then(null, fn);
                 return promise;
             };
-            
+
             return promise;
         },
-        
+
         /*Await Retailer listing function of service end*/
-        
+
         /*DistrRetailer number search function of service start*/
-        
+
         number_search: function(contact_2)
         {
-            
+
             var deferred = $q.defer();
             var promise = deferred.promise;
             $http.post(server_url+"/get_dr_numsearch.php",
             {
                 'contact_2':contact_2,
-                
+
             })
             .then(function (response) {
-                
+
                 console.log(response);
                 deferred.resolve(response.data);
             }, function (error) {
                 console.log("Server Error on response: " + JSON.stringify(error));
                 deferred.reject(error);
             });
-            
+
             promise.success = function (fn)
             {
                 promise.then(fn);
@@ -319,33 +321,33 @@ angular.module('starter.services', [])
                 promise.then(null, fn);
                 return promise;
             };
-            
+
             return promise;
         },
-        
+
         /*DistrRetailer number search function of service end*/
-        
+
         // /*DistrRetailer become partner function of service start*/
-        
+
         // become_partner: function(contact_2)
         //         {
-        
+
         //             var deferred = $q.defer();
         //             var promise = deferred.promise;
         //             $http.post(server_url+"/put_become_partner_data.php",
         //             {
         //                 'contact_2':contact_2,
-        
+
         //             })
         //                       .then(function (response) {
-        
+
         //                         console.log(response);
         //                     deferred.resolve(response.data);
         //                }, function (error) {
         //                    console.log("Server Error on response: " + JSON.stringify(error));
         //                    deferred.reject(error);
         //                });
-        
+
         //             promise.success = function (fn)
         //             {
         //                 promise.then(fn);
@@ -356,17 +358,17 @@ angular.module('starter.services', [])
         //                 promise.then(null, fn);
         //                 return promise;
         //             };
-        
+
         //             return promise;
         //         },
-        
+
         // /*DistrRetailer become partner function of service end*/
-        
-        
-        
-        
+
+
+
+
         /*Retailer details function of service start*/
-        
+
         retailer_details: function(id,type)
         {
             var deferred = $q.defer();
@@ -377,14 +379,14 @@ angular.module('starter.services', [])
                 'type':type
             })
             .then(function (response) {
-                
+
                 console.log(response);
                 deferred.resolve(response.data);
             }, function (error) {
                 console.log("Server Error on response: " + JSON.stringify(error));
                 deferred.reject(error);
             });
-            
+
             promise.success = function (fn)
             {
                 promise.then(fn);
@@ -395,15 +397,15 @@ angular.module('starter.services', [])
                 promise.then(null, fn);
                 return promise;
             };
-            
+
             return promise;
         },
-        
+
         /*Retailer details function of service end*/
-        
-        
+
+
         /*Retailer View & Edit function of service start*/
-        
+
         view_edit_list: function(id,type)
         {
             var deferred = $q.defer();
@@ -414,14 +416,14 @@ angular.module('starter.services', [])
                 'type':type
             })
             .then(function (response) {
-                
+
                 console.log(response);
                 deferred.resolve(response.data);
             }, function (error) {
                 console.log("Server Error on response: " + JSON.stringify(error));
                 deferred.reject(error);
             });
-            
+
             promise.success = function (fn)
             {
                 promise.then(fn);
@@ -432,14 +434,14 @@ angular.module('starter.services', [])
                 promise.then(null, fn);
                 return promise;
             };
-            
+
             return promise;
         },
-        
+
         /*Retailer details function of service end*/
-        
+
         /*Retailer Segment Details function of service start*/
-        
+
         edit_dr_seg: function(id)
         {
             var deferred = $q.defer();
@@ -449,14 +451,14 @@ angular.module('starter.services', [])
                 'ret_id':id
             })
             .then(function (response) {
-                
+
                 console.log(response);
                 deferred.resolve(response.data);
             }, function (error) {
                 console.log("Server Error on response: " + JSON.stringify(error));
                 deferred.reject(error);
             });
-            
+
             promise.success = function (fn)
             {
                 promise.then(fn);
@@ -467,14 +469,14 @@ angular.module('starter.services', [])
                 promise.then(null, fn);
                 return promise;
             };
-            
+
             return promise;
         },
-        
+
         /*Retailer Segment details function of service end*/
-        
+
         /*Retailer details edit(update) function of service start*/
-        
+
         retailer_view_edit: function(id,dr_name,email,contact_person,contact_2,street,state_name,district_name,pincode,city,area)
         {
             console.log(id+" "+dr_name+" "+email+" "+contact_person+" "+contact_2+" "+street+" "+state_name+" "+district_name+" "+pincode+" "+city+" "+area);
@@ -502,7 +504,7 @@ angular.module('starter.services', [])
                 console.log("Server Error on response: " + JSON.stringify(error));
                 deferred.reject(error);
             });
-            
+
             promise.success = function (fn)
             {
                 promise.then(fn);
@@ -513,14 +515,14 @@ angular.module('starter.services', [])
                 promise.then(null, fn);
                 return promise;
             };
-            
+
             return promise;
         },
-        
+
         /*Retailer details edit function of service end*/
-        
+
         /*Retailer activity  history function of service start*/
-        
+
         activity_ret_history: function(ret_id)
         {
             var deferred = $q.defer();
@@ -538,7 +540,7 @@ angular.module('starter.services', [])
                 console.log("Server Error on response: " + JSON.stringify(error));
                 deferred.reject(error);
             });
-            
+
             promise.success = function (fn)
             {
                 promise.then(fn);
@@ -549,14 +551,14 @@ angular.module('starter.services', [])
                 promise.then(null, fn);
                 return promise;
             };
-            
+
             return promise;
         },
-        
+
         /*Retailer activity  history function of service end*/
-        
+
         /*Retailer activity add function of service start*/
-        
+
         activity_ret_service: function(ret_id,activity_date,activity_type,remark,next_followup)
         {
             var deferred = $q.defer();
@@ -569,7 +571,7 @@ angular.module('starter.services', [])
                 'activity_type':activity_type,
                 'remark':remark,
                 'next_followup':next_followup,
-                
+
             })
             .then(function (response) {
                 console.log("SERVICE SUCCESS");
@@ -579,7 +581,7 @@ angular.module('starter.services', [])
                 console.log("Server Error on response: " + JSON.stringify(error));
                 deferred.reject(error);
             });
-            
+
             promise.success = function (fn)
             {
                 promise.then(fn);
@@ -590,14 +592,14 @@ angular.module('starter.services', [])
                 promise.then(null, fn);
                 return promise;
             };
-            
+
             return promise;
         },
-        
+
         /*Retailer activity add function of service end*/
-        
+
         /*Retailer img_doic list function of service start*/
-        
+
         dr_img_doc_list: function(dr_id)
         {
             var deferred = $q.defer();
@@ -606,18 +608,18 @@ angular.module('starter.services', [])
             $http.post(server_url+"/get_dr_imgdoc.php",
             {
                 'dr_id':dr_id,
-                
-                
+
+
             })
             .then(function (response) {
-                
+
                 console.log(response);
                 deferred.resolve(response.data);
             }, function (error) {
                 console.log("Server Error on response: " + JSON.stringify(error));
                 deferred.reject(error);
             });
-            
+
             promise.success = function (fn)
             {
                 promise.then(fn);
@@ -628,12 +630,12 @@ angular.module('starter.services', [])
                 promise.then(null, fn);
                 return promise;
             };
-            
+
             return promise;
         },
-        
+
         /*Retailer img_doic list function of service end*/
-        
+
         /* dr img_doc_details list function of service start*/
         dr_img_doc_details: function(dr_id,document_title)
         {
@@ -644,17 +646,17 @@ angular.module('starter.services', [])
             {
                 'dr_id':dr_id,
                 'document_title':document_title,
-                
+
             })
             .then(function (response) {
-                
+
                 console.log(response);
                 deferred.resolve(response.data);
             }, function (error) {
                 console.log("Server Error on response: " + JSON.stringify(error));
                 deferred.reject(error);
             });
-            
+
             promise.success = function (fn)
             {
                 promise.then(fn);
@@ -665,14 +667,14 @@ angular.module('starter.services', [])
                 promise.then(null, fn);
                 return promise;
             };
-            
+
             return promise;
         },
-        
+
         /* dr img_doc_details list function of service end*/
-        
+
         /* Particular Retailer pop and gift listing function of service start*/
-        
+
         ret_pop_gift_list: function(ret_id)
         {
             var deferred = $q.defer();
@@ -681,7 +683,7 @@ angular.module('starter.services', [])
             {
                 'ret_id':ret_id,
                 'created_by':salesexe_id,
-                
+
             })
             .then(function (response) {
                 console.log("SERVICE SUCCESS");
@@ -691,7 +693,7 @@ angular.module('starter.services', [])
                 console.log("Server Error on response: " + JSON.stringify(error));
                 deferred.reject(error);
             });
-            
+
             promise.success = function (fn)
             {
                 promise.then(fn);
@@ -702,24 +704,24 @@ angular.module('starter.services', [])
                 promise.then(null, fn);
                 return promise;
             };
-            
+
             return promise;
         },
-        
+
         /* Particular Retailer pop and gift listing function of service end*/
-        
+
         /*Executive Pop and Gift stock info and listing  for retailer
         service function start*/
-        
+
         exe_pop_gift_stock_data: function()
         {
             var deferred = $q.defer();
             var promise = deferred.promise;
             $http.post(server_url+"/get_exepopgift_stock.php",
             {
-                
+
                 'created_by':salesexe_id,
-                
+
             })
             .then(function (response) {
                 console.log(response);
@@ -728,7 +730,7 @@ angular.module('starter.services', [])
                 console.log("Server Error on response: " + JSON.stringify(error));
                 deferred.reject(error);
             });
-            
+
             promise.success = function (fn)
             {
                 promise.then(fn);
@@ -739,15 +741,15 @@ angular.module('starter.services', [])
                 promise.then(null, fn);
                 return promise;
             };
-            
+
             return promise;
         },
-        
+
         /*Executive Pop and Gift stock info and listing  for retailer
         service function start*/
-        
+
         /*Assigning(giving)pop_gift to the retailer service function start*/
-        
+
         assignpopgift_ret: function(ret_id,pop_gift_id,qty,delnote)
         {
             var deferred = $q.defer();
@@ -767,7 +769,7 @@ angular.module('starter.services', [])
                 console.log("Server Error on response: " + JSON.stringify(error));
                 deferred.reject(error);
             });
-            
+
             promise.success = function (fn)
             {
                 promise.then(fn);
@@ -778,12 +780,12 @@ angular.module('starter.services', [])
                 promise.then(null, fn);
                 return promise;
             };
-            
+
             return promise;
         },
-        
+
         /*Assigning pop_gift to the retailer service function start*/
-        
+
         /*outstanding list of retailer start*/
         outstanding_list: function(type)
         {
@@ -801,7 +803,7 @@ angular.module('starter.services', [])
                 console.log("Server Error on response: " + JSON.stringify(error));
                 deferred.reject(error);
             });
-            
+
             promise.success = function (fn)
             {
                 promise.then(fn);
@@ -812,13 +814,13 @@ angular.module('starter.services', [])
                 promise.then(null, fn);
                 return promise;
             };
-            
+
             return promise;
         },
-        
-        
+
+
         /*outstanding list of retailer end*/
-        
+
         /*Paymaster list of retailer start*/
         paymaster_lst: function(id,type)
         {
@@ -836,7 +838,7 @@ angular.module('starter.services', [])
                 console.log("Server Error on response: " + JSON.stringify(error));
                 deferred.reject(error);
             });
-            
+
             promise.success = function (fn)
             {
                 promise.then(fn);
@@ -847,13 +849,13 @@ angular.module('starter.services', [])
                 promise.then(null, fn);
                 return promise;
             };
-            
+
             return promise;
         },
-        
-        
+
+
         /*Paymaster list of retailer end*/
-        
+
         /*Paymaster Data of retailer start*/
         paymaster_data: function(id,r_id,type)
         {
@@ -872,7 +874,7 @@ angular.module('starter.services', [])
                 console.log("Server Error on response: " + JSON.stringify(error));
                 deferred.reject(error);
             });
-            
+
             promise.success = function (fn)
             {
                 promise.then(fn);
@@ -883,14 +885,14 @@ angular.module('starter.services', [])
                 promise.then(null, fn);
                 return promise;
             };
-            
+
             return promise;
         },
-        
+
         /*Paymaster Data of retailer end*/
-        
+
         /*Distributor listing function of service start*/
-        
+
         distributorlist: function()
         {
             var deferred = $q.defer();
@@ -902,14 +904,14 @@ angular.module('starter.services', [])
                 'salesexe_district':salesexe_district
             })
             .then(function (response) {
-                
+
                 console.log(response);
                 deferred.resolve(response.data);
             }, function (error) {
                 console.log("Server Error on response: " + JSON.stringify(error));
                 deferred.reject(error);
             });
-            
+
             promise.success = function (fn)
             {
                 promise.then(fn);
@@ -920,14 +922,14 @@ angular.module('starter.services', [])
                 promise.then(null, fn);
                 return promise;
             };
-            
+
             return promise;
         },
-        
+
         /*Distributor listing function of service end*/
-        
+
         /*Awaiting Distributor listing function of service start*/
-        
+
         awaitdistributorlist: function()
         {
             var deferred = $q.defer();
@@ -937,17 +939,17 @@ angular.module('starter.services', [])
                 'salesexe_id':salesexe_id,
                 'type':2,
                 'salesexe_district':salesexe_district
-                
+
             })
             .then(function (response) {
-                
+
                 console.log(response);
                 deferred.resolve(response.data);
             }, function (error) {
                 console.log("Server Error on response: " + JSON.stringify(error));
                 deferred.reject(error);
             });
-            
+
             promise.success = function (fn)
             {
                 promise.then(fn);
@@ -958,14 +960,14 @@ angular.module('starter.services', [])
                 promise.then(null, fn);
                 return promise;
             };
-            
+
             return promise;
         },
-        
+
         /*Awaiting Distributor listing function of service end*/
-        
+
         /*Distributor listing details function of service start*/
-        
+
         distributorDetails: function(id)
         {
             var deferred = $q.defer();
@@ -973,17 +975,17 @@ angular.module('starter.services', [])
             $http.post(server_url+"/get_distributor_details.php",
             {
                 'distr':id,
-                
+
             })
             .then(function (response) {
-                
+
                 console.log(response);
                 deferred.resolve(response.data);
             }, function (error) {
                 console.log("Server Error on response: " + JSON.stringify(error));
                 deferred.reject(error);
             });
-            
+
             promise.success = function (fn)
             {
                 promise.then(fn);
@@ -994,15 +996,15 @@ angular.module('starter.services', [])
                 promise.then(null, fn);
                 return promise;
             };
-            
+
             return promise;
         },
-        
+
         /*Distributor listing details function of service end*/
-        
-        
+
+
         /*Distributor activity add  function of service start*/
-        
+
         activity_distr_service: function(distr_id,activity_date,activity_type,remark,next_followup)
         {
             var deferred = $q.defer();
@@ -1015,7 +1017,7 @@ angular.module('starter.services', [])
                 'activity_type':activity_type,
                 'remark':remark,
                 'next_followup':next_followup,
-                
+
             })
             .then(function (response) {
                 console.log(response);
@@ -1024,7 +1026,7 @@ angular.module('starter.services', [])
                 console.log("Server Error on response: " + JSON.stringify(error));
                 deferred.reject(error);
             });
-            
+
             promise.success = function (fn)
             {
                 promise.then(fn);
@@ -1035,14 +1037,14 @@ angular.module('starter.services', [])
                 promise.then(null, fn);
                 return promise;
             };
-            
+
             return promise;
         },
-        
+
         /*Distributor activity add function of service end*/
-        
+
         /*Distributor details edit(update) function of service start*/
-        
+
         distributor_view_edit: function(id,dr_name,contact_person,street,email,pincode,state_name,contact_02)
         {
             var deferred = $q.defer();
@@ -1057,7 +1059,7 @@ angular.module('starter.services', [])
                 'state_name':state_name,
                 'contact_02':contact_02,
                 'distr_id':id,
-                
+
             })
             .then(function (response) {
                 console.log(response);
@@ -1066,7 +1068,7 @@ angular.module('starter.services', [])
                 console.log("Server Error on response: " + JSON.stringify(error));
                 deferred.reject(error);
             });
-            
+
             promise.success = function (fn)
             {
                 promise.then(fn);
@@ -1077,23 +1079,23 @@ angular.module('starter.services', [])
                 promise.then(null, fn);
                 return promise;
             };
-            
+
             return promise;
         },
-        
+
         /*Distributor details edit function of service end*/
-        
+
         /*sales executive profile function start*/
         salesexe_profile: function(salesexe_id)
         {
-            
+
             var deferred = $q.defer();
             var promise = deferred.promise;
             $http.post(server_url+"/get_salesexe_profile.php",
             {
-                
+
                 'salesexe_id':salesexe_id,
-                
+
             })
             .then(function (response) {
                 console.log(response);
@@ -1102,7 +1104,7 @@ angular.module('starter.services', [])
                 console.log("Server Error on response: " + JSON.stringify(error));
                 deferred.reject(error);
             });
-            
+
             promise.success = function (fn)
             {
                 promise.then(fn);
@@ -1113,16 +1115,16 @@ angular.module('starter.services', [])
                 promise.then(null, fn);
                 return promise;
             };
-            
+
             return promise;
         },
-        
+
         /*sales executive profile function end*/
-        
-        
-        
+
+
+
         /*Product Segment Detaii Fetch For Retailer Order start*/
-        
+
         fetch_prod_det_ret: function(val,id,salesexe_id)
         {
             console.log(id);
@@ -1132,7 +1134,7 @@ angular.module('starter.services', [])
             {
                 'val':val,
                 'dr_id':id,
-                'salesexe_id':salesexe_id
+                'salesexe_id':salesexe_id,
             })
             .then(function (response) {
                 console.log(response);
@@ -1153,17 +1155,17 @@ angular.module('starter.services', [])
             };
             return promise;
         },
-        
+
         /*Product Segment Detaii Fetch For Retailer Order end*/
-        
-        
+
+
         get_segment_names: function()
         {
             var deferred = $q.defer();
             var promise = deferred.promise;
             $http.post(server_url+"/get_segments.php",
             {
-                
+
             })
             .then(function (response) {
                 console.log(response);
@@ -1184,8 +1186,8 @@ angular.module('starter.services', [])
             };
             return promise;
         },
-        
-        
+
+
         get_distributors: function()
         {
             var deferred = $q.defer();
@@ -1213,10 +1215,10 @@ angular.module('starter.services', [])
             };
             return promise;
         },
-        
-        
+
+
         /*Product Cat Detaii Fetch For Retailer Order start*/
-        
+
         fetch_prod_cat_det_ret: function(seg,val,type,dis,seg_name,state_name,id)
         {
             var deferred = $q.defer();
@@ -1251,12 +1253,12 @@ angular.module('starter.services', [])
             };
             return promise;
         },
-        
+
         /*Product Cat Detaii Fetch For Retailer Order end*/
-        
-        
+
+
         /*Retailer Order Listing function start*/
-        
+
         ret_orders_list: function(ret_id)
         {
             console.log(salesexe_id);
@@ -1266,7 +1268,7 @@ angular.module('starter.services', [])
             {
                 'ret_id':ret_id,
                 'exec_id':salesexe_id
-                
+
             })
             .then(function (response) {
                 console.log(response);
@@ -1275,7 +1277,7 @@ angular.module('starter.services', [])
                 console.log("Server Error on response: " + JSON.stringify(error));
                 deferred.reject(error);
             });
-            
+
             promise.success = function (fn)
             {
                 promise.then(fn);
@@ -1286,14 +1288,14 @@ angular.module('starter.services', [])
                 promise.then(null, fn);
                 return promise;
             };
-            
+
             return promise;
         },
-        
+
         /*Retailer Order Listing function end*/
-        
+
         /*Search In Order function start*/
-        
+
         get_search: function(s_val,id)
         {
             var deferred = $q.defer();
@@ -1302,7 +1304,7 @@ angular.module('starter.services', [])
             {
                 'search_val':s_val,
                 'dr_id':id
-                
+
             })
             .then(function (response) {
                 console.log(response);
@@ -1311,7 +1313,7 @@ angular.module('starter.services', [])
                 console.log("Server Error on response: " + JSON.stringify(error));
                 deferred.reject(error);
             });
-            
+
             promise.success = function (fn)
             {
                 promise.then(fn);
@@ -1322,15 +1324,15 @@ angular.module('starter.services', [])
                 promise.then(null, fn);
                 return promise;
             };
-            
+
             return promise;
         },
-        
+
         /*Search In Order function end*/
-        
-        
+
+
         /*Search for Segment/Category function start*/
-        
+
         get_search_res_val: function(value)
         {
             var deferred = $q.defer();
@@ -1338,7 +1340,7 @@ angular.module('starter.services', [])
             $http.post(server_url+"/get_ret_order_search_val.php",
             {
                 'value':value
-                
+
             })
             .then(function (response) {
                 console.log(response);
@@ -1347,7 +1349,7 @@ angular.module('starter.services', [])
                 console.log("Server Error on response: " + JSON.stringify(error));
                 deferred.reject(error);
             });
-            
+
             promise.success = function (fn)
             {
                 promise.then(fn);
@@ -1358,14 +1360,14 @@ angular.module('starter.services', [])
                 promise.then(null, fn);
                 return promise;
             };
-            
+
             return promise;
         },
-        
+
         /*Search for Segment/Category function end*/
-        
+
         /*Insert Into Order,Order_Item,Segment Delivery function start*/
-        
+
         insert_in_order: function(id,json_arr,seg_order_det,total_order,tot_order_det,type,value,oid,lead_ord)
         {
             var deferred = $q.defer();
@@ -1390,7 +1392,7 @@ angular.module('starter.services', [])
                 console.log("Server Error on response: " + JSON.stringify(error));
                 deferred.reject(error);
             });
-            
+
             promise.success = function (fn)
             {
                 promise.then(fn);
@@ -1401,15 +1403,15 @@ angular.module('starter.services', [])
                 promise.then(null, fn);
                 return promise;
             };
-            
+
             return promise;
         },
-        
+
         /*Insert Into Order,Order_Item,Segment Delivery function end*/
-        
-        
+
+
         /*Update Into Order Table function start*/
-        
+
         update_in_order: function(oid,ord_req,next_followup,payment_type,payment_mode,orderdate,dr_id,payee,amt,refno,ch_no,credit_type,credit_type_id,type,s_val)
         {
             console.log(oid+" "+next_followup+" "+payment_type+""+payment_mode+" "+orderdate);
@@ -1441,7 +1443,7 @@ angular.module('starter.services', [])
                 console.log("Server Error on response: " + JSON.stringify(error));
                 deferred.reject(error);
             });
-            
+
             promise.success = function (fn)
             {
                 promise.then(fn);
@@ -1452,14 +1454,14 @@ angular.module('starter.services', [])
                 promise.then(null, fn);
                 return promise;
             };
-            
+
             return promise;
         },
-        
+
         /*Update Into Order Table function end*/
-        
+
         /*Add Payment Paymaster function start*/
-        
+
         add_payment: function(type,rid,did,tot_amt,mode,cheque_num,cheque_dt,pay_dt,trans_num,desc)
         {
             var deferred = $q.defer();
@@ -1485,7 +1487,7 @@ angular.module('starter.services', [])
                 console.log("Server Error on response: " + JSON.stringify(error));
                 deferred.reject(error);
             });
-            
+
             promise.success = function (fn)
             {
                 promise.then(fn);
@@ -1496,14 +1498,14 @@ angular.module('starter.services', [])
                 promise.then(null, fn);
                 return promise;
             };
-            
+
             return promise;
         },
-        
+
         /*Add Payment Paymaster function end*/
-        
+
         /*DWR LIST function start*/
-        
+
         dwrlist: function(date)
         {
             var deferred = $q.defer();
@@ -1520,7 +1522,7 @@ angular.module('starter.services', [])
                 console.log("Server Error on response: " + JSON.stringify(error));
                 deferred.reject(error);
             });
-            
+
             promise.success = function (fn)
             {
                 promise.then(fn);
@@ -1531,14 +1533,14 @@ angular.module('starter.services', [])
                 promise.then(null, fn);
                 return promise;
             };
-            
+
             return promise;
         },
-        
+
         /*DWR LIST function end*/
-        
+
         /*LEAVE LIST function start*/
-        
+
         leave_list: function()
         {
             var deferred = $q.defer();
@@ -1554,7 +1556,7 @@ angular.module('starter.services', [])
                 console.log("Server Error on response: " + JSON.stringify(error));
                 deferred.reject(error);
             });
-            
+
             promise.success = function (fn)
             {
                 promise.then(fn);
@@ -1565,14 +1567,14 @@ angular.module('starter.services', [])
                 promise.then(null, fn);
                 return promise;
             };
-            
+
             return promise;
         },
-        
+
         /*LEAVE LIST function end*/
-        
+
         /*Check ADD LEAVE function start*/
-        
+
         check_add_leave: function(tod_date)
         {
             var deferred = $q.defer();
@@ -1589,7 +1591,7 @@ angular.module('starter.services', [])
                 console.log("Server Error on response: " + JSON.stringify(error));
                 deferred.reject(error);
             });
-            
+
             promise.success = function (fn)
             {
                 promise.then(fn);
@@ -1600,14 +1602,14 @@ angular.module('starter.services', [])
                 promise.then(null, fn);
                 return promise;
             };
-            
+
             return promise;
         },
-        
+
         /*Check ADD LEAVE function end*/
-        
+
         /*ADD LEAVE function start*/
-        
+
         add_leave: function(subj,sdate,edate,type,diff)
         {
             var deferred = $q.defer();
@@ -1628,7 +1630,7 @@ angular.module('starter.services', [])
                 console.log("Server Error on response: " + JSON.stringify(error));
                 deferred.reject(error);
             });
-            
+
             promise.success = function (fn)
             {
                 promise.then(fn);
@@ -1639,14 +1641,14 @@ angular.module('starter.services', [])
                 promise.then(null, fn);
                 return promise;
             };
-            
+
             return promise;
         },
-        
+
         /*ADD LEAVE function end*/
-        
+
         /*Follow Up function start*/
-        
+
         followup_list: function()
         {
             var deferred = $q.defer();
@@ -1662,7 +1664,7 @@ angular.module('starter.services', [])
                 console.log("Server Error on response: " + JSON.stringify(error));
                 deferred.reject(error);
             });
-            
+
             promise.success = function (fn)
             {
                 promise.then(fn);
@@ -1673,14 +1675,14 @@ angular.module('starter.services', [])
                 promise.then(null, fn);
                 return promise;
             };
-            
+
             return promise;
         },
-        
+
         /*Follow Up LIST function end*/
-        
+
         /*DWR RET DIST function start*/
-        
+
         dwr_ret_visit: function(type,date)
         {
             var deferred = $q.defer();
@@ -1698,7 +1700,7 @@ angular.module('starter.services', [])
                 console.log("Server Error on response: " + JSON.stringify(error));
                 deferred.reject(error);
             });
-            
+
             promise.success = function (fn)
             {
                 promise.then(fn);
@@ -1709,32 +1711,32 @@ angular.module('starter.services', [])
                 promise.then(null, fn);
                 return promise;
             };
-            
+
             return promise;
         },
-        
+
         /*DWR RET DIST LIST function end*/
-        
+
         /*Notice function Start*/
         notice_list: function()
         {
             var deferred = $q.defer();
             var promise = deferred.promise;
-            
+
             $http.post(server_url+"/get_notice_list.php", {
-                
+
                 'created_by':salesexe_id
-                
+
             }).then(function (response)  {
-                
+
                 deferred.resolve(response);
-                
+
             }, function (error) {
-                
+
                 console.log("Server Error : " + JSON.stringify(error));
                 deferred.reject(error);
             });
-            
+
             promise.success = function (fn)
             {
                 promise.then(fn);
@@ -1745,32 +1747,32 @@ angular.module('starter.services', [])
                 promise.then(null, fn);
                 return promise;
             };
-            
+
             return promise;
         },
         /*Notice function End*/
-        
+
         /*Notice Detail function Start*/
         notice_detail: function(id)
         {
             var deferred = $q.defer();
             var promise = deferred.promise;
-            
+
             $http.post(server_url+"/get_notice_detail.php", {
-                
+
                 'id':id,
                 'created_by':salesexe_id
-                
+
             }).then(function (response)  {
-                
+
                 deferred.resolve(response);
-                
+
             }, function (error) {
-                
+
                 console.log("Server Error : " + JSON.stringify(error));
                 deferred.reject(error);
             });
-            
+
             promise.success = function (fn)
             {
                 promise.then(fn);
@@ -1781,31 +1783,31 @@ angular.module('starter.services', [])
                 promise.then(null, fn);
                 return promise;
             };
-            
+
             return promise;
         },
         /*Notice Detail function End*/
-        
+
         /*Executive's Profile Detail start*/
         profile_detail: function()
         {
             var deferred = $q.defer();
             var promise = deferred.promise;
-            
+
             $http.post(server_url+"/get_profile_detail.php", {
-                
+
                 'exec_id':salesexe_id
-                
+
             }).then(function (response)  {
-                
+
                 deferred.resolve(response);
-                
+
             }, function (error) {
-                
+
                 console.log("Server Error : " + JSON.stringify(error));
                 deferred.reject(error);
             });
-            
+
             promise.success = function (fn)
             {
                 promise.then(fn);
@@ -1816,37 +1818,37 @@ angular.module('starter.services', [])
                 promise.then(null, fn);
                 return promise;
             };
-            
+
             return promise;
         },
         /*Executive's Profile Detail End*/
-        
+
         /*Save Company Detail start*/
         save_comp_info: function(val)
         {
             console.log(val);
             var deferred = $q.defer();
             var promise = deferred.promise;
-            
+
             $http.post(server_url+"/save_profile_detail.php", {
-                
+
                 'dr_id':val.id,
                 'counter':val.dr_name,
                 'email':val.email,
                 'gst':val.gst_no,
                 'landline':val.landline_no,
                 'ret_type':'1'
-                
+
             }).then(function (response)  {
-                
+
                 deferred.resolve(response);
-                
+
             }, function (error) {
-                
+
                 console.log("Server Error : " + JSON.stringify(error));
                 deferred.reject(error);
             });
-            
+
             promise.success = function (fn)
             {
                 promise.then(fn);
@@ -1857,33 +1859,33 @@ angular.module('starter.services', [])
                 promise.then(null, fn);
                 return promise;
             };
-            
+
             return promise;
         },
         /*Save Company Detail End*/
-        
+
         /*DR EDIT start*/
         save_dr_pers_info: function(value)
         {
             var deferred = $q.defer();
             var promise = deferred.promise;
-            
+
             $http.post(server_url+"/save_profile_detail.php", {
-                
+
                 'value':value,
                 'ret_type':'2',
                 'multi_cont_person':1
-                
+
             }).then(function (response)  {
-                
+
                 deferred.resolve(response);
-                
+
             }, function (error) {
-                
+
                 console.log("Server Error : " + JSON.stringify(error));
                 deferred.reject(error);
             });
-            
+
             promise.success = function (fn)
             {
                 promise.then(fn);
@@ -1894,20 +1896,20 @@ angular.module('starter.services', [])
                 promise.then(null, fn);
                 return promise;
             };
-            
+
             return promise;
         },
         /*DR Edit End*/
-        
+
         /*Save Billing Company Detail start*/
         save_dr_add_info: function(val)
         {
             console.log(val);
             var deferred = $q.defer();
             var promise = deferred.promise;
-            
+
             $http.post(server_url+"/save_profile_detail.php", {
-                
+
                 'dr_id':val.id,
                 'street':val.street,
                 'district_name':val.district_name,
@@ -1916,17 +1918,17 @@ angular.module('starter.services', [])
                 'area':val.area,
                 'pincode':val.pincode,
                 'ret_type':'3'
-                
+
             }).then(function (response)  {
-                
+
                 deferred.resolve(response);
-                
+
             }, function (error) {
-                
+
                 console.log("Server Error : " + JSON.stringify(error));
                 deferred.reject(error);
             });
-            
+
             promise.success = function (fn)
             {
                 promise.then(fn);
@@ -1937,20 +1939,20 @@ angular.module('starter.services', [])
                 promise.then(null, fn);
                 return promise;
             };
-            
+
             return promise;
         },
         /*Save Billing Company Detail End*/
-        
+
         /*Save Shipping Company Detail start*/
         save_ship_add_info: function(val)
         {
             console.log(val);
             var deferred = $q.defer();
             var promise = deferred.promise;
-            
+
             $http.post(server_url+"/save_profile_detail.php", {
-                
+
                 'dr_id':val.id,
                 'street':val.ship_street,
                 'district_name':val.ship_district_name,
@@ -1959,17 +1961,17 @@ angular.module('starter.services', [])
                 'area':val.ship_area,
                 'pincode':val.ship_pincode,
                 'ret_type':'4'
-                
+
             }).then(function (response)  {
-                
+
                 deferred.resolve(response);
-                
+
             }, function (error) {
-                
+
                 console.log("Server Error : " + JSON.stringify(error));
                 deferred.reject(error);
             });
-            
+
             promise.success = function (fn)
             {
                 promise.then(fn);
@@ -1980,19 +1982,19 @@ angular.module('starter.services', [])
                 promise.then(null, fn);
                 return promise;
             };
-            
+
             return promise;
         },
         /*Save Shipping Company Detail End*/
-        
+
         /*Executive's Profile Edit start*/
         save_pers_info: function(val,date_birth,date_join)
         {
             var deferred = $q.defer();
             var promise = deferred.promise;
-            
+
             $http.post(server_url+"/save_profile_detail.php", {
-                
+
                 'login_id':salesexe_id,
                 'name':val.name,
                 'email':val.email,
@@ -2003,17 +2005,17 @@ angular.module('starter.services', [])
                 'department':val.department,
                 'designation':val.designation,
                 'type':'1'
-                
+
             }).then(function (response)  {
-                
+
                 deferred.resolve(response);
-                
+
             }, function (error) {
-                
+
                 console.log("Server Error : " + JSON.stringify(error));
                 deferred.reject(error);
             });
-            
+
             promise.success = function (fn)
             {
                 promise.then(fn);
@@ -2024,20 +2026,20 @@ angular.module('starter.services', [])
                 promise.then(null, fn);
                 return promise;
             };
-            
+
             return promise;
         },
         /*Executive's Profile Edit End*/
-        
+
         /*Save Company Detail start*/
         save_add_info: function(val)
         {
             console.log(val);
             var deferred = $q.defer();
             var promise = deferred.promise;
-            
+
             $http.post(server_url+"/save_profile_detail.php", {
-                
+
                 'login_id':salesexe_id,
                 'street':val.street,
                 'district_name':val.district_name,
@@ -2045,17 +2047,17 @@ angular.module('starter.services', [])
                 'taluk_name':val.taluk_name,
                 'pincode':val.pincode,
                 'type':'2'
-                
+
             }).then(function (response)  {
-                
+
                 deferred.resolve(response);
-                
+
             }, function (error) {
-                
+
                 console.log("Server Error : " + JSON.stringify(error));
                 deferred.reject(error);
             });
-            
+
             promise.success = function (fn)
             {
                 promise.then(fn);
@@ -2066,35 +2068,35 @@ angular.module('starter.services', [])
                 promise.then(null, fn);
                 return promise;
             };
-            
+
             return promise;
         },
         /*Save Company Detail End*/
-        
+
         /*Save Login Detail start*/
         save_login_info: function(val)
         {
             console.log(val);
             var deferred = $q.defer();
             var promise = deferred.promise;
-            
+
             $http.post(server_url+"/save_profile_detail.php", {
-                
+
                 'login_id':salesexe_id,
                 // 'username':val.username,
                 'password':val.password,
                 'type':'3'
-                
+
             }).then(function (response)  {
-                
+
                 deferred.resolve(response);
-                
+
             }, function (error) {
-                
+
                 console.log("Server Error : " + JSON.stringify(error));
                 deferred.reject(error);
             });
-            
+
             promise.success = function (fn)
             {
                 promise.then(fn);
@@ -2105,33 +2107,33 @@ angular.module('starter.services', [])
                 promise.then(null, fn);
                 return promise;
             };
-            
+
             return promise;
         },
         /*Save Company Detail End*/
-        
+
         /*GET Profile State Info Result Start*/
         get_profile_districts: function(st_name)
         {
             var deferred = $q.defer();
             var promise = deferred.promise;
-            
+
             $http.post(server_url+"/get_profile_state_info.php", {
-                
+
                 'st_name':st_name,
                 'val':1
-                
+
             }).then(function (response)  {
                 console.log(response);
-                
+
                 deferred.resolve(response);
-                
+
             }, function (error) {
-                
+
                 console.log("Server Error : " + JSON.stringify(error));
                 deferred.reject(error);
             });
-            
+
             promise.success = function (fn)
             {
                 promise.then(fn);
@@ -2142,33 +2144,33 @@ angular.module('starter.services', [])
                 promise.then(null, fn);
                 return promise;
             };
-            
+
             return promise;
         },
         /**GET Profile State Info Result End*/
-        
+
         /*GET Profile State Info Result Start*/
         get_profile_city: function(dist_name,st_name)
         {
             var deferred = $q.defer();
             var promise = deferred.promise;
-            
+
             $http.post(server_url+"/get_profile_state_info.php", {
-                
+
                 'dist_name':dist_name,
                 'st_name':st_name
-                
+
             }).then(function (response)  {
                 console.log(response);
-                
+
                 deferred.resolve(response);
-                
+
             }, function (error) {
-                
+
                 console.log("Server Error : " + JSON.stringify(error));
                 deferred.reject(error);
             });
-            
+
             promise.success = function (fn)
             {
                 promise.then(fn);
@@ -2179,33 +2181,33 @@ angular.module('starter.services', [])
                 promise.then(null, fn);
                 return promise;
             };
-            
+
             return promise;
         },
         /**GET Profile State Info Result End*/
-        
+
         /*GET Profile State Info Result Start*/
         get_profile_area: function(city,st_name)
         {
             var deferred = $q.defer();
             var promise = deferred.promise;
-            
+
             $http.post(server_url+"/get_profile_state_info.php", {
-                
+
                 'city':city,
                 'st_name':st_name
-                
+
             }).then(function (response)  {
                 console.log(response);
-                
+
                 deferred.resolve(response);
-                
+
             }, function (error) {
-                
+
                 console.log("Server Error : " + JSON.stringify(error));
                 deferred.reject(error);
             });
-            
+
             promise.success = function (fn)
             {
                 promise.then(fn);
@@ -2216,33 +2218,33 @@ angular.module('starter.services', [])
                 promise.then(null, fn);
                 return promise;
             };
-            
+
             return promise;
         },
         /**GET Profile State Info Result End*/
-        
+
         /*GET Profile State Info Result Start*/
         get_profile_pincodes: function(area,st_name)
         {
             var deferred = $q.defer();
             var promise = deferred.promise;
-            
+
             $http.post(server_url+"/get_profile_state_info.php", {
-                
+
                 'area':area,
                 'st_name':st_name
-                
+
             }).then(function (response)  {
                 console.log(response);
-                
+
                 deferred.resolve(response);
-                
+
             }, function (error) {
-                
+
                 console.log("Server Error : " + JSON.stringify(error));
                 deferred.reject(error);
             });
-            
+
             promise.success = function (fn)
             {
                 promise.then(fn);
@@ -2253,33 +2255,33 @@ angular.module('starter.services', [])
                 promise.then(null, fn);
                 return promise;
             };
-            
+
             return promise;
         },
         /**GET Profile State Info Result End*/
-        
+
         /*GET Profile State Info Result Start*/
         set_profile_area: function(pin,st_name)
         {
             var deferred = $q.defer();
             var promise = deferred.promise;
-            
+
             $http.post(server_url+"/get_profile_state_info.php", {
-                
+
                 'pin':pin,
                 'st_name':st_name
-                
+
             }).then(function (response)  {
                 console.log(response);
-                
+
                 deferred.resolve(response);
-                
+
             }, function (error) {
-                
+
                 console.log("Server Error : " + JSON.stringify(error));
                 deferred.reject(error);
             });
-            
+
             promise.success = function (fn)
             {
                 promise.then(fn);
@@ -2290,33 +2292,33 @@ angular.module('starter.services', [])
                 promise.then(null, fn);
                 return promise;
             };
-            
+
             return promise;
         },
         /**GET Profile State Info Result End*/
-        
-        
+
+
         /*Executive's Profile Update start*/
         profile_update: function(profile_data)
         {
             var deferred = $q.defer();
             var promise = deferred.promise;
-            
+
             $http.post(server_url+"/profile_update.php", {
-                
+
                 'exec_id':salesexe_id,
                 'profile_data': profile_data
-                
+
             }).then(function (response)  {
-                
+
                 deferred.resolve(response);
-                
+
             }, function (error) {
-                
+
                 console.log("Server Error : " + JSON.stringify(error));
                 deferred.reject(error);
             });
-            
+
             promise.success = function (fn)
             {
                 promise.then(fn);
@@ -2327,11 +2329,11 @@ angular.module('starter.services', [])
                 promise.then(null, fn);
                 return promise;
             };
-            
+
             return promise;
         },
         /*Executive's Profile Update End*/
-        
+
         /*Order Detail function start*/
         order_detail: function(ret_dist_id, order_id,type)
         {
@@ -2344,14 +2346,14 @@ angular.module('starter.services', [])
                 'ret_dist_id':ret_dist_id,
                 'order_id':order_id,
                 'type':type
-                
+
             }).then(function (response) {
                 deferred.resolve(response);
             }, function (error) {
                 console.log("Server Error on response: " + JSON.stringify(error));
                 deferred.reject(error);
             });
-            
+
             promise.success = function (fn)
             {
                 promise.then(fn);
@@ -2362,11 +2364,11 @@ angular.module('starter.services', [])
                 promise.then(null, fn);
                 return promise;
             };
-            
+
             return promise;
         },
         /*Order Detail function End*/
-        
+
         /*Add Location function start*/
         add_loc: function(dr_id,loc,lat,lng)
         {
@@ -2384,7 +2386,7 @@ angular.module('starter.services', [])
                 console.log("Server Error on response: " + JSON.stringify(error));
                 deferred.reject(error);
             });
-            
+
             promise.success = function (fn)
             {
                 promise.then(fn);
@@ -2395,11 +2397,11 @@ angular.module('starter.services', [])
                 promise.then(null, fn);
                 return promise;
             };
-            
+
             return promise;
         },
         /*Add Location function End*/
-        
+
         /*Get GPS Location function start*/
         get_gps_loc: function(dr_id)
         {
@@ -2414,7 +2416,7 @@ angular.module('starter.services', [])
                 console.log("Server Error on response: " + JSON.stringify(error));
                 deferred.reject(error);
             });
-            
+
             promise.success = function (fn)
             {
                 promise.then(fn);
@@ -2425,11 +2427,11 @@ angular.module('starter.services', [])
                 promise.then(null, fn);
                 return promise;
             };
-            
+
             return promise;
         },
         /*Get GPS Location function End*/
-        
+
         /*Get Nearest Store function start*/
         get_nearest: function(lat,lng)
         {
@@ -2447,7 +2449,7 @@ angular.module('starter.services', [])
                 console.log("Server Error on response: " + JSON.stringify(error));
                 deferred.reject(error);
             });
-            
+
             promise.success = function (fn)
             {
                 promise.then(fn);
@@ -2458,11 +2460,11 @@ angular.module('starter.services', [])
                 promise.then(null, fn);
                 return promise;
             };
-            
+
             return promise;
         },
         /*Get Nearest Store function End*/
-        
+
         /*Search Retailer function start*/
         add_ret: function(mob,type)
         {
@@ -2479,7 +2481,7 @@ angular.module('starter.services', [])
                 console.log("Server Error on response: " + JSON.stringify(error));
                 deferred.reject(error);
             });
-            
+
             promise.success = function (fn)
             {
                 promise.then(fn);
@@ -2490,11 +2492,11 @@ angular.module('starter.services', [])
                 promise.then(null, fn);
                 return promise;
             };
-            
+
             return promise;
         },
         /*Search Retailer function End*/
-        
+
         /*Get States function start*/
         get_state: function()
         {
@@ -2509,7 +2511,7 @@ angular.module('starter.services', [])
                 console.log("Server Error on response: " + JSON.stringify(error));
                 deferred.reject(error);
             });
-            
+
             promise.success = function (fn)
             {
                 promise.then(fn);
@@ -2520,11 +2522,11 @@ angular.module('starter.services', [])
                 promise.then(null, fn);
                 return promise;
             };
-            
+
             return promise;
         },
         /*Get States function End*/
-        
+
         /*Get District function start*/
         get_district: function(st_name)
         {
@@ -2540,7 +2542,7 @@ angular.module('starter.services', [])
                 console.log("Server Error on response: " + JSON.stringify(error));
                 deferred.reject(error);
             });
-            
+
             promise.success = function (fn)
             {
                 promise.then(fn);
@@ -2551,11 +2553,11 @@ angular.module('starter.services', [])
                 promise.then(null, fn);
                 return promise;
             };
-            
+
             return promise;
         },
         /*Get District function End*/
-        
+
         /*Get City function start*/
         get_city: function(dist_name,st_name)
         {
@@ -2572,7 +2574,7 @@ angular.module('starter.services', [])
                 console.log("Server Error on response: " + JSON.stringify(error));
                 deferred.reject(error);
             });
-            
+
             promise.success = function (fn)
             {
                 promise.then(fn);
@@ -2583,11 +2585,11 @@ angular.module('starter.services', [])
                 promise.then(null, fn);
                 return promise;
             };
-            
+
             return promise;
         },
         /*Get City function End*/
-        
+
         /*Set Pincode function start*/
         set_pincode: function(area,st_name)
         {
@@ -2604,7 +2606,7 @@ angular.module('starter.services', [])
                 console.log("Server Error on response: " + JSON.stringify(error));
                 deferred.reject(error);
             });
-            
+
             promise.success = function (fn)
             {
                 promise.then(fn);
@@ -2615,11 +2617,11 @@ angular.module('starter.services', [])
                 promise.then(null, fn);
                 return promise;
             };
-            
+
             return promise;
         },
         /*Set Pincode function End*/
-        
+
         /*Set Area function start*/
         set_area: function(pin,st_name)
         {
@@ -2636,7 +2638,7 @@ angular.module('starter.services', [])
                 console.log("Server Error on response: " + JSON.stringify(error));
                 deferred.reject(error);
             });
-            
+
             promise.success = function (fn)
             {
                 promise.then(fn);
@@ -2647,11 +2649,11 @@ angular.module('starter.services', [])
                 promise.then(null, fn);
                 return promise;
             };
-            
+
             return promise;
         },
         /*Set Area function End*/
-        
+
         /*Get Area function start*/
         get_area: function(city,st_name)
         {
@@ -2668,7 +2670,7 @@ angular.module('starter.services', [])
                 console.log("Server Error on response: " + JSON.stringify(error));
                 deferred.reject(error);
             });
-            
+
             promise.success = function (fn)
             {
                 promise.then(fn);
@@ -2679,11 +2681,11 @@ angular.module('starter.services', [])
                 promise.then(null, fn);
                 return promise;
             };
-            
+
             return promise;
         },
         /*Get Area function End*/
-        
+
         /*Get Pincode function start*/
         get_pincode: function(dist_name)
         {
@@ -2699,7 +2701,7 @@ angular.module('starter.services', [])
                 console.log("Server Error on response: " + JSON.stringify(error));
                 deferred.reject(error);
             });
-            
+
             promise.success = function (fn)
             {
                 promise.then(fn);
@@ -2710,11 +2712,11 @@ angular.module('starter.services', [])
                 promise.then(null, fn);
                 return promise;
             };
-            
+
             return promise;
         },
         /*Get District function End*/
-        
+
         /*Get District function start*/
         get_taluk: function(pin_val)
         {
@@ -2730,7 +2732,7 @@ angular.module('starter.services', [])
                 console.log("Server Error on response: " + JSON.stringify(error));
                 deferred.reject(error);
             });
-            
+
             promise.success = function (fn)
             {
                 promise.then(fn);
@@ -2741,11 +2743,11 @@ angular.module('starter.services', [])
                 promise.then(null, fn);
                 return promise;
             };
-            
+
             return promise;
         },
         /*Get District function End*/
-        
+
         /*Add DR function start*/
         add_dr: function(dr_array,dr_type,val)
         {
@@ -2780,14 +2782,14 @@ angular.module('starter.services', [])
                 'dob':dr_array.dob,
                 'desc':dr_array.desc,
                 'val':val
-                
+
             }).then(function (response) {
                 deferred.resolve(response);
             }, function (error) {
                 console.log("Server Error on response: " + JSON.stringify(error));
                 deferred.reject(error);
             });
-            
+
             promise.success = function (fn)
             {
                 promise.then(fn);
@@ -2798,11 +2800,11 @@ angular.module('starter.services', [])
                 promise.then(null, fn);
                 return promise;
             };
-            
+
             return promise;
         },
         /*Add DR function End*/
-        
+
         /*Add DR Segment function start*/
         add_dr_seg: function(last_dr_id,seg_name_arr,type)
         {
@@ -2814,14 +2816,14 @@ angular.module('starter.services', [])
                 'last_id':last_dr_id,
                 'seg_arr':seg_name_arr,
                 'type':type
-                
+
             }).then(function (response) {
                 deferred.resolve(response);
             }, function (error) {
                 console.log("Server Error on response: " + JSON.stringify(error));
                 deferred.reject(error);
             });
-            
+
             promise.success = function (fn)
             {
                 promise.then(fn);
@@ -2832,11 +2834,11 @@ angular.module('starter.services', [])
                 promise.then(null, fn);
                 return promise;
             };
-            
+
             return promise;
         },
         /*Add DR Segment function End*/
-        
+
         /*Add DR Distributor function start*/
         add_dr_dists: function(last_dr_id,dr_name_arr)
         {
@@ -2848,14 +2850,14 @@ angular.module('starter.services', [])
                 'last_id':last_dr_id,
                 'dist_arr':dr_name_arr,
                 'exec_id':salesexe_id
-                
+
             }).then(function (response) {
                 deferred.resolve(response);
             }, function (error) {
                 console.log("Server Error on response: " + JSON.stringify(error));
                 deferred.reject(error);
             });
-            
+
             promise.success = function (fn)
             {
                 promise.then(fn);
@@ -2866,11 +2868,11 @@ angular.module('starter.services', [])
                 promise.then(null, fn);
                 return promise;
             };
-            
+
             return promise;
         },
         /*Add DR Distributor function End*/
-        
+
         /*DR Request Regenerate function start*/
         req_reg: function(dr_id)
         {
@@ -2879,14 +2881,14 @@ angular.module('starter.services', [])
             $http.post(server_url+"/req_reg.php",
             {
                 'dr_id':dr_id
-                
+
             }).then(function (response) {
                 deferred.resolve(response);
             }, function (error) {
                 console.log("Server Error on response: " + JSON.stringify(error));
                 deferred.reject(error);
             });
-            
+
             promise.success = function (fn)
             {
                 promise.then(fn);
@@ -2897,11 +2899,11 @@ angular.module('starter.services', [])
                 promise.then(null, fn);
                 return promise;
             };
-            
+
             return promise;
         },
         /*DR Request Regenerate function End*/
-        
+
         /*Dashboard Details function start*/
         dashboard_det: function()
         {
@@ -2910,14 +2912,14 @@ angular.module('starter.services', [])
             $http.post(server_url+"/dashboard.php",
             {
                 'created_by':salesexe_id,
-                
+
             }).then(function (response) {
                 deferred.resolve(response);
             }, function (error) {
                 console.log("Server Error on response: " + JSON.stringify(error));
                 deferred.reject(error);
             });
-            
+
             promise.success = function (fn)
             {
                 promise.then(fn);
@@ -2928,11 +2930,11 @@ angular.module('starter.services', [])
                 promise.then(null, fn);
                 return promise;
             };
-            
+
             return promise;
         },
         /*Dashboard Details function End*/
-        
+
         /*Expense Listing function start*/
         expense_list: function()
         {
@@ -2941,14 +2943,14 @@ angular.module('starter.services', [])
             $http.post(server_url+"/expense_list.php",
             {
                 'id':salesexe_id,
-                
+
             }).then(function (response) {
                 deferred.resolve(response);
             }, function (error) {
                 console.log("Server Error on response: " + JSON.stringify(error));
                 deferred.reject(error);
             });
-            
+
             promise.success = function (fn)
             {
                 promise.then(fn);
@@ -2959,11 +2961,11 @@ angular.module('starter.services', [])
                 promise.then(null, fn);
                 return promise;
             };
-            
+
             return promise;
         },
         /*Expense Listing function End*/
-        
+
         /*Expense Detail function start*/
         expense_det: function(dt)
         {
@@ -2979,7 +2981,7 @@ angular.module('starter.services', [])
                 console.log("Server Error on response: " + JSON.stringify(error));
                 deferred.reject(error);
             });
-            
+
             promise.success = function (fn)
             {
                 promise.then(fn);
@@ -2990,11 +2992,11 @@ angular.module('starter.services', [])
                 promise.then(null, fn);
                 return promise;
             };
-            
+
             return promise;
         },
         /*Expense Detail function End*/
-        
+
         /*Expense Date Detail function start*/
         exp_date_detail: function(dt)
         {
@@ -3010,7 +3012,7 @@ angular.module('starter.services', [])
                 console.log("Server Error on response: " + JSON.stringify(error));
                 deferred.reject(error);
             });
-            
+
             promise.success = function (fn)
             {
                 promise.then(fn);
@@ -3021,12 +3023,12 @@ angular.module('starter.services', [])
                 promise.then(null, fn);
                 return promise;
             };
-            
+
             return promise;
         },
         /*Expense Date Detail function End*/
-        
-        
+
+
         /*Delete Expense Type function start*/
         delete_expense_type: function(id,type,dt)
         {
@@ -3045,7 +3047,7 @@ angular.module('starter.services', [])
                 console.log("Server Error on response: " + JSON.stringify(error));
                 deferred.reject(error);
             });
-            
+
             promise.success = function (fn)
             {
                 promise.then(fn);
@@ -3056,11 +3058,11 @@ angular.module('starter.services', [])
                 promise.then(null, fn);
                 return promise;
             };
-            
+
             return promise;
         },
         /*Delete Expense Type function End*/
-        
+
         /*Add Expense Type function start*/
         add_expense_detail: function(exp_type,exp_val,dt)
         {
@@ -3081,7 +3083,7 @@ angular.module('starter.services', [])
                 console.log("Server Error on response: " + JSON.stringify(error));
                 deferred.reject(error);
             });
-            
+
             promise.success = function (fn)
             {
                 promise.then(fn);
@@ -3092,11 +3094,11 @@ angular.module('starter.services', [])
                 promise.then(null, fn);
                 return promise;
             };
-            
+
             return promise;
         },
         /*Add Expense Type function End*/
-        
+
         /*Add New Expense Type function start*/
         add_new_expense: function(exp_type,exp_val,dt)
         {
@@ -3116,7 +3118,7 @@ angular.module('starter.services', [])
                 console.log("Server Error on response: " + JSON.stringify(error));
                 deferred.reject(error);
             });
-            
+
             promise.success = function (fn)
             {
                 promise.then(fn);
@@ -3127,33 +3129,33 @@ angular.module('starter.services', [])
                 promise.then(null, fn);
                 return promise;
             };
-            
+
             return promise;
         },
         /*Add New Expense Type function End*/
-        
+
         /*GET Search Result Start*/
         get_my_seg_dists: function(dr_id,dist_name)
         {
             var deferred = $q.defer();
             var promise = deferred.promise;
-            
+
             $http.post(server_url+"/get_seg_dists.php", {
-                
+
                 'dr_id':dr_id,
                 'district_name':dist_name
-                
+
             }).then(function (response)  {
                 console.log(response);
-                
+
                 deferred.resolve(response);
-                
+
             }, function (error) {
-                
+
                 console.log("Server Error : " + JSON.stringify(error));
                 deferred.reject(error);
             });
-            
+
             promise.success = function (fn)
             {
                 promise.then(fn);
@@ -3164,34 +3166,34 @@ angular.module('starter.services', [])
                 promise.then(null, fn);
                 return promise;
             };
-            
+
             return promise;
         },
         /*GET Search Result End*/
-        
+
         /*GET Search Result Start*/
         show_last_payment: function(dr_id,oid,type)
         {
             var deferred = $q.defer();
             var promise = deferred.promise;
-            
+
             $http.post(server_url+"/get_last_payment.php", {
-                
+
                 'login_id':dr_id,
                 'oid':oid,
                 'type':type
-                
+
             }).then(function (response)  {
                 console.log(response);
-                
+
                 deferred.resolve(response);
-                
+
             }, function (error) {
-                
+
                 console.log("Server Error : " + JSON.stringify(error));
                 deferred.reject(error);
             });
-            
+
             promise.success = function (fn)
             {
                 promise.then(fn);
@@ -3202,33 +3204,33 @@ angular.module('starter.services', [])
                 promise.then(null, fn);
                 return promise;
             };
-            
+
             return promise;
         },
         /*GET Search Result End*/
-        
+
         /*Delete Bill Start*/
         del_bill: function(bill_img)
         {
             var deferred = $q.defer();
             var promise = deferred.promise;
-            
+
             $http.post(server_url+"/delete_bill.php", {
-                
+
                 'bill_img':bill_img,
                 'exec_id':salesexe_id
-                
+
             }).then(function (response)  {
                 console.log(response);
-                
+
                 deferred.resolve(response);
-                
+
             }, function (error) {
-                
+
                 console.log("Server Error : " + JSON.stringify(error));
                 deferred.reject(error);
             });
-            
+
             promise.success = function (fn)
             {
                 promise.then(fn);
@@ -3239,171 +3241,171 @@ angular.module('starter.services', [])
                 promise.then(null, fn);
                 return promise;
             };
-            
+
             return promise;
         },
         /*Delete Bill End*/
     }
-    
-    
+
+
 })
 
 .factory('mySharedService', function() {
     var mySharedService = {};
-    
+
     mySharedService.shareRetailerdata = '';
     mySharedService.prepForRetailerDataBroadcast = function(msg) {
         this.shareRetailerdata = msg;
-        
+
     };
-    
-    
+
+
     mySharedService.shareDRNumSearchdata = '';
     mySharedService.prepForDrNUmSearchDataBroadcast = function(msg) {
         this.shareDRNumSearchdata = msg;
     };
-    
-    
-    
-    
+
+
+
+
     mySharedService.shareRetailerDetaildata = '';
     mySharedService.prepForRetailerDetailDataBroadcast = function(msg) {
         this.shareRetailerDetaildata = msg;
-        
+
     };
-    
+
     mySharedService.shareRetailerViewEditdata = '';
     mySharedService.prepForRetailerDetailViewEditBroadcast = function(msg) {
         this.shareRetailerViewEditdata = msg;
-        
+
     };
-    
+
     mySharedService.shareActivityRetHistorydata = '';
     mySharedService.prepForActivityRetHistoryBroadcast = function(msg) {
         this.shareActivityRetHistorydata = msg;
-        
+
     };
-    
+
     mySharedService.shareDr_imagDoc = '';
     mySharedService.prepForDRImgDocBroadcast = function(msg) {
         this.shareDr_imagDoc = msg;
-        
+
     };
-    
+
     mySharedService.shareDrimagDocDetails = '';
     mySharedService.prepForDRImgDocDetailsBroadcast = function(msg) {
         this.shareDrimagDocDetails = msg;
-        
+
     };
-    
-    
+
+
     mySharedService.shareRetPopGiftdata = '';
     mySharedService.prepForRetPopGiftBroadcast = function(msg) {
         this.shareRetPopGiftdata = msg;
-        
+
     };
-    
-    
-    
+
+
+
     mySharedService.shareExePopGiftStockdata = '';
     mySharedService.prepForExePopGiftStockInfoBroadcast = function(msg) {
         this.shareExePopGiftStockdata = msg;
-        
+
     };
-    
-    
+
+
     mySharedService.shareAssignPopGiftRet = '';
     mySharedService.prepForAssignPopGiftRetInfoBroadcast = function(msg) {
         this.shareAssignPopGiftRet = msg;
-        
+
     };
-    
-    
-    
+
+
+
     mySharedService.shareDistributorListdata = '';
     mySharedService.prepForDistributorListDataBroadcast = function(msg) {
         this.shareDistributorListdata = msg;
     };
-    
+
     mySharedService.shareDistributorDetailsdata = '';
     mySharedService.prepForDistributorDetailsDataBroadcast = function(msg) {
         this.shareDistributorDetailsdata = msg;
-        
+
     };
-    
+
     mySharedService.shareDistributorViewEditdata = '';
     mySharedService.prepForDistributorDetailViewEditBroadcast = function(msg) {
         this.shareDistributorViewEditdata = msg;
-        
+
     };
-    
-    
+
+
     mySharedService.shareProductsdata = [];
     mySharedService.prepFoProductsDataBroadcast = function(msg) {
         this.shareProductsdata = msg;
     };
-    
+
     mySharedService.shareProductsCatdata = [];
     mySharedService.prepFoProductsCatDataBroadcast = function(msg) {
         this.shareProductsCatdata = msg;
     };
-    
+
     mySharedService.shareProductsNamedata = '';
     mySharedService.prepFoProductsNameDataBroadcast = function(msg) {
         this.shareProductsNamedata = msg;
     };
-    
+
     mySharedService.shareDistributordata = '';
     mySharedService.prepForDistributorNameBroadcast = function(msg) {
         this.shareDistributordata = msg;
     };
-    
+
     mySharedService.shareProdFeaturedata = '';
     mySharedService.prepForProdFeatureBroadcast = function(msg) {
         this.shareProdFeaturedata = msg;
     };
-    
+
     mySharedService.shareRetOrdersdata = '';
     mySharedService.prepForRetOrdersBroadcast = function(msg) {
         this.shareRetOrdersdata = msg;
     };
-    
+
     mySharedService.shareRetIddata = '';
     mySharedService.prepForRetailerIdBroadcast = function(msg) {
         this.shareRetIddata = msg;
     };
-    
+
     mySharedService.shareDistListdata = [];
     mySharedService.prepForDistListBroadcast = function(msg) {
         this.shareDistListdata = msg;
     };
-    
+
     mySharedService.shareOrdDistListdata = [];
     mySharedService.prepForOrdDistListBroadcast = function(msg) {
         this.shareOrdDistListdata = msg;
     };
-    
+
     mySharedService.shareGstdata = '';
     mySharedService.prepForGstBroadcast = function(msg) {
         this.shareGstdata = msg;
     };
-    
+
     mySharedService.shareLastOIDdata = '';
     mySharedService.prepForLastOIDBroadcast = function(msg) {
         this.shareLastOIDdata = msg;
     };
-    
+
     mySharedService.sharePaymasterListdata = [];
     mySharedService.prepForPaymasterListBroadcast = function(msg) {
         this.sharePaymasterListdata = msg;
     };
-    
+
     mySharedService.sharePaymasterdata = [];
     mySharedService.prepForPaymasterDataBroadcast = function(msg) {
         this.sharePaymasterdata = msg;
     };
-    
-    
+
+
     mySharedService.shareDistName='';
     mySharedService.shareBaldata='';
     mySharedService.shareR_ID='';
@@ -3438,7 +3440,7 @@ angular.module('starter.services', [])
     mySharedService.ship_area_arr=[];
     mySharedService.ship_dist_arr=[];
     mySharedService.ship_city_arr=[];
-    
+
     mySharedService.mobile1='';
     mySharedService.dr_type='';
     mySharedService.date_birth='';
@@ -3473,8 +3475,8 @@ angular.module('starter.services', [])
     mySharedService.retailer_segs=[];
     mySharedService.store_default_segments=[];
     mySharedService.shareProfileDetail=[];
-    
-    
+
+
     mySharedService.company_name = '';
     mySharedService.default_segment=[];
     mySharedService.default_category=[];
@@ -3546,7 +3548,7 @@ angular.module('starter.services', [])
     mySharedService.retailer_contact = [];
     mySharedService.dr_default_segment = [];
     mySharedService.dr_default_category = [];
-    
+
     return mySharedService;
 })
 
@@ -3626,11 +3628,11 @@ angular.module('starter.services', [])
         console.log('[js] BackgroundGeolocation callback:  ' + location.latitude + ',' + location.longitude);
         backgroundGeoLocation.finish();
     },
-    
+
     failureFn = function(error) {
         console.log('BackgroundGeoLocation error ' + JSON.stringify(error));
     },
-    
+
     //Enable background geolocation
     start = function (id) {
         console.log(id);
@@ -3646,7 +3648,7 @@ angular.module('starter.services', [])
             debug: true,
             interval: 150000,
             fastestInterval: 300000,
-            locationService: 'ANDROID_DISTANCE_FILTER',      
+            locationService: 'ANDROID_DISTANCE_FILTER',
             activitiesInterval: 1000,
             method: 'POST',
             url: server_url+'/update_location.php?salesexe_id='+id+"&location="+location,
@@ -3661,8 +3663,8 @@ angular.module('starter.services', [])
                 foo: 'bar' // you can also add your own properties
             }
         });
-        
-        // commented 
+
+        // commented
         // BackgroundGeolocation.on('location', function(location) {
         //     console.log(location);
         //     $http.post(server_url+'/update_location.php?location='+location+"&salesexe_id="+id, {})
@@ -3674,19 +3676,19 @@ angular.module('starter.services', [])
         // });
         backgroundGeoLocation.start();
     };
-    
+
     return {
         start: start,
         // Initialize service and enable background geolocation by default
         init: function (id) {
             var bgGPS = window.localStorage.getItem('bgGPS');
-            console.log(id);        
+            console.log(id);
             var bgGPS = 1;
             if (bgGPS == 1 || bgGPS == null) {
                 start(id);
             }
         },
-        
+
         // Stop data tracking
         stop: function () {
             window.localStorage.setItem('bgGPS', 0);
@@ -3697,7 +3699,7 @@ angular.module('starter.services', [])
 
 .factory('Chats', function() {
     // Might use a resource here that returns a JSON array
-    
+
     // Some fake testing data
     var chats = [{
         id: 0,
@@ -3725,7 +3727,7 @@ angular.module('starter.services', [])
         lastText: 'This is wicked good ice cream.',
         face: 'img/mike.png'
     }];
-    
+
     return {
         all: function() {
             return chats;
@@ -3747,17 +3749,17 @@ angular.module('starter.services', [])
 /*image and document section of pariticularretailer start*/
 
 .factory('Camera', function($q) {
-    
+
     return{
         getPicture: function(options) {
             var q = $q.defer();
-            
+
             navigator.camera.getPicture(function(result) {
                 q.resolve(result);
             }, function(err) {
                 q.reject(err);
             }, options);
-            
+
             return q.promise;
         }
     }

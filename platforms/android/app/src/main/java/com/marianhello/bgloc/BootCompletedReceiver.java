@@ -12,15 +12,14 @@ package com.marianhello.bgloc;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
 import android.util.Log;
-
-import com.marianhello.bgloc.data.ConfigurationDAO;
-import com.marianhello.bgloc.data.DAOFactory;
-import com.marianhello.bgloc.service.LocationServiceImpl;
 
 import org.json.JSONException;
 
+import com.marianhello.bgloc.Config;
+import com.marianhello.bgloc.LocationService;
+import com.marianhello.bgloc.data.DAOFactory;
+import com.marianhello.bgloc.data.ConfigurationDAO;
 /**
  * BootCompletedReceiver class
  */
@@ -45,15 +44,11 @@ public class BootCompletedReceiver extends BroadcastReceiver {
 
         if (config.getStartOnBoot()) {
             Log.i(TAG, "Starting service after boot");
-            Intent locationServiceIntent = new Intent(context, LocationServiceImpl.class);
+            Intent locationServiceIntent = new Intent(context, LocationService.class);
             locationServiceIntent.addFlags(Intent.FLAG_FROM_BACKGROUND);
             locationServiceIntent.putExtra("config", config);
 
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                context.startForegroundService(locationServiceIntent);
-            } else {
-                context.startService(locationServiceIntent);
-            }
+            context.startService(locationServiceIntent);
         }
      }
 }
